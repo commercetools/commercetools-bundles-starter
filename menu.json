@@ -1,0 +1,22 @@
+{
+  "key": "bundles-dynamic",
+  "uriPath": "dynamic-bundle-manager",
+  "icon": "RocketIcon",
+  "permissions": ["ViewProducts", "ManageProducts"],
+  "featureToggle": null,
+  "submenu": [],
+  "labelAllLocales": [
+    {
+      "locale": "en",
+      "value": "Dynamic Bundles"
+    },
+    {
+      "locale": "de",
+      "value": "Dynamic Bundles"
+    },
+    {
+      "locale": "es",
+      "value": "Dynamic Bundles"
+    }
+  ]
+}

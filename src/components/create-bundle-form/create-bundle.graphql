@@ -1,0 +1,24 @@
+#import "../bundle.graphql"
+
+mutation CreateBundle(
+  $productTypeKey: String!
+  $name: [LocalizedStringItemInputType!]!
+  $description: [LocalizedStringItemInputType!]
+  $key: String
+  $sku: String
+  $attributes: [ProductAttributeInput!]
+  $slug: [LocalizedStringItemInputType!]!
+) {
+  createProduct(
+    draft: {
+      productType: { key: $productTypeKey }
+      name: $name
+      description: $description
+      key: $key
+      masterVariant: { sku: $sku, attributes: $attributes }
+      slug: $slug
+    }
+  ) {
+    ...Bundle
+  }
+}

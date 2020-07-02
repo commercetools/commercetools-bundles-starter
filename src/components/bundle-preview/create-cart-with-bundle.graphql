@@ -1,0 +1,18 @@
+mutation CreateCart($cartDraft: CartDraft!) {
+  createCart(draft: $cartDraft) {
+    id
+    createdAt
+    totalPrice {
+      currencyCode
+    }
+    lineItems {
+      productId
+      quantity
+      customFields {
+        type {
+          key
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+query GetVariantPrice(
+  $id: String
+  $skus: [String!]
+  $currency: Currency!
+  $country: Country
+  $customerGroup: String
+  $channel: String
+  $date: DateTime
+) {
+  product(id: $id) {
+    masterData {
+      current {
+        allVariants(skus: $skus) {
+          price(
+            currency: $currency
+            country: $country
+            customerGroupId: $customerGroup
+            channelId: $channel
+            date: $date
+          ) {
+            value {
+              type
+              currencyCode
+              centAmount
+              fractionDigits
+            }
+          }
+        }
+      }
+    }
+  }
+}

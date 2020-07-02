@@ -1,0 +1,10 @@
+query BundleSearch($category: String, $scopedPrice: String) {
+  products(category: $category, scopedPrice: $scopedPrice)
+    @rest(
+      path: "/product-projections/search?limit=0&facet=variants.scopedPrice.currentValue.centAmount%3Arange%20%280%20to%20%2A%29&filter.facets=categories.id%3A%20subtree%28%22{args.category}%22%29{args.scopedPrice}"
+      type: "ProductQueryResult!"
+      method: "GET"
+    ) {
+    facets
+  }
+}

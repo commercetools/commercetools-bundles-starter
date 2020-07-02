@@ -1,0 +1,7 @@
+{
+  "csp": {
+    "script-src": ["dynamic-bundle-manager.firebaseapp.com"],
+    "connect-src": ["dynamic-bundle-manager.firebaseapp.com"],
+    "style-src": ["dynamic-bundle-manager.firebaseapp.com"]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "hosting-us"
+  },
+  "targets": {
+    "hosting-us": {
+      "hosting": {
+        "dynamic-bundle-manager": [
+          "dynamic-bundle-manager"
+        ]
+      }
+    }
+  }
+}
