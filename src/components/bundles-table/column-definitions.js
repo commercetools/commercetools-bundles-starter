@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { COLUMN_KEYS } from '@custom-applications-local/bundles-core/components/bundles-table';
+import { COLUMN_KEYS } from '@commercetools-us-ps/mc-app-bundles-core/components/bundles-table';
 import messages from './messages';
 
 const columnDefinitions = [

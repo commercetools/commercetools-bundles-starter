@@ -9,15 +9,15 @@ import {
 import { minBy } from 'lodash';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
-import { localize } from '@custom-applications-local/core/util';
+import { localize } from '@commercetools-us-ps/mc-app-core/util';
 import BundlesTable, {
   COLUMN_KEYS
-} from '@custom-applications-local/bundles-core/components/bundles-table';
-import { getAttribute } from '@custom-applications-local/bundles-core/util';
+} from '@commercetools-us-ps/mc-app-bundles-core/components/bundles-table';
+import { getAttribute } from '@commercetools-us-ps/mc-app-bundles-core/util';
 import {
   StatusBadge,
   CategorySearchInput
-} from '@custom-applications-local/core/components';
+} from '@commercetools-us-ps/mc-app-core/components';
 import { SelectInput } from '@commercetools-frontend/ui-kit';
 import { ATTRIBUTES } from '../../constants';
 import { DATE_FORMAT_OPTIONS } from './constants';

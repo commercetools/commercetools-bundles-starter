@@ -13,8 +13,8 @@ import {
   SecondaryButton,
   Spacings
 } from '@commercetools-frontend/ui-kit';
-import { CategorySearchInput } from '@custom-applications-local/core/components';
-import { getAttribute } from '@custom-applications-local/bundles-core/util';
+import { CategorySearchInput } from '@commercetools-us-ps/mc-app-core/components';
+import { getAttribute } from '@commercetools-us-ps/mc-app-bundles-core/util';
 import {
   ADDITIONAL_CHARGE,
   CATEGORY,

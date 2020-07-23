@@ -4,7 +4,7 @@ import faker from 'faker';
 import { getQuery, setQuery } from '@apollo/react-hooks';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
 import { Table } from '@commercetools-frontend/ui-kit';
-import { mockUseEffect } from '@custom-applications-local/core/test-util';
+import { mockUseEffect } from '@commercetools-us-ps/mc-app-core/test-util';
 import { generateCategoryAttributes } from '../../test-util';
 import { getCategoryAttributes } from '../bundle-preview/category-product-field';
 import PricesTable from './prices-table';
@@ -50,8 +50,10 @@ const generatePriceRangeResults = (
 
 global.open = jest.fn();
 
-const loadPricesTable = async (selectedFilters = filters) =>
-  shallow(<PricesTable {...mocks} {...selectedFilters} />);
+const loadPricesTable = async (selectedFilters = filters) => {
+  const wrapper = shallow(<PricesTable {...mocks} {...selectedFilters} />);
+  return Promise.resolve(wrapper);
+}
 
 describe('prices table', () => {
   beforeAll(() => {

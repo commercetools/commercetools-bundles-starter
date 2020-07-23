@@ -6,9 +6,9 @@ import * as AppContext from '@commercetools-frontend/application-shell-connector
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
 import BundlesTable, {
   COLUMN_KEYS
-} from '@custom-applications-local/bundles-core/components/bundles-table';
-import { PRODUCT_STATUS } from '@custom-applications-local/core/components/status';
-import { localize } from '@custom-applications-local/core/util';
+} from '@commercetools-us-ps/mc-app-bundles-core/components/bundles-table';
+import { PRODUCT_STATUS } from '@commercetools-us-ps/mc-app-core/components/status';
+import { localize } from '@commercetools-us-ps/mc-app-core/util';
 import { generateProduct } from '../../test-util';
 import DynamicBundlesTable from './dynamic-bundles-table';
 import messages from './messages';

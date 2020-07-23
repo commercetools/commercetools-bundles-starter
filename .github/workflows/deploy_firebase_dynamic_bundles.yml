@@ -1,0 +1,86 @@
+name: Build and Deploy Dynamic Bundles to Firebase
+env:
+  WORKING_DIR: ./packages/bundles-dynamic
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "packages/bundles-dynamic/**"
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Get yarn cache
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install dependencies
+        run: yarn install --pure-lockfile
+      - name: Build
+        working-directory: ${{ env.WORKING_DIR }}
+        run: yarn run build
+      - name: Compile
+        working-directory: ${{ env.WORKING_DIR }}
+        run: yarn compile-html:firebase
+      - name: Archive production artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: public
+          path: ${{ env.WORKING_DIR }}/public
+      - name: Archive firebase artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: firebase
+          path: ${{ env.WORKING_DIR }}/firebase.json
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v1
+      - name: Download production artifact
+        uses: actions/download-artifact@v1
+        with:
+          name: public
+          path: ${{ env.WORKING_DIR }}/public
+      - name: Download firebase artifact
+        uses: actions/download-artifact@v1
+        with:
+          name: firebase
+          path: ${{ env.WORKING_DIR }}/firebase
+      - name: Move firebase artifact
+        working-directory: ${{ env.WORKING_DIR }}
+        run: mv firebase/firebase.json firebase.json
+      - name: Deploy to firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          PROJECT_PATH: ${{ env.WORKING_DIR }}
+      - name: Remove artifacts
+        uses: geekyeggo/delete-artifact@v1
+        with:
+          name: |
+            public
+            firebase
