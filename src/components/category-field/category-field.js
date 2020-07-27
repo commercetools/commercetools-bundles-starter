@@ -14,7 +14,7 @@ import {
   Spacings
 } from '@commercetools-frontend/ui-kit';
 import { CategorySearchInput } from '@commercetools-us-ps/mc-app-core/components';
-import { getAttribute } from '@commercetools-us-ps/mc-app-bundles-core/util';
+import { getAttribute } from '@commercetools-us-ps/mc-app-bundles-core';
 import {
   ADDITIONAL_CHARGE,
   CATEGORY,

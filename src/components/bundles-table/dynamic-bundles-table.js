@@ -10,10 +10,9 @@ import { minBy } from 'lodash';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
 import { localize } from '@commercetools-us-ps/mc-app-core/util';
-import BundlesTable, {
+import {BundlesTable,getAttribute,
   COLUMN_KEYS
-} from '@commercetools-us-ps/mc-app-bundles-core/components/bundles-table';
-import { getAttribute } from '@commercetools-us-ps/mc-app-bundles-core/util';
+} from '@commercetools-us-ps/mc-app-bundles-core';
 import {
   StatusBadge,
   CategorySearchInput

@@ -22,7 +22,7 @@ import {
   Text
 } from '@commercetools-frontend/ui-kit';
 import { localize } from '@commercetools-us-ps/mc-app-core/util';
-import PriceFilters from '@commercetools-us-ps/mc-app-bundles-core/components/price-filters';
+import {PriceFilters} from '@commercetools-us-ps/mc-app-bundles-core';
 import { BUNDLE_CART_CUSTOM_TYPE } from '../../constants';
 import {
   getScopedPriceParameters,

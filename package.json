@@ -1,5 +1,5 @@
 {
-  "name": "@custom-applications-local/bundles-dynamic",
+  "name": "@commercetools-us-ps/mc-app-bundles-dynamic",
   "version": "0.0.1",
   "description": "",
   "private": true,
@@ -39,7 +39,7 @@
     "@commercetools-frontend/permissions": "16.14.0",
     "@commercetools-frontend/sdk": "16.14.0",
     "@commercetools-frontend/ui-kit": "10.23.0",
-    "@commercetools-us-ps/mc-app-bundles-core": "*",
+    "@commercetools-us-ps/mc-app-bundles-core": "1.0.3",
     "@commercetools-us-ps/mc-app-core": "1.1.24",
     "@types/prop-types": "15.7.3",
     "@types/react": "16.9.41",
@@ -60,6 +60,7 @@
     "lodash": "4.17.15",
     "moment": "2.27.0",
     "moment-timezone": "0.5.31",
+    "omit-empty": "^1.0.0",
     "prop-types": "15.7.2",
     "qs": "6.9.4",
     "react": "16.13.1",
@@ -98,7 +99,7 @@
     "eslint-plugin-react": "7.20.3",
     "eslint-plugin-react-hooks": "4.0.5",
     "faker": "4.1.0",
-    "graphql-tag": "2.10.3",
+    "graphql-tag": "^2.10.4",
     "jest": "26.1.0",
     "jest-plugin-filename": "0.0.1",
     "jest-runner-eslint": "0.10.0",
@@ -109,6 +110,6 @@
     "stylelint": "13.6.1",
     "stylelint-config-standard": "20.0.0",
     "stylelint-order": "4.1.0",
-    "typescript": "3.9.6"
+    "typescript": "^3.9.7"
   }
 }

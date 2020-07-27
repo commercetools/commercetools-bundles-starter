@@ -4,10 +4,10 @@ import faker from 'faker';
 import { minBy, omit, find } from 'lodash';
 import * as AppContext from '@commercetools-frontend/application-shell-connectors';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
-import BundlesTable, {
+import {BundlesTable,
   COLUMN_KEYS
-} from '@commercetools-us-ps/mc-app-bundles-core/components/bundles-table';
-import { PRODUCT_STATUS } from '@commercetools-us-ps/mc-app-core/components/status';
+} from '@commercetools-us-ps/mc-app-bundles-core';
+import { PRODUCT_STATUS } from '@commercetools-us-ps/mc-app-core/components';
 import { localize } from '@commercetools-us-ps/mc-app-core/util';
 import { generateProduct } from '../../test-util';
 import DynamicBundlesTable from './dynamic-bundles-table';
