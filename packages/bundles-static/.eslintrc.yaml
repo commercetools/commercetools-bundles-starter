@@ -1,0 +1,10 @@
+extends: "@commercetools-frontend/eslint-config-mc-app"
+rules:
+  "graphql/template-strings":
+    - "error"
+    - env: "literal"
+plugins:
+  - "graphql"
+settings:
+  react:
+    version: detect

@@ -1,0 +1,15 @@
+query GetPriceFilters($locale: Locale!) {
+  channels(limit: 500, offset: 0) {
+    results {
+      id
+      name(locale: $locale)
+    }
+  }
+
+  customerGroups(limit: 500, offset: 0) {
+    results {
+      id
+      name
+    }
+  }
+}

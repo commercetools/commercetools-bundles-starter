@@ -1,264 +1,28 @@
-# Dynamic Bundle Custom Application
+# mc-custom-applications-gallery
 
-This extension allows users to manage dynamic product bundles. 
+[![Custom Applications CI badge](https://github.com/commercetools/mc-custom-applications-gallery/workflows/Custom%20Applications%20CI/badge.svg)](https://github.com/commercetools/mc-custom-applications-gallery/actions?query=workflow%3A%22Custom+Applications+CI%22)
 
-## Usage
+## Installation
 
-## Development Server
+Prior to running `yarn`, ensure you have exported an auth token to npm in the NPM_TOKEN environment variable, e.g. `export NPM_TOKEN=xxxx-xxxx-xxxx-xxxx`  This will allow the installation of the private package (`@commercetools-us-ps/mc-app-core`).
 
-Run the following command to start the development server and launch the application:
+## Developing Custom Applications
 
-```bash
-$ yarn start
-```
+### Configuration
 
-### Tests
+Copy the entire contents of the `skeleton` package to a new directory, and re-name it with the chosen application name.
 
-Run the following command to run the tests:
+Copy the contents of `env.local.json` to a new file named `env.json`.
 
-```bash
-$ yarn test
-$ yarn test:watch
-```
+### Running the Application
 
-### Production Build
+At the root of the repository, run `yarn`. To run an application locally, navigate to the application directory and `yarn run start`.
 
-Run the following command to build the production bundles with webpack:
+### Troubleshooting
 
-```bash
-$ yarn build
-```
+#### `graphql_error.invalid_token` error
+Log out of [Merchant Center](https://mc.commercetools.co/). Log back in, then return to the custom application and reload.
 
-### Deployment
+### Do's and Don'ts
 
-The skeleton includes configuration for both AWS (S3 & CloudFront) and Firebase serverless deployments built with 
-`mc-script compile-html`. 
-
-- [Firebase](https://appkit.commercetools.com/deployment/example-firebase)
-- [AWS - S3 & CloudFront](https://appkit.commercetools.com/deployment/example-aws-s3-cloudfront)
-
-## Linting, formatting, and so on
-
-### Formatting Code
-
-Run the following command to format JS, CSS, JSON and GraphQL files
-
-```bash
-$ yarn format
-```
-
-### Git Hooks
-
-Git hooks are configured using [Husky](https://github.com/typicode/husky/blob/master/DOCS.md). The root workspace
-runs all workspace hooks using Lerna ([example repository](https://github.com/sudo-suhas/lint-staged-multi-pkg)). The
-hooks are configured as follows:
-
-* **Pre-commit**: JS, CSS, and GraphQL files are linted (ESLint/Stylelint) and formatted (Prettier). Fixes are 
-automatically added to Git.
-* **Commit Message**: Commit messages are linted against the [conventional commit format](https://www.conventionalcommits.org) 
-using commitlint
-
-### Linting GraphQL Queries
-
-A pre-requisite for linting GraphQL queries is generating a `schema.graphql` file, which contains the Types exposed by CTP API. 
-Every time that the API introduces new Types, Queries or Mutations, the local `schema.graphql` must be updated.
-
-### Generating GraphQL Schema
-
-1. If you haven't done so already, create an API client under `Settings -> Developer Settings` in Merchant Center for your project
-2. Generate an access token using the [Client Credentials flow](https://docs.commercetools.com/http-api-authorization#client-credentials-flow)
-3. Export both your Merchant Center project key and generated access token as environment variables
-4. Retrieve schema with `graphql-cli`
-
-```bash
-$ export PROJECT_KEY={project_key}
-$ export AUTH_TOKEN={access_token}
-$ npx graphql-cli get-schema
- ```
-
-## Development
-
-### Retrieving Bundle Information
-
-To retrieve a bundle's information, either the commercetools GraphQL API or HTTP API can be utilized.
-
-#### GraphQL
-
-[Product Query](https://docs.commercetools.com/graphql-api.html#supported-entities)
-
-```graphql
-query GetBundle(
-  $id: String!
-  $currency: Currency!
-  $country: Country
-  $customerGroup: String
-  $channel: String
-  $date: DateTime
-) {
-  product(id: $id) {
-    id
-    key
-    version
-    masterData {
-      published
-      hasStagedChanges
-      current {
-        nameAllLocales {
-          locale
-          value
-        }
-        descriptionAllLocales {
-          locale
-          value
-        }
-        masterVariant {
-          sku
-          attributesRaw {
-            name
-            value
-          }
-          images {
-            url
-            label
-          }
-          price(
-            currency: $currency
-            country: $country
-            customerGroupId: $customerGroup
-            channelId: $channel
-            date: $date
-          ) {
-            value {
-              type
-              currencyCode
-              centAmount
-              fractionDigits
-            }
-          }
-        }
-      }
-    }
-  }
-}
-```
-
-Results can be transformed for easier display purposes. See `transformResults` method in the 
-[Dynamic Bundle Details](src/components/bundle-details/dynamic-bundle-details.js) component.
-
-##### Parameters
-
-- `id` - Bundle ID
-- [Price Selection](https://docs.commercetools.com/http-api-projects-products.html#price-selection)
-    - `currency` - Required
-    - `country`
-    - `customerGroup`
-    - `channel`
-    - `date`
-    
-#### HTTP Request
-
-[Get Product Projection by ID](https://docs.commercetools.com/http-api-projects-productProjections#get-productprojection-by-id)
-
-```http request
-GET /{{projectKey}}/product-projections/{{id}}?priceCurrency={{priceCurrency}}&priceCountry={{priceCountry}}&priceCustomerGroup={{priceCustomerGroup}}&priceChannel={{priceChannel}}&priceDate={{priceDate}}
-```
-
-##### Parameters
-
-- `id` - Bundle ID
-- [Price Selection](https://docs.commercetools.com/http-api-projects-products.html#price-selection): Include only those 
-with non-null values
-    - `priceCurrency` - Required
-    - `priceCountry`
-    - `priceCustomerGroup`
-    - `priceChannel`
-    - `priceDate`
-
-#### Examples
-
-[Bundle Details](../bundles-core/components/bundle-details/bundle-details.js) - Retrieves bundle information.
-
-[Dynamic Bundle Details](src/components/bundle-details/dynamic-bundle-details.js) - Transforms bundle results.
-
-[Bundle Preview](src/components/bundle-preview/bundle-preview.js) - Sample bundle detail page. 
-
-**Pricing Assumptions**
-
-In the above [example]((src/components/bundle-preview/bundle-preview.js)), for statically priced bundles, bundle 
-categories flagged with the additional charge attribute have their selected variant's scoped priced (multiplied by the
-corresponding quantity) added to the bundle's base price for the bundle's total price. For dynamically priced bundles, 
-selected variants' scoped prices (multiplied by corresponding quantities) are summed to obtain the bundle's total price.
-
-### Retrieving Product Variants for Bundle Categories
-
-The following endpoint can be used to populate an asynchronous, searchable select input that displays product variants 
-for a specific category subtree.
-
-#### Endpoint
-
-[Product Projection Search](https://docs.commercetools.com/http-api-projects-products-search#search-productprojections)
-
-```http request
-GET /product-projections/search?text.{{language}}={{text}}&filter=categories.id: subtree("{{categoryId}}")&priceCurrency={{priceCurrency}}&priceCountry={{priceCountry}}&priceCustomerGroup={{priceCustomerGroup}}&priceChannel={{priceChannel}}&priceDate={{priceDate}}
-```
-
-#### Parameters
-
-- Search
-    - `language` - Current browser or site language 
-    - `text` - Text entered by user
-- `categoryId` - A bundle category ID populated in `DynamicBundleChildCategory` product type's `category-ref` attribute
-- [Price Selection](https://docs.commercetools.com/http-api-projects-products.html#price-selection): Include only those 
-with non-null values
-    - `priceCurrency` - Required
-    - `priceCountry`
-    - `priceCustomerGroup`
-    - `priceChannel`
-    - `priceDate`
-    
-#### Examples
-[Category Product Field](src/components/bundle-preview/category-product-field.js) - Form field with product variant 
-select input and quantity input.
-
-[Product Search Input](../core/components/product-search-input/product-search-input.js) - Product variant select input 
-populated by endpoint above. Displays scoped price when price filters are used.
-
-### Creating a Cart with a Bundle
-
-Creating a cart with a bundle can be accomplished using either the commercetools GraphQL API or HTTP API.
-
-#### Cart Draft
-```
-{
-  "currency": {{currency}},
-  "lineItems": [
-    {
-      "productId": {{id}},
-      "quantity": 1
-    },
-    {
-      productId: {{selection.productId}},
-      variantId: {{selection.variantId}},
-      quantity: {{selection.quantity}},
-      custom: {
-        type: {
-          key: "dynamic-bundle-parent-child-link"
-        }
-      }
-    }
-    ...
-  ]
-}
-```
-
-#### Parameters
-
-- `currency` - Current customer currency
-- `id` - The ID of the bundle
-- Category Selections: Each selection is added to the cart draft as a line item with the following parameters:
-    - `productId` - Required
-    - `variantId` - Required
-    - `quantity`
-
-#### Examples
-[Bundle Preview](src/components/bundle-preview/bundle-preview.js) - Cart creation on form submission
+* **Don't** use the application login to authenticate. **Do** make sure you are logged in to Merchant Center before developing or running a custom application.

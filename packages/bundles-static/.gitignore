@@ -3,4 +3,4 @@ coverage
 .terraform
 *.tfstate*
 *.tfvars
-.npmrc
+.DS_Store
