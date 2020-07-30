@@ -2,7 +2,7 @@ const base = {
   loading: false,
   error: null,
   data: null,
-  refetch: jest.fn()
+  refetch: jest.fn(),
 };
 
 let query = base;
@@ -71,11 +71,11 @@ function setMutation(value) {
 const useQuery = jest.fn(() => query);
 const useLazyQuery = jest.fn((document, options) => [
   createMockLazyQuery(options),
-  lazyQuery
+  lazyQuery,
 ]);
 const useMutation = jest.fn((document, options) => [
   createMockMutation(options),
-  mutation
+  mutation,
 ]);
 
 export {
@@ -87,5 +87,5 @@ export {
   getLazyQuery,
   setQuery,
   setLazyQuery,
-  setMutation
+  setMutation,
 };

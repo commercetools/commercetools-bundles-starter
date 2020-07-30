@@ -7,5 +7,5 @@ export const DATE_FORMAT_OPTIONS = {
   minute: 'numeric',
   second: 'numeric',
   hour12: false,
-  timeZoneName: 'short'
+  timeZoneName: 'short',
 };

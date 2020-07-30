@@ -9,19 +9,19 @@ import BundlePrices from './bundle-prices';
 import messages from './messages';
 
 const project = {
-  currencies: Array.from({ length: 3 }, () => faker.finance.currencyCode())
+  currencies: Array.from({ length: 3 }, () => faker.finance.currencyCode()),
 };
 const environment = {
-  frontendHost: 'mc.commercetools.co'
+  frontendHost: 'mc.commercetools.co',
 };
 const mocks = {
   match: {
     params: {
-      projectKey: 'test-project'
-    }
+      projectKey: 'test-project',
+    },
   },
   id: faker.random.uuid(),
-  categories: Array.from({ length: 3 }).map(generateCategoryAttributes)
+  categories: Array.from({ length: 3 }).map(generateCategoryAttributes),
 };
 const mcPriceUrl = `https://${environment.frontendHost}/${mocks.match.params.projectKey}/products/${mocks.id}/variants/${MASTER_VARIANT_ID}/prices`;
 

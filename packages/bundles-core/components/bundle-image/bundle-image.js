@@ -9,7 +9,7 @@ import {
   IconButton,
   Spacings,
   Text,
-  TextField
+  TextField,
 } from '@commercetools-frontend/ui-kit';
 import { ConfirmationDialog } from '@commercetools-frontend/application-components';
 import messages from './messages';
@@ -100,10 +100,10 @@ BundleImage.displayName = 'BundleImage';
 BundleImage.propTypes = {
   image: PropTypes.shape({
     url: PropTypes.string.isRequired,
-    label: PropTypes.string
+    label: PropTypes.string,
   }).isRequired,
   editImage: PropTypes.func.isRequired,
-  removeImage: PropTypes.func.isRequired
+  removeImage: PropTypes.func.isRequired,
 };
 
 export default BundleImage;

@@ -31,7 +31,7 @@ export const DateField = ({ date, message }) => (
 DateField.displayName = 'DateField';
 DateField.propTypes = {
   date: PropTypes.string,
-  message: PropTypes.object.isRequired
+  message: PropTypes.object.isRequired,
 };
 
 const PricesTable = ({
@@ -41,7 +41,7 @@ const PricesTable = ({
   customerGroup,
   channel,
   date,
-  getMcPriceUrl
+  getMcPriceUrl,
 }) => {
   const skus = getSkus(variants);
   const { dataLocale } = useApplicationContext();
@@ -57,15 +57,15 @@ const PricesTable = ({
         country,
         date,
         channel: channel ? JSON.parse(channel).id : null,
-        customerGroup: customerGroup ? JSON.parse(customerGroup).id : null
+        customerGroup: customerGroup ? JSON.parse(customerGroup).id : null,
       },
       identity
-    )
+    ),
   };
 
   const { data, loading, error } = useQuery(GetProductPrices, {
     variables,
-    fetchPolicy: 'no-cache'
+    fetchPolicy: 'no-cache',
   });
 
   function renderItem(results, { rowIndex, columnKey }) {
@@ -146,7 +146,7 @@ const PricesTable = ({
     <Table
       columns={columnDefinitions}
       items={results}
-      itemRenderer={item => renderItem(results, item)}
+      itemRenderer={(item) => renderItem(results, item)}
       rowCount={total}
       onRowClick={(event, rowIndex) => handleRowClick(results[rowIndex])}
     />
@@ -160,7 +160,7 @@ PricesTable.propTypes = {
   customerGroup: PropTypes.string,
   channel: PropTypes.string,
   date: PropTypes.string,
-  getMcPriceUrl: PropTypes.func.isRequired
+  getMcPriceUrl: PropTypes.func.isRequired,
 };
 
 export default PricesTable;

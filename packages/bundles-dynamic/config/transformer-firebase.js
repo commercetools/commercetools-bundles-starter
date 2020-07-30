@@ -14,8 +14,8 @@ module.exports = ({ headers }) => {
         { source: '/@(login|logout)', function: 'customAppFallback' },
         {
           source: '**',
-          destination: '/index.html'
-        }
+          destination: '/index.html',
+        },
       ],
       headers: [
         {
@@ -23,22 +23,22 @@ module.exports = ({ headers }) => {
           headers: [
             {
               key: 'Cache-Control',
-              value: 's-maxage=31536000,immutable'
-            }
-          ]
+              value: 's-maxage=31536000,immutable',
+            },
+          ],
         },
         {
           source: '**',
           headers: Object.entries({
             ...headers,
-            'Cache-Control': 'no-cache'
+            'Cache-Control': 'no-cache',
           }).map(([key, value]) => ({
             key,
-            value
-          }))
-        }
-      ]
-    }
+            value,
+          })),
+        },
+      ],
+    },
   };
 
   const target = process.env.FIREBASE_TARGET;

@@ -19,23 +19,23 @@ import { COLUMN_KEYS } from './column-definitions';
 const dataLocale = faker.random.locale();
 const customerGroup = {
   id: faker.random.uuid(),
-  name: faker.random.words()
+  name: faker.random.words(),
 };
 const channel = {
   id: faker.random.uuid(),
-  name: faker.random.words()
+  name: faker.random.words(),
 };
 const filters = {
   currency: faker.finance.currencyCode(),
   country: faker.address.countryCode(),
   customerGroup: JSON.stringify(customerGroup),
   channel: JSON.stringify(channel),
-  date: faker.date.recent(2).toISOString()
+  date: faker.date.recent(2).toISOString(),
 };
 const bundle = generateProduct();
 const mocks = {
   variants: bundle.products,
-  getMcPriceUrl: jest.fn()
+  getMcPriceUrl: jest.fn(),
 };
 const variables = {
   ...DEFAULT_VARIABLES,
@@ -46,7 +46,7 @@ const variables = {
   country: filters.country,
   customerGroup: customerGroup.id,
   channel: channel.id,
-  date: filters.date
+  date: filters.date,
 };
 const variant = {
   id: faker.random.uuid(),
@@ -58,9 +58,9 @@ const variant = {
     validUntil: faker.date.future(2).toISOString(),
     value: {
       currencyCode: faker.finance.currencyCode(),
-      centAmount: faker.random.number(2000)
-    }
-  }
+      centAmount: faker.random.number(2000),
+    },
+  },
 };
 const generateResults = (item = variant) => [
   {
@@ -68,10 +68,10 @@ const generateResults = (item = variant) => [
     masterData: {
       current: {
         name: faker.random.words(),
-        allVariants: [item]
-      }
-    }
-  }
+        allVariants: [item],
+      },
+    },
+  },
 ];
 
 global.open = jest.fn();
@@ -84,13 +84,10 @@ describe('prices table', () => {
 
   const getValueForColumn = (item, columnKey) => {
     setQuery({
-      data: { products: { results: generateResults(item), total: 1 } }
+      data: { products: { results: generateResults(item), total: 1 } },
     });
     wrapper = loadPricesTable();
-    return wrapper
-      .find(Table)
-      .props()
-      .itemRenderer({ rowIndex: 0, columnKey });
+    return wrapper.find(Table).props().itemRenderer({ rowIndex: 0, columnKey });
   };
 
   beforeEach(() => {
@@ -104,7 +101,7 @@ describe('prices table', () => {
     loadPricesTable();
     expect(useQuery).toHaveBeenCalledWith(GetProductPrices, {
       variables,
-      fetchPolicy: 'no-cache'
+      fetchPolicy: 'no-cache',
     });
   });
 
@@ -124,7 +121,7 @@ describe('prices table', () => {
 
   it('should render products table when query returns data', () => {
     setQuery({
-      data: { products: { results: generateResults(), total: 1 } }
+      data: { products: { results: generateResults(), total: 1 } },
     });
     wrapper = loadPricesTable();
     expect(wrapper.find(Table).exists()).toEqual(true);
@@ -135,7 +132,7 @@ describe('prices table', () => {
     loadPricesTable(omit(filters, 'country'));
     expect(useQuery).toHaveBeenCalledWith(GetProductPrices, {
       variables: omit(variables, 'country'),
-      fetchPolicy: 'no-cache'
+      fetchPolicy: 'no-cache',
     });
   });
 
@@ -144,7 +141,7 @@ describe('prices table', () => {
     loadPricesTable(omit(filters, 'customerGroup'));
     expect(useQuery).toHaveBeenCalledWith(GetProductPrices, {
       variables: omit(variables, 'customerGroup'),
-      fetchPolicy: 'no-cache'
+      fetchPolicy: 'no-cache',
     });
   });
 
@@ -153,7 +150,7 @@ describe('prices table', () => {
     loadPricesTable(omit(filters, 'channel'));
     expect(useQuery).toHaveBeenCalledWith(GetProductPrices, {
       variables: omit(variables, 'channel'),
-      fetchPolicy: 'no-cache'
+      fetchPolicy: 'no-cache',
     });
   });
 
@@ -162,7 +159,7 @@ describe('prices table', () => {
     loadPricesTable(omit(filters, 'date'));
     expect(useQuery).toHaveBeenCalledWith(GetProductPrices, {
       variables: omit(variables, 'date'),
-      fetchPolicy: 'no-cache'
+      fetchPolicy: 'no-cache',
     });
   });
 
@@ -170,33 +167,27 @@ describe('prices table', () => {
     const results = generateResults();
     const item = results[0];
     setQuery({
-      data: { products: { results, total: 1 } }
+      data: { products: { results, total: 1 } },
     });
     wrapper = loadPricesTable();
-    wrapper
-      .find(Table)
-      .props()
-      .onRowClick({}, 0);
+    wrapper.find(Table).props().onRowClick({}, 0);
     expect(global.open).toHaveBeenCalled();
     expect(mocks.getMcPriceUrl).toHaveBeenCalledWith(item.id, variant.id);
   });
 
   it('should render fallback for default column', () => {
     setQuery({
-      data: { products: { results: generateResults(), total: 1 } }
+      data: { products: { results: generateResults(), total: 1 } },
     });
     wrapper = loadPricesTable();
-    const actual = wrapper
-      .find(Table)
-      .props()
-      .itemRenderer({ rowIndex: 0 });
+    const actual = wrapper.find(Table).props().itemRenderer({ rowIndex: 0 });
     expect(actual).toEqual(NO_VALUE_FALLBACK);
   });
 
   it('should render current name for name column', () => {
     const results = generateResults();
     setQuery({
-      data: { products: { results, total: 1 } }
+      data: { products: { results, total: 1 } },
     });
     wrapper = loadPricesTable();
     const actual = wrapper
@@ -210,7 +201,7 @@ describe('prices table', () => {
     const item = omit(variant, 'price');
     beforeEach(() => {
       setQuery({
-        data: { products: { results: generateResults(item), total: 1 } }
+        data: { products: { results: generateResults(item), total: 1 } },
       });
       wrapper = loadPricesTable();
     });
@@ -267,7 +258,7 @@ describe('prices table', () => {
   describe('when price provided', () => {
     beforeEach(() => {
       setQuery({
-        data: { products: { results: generateResults(), total: 1 } }
+        data: { products: { results: generateResults(), total: 1 } },
       });
       wrapper = loadPricesTable();
     });

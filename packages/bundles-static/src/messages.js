@@ -4,28 +4,28 @@ export const messages = defineMessages({
   accessDeniedTitle: {
     id: 'Routes.Error.accessDenied.title',
     description: 'Access denied error title',
-    defaultMessage: 'Not enough permissions to access this resource'
+    defaultMessage: 'Not enough permissions to access this resource',
   },
   accessDeniedMessage: {
     id: 'Routes.Error.accessDenied.message',
     description: 'Access denied error message',
     defaultMessage:
-      'We recommend contacting your project administrators for further questions.'
+      'We recommend contacting your project administrators for further questions.',
   },
   missingBundleTitle: {
     id: 'Routes.Error.missingBundle.title',
     description: 'Missing bundle error title',
-    defaultMessage: 'Unable to locate Bundle Product Type'
+    defaultMessage: 'Unable to locate Bundle Product Type',
   },
   missingBundleMessage: {
     id: 'Routes.Error.missingBundle.message',
     description: 'Missing bundle error message',
     defaultMessage:
-      'Create a Bundle Product Type using the provided Terraform configuration or JSON payload.'
-  }
+      'Create a Bundle Product Type using the provided Terraform configuration or JSON payload.',
+  },
 });
 
-const loadMessages = lang => {
+const loadMessages = (lang) => {
   let loadAppI18nPromise;
   switch (lang) {
     case 'de':
@@ -45,8 +45,8 @@ const loadMessages = lang => {
   }
 
   return loadAppI18nPromise.then(
-    result => result.default,
-    error => {
+    (result) => result.default,
+    (error) => {
       // eslint-disable-next-line no-console
       console.warn(
         `Something went wrong while loading the app messages for ${lang}`,

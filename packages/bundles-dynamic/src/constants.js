@@ -1,6 +1,6 @@
 export const PERMISSIONS = {
   ManageProducts: 'ManageProducts',
-  ViewProducts: 'ViewProducts'
+  ViewProducts: 'ViewProducts',
 };
 export const ROOT_PATH = 'dynamic-bundle-manager';
 export const BUNDLE_PRODUCT_TYPE = 'dynamic-bundle-parent';
@@ -11,5 +11,5 @@ export const ATTRIBUTES = {
   CATEGORY_SEARCH: 'category-search',
   DYNAMIC_PRICE: 'dynamic-price',
   MIN_QUANTITY: 'min-quantity',
-  MAX_QUANTITY: 'max-quantity'
+  MAX_QUANTITY: 'max-quantity',
 };

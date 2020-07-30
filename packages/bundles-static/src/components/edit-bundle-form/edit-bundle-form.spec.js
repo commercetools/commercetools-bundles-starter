@@ -15,7 +15,7 @@ import messages from './messages';
 
 const project = {
   key: faker.random.word(),
-  languages: [faker.random.locale(), faker.random.locale()]
+  languages: [faker.random.locale(), faker.random.locale()],
 };
 const dataLocale = project.languages[0];
 const product = generateProduct(project.languages);
@@ -25,12 +25,12 @@ const { id, version } = formValues;
 const variables = {
   target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
   id,
-  version
+  version,
 };
 
 const mocks = {
   bundle,
-  onComplete: jest.fn()
+  onComplete: jest.fn(),
 };
 
 const loadEditBundleForm = () => shallow(<EditBundleForm {...mocks} />);
@@ -38,7 +38,7 @@ const loadEditBundleForm = () => shallow(<EditBundleForm {...mocks} />);
 describe('edit bundle form', () => {
   let wrapper;
 
-  const submitForm = value =>
+  const submitForm = (value) =>
     wrapper
       .find(BundleForm)
       .props()
@@ -65,8 +65,8 @@ describe('edit bundle form', () => {
       expect(mockMutation).toHaveBeenCalledWith({
         variables: {
           ...variables,
-          actions: [{ changeName: { name } }]
-        }
+          actions: [{ changeName: { name } }],
+        },
       });
     });
 
@@ -78,10 +78,10 @@ describe('edit bundle form', () => {
           ...variables,
           actions: [
             {
-              setDescription: { description }
-            }
-          ]
-        }
+              setDescription: { description },
+            },
+          ],
+        },
       });
     });
 
@@ -93,10 +93,10 @@ describe('edit bundle form', () => {
           ...variables,
           actions: [
             {
-              setKey: { key }
-            }
-          ]
-        }
+              setKey: { key },
+            },
+          ],
+        },
       });
     });
 
@@ -108,10 +108,10 @@ describe('edit bundle form', () => {
           ...variables,
           actions: [
             {
-              setSku: { variantId: MASTER_VARIANT_ID, sku }
-            }
-          ]
-        }
+              setSku: { variantId: MASTER_VARIANT_ID, sku },
+            },
+          ],
+        },
       });
     });
 
@@ -125,11 +125,11 @@ describe('edit bundle form', () => {
             {
               setAttributeInAllVariants: {
                 name: 'products',
-                value: products
-              }
-            }
-          ]
-        }
+                value: products,
+              },
+            },
+          ],
+        },
       });
     });
 
@@ -143,11 +143,11 @@ describe('edit bundle form', () => {
             {
               setAttributeInAllVariants: {
                 name: 'productSearch',
-                value: productSearch
-              }
-            }
-          ]
-        }
+                value: productSearch,
+              },
+            },
+          ],
+        },
       });
     });
 
@@ -159,10 +159,10 @@ describe('edit bundle form', () => {
           ...variables,
           actions: [
             {
-              changeSlug: { slug }
-            }
-          ]
-        }
+              changeSlug: { slug },
+            },
+          ],
+        },
       });
     });
   });
@@ -183,7 +183,7 @@ describe('edit bundle form', () => {
     it('should show success notification', () => {
       expect(mockShowNotification).toHaveBeenCalledWith(
         {
-          text: <FormattedMessage {...messages.editSuccess} />
+          text: <FormattedMessage {...messages.editSuccess} />,
         },
         data
       );
@@ -215,7 +215,7 @@ describe('edit bundle form', () => {
         // eslint-disable-next-line jest/no-try-expect
         expect(mockShowNotification).toHaveBeenCalledWith(
           {
-            text: <FormattedMessage {...messages.editError} />
+            text: <FormattedMessage {...messages.editError} />,
           },
           error
         );

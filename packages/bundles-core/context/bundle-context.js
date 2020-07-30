@@ -5,7 +5,7 @@ const useBundleContext = () => {
   const id = useContext(BundleContext);
   return {
     id,
-    where: `productType.id:"${id}"`
+    where: `productType.id:"${id}"`,
   };
 };
 const BundleProvider = BundleContext.Provider;

@@ -8,11 +8,11 @@ import {
   TabHeader,
   ViewHeader,
   Error,
-  Loading
+  Loading,
 } from '@commercetools-us-ps/mc-app-core/components';
 import {
   localize,
-  transformLocalizedFieldToString
+  transformLocalizedFieldToString,
 } from '@commercetools-us-ps/mc-app-core/util';
 import { generateProduct } from '../../test-util';
 import GetBundle from './get-bundle.graphql';
@@ -22,7 +22,7 @@ import BundleDetails from './bundle-details';
 const project = {
   key: faker.random.word(),
   languages: [faker.random.locale(), faker.random.locale()],
-  currencies: [faker.finance.currencyCode(), faker.finance.currencyCode()]
+  currencies: [faker.finance.currencyCode(), faker.finance.currencyCode()],
 };
 const dataLocale = project.languages[0];
 const bundle = generateProduct(project.languages);
@@ -30,14 +30,14 @@ const mocks = {
   match: {
     params: {
       projectKey: project.key,
-      bundleId: faker.random.uuid()
-    }
+      bundleId: faker.random.uuid(),
+    },
   },
-  transformResults: jest.fn(projection => ({
-    name: transformLocalizedFieldToString(projection.nameAllLocales)
+  transformResults: jest.fn((projection) => ({
+    name: transformLocalizedFieldToString(projection.nameAllLocales),
   })),
   headers: <TabHeader>General</TabHeader>,
-  container: jest.fn()
+  container: jest.fn(),
 };
 
 const loadBundleDetails = () => shallow(<BundleDetails {...mocks} />);
@@ -48,7 +48,7 @@ describe('bundle details', () => {
   beforeEach(() => {
     jest.spyOn(AppContext, 'useApplicationContext').mockImplementation(() => ({
       dataLocale,
-      project
+      project,
     }));
   });
 
@@ -60,9 +60,9 @@ describe('bundle details', () => {
         target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
         id: mocks.match.params.bundleId,
         locale: dataLocale,
-        currency: project.currencies[0]
+        currency: project.currencies[0],
       },
-      fetchPolicy: 'no-cache'
+      fetchPolicy: 'no-cache',
     });
   });
 
@@ -97,7 +97,7 @@ describe('bundle details', () => {
           key: 'name',
           language: dataLocale,
           fallback: bundle.id,
-          fallbackOrder: project.languages
+          fallbackOrder: project.languages,
         })
       );
     });

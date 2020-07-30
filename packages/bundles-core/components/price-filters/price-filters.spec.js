@@ -10,13 +10,13 @@ import messages from './messages';
 
 const project = {
   countries: Array.from({ length: 3 }, () => faker.address.countryCode()),
-  currencies: Array.from({ length: 3 }, () => faker.finance.currencyCode())
+  currencies: Array.from({ length: 3 }, () => faker.finance.currencyCode()),
 };
 
 const dataLocale = faker.random.locale();
 const results = Array.from({ length: 3 }, () => ({
   id: faker.random.uuid(),
-  name: faker.random.words()
+  name: faker.random.words(),
 }));
 const mocks = {
   currency: faker.finance.currencyCode(),
@@ -28,7 +28,7 @@ const mocks = {
   setCountry: jest.fn(),
   setCustomerGroup: jest.fn(),
   setChannel: jest.fn(),
-  setDate: jest.fn()
+  setDate: jest.fn(),
 };
 
 const currencyFilter = "[data-testid='filter-currency']";
@@ -54,8 +54,8 @@ describe('price filters', () => {
     expect(useQuery).toHaveBeenCalledWith(GetPriceFilters, {
       variables: {
         target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
-        locale: dataLocale
-      }
+        locale: dataLocale,
+      },
     });
   });
 
@@ -69,7 +69,7 @@ describe('price filters', () => {
   describe('when query returns data', () => {
     beforeEach(() => {
       setQuery({
-        data: { channels: { results }, customerGroups: { results } }
+        data: { channels: { results }, customerGroups: { results } },
       });
       wrapper = loadPriceFilters();
     });
@@ -100,46 +100,31 @@ describe('price filters', () => {
 
     it('when currency selection changes, should update filter value', () => {
       const value = project.currencies[project.currencies.length - 1];
-      wrapper
-        .find(currencyFilter)
-        .props()
-        .onChange({ target: { value } });
+      wrapper.find(currencyFilter).props().onChange({ target: { value } });
       expect(mocks.setCurrency).toHaveBeenCalledWith(value);
     });
 
     it('when country selection changes, should update filter value', () => {
       const value = project.countries[project.countries.length - 1];
-      wrapper
-        .find(countryFilter)
-        .props()
-        .onChange({ target: { value } });
+      wrapper.find(countryFilter).props().onChange({ target: { value } });
       expect(mocks.setCountry).toHaveBeenCalledWith(value);
     });
 
     it('when customer group selection changes, should update filter value', () => {
       const value = JSON.stringify(results[0]);
-      wrapper
-        .find(customerGroupFilter)
-        .props()
-        .onChange({ target: { value } });
+      wrapper.find(customerGroupFilter).props().onChange({ target: { value } });
       expect(mocks.setCustomerGroup).toHaveBeenCalledWith(value);
     });
 
     it('when channel changes, should update filter value', () => {
       const value = JSON.stringify(results[0]);
-      wrapper
-        .find(channelFilter)
-        .props()
-        .onChange({ target: { value } });
+      wrapper.find(channelFilter).props().onChange({ target: { value } });
       expect(mocks.setChannel).toHaveBeenCalledWith(value);
     });
 
     it('when date selection changes, should update filter value', () => {
       const value = new Date().toISOString();
-      wrapper
-        .find(dateFilter)
-        .props()
-        .onChange({ target: { value } });
+      wrapper.find(dateFilter).props().onChange({ target: { value } });
       expect(mocks.setDate).toHaveBeenCalledWith(value);
     });
   });

@@ -4,21 +4,21 @@ export default defineMessages({
   generalTab: {
     id: 'DynamicBundleDetails.tabs.general',
     description: 'Label for general tab',
-    defaultMessage: 'General'
+    defaultMessage: 'General',
   },
   imagesTab: {
     id: 'DynamicBundleDetails.tabs.images',
     description: 'Label for images tab',
-    defaultMessage: 'Images'
+    defaultMessage: 'Images',
   },
   previewTab: {
     id: 'DynamicBundleDetails.tabs.preview',
     description: 'Label for preview tab',
-    defaultMessage: 'Preview'
+    defaultMessage: 'Preview',
   },
   pricesTab: {
     id: 'DynamicBundleDetails.tabs.prices',
     description: 'Label for prices tab',
-    defaultMessage: 'Prices'
-  }
+    defaultMessage: 'Prices',
+  },
 });

@@ -8,22 +8,22 @@ import {
   DateField,
   SelectField,
   Spacings,
-  Text
+  Text,
 } from '@commercetools-frontend/ui-kit';
 import GetPriceFilters from './get-price-filters.graphql';
 import messages from './messages';
 import styles from './price-filters.mod.css';
 
-const mapOptions = options =>
-  options.map(option => ({
+const mapOptions = (options) =>
+  options.map((option) => ({
     label: option,
-    value: option
+    value: option,
   }));
 
-const mapResultOptions = options =>
-  options.results.map(option => ({
+const mapResultOptions = (options) =>
+  options.results.map((option) => ({
     label: option.name,
-    value: JSON.stringify(option)
+    value: JSON.stringify(option),
   }));
 
 const PriceFilters = ({
@@ -36,7 +36,7 @@ const PriceFilters = ({
   setCountry,
   setCustomerGroup,
   setChannel,
-  setDate
+  setDate,
 }) => {
   const intl = useIntl();
   const { dataLocale, project } = useApplicationContext();
@@ -44,8 +44,8 @@ const PriceFilters = ({
   const { data, loading, error } = useQuery(GetPriceFilters, {
     variables: {
       target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
-      locale: dataLocale
-    }
+      locale: dataLocale,
+    },
   });
 
   if (error)
@@ -71,7 +71,7 @@ const PriceFilters = ({
           title={intl.formatMessage(messages.currency)}
           options={currencyOptions}
           value={currency}
-          onChange={event => setCurrency(event.target.value)}
+          onChange={(event) => setCurrency(event.target.value)}
         />
         <SelectField
           data-testid="filter-country"
@@ -79,7 +79,7 @@ const PriceFilters = ({
           isClearable
           options={countryOptions}
           value={country}
-          onChange={event => setCountry(event.target.value)}
+          onChange={(event) => setCountry(event.target.value)}
         />
         <SelectField
           data-testid="filter-customer-group"
@@ -87,7 +87,7 @@ const PriceFilters = ({
           isClearable
           options={customerGroupOptions}
           value={customerGroup}
-          onChange={event => setCustomerGroup(event.target.value)}
+          onChange={(event) => setCustomerGroup(event.target.value)}
         />
         <SelectField
           data-testid="filter-channel"
@@ -95,13 +95,13 @@ const PriceFilters = ({
           isClearable
           options={channelOptions}
           value={channel}
-          onChange={event => setChannel(event.target.value)}
+          onChange={(event) => setChannel(event.target.value)}
         />
         <DateField
           data-testid="filter-date"
           title={intl.formatMessage(messages.date)}
           value={date}
-          onChange={event => setDate(event.target.value)}
+          onChange={(event) => setDate(event.target.value)}
         />
       </Spacings.Inline>
     </div>
@@ -118,7 +118,7 @@ PriceFilters.propTypes = {
   setCountry: PropTypes.func.isRequired,
   setCustomerGroup: PropTypes.func.isRequired,
   setChannel: PropTypes.func.isRequired,
-  setDate: PropTypes.func.isRequired
+  setDate: PropTypes.func.isRequired,
 };
 
 export default PriceFilters;

@@ -9,7 +9,7 @@ import {
   BackToList,
   TabContainer,
   View,
-  ViewHeader
+  ViewHeader,
 } from '@commercetools-us-ps/mc-app-core/components';
 import { ATTRIBUTES, BUNDLE_PRODUCT_TYPE, ROOT_PATH } from '../../constants';
 import BundleForm from '../bundle-form';
@@ -29,7 +29,7 @@ const CreateBundleForm = ({ match }) => {
   );
   const [createBundle, { data, loading }] = useMutation(CreateBundle, {
     onCompleted: showSuccessNotification,
-    onError: showErrorNotification
+    onError: showErrorNotification,
   });
 
   function onSubmit(values) {
@@ -46,8 +46,8 @@ const CreateBundleForm = ({ match }) => {
       { name: ATTRIBUTES.CATEGORIES, value: categories },
       {
         name: ATTRIBUTES.CATEGORY_SEARCH,
-        value: categorySearch
-      }
+        value: categorySearch,
+      },
     ];
 
     if (dynamicPrice) {
@@ -66,7 +66,7 @@ const CreateBundleForm = ({ match }) => {
       target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
       productTypeKey: BUNDLE_PRODUCT_TYPE,
       ...formValues,
-      attributes
+      attributes,
     };
 
     return createBundle({ variables });
@@ -100,9 +100,9 @@ CreateBundleForm.displayName = 'CreateBundleForm';
 CreateBundleForm.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      projectKey: PropTypes.string.isRequired
-    }).isRequired
-  }).isRequired
+      projectKey: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default CreateBundleForm;

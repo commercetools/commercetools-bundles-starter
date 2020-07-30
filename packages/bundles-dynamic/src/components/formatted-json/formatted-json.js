@@ -20,7 +20,7 @@ const FormattedJSON = ({ name = false, json }) => {
 FormattedJSON.displayName = 'FormattedJSON';
 FormattedJSON.propTypes = {
   name: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-  json: PropTypes.object
+  json: PropTypes.object,
 };
 
 export default FormattedJSON;

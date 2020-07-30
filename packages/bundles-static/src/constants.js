@@ -1,6 +1,6 @@
 export const PERMISSIONS = {
   ManageProducts: 'ManageProducts',
-  ViewProducts: 'ViewProducts'
+  ViewProducts: 'ViewProducts',
 };
 export const ROOT_PATH = 'bundle-manager';
 export const BUNDLE_PRODUCT_TYPE = 'static-bundle-parent';

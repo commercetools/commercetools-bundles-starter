@@ -8,7 +8,7 @@ import {
   BackToList,
   TabContainer,
   View,
-  ViewHeader
+  ViewHeader,
 } from '@commercetools-us-ps/mc-app-core/components';
 import { useShowSideNotification } from '@commercetools-us-ps/mc-app-core/hooks';
 import { BUNDLE_PRODUCT_TYPE, ROOT_PATH } from '../../constants';
@@ -29,14 +29,14 @@ const CreateBundleForm = ({ match }) => {
   );
   const [createBundle, { data, loading }] = useMutation(CreateBundle, {
     onCompleted: showSuccessNotification,
-    onError: showErrorNotification
+    onError: showErrorNotification,
   });
 
   function onSubmit(values) {
     const variables = {
       target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
       productTypeKey: BUNDLE_PRODUCT_TYPE,
-      ...values
+      ...values,
     };
     return createBundle({ variables });
   }
@@ -69,9 +69,9 @@ CreateBundleForm.displayName = 'CreateBundleForm';
 CreateBundleForm.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      projectKey: PropTypes.string.isRequired
-    }).isRequired
-  }).isRequired
+      projectKey: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default CreateBundleForm;

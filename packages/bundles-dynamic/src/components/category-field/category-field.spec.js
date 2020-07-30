@@ -9,7 +9,7 @@ import {
   CATEGORY_PATH,
   CATEGORY_REF,
   MAX_QUANTITY,
-  MIN_QUANTITY
+  MIN_QUANTITY,
 } from './constants';
 import CategoryField, { FIELD_ADDITIONAL_CHARGE } from './category-field';
 
@@ -18,12 +18,12 @@ const mocks = {
   title: faker.random.words(),
   onChange: jest.fn(),
   push: jest.fn(),
-  remove: jest.fn()
+  remove: jest.fn(),
 };
 
 const ERROR_MESSAGE = 'Required field';
 const ADD_BUTTON = `[data-testid="add-category"]`;
-const REMOVE_BUTTON = index => `[data-testid="remove-category.${index}"]`;
+const REMOVE_BUTTON = (index) => `[data-testid="remove-category.${index}"]`;
 const INPUT = (index, field) => `[name="${mocks.name}.${index}.${field}"]`;
 
 const value = generateCategoryFormValues();
@@ -32,7 +32,7 @@ const emptyValue = {
   category: null,
   minQuantity: '',
   maxQuantity: '',
-  additionalCharge: false
+  additionalCharge: false,
 };
 
 function loadCategoryField(
@@ -69,7 +69,7 @@ describe('category field', () => {
   it('when category input pristine, the input should not be in an error state', () => {
     const index = 0;
     const wrapper = loadCategoryField([emptyValue], null, [
-      { category: ERROR_MESSAGE }
+      { category: ERROR_MESSAGE },
     ]);
     expect(wrapper.find(INPUT(index, CATEGORY)).prop('hasError')).toEqual(
       false
@@ -145,31 +145,31 @@ describe('parse category attributes to form value', () => {
     name: CATEGORY_REF,
     value: {
       typeId: CATEGORY,
-      id
-    }
+      id,
+    },
   };
   const categoryPathAttribute = {
     name: CATEGORY_PATH,
-    value: path
+    value: path,
   };
   const minQuantityAttribute = {
     name: MIN_QUANTITY,
-    value: minQuantity
+    value: minQuantity,
   };
   const maxQuantityAttribute = {
     name: MAX_QUANTITY,
-    value: maxQuantity
+    value: maxQuantity,
   };
   const additionalChargeAttribute = {
     name: ADDITIONAL_CHARGE,
-    value: additionalCharge
+    value: additionalCharge,
   };
   const attributes = [
     categoryRefAttribute,
     categoryPathAttribute,
     minQuantityAttribute,
     maxQuantityAttribute,
-    additionalChargeAttribute
+    additionalChargeAttribute,
   ];
 
   it('should parse category reference id as category value', () => {
@@ -193,8 +193,8 @@ describe('parse category attributes to form value', () => {
         categoryRefAttribute,
         categoryPathAttribute,
         maxQuantityAttribute,
-        additionalChargeAttribute
-      }
+        additionalChargeAttribute,
+      },
     ])[0];
     expect(actual.minQuantity).toEqual('');
   });
@@ -210,8 +210,8 @@ describe('parse category attributes to form value', () => {
         categoryRefAttribute,
         categoryPathAttribute,
         minQuantityAttribute,
-        additionalChargeAttribute
-      }
+        additionalChargeAttribute,
+      },
     ])[0];
     expect(actual.maxQuantity).toEqual('');
   });
@@ -227,8 +227,8 @@ describe('parse category attributes to form value', () => {
         categoryRefAttribute,
         categoryPathAttribute,
         minQuantityAttribute,
-        maxQuantityAttribute
-      }
+        maxQuantityAttribute,
+      },
     ])[0];
     expect(actual.additionalCharge).toEqual(false);
   });
@@ -241,8 +241,8 @@ describe('convert form value to category attributes', () => {
       expect.arrayContaining([
         expect.objectContaining({
           name: CATEGORY_REF,
-          value: { typeId: CATEGORY, id: category.value }
-        })
+          value: { typeId: CATEGORY, id: category.value },
+        }),
       ])
     );
   });
@@ -251,7 +251,7 @@ describe('convert form value to category attributes', () => {
     const actual = CategoryField.convertToCategoryValue([value])[0];
     expect(actual).toEqual(
       expect.arrayContaining([
-        expect.objectContaining({ name: CATEGORY_PATH, value: category.label })
+        expect.objectContaining({ name: CATEGORY_PATH, value: category.label }),
       ])
     );
   });
@@ -260,7 +260,7 @@ describe('convert form value to category attributes', () => {
     const actual = CategoryField.convertToCategoryValue([value])[0];
     expect(actual).toEqual(
       expect.arrayContaining([
-        expect.objectContaining({ name: MIN_QUANTITY, value: minQuantity })
+        expect.objectContaining({ name: MIN_QUANTITY, value: minQuantity }),
       ])
     );
   });
@@ -269,29 +269,29 @@ describe('convert form value to category attributes', () => {
     const actual = CategoryField.convertToCategoryValue([value])[0];
     expect(actual).toEqual(
       expect.arrayContaining([
-        expect.objectContaining({ name: MAX_QUANTITY, value: maxQuantity })
+        expect.objectContaining({ name: MAX_QUANTITY, value: maxQuantity }),
       ])
     );
   });
 
   it('when min quantity does not exist, should not convert value to min quantity attribute', () => {
     const actual = CategoryField.convertToCategoryValue([
-      { category, minQuantity: '', maxQuantity }
+      { category, minQuantity: '', maxQuantity },
     ])[0];
     expect(actual).not.toEqual(
       expect.arrayContaining([
-        expect.objectContaining({ name: MIN_QUANTITY, value: minQuantity })
+        expect.objectContaining({ name: MIN_QUANTITY, value: minQuantity }),
       ])
     );
   });
 
   it('when max quantity does not exist, should not convert value to min quantity attribute', () => {
     const actual = CategoryField.convertToCategoryValue([
-      { category, minQuantity, maxQuantity: '' }
+      { category, minQuantity, maxQuantity: '' },
     ])[0];
     expect(actual).not.toEqual(
       expect.arrayContaining([
-        expect.objectContaining({ name: MAX_QUANTITY, value: maxQuantity })
+        expect.objectContaining({ name: MAX_QUANTITY, value: maxQuantity }),
       ])
     );
   });
@@ -305,8 +305,8 @@ describe('convert form value to category attributes', () => {
       expect.arrayContaining([
         expect.objectContaining({
           name: ADDITIONAL_CHARGE,
-          value: additionalCharge
-        })
+          value: additionalCharge,
+        }),
       ])
     );
   });
@@ -320,8 +320,8 @@ describe('convert form value to category attributes', () => {
       expect.arrayContaining([
         expect.objectContaining({
           name: ADDITIONAL_CHARGE,
-          value: additionalCharge
-        })
+          value: additionalCharge,
+        }),
       ])
     );
   });
@@ -359,7 +359,7 @@ describe('category field is empty', () => {
   it('when category value empty string, should be true', () => {
     expect(
       CategoryField.isEmpty([
-        { category: { value: '' }, minQuantity, maxQuantity }
+        { category: { value: '' }, minQuantity, maxQuantity },
       ])
     ).toEqual(true);
   });
@@ -367,7 +367,7 @@ describe('category field is empty', () => {
   it('when category value whitespace, should be true', () => {
     expect(
       CategoryField.isEmpty([
-        { category: { value: ' ' }, minQuantity, maxQuantity }
+        { category: { value: ' ' }, minQuantity, maxQuantity },
       ])
     ).toEqual(true);
   });

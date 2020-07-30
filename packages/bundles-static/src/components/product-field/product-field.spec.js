@@ -10,12 +10,12 @@ const mocks = {
   title: faker.random.words(),
   onChange: jest.fn(),
   push: jest.fn(),
-  remove: jest.fn()
+  remove: jest.fn(),
 };
 
 const ERROR_MESSAGE = 'Required field';
 const ADD_PRODUCT_BUTTON = `[data-testid="add-product"]`;
-const REMOVE_PRODUCT_BUTTON = index =>
+const REMOVE_PRODUCT_BUTTON = (index) =>
   `[data-testid="remove-product.${index}"]`;
 const INPUT = (index, field) => `[name="${mocks.name}.${index}.${field}"]`;
 
@@ -25,13 +25,13 @@ const product = {
     productId: faker.random.uuid(),
     name: faker.random.words(),
     id: faker.random.number(5),
-    sku: faker.lorem.slug()
-  })
+    sku: faker.lorem.slug(),
+  }),
 };
 const quantity = faker.random.number();
 const value = {
   product,
-  quantity
+  quantity,
 };
 const emptyValue = { product: null, quantity: '' };
 
@@ -41,10 +41,10 @@ const valueNoSku = {
     value: JSON.stringify({
       productId: faker.random.uuid(),
       name: faker.random.words(),
-      id: faker.random.number(5)
-    })
+      id: faker.random.number(5),
+    }),
   },
-  quantity: faker.random.number()
+  quantity: faker.random.number(),
 };
 
 function loadProductField(values, touched, errors) {
@@ -70,7 +70,7 @@ describe('product field', () => {
   it('when product input pristine, the input should not be in an error state', () => {
     const index = 0;
     const wrapper = loadProductField([emptyValue], null, [
-      { product: ERROR_MESSAGE }
+      { product: ERROR_MESSAGE },
     ]);
     expect(wrapper.find(INPUT(index, PRODUCT)).prop('hasError')).toEqual(false);
   });
@@ -107,7 +107,7 @@ describe('product field', () => {
   it('when quantity input pristine, the input should not be in an error state', () => {
     const index = 0;
     const wrapper = loadProductField([emptyValue], null, [
-      { quantity: ERROR_MESSAGE }
+      { quantity: ERROR_MESSAGE },
     ]);
     expect(wrapper.find(INPUT(index, QUANTITY)).prop('hasError')).toEqual(
       false

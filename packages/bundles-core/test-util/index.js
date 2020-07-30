@@ -10,14 +10,14 @@ export const generateProduct = (
     { length: languages.length || faker.random.number(4) },
     (item, index) => ({
       locale: languages ? languages[index] : faker.random.locale(),
-      value: faker.commerce.productName()
+      value: faker.commerce.productName(),
     })
   );
   const descriptionAllLocales = Array.from(
     { length: languages.length || faker.random.number(4) },
     (item, index) => ({
       locale: languages ? languages[index] : faker.random.locale(),
-      value: faker.random.word()
+      value: faker.random.word(),
     })
   );
   const generateDetails = () => ({
@@ -27,31 +27,31 @@ export const generateProduct = (
     masterVariant: {
       id: 1,
       images: Array.from({
-        length: faker.random.number({ min: 1, max: 3 })
+        length: faker.random.number({ min: 1, max: 3 }),
       }).map(() => ({
         label: faker.random.word(),
-        url: faker.image.imageUrl(640, 480, faker.random.word())
+        url: faker.image.imageUrl(640, 480, faker.random.word()),
       })),
       prices: Array.from({
-        length: faker.random.number({ min: 1, max: 3 })
+        length: faker.random.number({ min: 1, max: 3 }),
       }).map(() => ({
         value: {
           centAmount: faker.random.number({ min: 1, max: 20000 }),
           currencyCode: faker.finance.currencyCode(),
-          fractionsDigits: faker.random.number(2)
-        }
-      }))
+          fractionsDigits: faker.random.number(2),
+        },
+      })),
     },
     allVariants: [
       {
         images: Array.from({
-          length: faker.random.number({ min: 1, max: 3 })
+          length: faker.random.number({ min: 1, max: 3 }),
         }).map(() => ({
           label: faker.random.word(),
-          url: faker.image.imageUrl(640, 480, faker.random.word())
-        }))
-      }
-    ]
+          url: faker.image.imageUrl(640, 480, faker.random.word()),
+        })),
+      },
+    ],
   });
   return {
     id: faker.random.uuid(),
@@ -63,16 +63,16 @@ export const generateProduct = (
       published,
       hasStagedChanges,
       current: generateDetails(),
-      staged: generateDetails()
-    }
+      staged: generateDetails(),
+    },
   };
 };
 
-export const transformResults = results => ({
+export const transformResults = (results) => ({
   variantId: results.masterVariant.id,
   name: transformLocalizedFieldToString(results.nameAllLocales),
   description: transformLocalizedFieldToString(results.descriptionAllLocales),
   sku: results.masterVariant.sku,
   slug: results.slug,
-  images: results.masterVariant.images
+  images: results.masterVariant.images,
 });

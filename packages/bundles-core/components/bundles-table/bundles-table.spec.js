@@ -10,7 +10,7 @@ import {
   Error,
   Loading,
   PaginatedTable,
-  SearchInput
+  SearchInput,
 } from '@commercetools-us-ps/mc-app-core/components';
 import * as BundleContext from '../../context/bundle-context';
 import BundlesTable from './bundles-table';
@@ -21,7 +21,7 @@ import { COLUMN_KEYS } from './column-definitions';
 
 const project = {
   key: faker.random.word(),
-  languages: [faker.random.locale(), faker.random.locale()]
+  languages: [faker.random.locale(), faker.random.locale()],
 };
 const dataLocale = project.languages[0];
 const where = `productType.id:"${faker.random.uuid()}"`;
@@ -33,27 +33,27 @@ const mocks = {
     path: '/',
     url: '/',
     params: {
-      projectKey: 'test-project'
-    }
+      projectKey: 'test-project',
+    },
   },
   history: {
-    push: jest.fn()
+    push: jest.fn(),
   },
   title: {
     id: faker.random.uuid(),
     description: faker.random.words(),
-    defaultMessage: faker.random.words()
+    defaultMessage: faker.random.words(),
   },
   subtitle: {
     id: faker.random.uuid(),
     description: faker.random.words(),
-    defaultMessage: faker.random.words()
+    defaultMessage: faker.random.words(),
   },
-  columnDefinitions: map(COLUMN_KEYS, key => ({
+  columnDefinitions: map(COLUMN_KEYS, (key) => ({
     key,
-    label: faker.random.words()
+    label: faker.random.words(),
   })),
-  renderItem: jest.fn()
+  renderItem: jest.fn(),
 };
 
 function generateResults(total) {
@@ -63,9 +63,9 @@ function generateResults(total) {
       count,
       total,
       results: Array.from({ length: count }, () => ({
-        id: faker.random.uuid()
-      }))
-    }
+        id: faker.random.uuid(),
+      })),
+    },
   };
 }
 
@@ -79,7 +79,7 @@ describe('bundles table', () => {
       .spyOn(AppContext, 'useApplicationContext')
       .mockImplementation(() => ({ project, dataLocale }));
     jest.spyOn(BundleContext, 'useBundleContext').mockImplementation(() => ({
-      where
+      where,
     }));
   });
 
@@ -89,8 +89,8 @@ describe('bundles table', () => {
     wrapper.update();
     expect(useQuery).toHaveBeenCalledWith(BundleProductSearch, {
       variables: {
-        queryString: ''
-      }
+        queryString: '',
+      },
     });
   });
 
@@ -140,17 +140,14 @@ describe('bundles table', () => {
     setQuery({ data: generateResults(0) });
     const wrapper = loadBundlesTable();
     const search = 'search';
-    wrapper
-      .find(SearchInput)
-      .props()
-      .onSubmit(search);
+    wrapper.find(SearchInput).props().onSubmit(search);
     expect(useQuery).toHaveBeenCalledWith(BundleProductSearch, {
       variables: {
         queryString: stringify({
           ...QUERY_VARIABLES,
-          [`text.${dataLocale}`]: search
-        })
-      }
+          [`text.${dataLocale}`]: search,
+        }),
+      },
     });
   });
 
@@ -159,10 +156,7 @@ describe('bundles table', () => {
     const bundle = data.products.results[0];
     setQuery({ data });
     const wrapper = loadBundlesTable();
-    wrapper
-      .find(PaginatedTable)
-      .props()
-      .onRowClick({}, 0);
+    wrapper.find(PaginatedTable).props().onRowClick({}, 0);
     expect(mocks.history.push).toHaveBeenCalledWith(
       `${mocks.match.url}/${bundle.id}/general`
     );

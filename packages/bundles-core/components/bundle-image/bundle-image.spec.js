@@ -9,10 +9,10 @@ const mocks = {
   bundleId: faker.random.uuid(),
   image: {
     url: faker.image.imageUrl(),
-    label: faker.random.word()
+    label: faker.random.word(),
   },
   editImage: jest.fn(),
-  removeImage: jest.fn()
+  removeImage: jest.fn(),
 };
 global.open = jest.fn();
 
@@ -45,10 +45,7 @@ describe('bundle image', () => {
 
   it('when remove confirm button clicked, should remove image', () => {
     wrapper.find('[data-testid="remove-image-btn"]').simulate('click');
-    wrapper
-      .find(ConfirmationDialog)
-      .props()
-      .onConfirm();
+    wrapper.find(ConfirmationDialog).props().onConfirm();
     expect(mocks.removeImage).toHaveBeenCalled();
   });
 });

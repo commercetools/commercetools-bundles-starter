@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const generateLambda = headers =>
+const generateLambda = (headers) =>
   `exports.handler = (event, context, callback) => {
   const { request, response } = event.Records[0].cf;
   const { uri } = request;
@@ -37,7 +37,7 @@ To do so, you need to first register the custom application in Merchant Center >
 module.exports = ({ headers }) => {
   const setHeaders = Object.entries({
     ...headers,
-    'Cache-Control': 'no-cache'
+    'Cache-Control': 'no-cache',
   }).map(
     ([key, value]) =>
       `headers["${key.toLowerCase()}"] = [{key: "${key}", value: "${value}"}];`
@@ -47,7 +47,7 @@ module.exports = ({ headers }) => {
     path.join(__dirname, '../lambda.js'),
     generateLambda(setHeaders),
     {
-      encoding: 'utf8'
+      encoding: 'utf8',
     }
   );
 };

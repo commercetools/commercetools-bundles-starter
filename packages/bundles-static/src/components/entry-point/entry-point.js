@@ -9,7 +9,7 @@ import {
   ApplicationShell,
   apolloClient,
   setupGlobalErrorListener,
-  RouteCatchAll
+  RouteCatchAll,
 } from '@commercetools-frontend/application-shell';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
 import { Sdk } from '@commercetools-frontend/sdk';
@@ -32,28 +32,30 @@ export const ApplicationBundleManager = () => {
   const restLink = new RestLink({
     uri: `${mcApiUrl}/proxy/ctp/${project.key}`,
     headers: {
-      Accept: 'application/json'
+      Accept: 'application/json',
     },
-    credentials: 'include'
+    credentials: 'include',
   });
 
   const client = new ApolloClient({
     link: ApolloLink.from([restLink, apolloClient.link]),
-    cache: new InMemoryCache()
+    cache: new InMemoryCache(),
   });
 
   return (
     <ApolloProvider client={client}>
       <Switch>
-        {/* For development, it's useful to redirect to the actual
+        {
+          /* For development, it's useful to redirect to the actual
           application routes when you open the browser at http://localhost:3001 */
-        process.env.NODE_ENV === 'production' ? null : (
-          <Redirect
-            exact={true}
-            from="/:projectKey"
-            to={`/:projectKey/${ROOT_PATH}`}
-          />
-        )}
+          process.env.NODE_ENV === 'production' ? null : (
+            <Redirect
+              exact={true}
+              from="/:projectKey"
+              to={`/:projectKey/${ROOT_PATH}`}
+            />
+          )
+        }
         <Route
           path={`/:projectKey/${ROOT_PATH}`}
           component={AsyncApplicationRoutes}
@@ -77,12 +79,12 @@ class EntryPoint extends React.Component {
       <ApplicationShell
         environment={window.app}
         onRegisterErrorListeners={({ dispatch }) => {
-          Sdk.Get.errorHandler = error =>
+          Sdk.Get.errorHandler = (error) =>
             globalActions.handleActionError(error, 'sdk')(dispatch);
         }}
         applicationMessages={loadMessages}
         DEV_ONLY__loadNavbarMenuConfig={() =>
-          import('../../../menu.json').then(data => data.default || data)
+          import('../../../menu.json').then((data) => data.default || data)
         }
         render={() => <ApplicationBundleManager />}
       />

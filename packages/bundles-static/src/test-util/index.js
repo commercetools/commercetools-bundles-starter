@@ -6,7 +6,7 @@ import {
   PRODUCT_REF,
   QUANTITY,
   SKU,
-  VARIANT_ID
+  VARIANT_ID,
 } from '../components/product-field/constants';
 
 export const generateProduct = (
@@ -18,14 +18,14 @@ export const generateProduct = (
     { length: languages.length || faker.random.number(4) },
     (item, index) => ({
       locale: languages ? languages[index] : faker.random.locale(),
-      value: faker.commerce.productName()
+      value: faker.commerce.productName(),
     })
   );
   const descriptionAllLocales = Array.from(
     { length: languages.length || faker.random.number(4) },
     (item, index) => ({
       locale: languages ? languages[index] : faker.random.locale(),
-      value: faker.random.word()
+      value: faker.random.word(),
     })
   );
   const products = {
@@ -33,28 +33,28 @@ export const generateProduct = (
     value: Array.from({ length: faker.random.number(5) }, () => [
       {
         name: VARIANT_ID,
-        value: faker.random.number(12)
+        value: faker.random.number(12),
       },
       {
         name: SKU,
-        value: faker.random.number()
+        value: faker.random.number(),
       },
       {
         name: PRODUCT_NAME,
-        value: faker.commerce.productName()
+        value: faker.commerce.productName(),
       },
       {
         name: PRODUCT_REF,
         value: {
           typeId: PRODUCT,
-          id: faker.random.uuid()
-        }
+          id: faker.random.uuid(),
+        },
       },
       {
         name: QUANTITY,
-        value: faker.random.number(10)
-      }
-    ])
+        value: faker.random.number(10),
+      },
+    ]),
   };
   const generateDetails = () => ({
     nameAllLocales,
@@ -66,31 +66,31 @@ export const generateProduct = (
       attributes: [products],
       attributesRaw: [products],
       images: Array.from({
-        length: faker.random.number({ min: 1, max: 3 })
+        length: faker.random.number({ min: 1, max: 3 }),
       }).map(() => ({
         label: faker.random.word(),
-        url: faker.image.imageUrl(640, 480, faker.random.word())
+        url: faker.image.imageUrl(640, 480, faker.random.word()),
       })),
       prices: Array.from({
-        length: faker.random.number({ min: 1, max: 3 })
+        length: faker.random.number({ min: 1, max: 3 }),
       }).map(() => ({
         value: {
           centAmount: faker.random.number({ min: 1, max: 20000 }),
           currencyCode: faker.finance.currencyCode(),
-          fractionsDigits: faker.random.number(2)
-        }
-      }))
+          fractionsDigits: faker.random.number(2),
+        },
+      })),
     },
     allVariants: [
       {
         images: Array.from({
-          length: faker.random.number({ min: 1, max: 3 })
+          length: faker.random.number({ min: 1, max: 3 }),
         }).map(() => ({
           label: faker.random.word(),
-          url: faker.image.imageUrl(640, 480, faker.random.word())
-        }))
-      }
-    ]
+          url: faker.image.imageUrl(640, 480, faker.random.word()),
+        })),
+      },
+    ],
   });
   return {
     id: faker.random.uuid(),
@@ -102,8 +102,8 @@ export const generateProduct = (
       published,
       hasStagedChanges,
       current: generateDetails(),
-      staged: generateDetails()
-    }
+      staged: generateDetails(),
+    },
   };
 };
 
@@ -114,31 +114,31 @@ const products = Array.from({ length: 2 }).map(() => ({
       productId: faker.random.uuid(),
       name: faker.random.words(),
       id: faker.random.number(5),
-      sku: faker.lorem.slug()
-    })
+      sku: faker.lorem.slug(),
+    }),
   },
-  quantity: faker.random.number(5)
+  quantity: faker.random.number(5),
 }));
 
 export const generateFormValues = () => ({
   id: faker.random.uuid(),
   version: faker.random.number(6),
   name: {
-    [faker.random.locale()]: faker.random.word()
+    [faker.random.locale()]: faker.random.word(),
   },
   description: {
-    [faker.random.locale()]: faker.random.word()
+    [faker.random.locale()]: faker.random.word(),
   },
   sku: faker.random.number({ min: 10000, max: 20000 }).toString(),
   products,
   productSearch: products,
   slug: {
-    [faker.random.locale()]: faker.random.word()
+    [faker.random.locale()]: faker.random.word(),
   },
   price: {
     currencyCode: faker.finance.currencyCode(),
-    amount: faker.finance.amount()
-  }
+    amount: faker.finance.amount(),
+  },
 });
 
 export const generateSubmittedFormValues = () => ({
@@ -147,14 +147,14 @@ export const generateSubmittedFormValues = () => ({
   name: [
     {
       locale: faker.random.locale(),
-      value: faker.random.word()
-    }
+      value: faker.random.word(),
+    },
   ],
   description: [
     {
       locale: faker.random.locale(),
-      value: faker.random.word()
-    }
+      value: faker.random.word(),
+    },
   ],
   key: faker.lorem.slug(),
   sku: faker.random.number({ min: 10000, max: 20000 }).toString(),
@@ -162,21 +162,21 @@ export const generateSubmittedFormValues = () => ({
     Array.from({ length: 2 }).map(() => [
       {
         name: VARIANT_ID,
-        value: faker.random.number(5)
+        value: faker.random.number(5),
       },
       { name: SKU, value: faker.lorem.slug() },
       {
         name: PRODUCT_REF,
         value: {
           typeId: PRODUCT,
-          id: faker.random.uuid()
-        }
+          id: faker.random.uuid(),
+        },
       },
       {
         name: PRODUCT_NAME,
-        value: faker.commerce.productName()
+        value: faker.commerce.productName(),
       },
-      { name: QUANTITY, value: faker.random.number(2) }
+      { name: QUANTITY, value: faker.random.number(2) },
     ])
   ),
   productSearch: JSON.stringify(
@@ -187,13 +187,13 @@ export const generateSubmittedFormValues = () => ({
   slug: [
     {
       locale: faker.random.locale(),
-      value: faker.random.word()
-    }
+      value: faker.random.word(),
+    },
   ],
   price: {
     centPrecision: {
       currencyCode: faker.finance.currencyCode(),
-      centAmount: faker.finance.amount()
-    }
-  }
+      centAmount: faker.finance.amount(),
+    },
+  },
 });

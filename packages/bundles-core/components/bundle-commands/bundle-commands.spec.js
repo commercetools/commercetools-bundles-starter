@@ -21,16 +21,16 @@ const mocks = {
   match: {
     params: {
       projectKey: 'test-project',
-      bundleId: faker.random.uuid()
-    }
+      bundleId: faker.random.uuid(),
+    },
   },
-  onComplete: jest.fn()
+  onComplete: jest.fn(),
 };
 
 const variables = {
   target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
   id: mocks.id,
-  version: mocks.version
+  version: mocks.version,
 };
 
 const loadBundleCommands = (published, hasStagedChanges) =>
@@ -64,44 +64,35 @@ describe('bundle commands', () => {
     });
 
     it('to published, should modify bundle status', () => {
-      wrapper
-        .find(StatusSelect)
-        .props()
-        .onChange(true);
+      wrapper.find(StatusSelect).props().onChange(true);
 
       expect(mockMutation).toHaveBeenCalledWith({
         variables: {
           ...variables,
-          actions: [{ publish: { scope: 'All' } }]
-        }
+          actions: [{ publish: { scope: 'All' } }],
+        },
       });
     });
 
     it('to unpublished, should modify bundle status', () => {
-      wrapper
-        .find(StatusSelect)
-        .props()
-        .onChange(false);
+      wrapper.find(StatusSelect).props().onChange(false);
 
       expect(mockMutation).toHaveBeenCalledWith({
         variables: {
           ...variables,
-          actions: [{ unpublish: {} }]
-        }
+          actions: [{ unpublish: {} }],
+        },
       });
     });
 
     describe('when status change completes successfully', () => {
       beforeEach(async () => {
-        await wrapper
-          .find(StatusSelect)
-          .props()
-          .onChange(false);
+        await wrapper.find(StatusSelect).props().onChange(false);
       });
 
       it('should show success notification', () => {
         expect(mockShowNotification).toHaveBeenCalledWith({
-          text: messages.editSuccess.id
+          text: messages.editSuccess.id,
         });
       });
 
@@ -117,23 +108,17 @@ describe('bundle commands', () => {
 
       it('should show error notification', async () => {
         try {
-          await wrapper
-            .find(StatusSelect)
-            .props()
-            .onChange(false);
+          await wrapper.find(StatusSelect).props().onChange(false);
         } catch (error) {
           expect(mockShowNotification).toHaveBeenCalledWith({
-            text: messages.editError.id
+            text: messages.editError.id,
           });
         }
       });
 
       it('should not invoke on complete', async () => {
         try {
-          await wrapper
-            .find(StatusSelect)
-            .props()
-            .onChange(false);
+          await wrapper.find(StatusSelect).props().onChange(false);
         } catch (error) {
           expect(mocks.onComplete).not.toHaveBeenCalled();
         }
@@ -167,27 +152,18 @@ describe('bundle commands', () => {
       });
 
       it('and dialog close button clicked, should close confirm dialog', () => {
-        wrapper
-          .find(ConfirmationDialog)
-          .props()
-          .onClose();
+        wrapper.find(ConfirmationDialog).props().onClose();
         expect(wrapper.find(ConfirmationDialog).props().isOpen).toEqual(false);
       });
 
       it('and dialog cancel button clicked, should close confirm dialog', () => {
-        wrapper
-          .find(ConfirmationDialog)
-          .props()
-          .onCancel();
+        wrapper.find(ConfirmationDialog).props().onCancel();
         expect(wrapper.find(ConfirmationDialog).props().isOpen).toEqual(false);
       });
 
       it('and dialog confirm button clicked, should remove asset', () => {
         const mockMutation = getMutation(DeleteBundle);
-        wrapper
-          .find(ConfirmationDialog)
-          .props()
-          .onConfirm();
+        wrapper.find(ConfirmationDialog).props().onConfirm();
 
         expect(mockMutation).toHaveBeenCalled();
       });
@@ -197,12 +173,9 @@ describe('bundle commands', () => {
       it('should show success notification', async () => {
         wrapper = loadBundleCommands(false, true);
         wrapper.find(IconButton).simulate('click');
-        await wrapper
-          .find(ConfirmationDialog)
-          .props()
-          .onConfirm();
+        await wrapper.find(ConfirmationDialog).props().onConfirm();
         expect(mockShowNotification).toHaveBeenCalledWith({
-          text: messages.deleteSuccess.id
+          text: messages.deleteSuccess.id,
         });
       });
 
@@ -225,13 +198,10 @@ describe('bundle commands', () => {
 
       it('should show error notification', async () => {
         try {
-          await wrapper
-            .find(ConfirmationDialog)
-            .props()
-            .onConfirm();
+          await wrapper.find(ConfirmationDialog).props().onConfirm();
         } catch (error) {
           expect(mockShowNotification).toHaveBeenCalledWith({
-            text: messages.deleteError.id
+            text: messages.deleteError.id,
           });
         }
       });

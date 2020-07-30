@@ -13,9 +13,9 @@ import messages from './messages';
 const mocks = {
   match: {
     params: {
-      projectKey: 'test-project'
-    }
-  }
+      projectKey: 'test-project',
+    },
+  },
 };
 
 const formValues = generateSubmittedFormValues();
@@ -33,10 +33,7 @@ describe('create bundle form', () => {
   let wrapper;
 
   const submitForm = (form = formValues) =>
-    wrapper
-      .find(BundleForm)
-      .props()
-      .onSubmit(form);
+    wrapper.find(BundleForm).props().onSubmit(form);
 
   beforeEach(() => {
     mockShowNotification.mockClear();
@@ -54,9 +51,9 @@ describe('create bundle form', () => {
         ...values,
         attributes: [
           { name: ATTRIBUTES.CATEGORIES, value: categories },
-          { name: ATTRIBUTES.CATEGORY_SEARCH, value: categorySearch }
-        ]
-      }
+          { name: ATTRIBUTES.CATEGORY_SEARCH, value: categorySearch },
+        ],
+      },
     });
   });
 
@@ -73,9 +70,9 @@ describe('create bundle form', () => {
         attributes: [
           { name: ATTRIBUTES.CATEGORIES, value: categories },
           { name: ATTRIBUTES.CATEGORY_SEARCH, value: categorySearch },
-          { name: ATTRIBUTES.DYNAMIC_PRICE, value: dynamicPrice }
-        ]
-      }
+          { name: ATTRIBUTES.DYNAMIC_PRICE, value: dynamicPrice },
+        ],
+      },
     });
   });
 
@@ -92,9 +89,9 @@ describe('create bundle form', () => {
         attributes: [
           { name: ATTRIBUTES.CATEGORIES, value: categories },
           { name: ATTRIBUTES.CATEGORY_SEARCH, value: categorySearch },
-          { name: ATTRIBUTES.MIN_QUANTITY, value: minQuantity }
-        ]
-      }
+          { name: ATTRIBUTES.MIN_QUANTITY, value: minQuantity },
+        ],
+      },
     });
   });
 
@@ -111,9 +108,9 @@ describe('create bundle form', () => {
         attributes: [
           { name: ATTRIBUTES.CATEGORIES, value: categories },
           { name: ATTRIBUTES.CATEGORY_SEARCH, value: categorySearch },
-          { name: ATTRIBUTES.MAX_QUANTITY, value: maxQuantity }
-        ]
-      }
+          { name: ATTRIBUTES.MAX_QUANTITY, value: maxQuantity },
+        ],
+      },
     });
   });
 
@@ -124,7 +121,7 @@ describe('create bundle form', () => {
     await submitForm();
     expect(mockShowNotification).toHaveBeenCalledWith(
       {
-        text: <FormattedMessage {...messages.createSuccess} />
+        text: <FormattedMessage {...messages.createSuccess} />,
       },
       data
     );
@@ -139,7 +136,7 @@ describe('create bundle form', () => {
     } catch (err) {
       expect(mockShowNotification).toHaveBeenCalledWith(
         {
-          text: <FormattedMessage {...messages.createError} />
+          text: <FormattedMessage {...messages.createError} />,
         },
         error
       );

@@ -1,5 +1,5 @@
 const notification = {
-  dismiss: jest.fn()
+  dismiss: jest.fn(),
 };
 const mockShowNotification = jest.fn(() => notification);
 const useShowNotification = jest.fn(() => mockShowNotification);

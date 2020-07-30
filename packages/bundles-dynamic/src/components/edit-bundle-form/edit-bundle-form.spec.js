@@ -15,7 +15,7 @@ import messages from './messages';
 
 const project = {
   key: faker.random.word(),
-  languages: [faker.random.locale(), faker.random.locale()]
+  languages: [faker.random.locale(), faker.random.locale()],
 };
 const dataLocale = project.languages[0];
 const product = generateProduct(project.languages);
@@ -25,12 +25,12 @@ const { id, version } = formValues;
 const variables = {
   target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
   id,
-  version
+  version,
 };
 
 const mocks = {
   bundle,
-  onComplete: jest.fn()
+  onComplete: jest.fn(),
 };
 
 const loadEditBundleForm = () => shallow(<EditBundleForm {...mocks} />);
@@ -38,7 +38,7 @@ const loadEditBundleForm = () => shallow(<EditBundleForm {...mocks} />);
 describe('edit bundle form', () => {
   let wrapper;
 
-  const submitForm = value =>
+  const submitForm = (value) =>
     wrapper
       .find(BundleForm)
       .props()
@@ -67,8 +67,8 @@ describe('edit bundle form', () => {
       expect(mockMutation).toHaveBeenCalledWith({
         variables: {
           ...variables,
-          actions: [{ changeName: { name } }]
-        }
+          actions: [{ changeName: { name } }],
+        },
       });
     });
 
@@ -80,10 +80,10 @@ describe('edit bundle form', () => {
           ...variables,
           actions: [
             {
-              setDescription: { description }
-            }
-          ]
-        }
+              setDescription: { description },
+            },
+          ],
+        },
       });
     });
 
@@ -95,10 +95,10 @@ describe('edit bundle form', () => {
           ...variables,
           actions: [
             {
-              setKey: { key }
-            }
-          ]
-        }
+              setKey: { key },
+            },
+          ],
+        },
       });
     });
 
@@ -110,10 +110,10 @@ describe('edit bundle form', () => {
           ...variables,
           actions: [
             {
-              setSku: { variantId: MASTER_VARIANT_ID, sku }
-            }
-          ]
-        }
+              setSku: { variantId: MASTER_VARIANT_ID, sku },
+            },
+          ],
+        },
       });
     });
 
@@ -128,11 +128,11 @@ describe('edit bundle form', () => {
               setAttribute: {
                 variantId: MASTER_VARIANT_ID,
                 name: ATTRIBUTES.DYNAMIC_PRICE,
-                value: dynamicPrice
-              }
-            }
-          ]
-        }
+                value: dynamicPrice,
+              },
+            },
+          ],
+        },
       });
     });
 
@@ -147,11 +147,11 @@ describe('edit bundle form', () => {
               setAttribute: {
                 variantId: MASTER_VARIANT_ID,
                 name: ATTRIBUTES.MIN_QUANTITY,
-                value: minQuantity
-              }
-            }
-          ]
-        }
+                value: minQuantity,
+              },
+            },
+          ],
+        },
       });
     });
 
@@ -164,11 +164,11 @@ describe('edit bundle form', () => {
             {
               setAttribute: {
                 variantId: MASTER_VARIANT_ID,
-                name: ATTRIBUTES.MIN_QUANTITY
-              }
-            }
-          ]
-        }
+                name: ATTRIBUTES.MIN_QUANTITY,
+              },
+            },
+          ],
+        },
       });
     });
 
@@ -183,11 +183,11 @@ describe('edit bundle form', () => {
               setAttribute: {
                 variantId: MASTER_VARIANT_ID,
                 name: ATTRIBUTES.MAX_QUANTITY,
-                value: maxQuantity
-              }
-            }
-          ]
-        }
+                value: maxQuantity,
+              },
+            },
+          ],
+        },
       });
     });
 
@@ -200,11 +200,11 @@ describe('edit bundle form', () => {
             {
               setAttribute: {
                 variantId: MASTER_VARIANT_ID,
-                name: ATTRIBUTES.MAX_QUANTITY
-              }
-            }
-          ]
-        }
+                name: ATTRIBUTES.MAX_QUANTITY,
+              },
+            },
+          ],
+        },
       });
     });
 
@@ -219,18 +219,18 @@ describe('edit bundle form', () => {
               setAttribute: {
                 variantId: MASTER_VARIANT_ID,
                 name: ATTRIBUTES.CATEGORIES,
-                value: categories
-              }
+                value: categories,
+              },
             },
             {
               setAttribute: {
                 variantId: MASTER_VARIANT_ID,
                 name: ATTRIBUTES.CATEGORY_SEARCH,
-                value: categorySearch
-              }
-            }
-          ]
-        }
+                value: categorySearch,
+              },
+            },
+          ],
+        },
       });
     });
 
@@ -242,10 +242,10 @@ describe('edit bundle form', () => {
           ...variables,
           actions: [
             {
-              changeSlug: { slug }
-            }
-          ]
-        }
+              changeSlug: { slug },
+            },
+          ],
+        },
       });
     });
   });
@@ -266,7 +266,7 @@ describe('edit bundle form', () => {
     it('should show success notification', () => {
       expect(mockShowNotification).toHaveBeenCalledWith(
         {
-          text: <FormattedMessage {...messages.editSuccess} />
+          text: <FormattedMessage {...messages.editSuccess} />,
         },
         data
       );
@@ -296,7 +296,7 @@ describe('edit bundle form', () => {
       } catch (err) {
         expect(mockShowNotification).toHaveBeenCalledWith(
           {
-            text: <FormattedMessage {...messages.editError} />
+            text: <FormattedMessage {...messages.editError} />,
           },
           error
         );

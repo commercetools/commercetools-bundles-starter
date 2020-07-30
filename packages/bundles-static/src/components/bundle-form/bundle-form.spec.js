@@ -15,9 +15,9 @@ const mocks = {
   onSubmit: jest.fn(),
   match: {
     params: {
-      projectKey: 'test-project'
-    }
-  }
+      projectKey: 'test-project',
+    },
+  },
 };
 
 const formValues = generateFormValues();
@@ -25,7 +25,7 @@ const formValues = generateFormValues();
 const baseMutation = {
   loading: false,
   error: null,
-  data: null
+  data: null,
 };
 
 function loadBundleForm(mutation, redirect) {
@@ -41,11 +41,8 @@ function loadBundleForm(mutation, redirect) {
   );
 }
 
-const submitForm = wrapper =>
-  wrapper
-    .find(Formik)
-    .props()
-    .onSubmit(formValues);
+const submitForm = (wrapper) =>
+  wrapper.find(Formik).props().onSubmit(formValues);
 
 describe('bundle form', () => {
   let wrapper;
@@ -53,7 +50,7 @@ describe('bundle form', () => {
   beforeEach(() => {
     jest.spyOn(AppContext, 'useApplicationContext').mockImplementation(() => ({
       dataLocale: locale,
-      project: { languages, currencies }
+      project: { languages, currencies },
     }));
     mockShowNotification.mockClear();
   });

@@ -37,8 +37,8 @@ const BundleForm = ({ bundle, onSubmit, data, loading, redirect }) => {
       products,
       productSearch: products,
       slug: LocalizedTextInput.createLocalizedString(languages, {
-        [dataLocale]: bundle.slug
-      })
+        [dataLocale]: bundle.slug,
+      }),
     };
   };
 
@@ -50,16 +50,16 @@ const BundleForm = ({ bundle, onSubmit, data, loading, redirect }) => {
     products: [
       {
         product: null,
-        quantity: ''
-      }
+        quantity: '',
+      },
     ],
     productSearch: null,
-    slug: LocalizedTextInput.createLocalizedString(languages)
+    slug: LocalizedTextInput.createLocalizedString(languages),
   });
 
   const initialValues = bundle ? initialBundleValues() : initialEmptyValues();
   const initialValidation = {
-    slugDefined: !!(bundle && bundle.slug)
+    slugDefined: !!(bundle && bundle.slug),
   };
 
   const assetSchema = yup.object({
@@ -70,11 +70,11 @@ const BundleForm = ({ bundle, onSubmit, data, loading, redirect }) => {
           product: yup
             .object({
               value: yup.string(),
-              label: yup.string()
+              label: yup.string(),
             })
             .nullable()
             .required(intl.formatMessage(messages.missingRequiredField)),
-          quantity: yup.lazy(value =>
+          quantity: yup.lazy((value) =>
             typeof value === 'number'
               ? yup
                   .number()
@@ -83,13 +83,13 @@ const BundleForm = ({ bundle, onSubmit, data, loading, redirect }) => {
               : yup
                   .string()
                   .required(intl.formatMessage(messages.missingRequiredField))
-          )
+          ),
         })
       )
-      .compact()
+      .compact(),
   });
 
-  const submitValues = values => {
+  const submitValues = (values) => {
     const submit = omitEmpty({
       name: transformLocalizedStringToField(
         LocalizedTextInput.omitEmptyTranslations(values.name)
@@ -107,7 +107,7 @@ const BundleForm = ({ bundle, onSubmit, data, loading, redirect }) => {
       ),
       slug: transformLocalizedStringToField(
         LocalizedTextInput.omitEmptyTranslations(values.slug)
-      )
+      ),
     });
 
     return {
@@ -116,14 +116,14 @@ const BundleForm = ({ bundle, onSubmit, data, loading, redirect }) => {
       ...pickBy(
         submit,
         (value, key) => !isEqual(initialValues[key], values[key])
-      )
+      ),
     };
   };
 
-  const validate = values => {
+  const validate = (values) => {
     const errors = {
       name: {},
-      slug: {}
+      slug: {},
     };
 
     if (LocalizedTextInput.isEmpty(values.name)) {
@@ -137,7 +137,7 @@ const BundleForm = ({ bundle, onSubmit, data, loading, redirect }) => {
     return omitEmpty(errors);
   };
 
-  const handleSubmit = async values => {
+  const handleSubmit = async (values) => {
     onSubmit(submitValues(values));
   };
 
@@ -153,7 +153,7 @@ const BundleForm = ({ bundle, onSubmit, data, loading, redirect }) => {
       validate={validate}
       onSubmit={handleSubmit}
     >
-      {props => (
+      {(props) => (
         <StaticForm
           dataLocale={dataLocale}
           initialValidation={initialValidation}
@@ -173,12 +173,12 @@ BundleForm.propTypes = {
     description: PropTypes.object,
     sku: PropTypes.string,
     products: PropTypes.arrayOf(PropTypes.array).isRequired,
-    slug: PropTypes.string
+    slug: PropTypes.string,
   }),
   onSubmit: PropTypes.func.isRequired,
   data: PropTypes.object,
   loading: PropTypes.bool.isRequired,
-  redirect: PropTypes.string
+  redirect: PropTypes.string,
 };
 
 export default BundleForm;

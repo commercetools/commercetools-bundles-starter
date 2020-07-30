@@ -4,5 +4,5 @@ export const COLUMN_KEYS = {
   PRODUCTS: 'products',
   STATUS: 'published',
   PRICE: 'price',
-  MODIFIED: 'lastModifiedAt'
+  MODIFIED: 'lastModifiedAt',
 };

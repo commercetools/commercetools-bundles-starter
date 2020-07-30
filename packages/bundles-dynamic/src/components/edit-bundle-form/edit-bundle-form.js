@@ -19,7 +19,7 @@ const EditBundleForm = ({ bundle, onComplete }) => {
   );
   const [editBundle, { data, loading }] = useMutation(EditBundle, {
     onCompleted: showSuccessNotification,
-    onError: showErrorNotification
+    onError: showErrorNotification,
   });
 
   function onSubmit(values) {
@@ -35,14 +35,14 @@ const EditBundleForm = ({ bundle, onComplete }) => {
       maxQuantity,
       categories,
       categorySearch,
-      slug
+      slug,
     } = values;
     const updateAttribute = (attributeName, value) => ({
       setAttribute: {
         variantId: MASTER_VARIANT_ID,
         name: attributeName,
-        ...(value && { value })
-      }
+        ...(value && { value }),
+      },
     });
 
     const actions = [];
@@ -53,7 +53,7 @@ const EditBundleForm = ({ bundle, onComplete }) => {
 
     if (description) {
       actions.push({
-        setDescription: { description }
+        setDescription: { description },
       });
     }
 
@@ -63,7 +63,7 @@ const EditBundleForm = ({ bundle, onComplete }) => {
 
     if (sku) {
       actions.push({
-        setSku: { variantId: MASTER_VARIANT_ID, sku }
+        setSku: { variantId: MASTER_VARIANT_ID, sku },
       });
     }
 
@@ -92,7 +92,7 @@ const EditBundleForm = ({ bundle, onComplete }) => {
       target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
       id,
       version,
-      actions
+      actions,
     };
 
     return editBundle({ variables }).then(onComplete);
@@ -110,7 +110,7 @@ const EditBundleForm = ({ bundle, onComplete }) => {
 EditBundleForm.displayName = 'EditBundleForm';
 EditBundleForm.propTypes = {
   bundle: PropTypes.object.isRequired,
-  onComplete: PropTypes.func.isRequired
+  onComplete: PropTypes.func.isRequired,
 };
 
 export default EditBundleForm;

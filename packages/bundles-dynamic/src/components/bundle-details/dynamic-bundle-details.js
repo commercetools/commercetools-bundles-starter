@@ -2,7 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { BundleDetails, BundleImages } from '@commercetools-us-ps-local/bundles-core/components';
+import {
+  BundleDetails,
+  BundleImages,
+} from '@commercetools-us-ps-local/bundles-core/components';
 import { getAttribute } from '@commercetools-us-ps-local/bundles-core/util';
 import { TabHeader } from '@commercetools-us-ps/mc-app-core/components';
 import { transformLocalizedFieldToString } from '@commercetools-us-ps/mc-app-core/util';
@@ -12,7 +15,7 @@ import BundlePreview from '../bundle-preview';
 import BundlePrices from '../bundle-prices';
 import messages from './messages';
 
-export const transformResults = results => {
+export const transformResults = (results) => {
   const { masterVariant } = results;
   const { attributesRaw, images, sku, price } = masterVariant;
 
@@ -26,7 +29,7 @@ export const transformResults = results => {
     categories: getAttribute(attributesRaw, ATTRIBUTES.CATEGORIES),
     slug: results.slug,
     images,
-    price
+    price,
   };
 };
 
@@ -110,9 +113,9 @@ DynamicBundleDetails.propTypes = {
     url: PropTypes.string,
     params: PropTypes.shape({
       projectKey: PropTypes.string.isRequired,
-      bundleId: PropTypes.string.isRequired
-    }).isRequired
-  }).isRequired
+      bundleId: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default DynamicBundleDetails;

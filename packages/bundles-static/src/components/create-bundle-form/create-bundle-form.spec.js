@@ -13,9 +13,9 @@ import messages from './messages';
 const mocks = {
   match: {
     params: {
-      projectKey: 'test-project'
-    }
-  }
+      projectKey: 'test-project',
+    },
+  },
 };
 
 const formValues = generateSubmittedFormValues();
@@ -25,10 +25,7 @@ describe('create bundle form', () => {
   let wrapper;
 
   const submitForm = () =>
-    wrapper
-      .find(BundleForm)
-      .props()
-      .onSubmit(formValues);
+    wrapper.find(BundleForm).props().onSubmit(formValues);
 
   beforeEach(() => {
     mockShowNotification.mockClear();
@@ -42,8 +39,8 @@ describe('create bundle form', () => {
       variables: {
         target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
         productTypeKey: BUNDLE_PRODUCT_TYPE,
-        ...formValues
-      }
+        ...formValues,
+      },
     });
   });
 
@@ -54,7 +51,7 @@ describe('create bundle form', () => {
     await submitForm();
     expect(mockShowNotification).toHaveBeenCalledWith(
       {
-        text: <FormattedMessage {...messages.createSuccess} />
+        text: <FormattedMessage {...messages.createSuccess} />,
       },
       data
     );
@@ -70,7 +67,7 @@ describe('create bundle form', () => {
       // eslint-disable-next-line jest/no-try-expect
       expect(mockShowNotification).toHaveBeenCalledWith(
         {
-          text: <FormattedMessage {...messages.createError} />
+          text: <FormattedMessage {...messages.createError} />,
         },
         error
       );
