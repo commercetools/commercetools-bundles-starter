@@ -7,9 +7,9 @@ import {
   ListIcon,
   SecondaryButton,
   Spacings,
-  Text
+  Text,
 } from '@commercetools-frontend/ui-kit';
-import PriceFilters from '@commercetools-us-ps/mc-app-bundles-core/components/price-filters';
+import { PriceFilters } from '@commercetools-us-ps-local/bundles-core/components';
 import { MASTER_VARIANT_ID } from '../../constants';
 import messages from './messages';
 import PricesTable from './prices-table';
@@ -88,13 +88,13 @@ BundlePrices.displayName = 'BundlePrices';
 BundlePrices.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      projectKey: PropTypes.string.isRequired
-    }).isRequired
+      projectKey: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
   bundle: PropTypes.shape({
     id: PropTypes.string.isRequired,
-    products: PropTypes.array
-  }).isRequired
+    products: PropTypes.array,
+  }).isRequired,
 };
 
 export default BundlePrices;

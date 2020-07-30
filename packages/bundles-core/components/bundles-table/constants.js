@@ -6,5 +6,5 @@ export const DEFAULT_SORT = `${COLUMN_KEYS.MODIFIED} ${SORT_OPTIONS.DESC}`;
 export const DEFAULT_VARIABLES = {
   limit: PAGE_SIZE,
   offset: 0,
-  sort: DEFAULT_SORT
+  sort: DEFAULT_SORT,
 };

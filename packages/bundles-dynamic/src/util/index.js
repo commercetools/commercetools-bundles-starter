@@ -1,4 +1,6 @@
-import { isNil, reduce, upperFirst } from 'lodash';
+import isNil from 'lodash/isNil';
+import reduce from 'lodash/reduce';
+import upperFirst from 'lodash/upperFirst';
 
 export const getPriceFilters = (
   currency,
@@ -11,10 +13,10 @@ export const getPriceFilters = (
   country,
   date: date !== '' ? date : null,
   channel: channel ? JSON.parse(channel).id : null,
-  customerGroup: customerGroup ? JSON.parse(customerGroup).id : null
+  customerGroup: customerGroup ? JSON.parse(customerGroup).id : null,
 });
 
-export const getScopedPriceParameters = filters =>
+export const getScopedPriceParameters = (filters) =>
   reduce(
     filters,
     (result, value, key) => {
@@ -92,7 +94,7 @@ export const omitDeep = (input, excludes) => {
 
     if (Array.isArray(value)) {
       const arrValue = value;
-      const nextValue = arrValue.map(arrItem => {
+      const nextValue = arrValue.map((arrItem) => {
         if (typeof arrItem === 'object') {
           return omitDeep(arrItem, excludes);
         }

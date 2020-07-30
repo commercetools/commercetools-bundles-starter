@@ -6,7 +6,7 @@ import * as AppContext from '@commercetools-frontend/application-shell-connector
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
 import { generateProduct, transformResults } from '../../test-util';
 import MASTER_VARIANT_ID from './constants';
-import BundleImage from '../bundle-image';
+import { BundleImage } from '../bundle-image';
 import BundleImages from './bundle-images';
 import RemoveImage from './remove-image.graphql';
 import messages from './messages';
@@ -18,12 +18,12 @@ const { images } = bundle;
 const mocks = {
   match: {
     params: {
-      projectKey: 'test-project'
-    }
+      projectKey: 'test-project',
+    },
   },
   id,
   version,
-  onComplete: jest.fn()
+  onComplete: jest.fn(),
 };
 
 global.open = jest.fn();
@@ -40,7 +40,7 @@ describe('bundle images', () => {
 
   beforeEach(() => {
     jest.spyOn(AppContext, 'useApplicationContext').mockImplementation(() => ({
-      environment: { frontendHost }
+      environment: { frontendHost },
     }));
     mocks.onComplete.mockClear();
   });
@@ -93,8 +93,8 @@ describe('bundle images', () => {
           version,
           productId: id,
           variantId: MASTER_VARIANT_ID,
-          imageUrl: url
-        }
+          imageUrl: url,
+        },
       });
     });
 
@@ -118,7 +118,7 @@ describe('bundle images', () => {
           await firstImage.props().removeImage(url);
         } catch (error) {
           expect(mockShowNotification).toHaveBeenCalledWith({
-            text: messages.removeError.id
+            text: messages.removeError.id,
           });
         }
       });

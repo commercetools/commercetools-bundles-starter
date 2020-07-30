@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import BundleImages from '@commercetools-us-ps/mc-app-bundles-core/components/bundle-images';
+import { BundleImages } from '@commercetools-us-ps-local/bundles-core/components';
 import { generateProduct } from '../../test-util';
 import { transformResults } from '../bundle-details/static-bundle-details';
 import StaticBundleImages from './static-bundle-images';
@@ -13,14 +13,14 @@ const { images, products } = bundle;
 const mocks = {
   match: {
     params: {
-      projectKey: 'test-project'
-    }
+      projectKey: 'test-project',
+    },
   },
   id,
   version,
   products,
   images,
-  onComplete: jest.fn()
+  onComplete: jest.fn(),
 };
 
 const loadBundleImages = () => shallow(<StaticBundleImages {...mocks} />);

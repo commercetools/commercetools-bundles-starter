@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useQuery } from '@apollo/react-hooks';
-import { omit, values } from 'lodash';
+import omit from 'lodash/omit';
+import values from 'lodash/values';
 import { stringify } from 'qs';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
 import {
@@ -11,13 +12,13 @@ import {
   PlusBoldIcon,
   SecondaryButton,
   Spacings,
-  Text
+  Text,
 } from '@commercetools-frontend/ui-kit';
 import {
   Error,
   Loading,
   PaginatedTable,
-  SearchInput
+  SearchInput,
 } from '@commercetools-us-ps/mc-app-core/components';
 import { SORT_OPTIONS } from '@commercetools-us-ps/mc-app-core/constants';
 import { useBundleContext } from '../../context/bundle-context';
@@ -33,7 +34,7 @@ const BundlesTable = ({
   subtitle,
   columnDefinitions,
   renderItem,
-  filterInputs
+  filterInputs,
 }) => {
   const intl = useIntl();
   const { dataLocale } = useApplicationContext();
@@ -46,13 +47,13 @@ const BundlesTable = ({
 
   const QUERY_VARIABLES = {
     ...DEFAULT_VARIABLES,
-    filter: [where]
+    filter: [where],
   };
 
   const [queryString, setQueryString] = useState('');
   const [variables, setVariables] = useState(QUERY_VARIABLES);
   const { data, error, loading } = useQuery(BundleProductsSearch, {
-    variables: { queryString }
+    variables: { queryString },
   });
 
   useEffect(() => {
@@ -114,7 +115,7 @@ const BundlesTable = ({
       setVariables({
         ...QUERY_VARIABLES,
         filter: values(newFilters),
-        ...(!!query && { [`text.${dataLocale}`]: query })
+        ...(!!query && { [`text.${dataLocale}`]: query }),
       });
     }
   }
@@ -177,7 +178,7 @@ const BundlesTable = ({
           <PaginatedTable
             columns={columnDefinitions}
             items={results}
-            itemRenderer={item => renderItem(results, item)}
+            itemRenderer={(item) => renderItem(results, item)}
             rowCount={count}
             total={total}
             offset={offset}
@@ -224,32 +225,32 @@ BundlesTable.propTypes = {
     path: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
     params: PropTypes.shape({
-      projectKey: PropTypes.string.isRequired
-    }).isRequired
+      projectKey: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
   history: PropTypes.shape({
-    push: PropTypes.func.isRequired
+    push: PropTypes.func.isRequired,
   }).isRequired,
   title: PropTypes.shape({
     id: PropTypes.string.isRequired,
     description: PropTypes.string,
-    defaultMessage: PropTypes.string.isRequired
+    defaultMessage: PropTypes.string.isRequired,
   }).isRequired,
   subtitle: PropTypes.shape({
     id: PropTypes.string.isRequired,
     description: PropTypes.string,
-    defaultMessage: PropTypes.string.isRequired
+    defaultMessage: PropTypes.string.isRequired,
   }).isRequired,
   columnDefinitions: PropTypes.arrayOf(
     PropTypes.shape({
       key: PropTypes.string.isRequired,
       isSortable: PropTypes.bool,
       flexGrow: PropTypes.number,
-      label: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
+      label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     })
   ).isRequired,
   renderItem: PropTypes.func.isRequired,
-  filterInputs: PropTypes.func
+  filterInputs: PropTypes.func,
 };
 
 export default BundlesTable;

@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import faker from 'faker';
 import { getLazyQuery, setLazyQuery } from '@apollo/react-hooks';
 import { FieldLabel } from '@commercetools-frontend/ui-kit';
-import { mockUseEffect } from '@commercetools-us-ps/mc-app-core/test-util';
+import { useEffectMock } from '@commercetools-us-ps/mc-app-core/test-util';
 import { generateCategoryAttributes } from '../../test-util';
 import CategoryProductField, { PRICE } from './category-product-field';
 import messages from './messages';
@@ -17,23 +17,23 @@ const product = {
   value: JSON.stringify({
     productId,
     sku,
-    price: { value: { centAmount, currencyCode } }
-  })
+    price: { value: { centAmount, currencyCode } },
+  }),
 };
 const quantity = faker.random.number({ min: 1, max: 3 });
 const emptyValue = {
   product: null,
   quantity: '',
-  price: null
+  price: null,
 };
 const newPriceFilters = {
-  currency: faker.finance.currencyCode()
+  currency: faker.finance.currencyCode(),
 };
 
 const mocks = {
   name: 'category0',
   onChange: jest.fn(),
-  onBlur: jest.fn()
+  onBlur: jest.fn(),
 };
 
 const loadCategoryProductField = (
@@ -56,7 +56,7 @@ const loadCategoryProductField = (
 
 describe('category product field', () => {
   beforeAll(() => {
-    jest.spyOn(React, 'useEffect').mockImplementation(mockUseEffect);
+    jest.spyOn(React, 'useEffect').mockImplementation(useEffectMock);
   });
 
   describe('when category has an additional charge', () => {
@@ -72,7 +72,7 @@ describe('category product field', () => {
     it('when product and quantity provided, should update price value', () => {
       const value = {
         product,
-        quantity
+        quantity,
       };
       loadCategoryProductField(category, value);
       expect(mocks.onChange).toHaveBeenCalledWith({
@@ -80,16 +80,16 @@ describe('category product field', () => {
           name: `${mocks.name}.${PRICE}`,
           value: {
             centAmount: centAmount * quantity,
-            currencyCode
-          }
-        }
+            currencyCode,
+          },
+        },
       });
     });
 
     it('when product provided and quantity field not provided, should update price value', () => {
       const value = {
         product,
-        quantity: ''
+        quantity: '',
       };
       loadCategoryProductField(category, value);
       expect(mocks.onChange).toHaveBeenCalledWith({
@@ -97,40 +97,40 @@ describe('category product field', () => {
           name: `${mocks.name}.${PRICE}`,
           value: {
             centAmount: 0,
-            currencyCode
-          }
-        }
+            currencyCode,
+          },
+        },
       });
     });
 
     it('when product provided and quantity field has error, should reset price value', () => {
       const value = {
         product,
-        quantity
+        quantity,
       };
       const errors = {
-        quantity: 'Quantity required'
+        quantity: 'Quantity required',
       };
       loadCategoryProductField(category, value, errors);
       expect(mocks.onChange).toHaveBeenCalledWith({
         target: {
           name: `${mocks.name}.${PRICE}`,
-          value: null
-        }
+          value: null,
+        },
       });
     });
 
     it('when product not provided and quantity provided, should reset price value', () => {
       const value = {
         product: null,
-        quantity
+        quantity,
       };
       loadCategoryProductField(category, value);
       expect(mocks.onChange).toHaveBeenCalledWith({
         target: {
           name: `${mocks.name}.${PRICE}`,
-          value: null
-        }
+          value: null,
+        },
       });
     });
 
@@ -138,12 +138,12 @@ describe('category product field', () => {
       setLazyQuery({ loading: true });
       const value = {
         product,
-        quantity
+        quantity,
       };
       loadCategoryProductField(category, value, {}, {}, newPriceFilters);
       const lazyQuery = getLazyQuery();
       expect(lazyQuery).toHaveBeenCalledWith({
-        variables: { id: productId, skus: [sku], ...newPriceFilters }
+        variables: { id: productId, skus: [sku], ...newPriceFilters },
       });
     });
 
@@ -151,7 +151,7 @@ describe('category product field', () => {
       setLazyQuery({ loading: true });
       const value = {
         product: null,
-        quantity
+        quantity,
       };
       loadCategoryProductField(category, value, {}, {}, newPriceFilters);
       const lazyQuery = getLazyQuery();
@@ -161,11 +161,11 @@ describe('category product field', () => {
     it('when updated price variant retrieved, should update price value', () => {
       const newPrice = {
         centAmount: faker.finance.amount() * 100,
-        currencyCode: faker.finance.currencyCode()
+        currencyCode: faker.finance.currencyCode(),
       };
       const value = {
         product,
-        quantity
+        quantity,
       };
       setLazyQuery({
         data: {
@@ -175,14 +175,14 @@ describe('category product field', () => {
                 allVariants: [
                   {
                     price: {
-                      value: newPrice
-                    }
-                  }
-                ]
-              }
-            }
-          }
-        }
+                      value: newPrice,
+                    },
+                  },
+                ],
+              },
+            },
+          },
+        },
       });
       loadCategoryProductField(category, value, {}, {}, newPriceFilters);
       expect(mocks.onChange).toHaveBeenCalledWith({
@@ -190,9 +190,9 @@ describe('category product field', () => {
           name: `${mocks.name}.${PRICE}`,
           value: {
             centAmount: newPrice.centAmount * quantity,
-            currencyCode: newPrice.currencyCode
-          }
-        }
+            currencyCode: newPrice.currencyCode,
+          },
+        },
       });
     });
   });
@@ -208,14 +208,14 @@ describe('category product field', () => {
     it('when field values provided, should reset price value', () => {
       const value = {
         product,
-        quantity
+        quantity,
       };
       loadCategoryProductField(category, value);
       expect(mocks.onChange).toHaveBeenCalledWith({
         target: {
           name: `${mocks.name}.${PRICE}`,
-          value: null
-        }
+          value: null,
+        },
       });
     });
 
@@ -223,7 +223,7 @@ describe('category product field', () => {
       setLazyQuery({ loading: true });
       const value = {
         product,
-        quantity
+        quantity,
       };
       loadCategoryProductField(category, value, {}, {}, newPriceFilters);
       const lazyQuery = getLazyQuery();

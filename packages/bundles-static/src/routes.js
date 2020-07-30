@@ -10,9 +10,9 @@ import { MaintenancePageLayout } from '@commercetools-frontend/application-compo
 import {
   BundleProvider,
   PathProvider,
-  GetBundleProductType
-} from '@commercetools-us-ps/mc-app-bundles-core/context';
-import Error from '@commercetools-us-ps/mc-app-core/components/states/error';
+  GetBundleProductType,
+} from '@commercetools-us-ps-local/bundles-core/context';
+import { Error } from '@commercetools-us-ps/mc-app-core/components';
 import StaticBundlesTable from './components/bundles-table';
 import CreateBundleForm from './components/create-bundle-form';
 import StaticBundleDetails from './components/bundle-details';
@@ -31,14 +31,14 @@ PageUnauthorized.displayName = 'PageUnauthorized';
 const ApplicationRoutes = ({ match }) => {
   const canViewProducts = useIsAuthorized({
     demandedPermissions: [PERMISSIONS.ViewProducts, PERMISSIONS.ManageProducts],
-    shouldMatchSomePermissions: true
+    shouldMatchSomePermissions: true,
   });
 
   const { data, loading, error } = useQuery(GetBundleProductType, {
     variables: {
       target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
-      key: BUNDLE_PRODUCT_TYPE
-    }
+      key: BUNDLE_PRODUCT_TYPE,
+    },
   });
 
   if (!canViewProducts) {
@@ -68,13 +68,13 @@ const ApplicationRoutes = ({ match }) => {
         <Switch>
           <Route
             path={`${match.path}/new`}
-            render={props => <CreateBundleForm {...props} />}
+            render={(props) => <CreateBundleForm {...props} />}
           />
           <Route
             path={`${match.path}/:bundleId`}
-            render={props => <StaticBundleDetails {...props} />}
+            render={(props) => <StaticBundleDetails {...props} />}
           />
-          <Route render={props => <StaticBundlesTable {...props} />} />
+          <Route render={(props) => <StaticBundlesTable {...props} />} />
         </Switch>
       </BundleProvider>
     </PathProvider>
@@ -86,9 +86,9 @@ ApplicationRoutes.propTypes = {
   match: PropTypes.shape({
     path: PropTypes.string,
     params: PropTypes.shape({
-      projectKey: PropTypes.string.isRequired
-    }).isRequired
-  }).isRequired
+      projectKey: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default ApplicationRoutes;

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedNumber } from 'react-intl';
-import { compact, map, reduce } from 'lodash';
+import compact from 'lodash/compact';
+import map from 'lodash/map';
+import reduce from 'lodash/reduce';
 import { useQuery } from '@apollo/react-hooks';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
 import { Table } from '@commercetools-frontend/ui-kit';
@@ -17,12 +19,12 @@ const PricesTable = ({
   country,
   customerGroup,
   channel,
-  date
+  date,
 }) => {
   const [results, setResults] = useState(null);
   const { refetch: getPriceRange } = useQuery(GetPriceRange, {
     fetchPolicy: 'no-cache',
-    skip: true
+    skip: true,
   });
 
   React.useEffect(() => {
@@ -38,7 +40,7 @@ const PricesTable = ({
         },
         []
       );
-    const getTableResults = ranges =>
+    const getTableResults = (ranges) =>
       compact(
         map(ranges, (result, index) => {
           const { data } = result;
@@ -52,7 +54,7 @@ const PricesTable = ({
               id,
               path,
               min,
-              max
+              max,
             };
           }
 
@@ -111,7 +113,7 @@ const PricesTable = ({
     <Table
       columns={columnDefinitions}
       items={results}
-      itemRenderer={item => renderItem(results, item)}
+      itemRenderer={(item) => renderItem(results, item)}
       rowCount={categories.length}
       onRowClick={(event, rowIndex) => handleRowClick(results[rowIndex])}
     />
@@ -125,7 +127,7 @@ PricesTable.propTypes = {
   country: PropTypes.string,
   customerGroup: PropTypes.string,
   channel: PropTypes.string,
-  date: PropTypes.string
+  date: PropTypes.string,
 };
 
 export default PricesTable;

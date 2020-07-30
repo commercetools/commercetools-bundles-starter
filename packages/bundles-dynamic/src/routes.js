@@ -10,8 +10,8 @@ import { useIsAuthorized } from '@commercetools-frontend/permissions';
 import {
   BundleProvider,
   GetBundleProductType,
-  PathProvider
-} from '@commercetools-us-ps/mc-app-bundles-core/context';
+  PathProvider,
+} from '@commercetools-us-ps-local/bundles-core/context';
 import { Error } from '@commercetools-us-ps/mc-app-core/components';
 import CreateBundleForm from './components/create-bundle-form';
 import DynamicBundlesTable from './components/bundles-table';
@@ -31,14 +31,14 @@ PageUnauthorized.displayName = 'PageUnauthorized';
 const ApplicationRoutes = ({ match }) => {
   const canViewProducts = useIsAuthorized({
     demandedPermissions: [PERMISSIONS.ViewProducts],
-    shouldMatchSomePermissions: true
+    shouldMatchSomePermissions: true,
   });
 
   const { data, loading, error } = useQuery(GetBundleProductType, {
     variables: {
       target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
-      key: BUNDLE_PRODUCT_TYPE
-    }
+      key: BUNDLE_PRODUCT_TYPE,
+    },
   });
 
   if (!canViewProducts) {
@@ -68,13 +68,13 @@ const ApplicationRoutes = ({ match }) => {
         <Switch>
           <Route
             path={`${match.path}/new`}
-            render={props => <CreateBundleForm {...props} />}
+            render={(props) => <CreateBundleForm {...props} />}
           />
           <Route
             path={`${match.path}/:bundleId`}
-            render={props => <DynamicBundleDetails {...props} />}
+            render={(props) => <DynamicBundleDetails {...props} />}
           />
-          <Route render={props => <DynamicBundlesTable {...props} />} />
+          <Route render={(props) => <DynamicBundlesTable {...props} />} />
         </Switch>
       </BundleProvider>
     </PathProvider>
@@ -86,9 +86,9 @@ ApplicationRoutes.propTypes = {
   match: PropTypes.shape({
     path: PropTypes.string,
     params: PropTypes.shape({
-      projectKey: PropTypes.string.isRequired
-    }).isRequired
-  }).isRequired
+      projectKey: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default ApplicationRoutes;

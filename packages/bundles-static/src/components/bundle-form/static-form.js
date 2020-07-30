@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import Form from '@commercetools-us-ps/mc-app-bundles-core/components/bundle-form';
+import { BundleForm } from '@commercetools-us-ps-local/bundles-core/components/bundle-form';
 import ProductField from '../product-field';
 import messages from './messages';
 
 const PRODUCTS = 'products';
 
-const StaticForm = props => {
+const StaticForm = (props) => {
   const { values, touched, errors, handleBlur, handleChange } = props;
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const StaticForm = props => {
   }, [props.values.products]);
 
   return (
-    <Form
+    <BundleForm
       {...props}
       component={{
         name: PRODUCTS,
@@ -33,7 +33,7 @@ const StaticForm = props => {
             push={push}
             remove={remove}
           />
-        )
+        ),
       }}
     />
   );
@@ -42,7 +42,7 @@ StaticForm.displayName = 'Form';
 StaticForm.propTypes = {
   dataLocale: PropTypes.string.isRequired,
   initialValidation: PropTypes.shape({
-    slugDefined: PropTypes.bool
+    slugDefined: PropTypes.bool,
   }).isRequired,
   values: PropTypes.shape({
     name: PropTypes.objectOf(PropTypes.string).isRequired,
@@ -53,30 +53,30 @@ StaticForm.propTypes = {
       PropTypes.shape({
         product: PropTypes.shape({
           label: PropTypes.string,
-          value: PropTypes.string
+          value: PropTypes.string,
         }),
-        quantity: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+        quantity: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       })
     ).isRequired,
     productSearch: PropTypes.arrayOf(
       PropTypes.shape({
         product: PropTypes.shape({
           label: PropTypes.string,
-          value: PropTypes.string
+          value: PropTypes.string,
         }),
-        quantity: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+        quantity: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       })
     ),
-    slug: PropTypes.objectOf(PropTypes.string).isRequired
+    slug: PropTypes.objectOf(PropTypes.string).isRequired,
   }).isRequired,
   errors: PropTypes.shape({
     name: PropTypes.shape({
-      missing: PropTypes.bool
+      missing: PropTypes.bool,
     }),
     products: PropTypes.array,
     slug: PropTypes.shape({
-      missing: PropTypes.bool
-    })
+      missing: PropTypes.bool,
+    }),
   }).isRequired,
   touched: PropTypes.shape({
     name: PropTypes.objectOf(PropTypes.bool),
@@ -86,19 +86,19 @@ StaticForm.propTypes = {
       PropTypes.shape({
         product: PropTypes.oneOfType([
           PropTypes.bool,
-          PropTypes.shape({ label: PropTypes.bool, value: PropTypes.bool })
+          PropTypes.shape({ label: PropTypes.bool, value: PropTypes.bool }),
         ]),
-        quantity: PropTypes.bool
+        quantity: PropTypes.bool,
       })
     ),
-    slug: PropTypes.objectOf(PropTypes.bool)
+    slug: PropTypes.objectOf(PropTypes.bool),
   }),
   isValid: PropTypes.bool.isRequired,
   isSubmitting: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleBlur: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  setFieldValue: PropTypes.func.isRequired
+  setFieldValue: PropTypes.func.isRequired,
 };
 
 export default StaticForm;

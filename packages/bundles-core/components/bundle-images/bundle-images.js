@@ -9,7 +9,7 @@ import {
   FlatButton,
   SecondaryButton,
   Spacings,
-  Text
+  Text,
 } from '@commercetools-frontend/ui-kit';
 import { useShowSideNotification } from '@commercetools-us-ps/mc-app-core/hooks';
 import MASTER_VARIANT_ID from './constants';
@@ -25,7 +25,7 @@ const BundleImages = ({
   images,
   onComplete,
   actions,
-  noImagesMessage
+  noImagesMessage,
 }) => {
   const { environment } = useApplicationContext();
   const { frontendHost } = environment;
@@ -36,7 +36,7 @@ const BundleImages = ({
   );
   const [removeImage] = useMutation(RemoveImage, {
     onCompleted: onComplete,
-    onError: showErrorNotification
+    onError: showErrorNotification,
   });
 
   const mcImageUrl = `https://${frontendHost}/${match.params.projectKey}/products/${id}/variants/${MASTER_VARIANT_ID}/images`;
@@ -55,7 +55,7 @@ const BundleImages = ({
       version,
       productId: id,
       variantId: MASTER_VARIANT_ID,
-      imageUrl: url
+      imageUrl: url,
     };
 
     await removeImage({ variables: removeVariables });
@@ -96,7 +96,7 @@ const BundleImages = ({
           </div>
         ) : (
           <div className={styles.images}>
-            {images.map(image => (
+            {images.map((image) => (
               <BundleImage
                 key={image.url}
                 image={image}
@@ -115,20 +115,20 @@ BundleImages.displayName = 'BundleImages';
 BundleImages.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      projectKey: PropTypes.string.isRequired
-    }).isRequired
+      projectKey: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
   id: PropTypes.string.isRequired,
   version: PropTypes.number.isRequired,
   images: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
-      url: PropTypes.string.isRequired
+      url: PropTypes.string.isRequired,
     })
   ),
   onComplete: PropTypes.func.isRequired,
   actions: PropTypes.node,
-  noImagesMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
+  noImagesMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 };
 
 export default BundleImages;

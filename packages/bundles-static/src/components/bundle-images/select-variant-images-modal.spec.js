@@ -6,16 +6,16 @@ import {
   mockMutation,
   setMutation,
   setQuery,
-  useQuery
+  useQuery,
 } from '@apollo/react-hooks';
 import { mockShowNotification } from '@commercetools-frontend/actions-global';
 import { FormModalPage } from '@commercetools-frontend/application-components';
 import * as AppContext from '@commercetools-frontend/application-shell-connectors';
 import {
   CheckActiveIcon,
-  CheckInactiveIcon
+  CheckInactiveIcon,
 } from '@commercetools-frontend/ui-kit';
-import { Loading } from '@commercetools-us-ps/mc-app-core/components/states';
+import { Loading } from '@commercetools-us-ps/mc-app-core/components';
 import { generateProduct } from '../../test-util';
 import { getSkus } from '../../util';
 import { transformResults } from '../bundle-details/static-bundle-details';
@@ -38,12 +38,12 @@ const mocks = {
   isOpen: true,
   onClose: jest.fn(),
   onSecondaryButtonClick: jest.fn(),
-  onPrimaryButtonClick: jest.fn()
+  onPrimaryButtonClick: jest.fn(),
 };
 
 const variants = Array.from({ length: 3 }, generateProduct);
 const variantImages = flatten(
-  variants.map(variant => variant.masterData.current.allVariants[0].images)
+  variants.map((variant) => variant.masterData.current.allVariants[0].images)
 );
 
 const imageContainer = "[data-testid='image-container']";
@@ -61,10 +61,7 @@ describe('select variant images modal', () => {
     wrapper = loadSelectVariantImagesModal();
     getFirstImage().simulate('click');
     wrapper.update();
-    wrapper
-      .find(FormModalPage)
-      .props()
-      .onPrimaryButtonClick();
+    wrapper.find(FormModalPage).props().onPrimaryButtonClick();
   };
 
   beforeEach(() => {
@@ -82,9 +79,9 @@ describe('select variant images modal', () => {
       variables: {
         ...DEFAULT_VARIABLES,
         locale: dataLocale,
-        skus
+        skus,
       },
-      fetchPolicy: 'no-cache'
+      fetchPolicy: 'no-cache',
     });
   });
 
@@ -122,7 +119,7 @@ describe('select variant images modal', () => {
     const existingImages = variants.reduce(
       (allImages, variant) => [
         ...allImages,
-        variant.masterData.current.allVariants[0].images[0]
+        variant.masterData.current.allVariants[0].images[0],
       ],
       []
     );
@@ -177,20 +174,14 @@ describe('select variant images modal', () => {
     });
 
     it('should display active checkbox icon', () => {
-      expect(
-        getFirstImage()
-          .shallow()
-          .find(CheckActiveIcon)
-          .exists()
-      ).toEqual(true);
+      expect(getFirstImage().shallow().find(CheckActiveIcon).exists()).toEqual(
+        true
+      );
     });
 
     it('should not display inactive checkbox icon', () => {
       expect(
-        getFirstImage()
-          .shallow()
-          .find(CheckInactiveIcon)
-          .exists()
+        getFirstImage().shallow().find(CheckInactiveIcon).exists()
       ).toEqual(false);
     });
 
@@ -208,19 +199,13 @@ describe('select variant images modal', () => {
 
       it('should not display active checkbox icon', () => {
         expect(
-          getFirstImage()
-            .shallow()
-            .find(CheckActiveIcon)
-            .exists()
+          getFirstImage().shallow().find(CheckActiveIcon).exists()
         ).toEqual(false);
       });
 
       it('should display inactive checkbox icon', () => {
         expect(
-          getFirstImage()
-            .shallow()
-            .find(CheckInactiveIcon)
-            .exists()
+          getFirstImage().shallow().find(CheckInactiveIcon).exists()
         ).toEqual(true);
       });
     });
@@ -238,13 +223,13 @@ describe('select variant images modal', () => {
                 url: variantImages[0].url,
                 dimensions: {
                   width: 0,
-                  height: 0
-                }
-              }
-            }
-          }
-        ]
-      }
+                  height: 0,
+                },
+              },
+            },
+          },
+        ],
+      },
     });
   });
 
@@ -264,10 +249,7 @@ describe('select variant images modal', () => {
 
     it('should reset selected images', () => {
       expect(
-        wrapper
-          .find(imageContainer)
-          .shallow()
-          .find(CheckActiveIcon)
+        wrapper.find(imageContainer).shallow().find(CheckActiveIcon)
       ).toHaveLength(0);
     });
   });
@@ -288,16 +270,13 @@ describe('select variant images modal', () => {
 
     it('should not reset selected images', () => {
       expect(
-        wrapper
-          .find(imageContainer)
-          .shallow()
-          .find(CheckActiveIcon)
+        wrapper.find(imageContainer).shallow().find(CheckActiveIcon)
       ).toHaveLength(1);
     });
 
     it('should show error notification', () => {
       expect(mockShowNotification).toHaveBeenCalledWith({
-        text: messages.variantImagesSaveError.id
+        text: messages.variantImagesSaveError.id,
       });
     });
   });

@@ -4,7 +4,8 @@ import { useIntl } from 'react-intl';
 import { Redirect } from 'react-router';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import { isEqual, pickBy } from 'lodash';
+import isEqual from 'lodash/isEqual';
+import pickBy from 'lodash/pickBy';
 import omitEmpty from 'omit-empty';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
 import { LocalizedTextInput } from '@commercetools-frontend/ui-kit';
@@ -33,8 +34,8 @@ const BundleForm = ({ bundle, onSubmit, data, loading, redirect }) => {
     minQuantity: bundle.minQuantity || '',
     maxQuantity: bundle.maxQuantity || '',
     slug: LocalizedTextInput.createLocalizedString(languages, {
-      [dataLocale]: bundle.slug
-    })
+      [dataLocale]: bundle.slug,
+    }),
   });
 
   const initialEmptyValues = () => ({
@@ -50,15 +51,15 @@ const BundleForm = ({ bundle, onSubmit, data, loading, redirect }) => {
         category: null,
         minQuantity: '',
         maxQuantity: '',
-        additionalCharge: false
-      }
+        additionalCharge: false,
+      },
     ],
-    slug: LocalizedTextInput.createLocalizedString(languages)
+    slug: LocalizedTextInput.createLocalizedString(languages),
   });
 
   const initialValues = bundle ? initialBundleValues() : initialEmptyValues();
   const initialValidation = {
-    slugDefined: !!(bundle && bundle.slug)
+    slugDefined: !!(bundle && bundle.slug),
   };
 
   const validationSchema = yup.object({
@@ -71,24 +72,24 @@ const BundleForm = ({ bundle, onSubmit, data, loading, redirect }) => {
       .min(1, intl.formatMessage(messages.quantityError))
       .integer(intl.formatMessage(messages.integerError))
       .when('minQuantity', {
-        is: val => !!val,
+        is: (val) => !!val,
         then: yup
           .number()
           .moreThan(
             yup.ref('minQuantity'),
             intl.formatMessage(messages.maxGreaterThanMinError)
-          )
+          ),
       }),
     categories: yup.array(
       yup.object({
         category: yup
           .object({
             value: yup.string(),
-            label: yup.string()
+            label: yup.string(),
           })
           .nullable()
           .required(intl.formatMessage(messages.missingRequiredField)),
-        minQuantity: yup.lazy(value =>
+        minQuantity: yup.lazy((value) =>
           typeof value === 'number'
             ? yup
                 .number()
@@ -96,29 +97,29 @@ const BundleForm = ({ bundle, onSubmit, data, loading, redirect }) => {
                 .integer(intl.formatMessage(messages.integerError))
             : yup.string()
         ),
-        maxQuantity: yup.lazy(value =>
+        maxQuantity: yup.lazy((value) =>
           typeof value === 'number'
             ? yup
                 .number()
                 .min(0, intl.formatMessage(messages.zeroQuantityError))
                 .integer(intl.formatMessage(messages.integerError))
                 .when('minQuantity', {
-                  is: val => !!val,
+                  is: (val) => !!val,
                   then: yup
                     .number()
                     .moreThan(
                       yup.ref('minQuantity'),
                       intl.formatMessage(messages.maxGreaterThanMinError)
-                    )
+                    ),
                 })
             : yup.string()
         ),
-        additionalCharge: yup.bool()
+        additionalCharge: yup.bool(),
       })
-    )
+    ),
   });
 
-  const submitValues = values => {
+  const submitValues = (values) => {
     const {
       id,
       version,
@@ -130,7 +131,7 @@ const BundleForm = ({ bundle, onSubmit, data, loading, redirect }) => {
       minQuantity,
       maxQuantity,
       categories,
-      slug
+      slug,
     } = values;
     const submit = omitEmpty({
       name: transformLocalizedStringToField(
@@ -150,7 +151,7 @@ const BundleForm = ({ bundle, onSubmit, data, loading, redirect }) => {
       ),
       slug: transformLocalizedStringToField(
         LocalizedTextInput.omitEmptyTranslations(slug)
-      )
+      ),
     });
 
     return {
@@ -160,17 +161,17 @@ const BundleForm = ({ bundle, onSubmit, data, loading, redirect }) => {
         {
           ...submit,
           minQuantity: minQuantity ? JSON.stringify(minQuantity) : '',
-          maxQuantity: maxQuantity ? JSON.stringify(maxQuantity) : ''
+          maxQuantity: maxQuantity ? JSON.stringify(maxQuantity) : '',
         },
         (item, itemKey) => !isEqual(initialValues[itemKey], item)
-      )
+      ),
     };
   };
 
-  const validate = values => {
+  const validate = (values) => {
     const errors = {
       name: {},
-      slug: {}
+      slug: {},
     };
 
     if (LocalizedTextInput.isEmpty(values.name)) {
@@ -184,7 +185,7 @@ const BundleForm = ({ bundle, onSubmit, data, loading, redirect }) => {
     return omitEmpty(errors);
   };
 
-  const handleSubmit = values => {
+  const handleSubmit = (values) => {
     onSubmit(submitValues(values));
   };
 
@@ -200,7 +201,7 @@ const BundleForm = ({ bundle, onSubmit, data, loading, redirect }) => {
       validate={validate}
       onSubmit={handleSubmit}
     >
-      {props => (
+      {(props) => (
         <DynamicForm
           dataLocale={dataLocale}
           initialValidation={initialValidation}
@@ -223,12 +224,12 @@ BundleForm.propTypes = {
     minQuantity: PropTypes.number,
     maxQuantity: PropTypes.number,
     categories: PropTypes.arrayOf(PropTypes.array).isRequired,
-    slug: PropTypes.string
+    slug: PropTypes.string,
   }),
   onSubmit: PropTypes.func.isRequired,
   data: PropTypes.object,
   loading: PropTypes.bool.isRequired,
-  redirect: PropTypes.string
+  redirect: PropTypes.string,
 };
 
 export default BundleForm;

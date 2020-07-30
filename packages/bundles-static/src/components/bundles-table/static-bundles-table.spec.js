@@ -4,10 +4,11 @@ import faker from 'faker';
 import { find, minBy, omit } from 'lodash';
 import * as AppContext from '@commercetools-frontend/application-shell-connectors';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
-import BundlesTable, {
-  COLUMN_KEYS
-} from '@commercetools-us-ps/mc-app-bundles-core/components/bundles-table';
-import { PRODUCT_STATUS } from '@commercetools-us-ps/mc-app-core/components/status';
+import {
+  BundlesTable,
+  COLUMN_KEYS,
+} from '@commercetools-us-ps-local/bundles-core/components';
+import { PRODUCT_STATUS } from '@commercetools-us-ps/mc-app-core/components';
 import { localize } from '@commercetools-us-ps/mc-app-core/util';
 import { generateProduct } from '../../test-util';
 import StaticBundlesTable from './static-bundles-table';
@@ -15,7 +16,7 @@ import { PRODUCTS_ATTRIBUTE } from './constants';
 
 const project = {
   key: faker.random.word(),
-  languages: [faker.random.locale(), faker.random.locale()]
+  languages: [faker.random.locale(), faker.random.locale()],
 };
 const dataLocale = project.languages[0];
 
@@ -24,18 +25,18 @@ const mocks = {
     path: '/',
     url: '/',
     params: {
-      projectKey: 'test-project'
-    }
+      projectKey: 'test-project',
+    },
   },
   history: {
-    push: jest.fn()
-  }
+    push: jest.fn(),
+  },
 };
 
-const transformProduct = product => ({
+const transformProduct = (product) => ({
   ...product,
   ...product.masterData,
-  masterVariant: product.masterData.current.masterVariant
+  masterVariant: product.masterData.current.masterVariant,
 });
 const generateProducts = (count = 1) =>
   Array.from({ length: count }, () =>
@@ -73,7 +74,7 @@ describe('static bundles table', () => {
         obj: bundle,
         key: 'name',
         language: dataLocale,
-        fallbackOrder: languages
+        fallbackOrder: languages,
       });
       const actual = wrapper
         .find(BundlesTable)
@@ -87,7 +88,7 @@ describe('static bundles table', () => {
       const bundle = results[0];
       const wrapper = loadBundlesTable();
       const expected = find(bundle.masterVariant.attributes, {
-        name: PRODUCTS_ATTRIBUTE
+        name: PRODUCTS_ATTRIBUTE,
       }).value.length;
       const actual = wrapper
         .find(BundlesTable)

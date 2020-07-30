@@ -5,7 +5,10 @@ import { FormattedMessage, FormattedNumber, useIntl } from 'react-intl';
 import classNames from 'classnames';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import { compact, map, reduce, without } from 'lodash';
+import compact from 'lodash/compact';
+import map from 'lodash/map';
+import reduce from 'lodash/reduce';
+import without from 'lodash/without';
 import { useShowNotification } from '@commercetools-frontend/actions-global';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
 import {

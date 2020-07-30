@@ -1,1 +1,1 @@
-export { default } from './bundle-commands';
+export BundleCommands from './bundle-commands';

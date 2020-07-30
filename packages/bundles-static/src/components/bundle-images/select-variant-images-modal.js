@@ -11,9 +11,9 @@ import {
   CheckActiveIcon,
   CheckInactiveIcon,
   Text,
-  Tooltip
+  Tooltip,
 } from '@commercetools-frontend/ui-kit';
-import { Loading } from '@commercetools-us-ps/mc-app-core/components/states';
+import { Loading } from '@commercetools-us-ps/mc-app-core/components';
 import { getSkus } from '../../util';
 import { MASTER_VARIANT_ID } from '../../constants';
 import EditBundle from '../edit-bundle-form/edit-bundle.graphql';
@@ -29,7 +29,7 @@ const getImages = (variants, existingImages) =>
       const { name, allVariants } = variant.masterData.current;
       const { images } = allVariants[0];
 
-      images.forEach(image => {
+      images.forEach((image) => {
         if (!find(existingImages, { url: image.url })) {
           allImages.push({ name, image: image.url });
         }
@@ -47,7 +47,7 @@ const SelectVariantImagesModal = ({
   isOpen,
   onClose,
   onSecondaryButtonClick,
-  onPrimaryButtonClick
+  onPrimaryButtonClick,
 }) => {
   const skus = getSkus(variants);
   const intl = useIntl();
@@ -57,17 +57,17 @@ const SelectVariantImagesModal = ({
     variables: {
       ...DEFAULT_VARIABLES,
       locale: dataLocale,
-      skus
+      skus,
     },
-    fetchPolicy: 'no-cache'
+    fetchPolicy: 'no-cache',
   });
   const [addImages] = useMutation(EditBundle, {
-    variables: { target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM, id, version }
+    variables: { target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM, id, version },
   });
 
   const showErrorNotification = useShowNotification({
     kind: 'error',
-    domain: DOMAINS.SIDE
+    domain: DOMAINS.SIDE,
   });
 
   if (loading) return <Loading />;
@@ -80,7 +80,7 @@ const SelectVariantImagesModal = ({
     );
   }
 
-  const isSelected = image => find(selected, image);
+  const isSelected = (image) => find(selected, image);
 
   function selectImage(item) {
     if (isSelected(item)) {
@@ -93,17 +93,17 @@ const SelectVariantImagesModal = ({
   }
 
   async function onSave() {
-    const actions = selected.map(item => ({
+    const actions = selected.map((item) => ({
       addExternalImage: {
         variantId: MASTER_VARIANT_ID,
         image: {
           url: item.image,
           dimensions: {
             width: 0,
-            height: 0
-          }
-        }
-      }
+            height: 0,
+          },
+        },
+      },
     }));
 
     try {
@@ -113,7 +113,7 @@ const SelectVariantImagesModal = ({
       setSelected([]);
     } catch (err) {
       showErrorNotification({
-        text: intl.formatMessage(messages.variantImagesSaveError)
+        text: intl.formatMessage(messages.variantImagesSaveError),
       });
     }
   }
@@ -131,7 +131,7 @@ const SelectVariantImagesModal = ({
     >
       <div data-testid="image-container" className={styles.images}>
         {variantImages.length > 0 ? (
-          variantImages.map(item => (
+          variantImages.map((item) => (
             <Tooltip key={item.image} title={item.name} placement="bottom">
               <div
                 data-testid="variant-image"
@@ -168,7 +168,7 @@ SelectVariantImagesModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   onPrimaryButtonClick: PropTypes.func.isRequired,
-  onSecondaryButtonClick: PropTypes.func.isRequired
+  onSecondaryButtonClick: PropTypes.func.isRequired,
 };
 
 export default SelectVariantImagesModal;

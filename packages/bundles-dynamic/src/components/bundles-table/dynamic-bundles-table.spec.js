@@ -4,9 +4,10 @@ import faker from 'faker';
 import { minBy, omit, find } from 'lodash';
 import * as AppContext from '@commercetools-frontend/application-shell-connectors';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
-import {BundlesTable,
-  COLUMN_KEYS
-} from '@commercetools-us-ps/mc-app-bundles-core';
+import {
+  BundlesTable,
+  COLUMN_KEYS,
+} from '@commercetools-us-ps-local/bundles-core/components';
 import { PRODUCT_STATUS } from '@commercetools-us-ps/mc-app-core/components';
 import { localize } from '@commercetools-us-ps/mc-app-core/util';
 import { generateProduct } from '../../test-util';
@@ -15,7 +16,7 @@ import messages from './messages';
 
 const project = {
   key: faker.random.word(),
-  languages: [faker.random.locale(), faker.random.locale()]
+  languages: [faker.random.locale(), faker.random.locale()],
 };
 const dataLocale = project.languages[0];
 
@@ -24,12 +25,12 @@ const mocks = {
     path: '/',
     url: '/',
     params: {
-      projectKey: 'test-project'
-    }
+      projectKey: 'test-project',
+    },
   },
   history: {
-    push: jest.fn()
-  }
+    push: jest.fn(),
+  },
 };
 
 const PRICE_TYPE_FILTER = 'price-type-filter';
@@ -37,10 +38,10 @@ const CATEGORY_FILTER = 'category';
 
 const mockFilter = jest.fn();
 
-const transformProduct = product => ({
+const transformProduct = (product) => ({
   ...product,
   ...product.masterData,
-  masterVariant: product.masterData.current.masterVariant
+  masterVariant: product.masterData.current.masterVariant,
 });
 const generateProducts = (count = 1) =>
   Array.from({ length: count }, () =>
@@ -78,7 +79,7 @@ describe('dynamic bundles table', () => {
         obj: bundle,
         key: 'name',
         language: dataLocale,
-        fallbackOrder: languages
+        fallbackOrder: languages,
       });
       const actual = wrapper
         .find(BundlesTable)
@@ -189,18 +190,16 @@ describe('dynamic bundles table', () => {
     it('should contain filter options', () => {
       const wrapper = loadBundlesTable();
 
-      const filters = wrapper
-        .find(BundlesTable)
-        .props()
-        .filterInputs().props.children;
+      const filters = wrapper.find(BundlesTable).props().filterInputs().props
+        .children;
 
       const priceTypeFilterOptions = find(filters, {
-        props: { name: PRICE_TYPE_FILTER }
+        props: { name: PRICE_TYPE_FILTER },
       }).props.options;
 
       expect(priceTypeFilterOptions).toEqual([
         { value: 'true', label: messages.dynamicValue.id },
-        { value: 'false', label: messages.staticValue.id }
+        { value: 'false', label: messages.staticValue.id },
       ]);
     });
 
@@ -220,7 +219,7 @@ describe('dynamic bundles table', () => {
           .filterInputs(mockFilter).props.children;
 
         const priceTypeFilter = find(filters, {
-          props: { name: PRICE_TYPE_FILTER }
+          props: { name: PRICE_TYPE_FILTER },
         });
 
         priceTypeFilter.props.onChange({ target: { value } });
@@ -264,13 +263,11 @@ describe('dynamic bundles table', () => {
       it('filter input should have no value', () => {
         priceTypeFilter.props.onChange({ target: { value: null } });
 
-        const filters = wrapper
-          .find(BundlesTable)
-          .props()
-          .filterInputs().props.children;
+        const filters = wrapper.find(BundlesTable).props().filterInputs().props
+          .children;
 
         const priceTypeFilterValue = find(filters, {
-          props: { name: PRICE_TYPE_FILTER }
+          props: { name: PRICE_TYPE_FILTER },
         }).props.value;
 
         expect(priceTypeFilterValue).toBe(null);
@@ -295,7 +292,7 @@ describe('dynamic bundles table', () => {
           .filterInputs(mockFilter).props.children;
 
         const categoryFilter = find(filters, {
-          props: { name: CATEGORY_FILTER }
+          props: { name: CATEGORY_FILTER },
         });
 
         categoryFilter.props.onChange({ target: { value } });

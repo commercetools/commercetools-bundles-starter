@@ -10,18 +10,18 @@ import {
   NumberInput,
   PlusBoldIcon,
   SecondaryButton,
-  Spacings
+  Spacings,
 } from '@commercetools-frontend/ui-kit';
 import { ProductSearchInput } from '@commercetools-us-ps/mc-app-core/components';
 import { localize } from '@commercetools-us-ps/mc-app-core/util';
-import { getAttribute } from '@commercetools-us-ps/mc-app-bundles-core/util';
+import { getAttribute } from '@commercetools-us-ps-local/bundles-core/util';
 import {
   PRODUCT,
   PRODUCT_NAME,
   PRODUCT_REF,
   QUANTITY,
   SKU,
-  VARIANT_ID
+  VARIANT_ID,
 } from './constants';
 import messages from './messages';
 import styles from './product-field.mod.css';
@@ -41,7 +41,7 @@ const getErrors = (touched, errors) =>
   touched &&
   errors &&
   touched.reduce((errs, item, index) => {
-    const getError = field =>
+    const getError = (field) =>
       item && item[field] ? get(errors, `[${index}].${field}`) : null;
 
     return uniq([...errs, ...compact([getError(PRODUCT), getError(QUANTITY)])]);
@@ -59,7 +59,7 @@ const ProductField = ({
   onFocus,
   onBlur,
   push,
-  remove
+  remove,
 }) => {
   const intl = useIntl();
   const fieldErrors = getErrors(touched, errors);
@@ -126,11 +126,11 @@ const ProductField = ({
   );
 };
 
-ProductField.isEmpty = formValue =>
+ProductField.isEmpty = (formValue) =>
   !formValue ||
   some(
     formValue,
-    value =>
+    (value) =>
       isNil(value.product) ||
       isNil(value.quantity) ||
       value.product.value.trim() === '' ||
@@ -138,13 +138,13 @@ ProductField.isEmpty = formValue =>
   );
 
 ProductField.parseProductValue = (products, locale, languages) =>
-  products.map(item => {
+  products.map((item) => {
     const sku = getAttribute(item, SKU);
     const value = {
       id: getAttribute(item, VARIANT_ID),
       name: getAttribute(item, PRODUCT_NAME),
       ...(sku && { sku }),
-      productId: getAttribute(item, PRODUCT_REF).id
+      productId: getAttribute(item, PRODUCT_REF).id,
     };
 
     return {
@@ -154,23 +154,23 @@ ProductField.parseProductValue = (products, locale, languages) =>
           key: 'name',
           language: locale,
           fallback: value.id,
-          fallbackOrder: languages
+          fallbackOrder: languages,
         }),
-        value: JSON.stringify(value)
+        value: JSON.stringify(value),
       },
-      quantity: getAttribute(item, QUANTITY)
+      quantity: getAttribute(item, QUANTITY),
     };
   });
-ProductField.parseSearchProductValue = products =>
-  products.map(item => {
+ProductField.parseSearchProductValue = (products) =>
+  products.map((item) => {
     return `${getAttribute(item, PRODUCT_REF).id}/${getAttribute(
       item,
       VARIANT_ID
     )}`;
   });
 
-ProductField.convertToProductValue = products =>
-  products.map(item => {
+ProductField.convertToProductValue = (products) =>
+  products.map((item) => {
     const { product, quantity } = item;
     const { id, name, sku, productId } = JSON.parse(product.value);
     return [
@@ -178,11 +178,11 @@ ProductField.convertToProductValue = products =>
       { name: SKU, value: sku },
       { name: QUANTITY, value: quantity },
       { name: PRODUCT_REF, value: { typeId: PRODUCT, id: productId } },
-      { name: PRODUCT_NAME, value: name }
-    ].filter(prop => !(prop.name === SKU && !sku));
+      { name: PRODUCT_NAME, value: name },
+    ].filter((prop) => !(prop.name === SKU && !sku));
   });
-ProductField.convertToSearchProductValue = products =>
-  products.map(item => {
+ProductField.convertToSearchProductValue = (products) =>
+  products.map((item) => {
     const { product } = item;
     const { id, productId } = JSON.parse(product.value);
     return `${productId}/${id}`;
@@ -195,9 +195,9 @@ ProductField.propTypes = {
     PropTypes.shape({
       product: PropTypes.shape({
         label: PropTypes.string,
-        value: PropTypes.string
+        value: PropTypes.string,
       }),
-      quantity: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+      quantity: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     }).isRequired
   ),
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
@@ -206,9 +206,9 @@ ProductField.propTypes = {
     PropTypes.shape({
       product: PropTypes.oneOfType([
         PropTypes.bool,
-        PropTypes.shape({ label: PropTypes.bool, value: PropTypes.bool })
+        PropTypes.shape({ label: PropTypes.bool, value: PropTypes.bool }),
       ]),
-      quantity: PropTypes.bool
+      quantity: PropTypes.bool,
     })
   ),
   errors: PropTypes.array,
@@ -217,7 +217,7 @@ ProductField.propTypes = {
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
   push: PropTypes.func.isRequired,
-  remove: PropTypes.func.isRequired
+  remove: PropTypes.func.isRequired,
 };
 
 export default ProductField;

@@ -10,7 +10,7 @@ import {
   BinLinearIcon,
   IconButton,
   Spacings,
-  Text
+  Text,
 } from '@commercetools-frontend/ui-kit';
 import { StatusSelect } from '@commercetools-us-ps/mc-app-core/components';
 import { usePathContext } from '../../context';
@@ -25,50 +25,50 @@ const BundleCommands = ({
   version,
   published,
   hasStagedChanges,
-  onComplete
+  onComplete,
 }) => {
   const intl = useIntl();
   const rootPath = usePathContext();
   const [confirmingDelete, setConfirmingDelete] = useState(false);
   const showSuccessNotification = useShowNotification({
     kind: 'success',
-    domain: DOMAINS.SIDE
+    domain: DOMAINS.SIDE,
   });
   const showErrorNotification = useShowNotification({
     kind: 'error',
-    domain: DOMAINS.SIDE
+    domain: DOMAINS.SIDE,
   });
 
   const variables = {
     target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
     id,
-    version
+    version,
   };
 
   const [deleteBundle, { data, loading }] = useMutation(DeleteBundle, {
     variables,
     onCompleted() {
       showSuccessNotification({
-        text: intl.formatMessage(messages.deleteSuccess)
+        text: intl.formatMessage(messages.deleteSuccess),
       });
     },
     onError() {
       showErrorNotification({
-        text: intl.formatMessage(messages.deleteError)
+        text: intl.formatMessage(messages.deleteError),
       });
-    }
+    },
   });
   const [editBundle] = useMutation(EditBundle, {
     onCompleted() {
       showSuccessNotification({
-        text: intl.formatMessage(messages.editSuccess)
+        text: intl.formatMessage(messages.editSuccess),
       });
     },
     onError() {
       showErrorNotification({
-        text: intl.formatMessage(messages.editError)
+        text: intl.formatMessage(messages.editError),
       });
-    }
+    },
   });
 
   async function onStatusChange(value) {
@@ -122,14 +122,14 @@ BundleCommands.displayName = 'BundleCommands';
 BundleCommands.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      projectKey: PropTypes.string.isRequired
-    }).isRequired
+      projectKey: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
   id: PropTypes.string.isRequired,
   version: PropTypes.number.isRequired,
   published: PropTypes.bool.isRequired,
   hasStagedChanges: PropTypes.bool.isRequired,
-  onComplete: PropTypes.func.isRequired
+  onComplete: PropTypes.func.isRequired,
 };
 
 export default BundleCommands;

@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { camelCase, compact, get, isNil, some, uniq } from 'lodash';
+import camelCase from 'lodash/camelCase';
+import compact from 'lodash/compact';
+import get from 'lodash/get';
+import isNil from 'lodash/isNil';
+import some from 'lodash/some';
+import uniq from 'lodash/uniq';
 import {
   CheckboxInput,
   CloseBoldIcon,

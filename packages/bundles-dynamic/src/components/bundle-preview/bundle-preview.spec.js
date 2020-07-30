@@ -7,14 +7,14 @@ import {
   mockMutation,
   setMutation,
   getQuery,
-  setQuery
+  setQuery,
 } from '@apollo/react-hooks';
 import { mockShowNotification } from '@commercetools-frontend/actions-global';
 import * as AppContext from '@commercetools-frontend/application-shell-connectors';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
-import {localize} from '@commercetools-us-ps/mc-app-core/util';
-import { mockUseEffect } from '@commercetools-us-ps/mc-app-core/test-util';
-import {PriceFilters} from '@commercetools-us-ps/mc-app-bundles-core';
+import { localize } from '@commercetools-us-ps/mc-app-core/util';
+import { useEffectMock } from '@commercetools-us-ps/mc-app-core/test-util';
+import { PriceFilters } from '@commercetools-us-ps-local/bundles-core/components';
 import { generateCategoryAttributes, generateProduct } from '../../test-util';
 import { transformResults } from '../bundle-details/dynamic-bundle-details';
 import { getCategoryAttributes } from './category-product-field';
@@ -25,11 +25,11 @@ import { omitDeep } from '../../util';
 const project = {
   key: faker.random.word(),
   languages: [faker.random.locale(), faker.random.locale()],
-  currencies: [faker.finance.currencyCode(), faker.finance.currencyCode()]
+  currencies: [faker.finance.currencyCode(), faker.finance.currencyCode()],
 };
 const dataLocale = project.languages[0];
 const mocks = {
-  refetch: jest.fn()
+  refetch: jest.fn(),
 };
 
 const product = generateProduct(project.languages);
@@ -37,12 +37,12 @@ const { staged, current } = product.masterData;
 const bundle = {
   ...transformResults(current),
   staged: transformResults(staged),
-  current: transformResults(current)
+  current: transformResults(current),
 };
 
 const dynamicPrice = {
   price: null,
-  dynamicPrice: true
+  dynamicPrice: true,
 };
 
 const staticPrice = { dynamicPrice: false };
@@ -64,12 +64,12 @@ const priceFilters = {
   country: null,
   channel: null,
   customerGroup: null,
-  date: null
+  date: null,
 };
 const mockRef = {
   current: {
-    scrollIntoView: jest.fn()
-  }
+    scrollIntoView: jest.fn(),
+  },
 };
 
 const bundleName = '[data-testid="bundle-name"]';
@@ -91,7 +91,7 @@ describe('bundle preview', () => {
       .spyOn(AppContext, 'useApplicationContext')
       .mockImplementation(() => ({ project, dataLocale }));
 
-    jest.spyOn(React, 'useEffect').mockImplementation(mockUseEffect);
+    jest.spyOn(React, 'useEffect').mockImplementation(useEffectMock);
   });
 
   beforeEach(() => {
@@ -106,7 +106,7 @@ describe('bundle preview', () => {
         obj: bundle,
         key: 'name',
         language: dataLocale,
-        fallback: project.languages
+        fallback: project.languages,
       })
     );
   });
@@ -119,7 +119,7 @@ describe('bundle preview', () => {
         obj: bundle,
         key: 'description',
         language: dataLocale,
-        fallback: project.languages
+        fallback: project.languages,
       })
     );
   });
@@ -151,7 +151,7 @@ describe('bundle preview', () => {
           obj: bundle.staged,
           key: 'name',
           language: dataLocale,
-          fallback: project.languages
+          fallback: project.languages,
         })
       );
     });
@@ -163,7 +163,7 @@ describe('bundle preview', () => {
           obj: bundle.staged,
           key: 'description',
           language: dataLocale,
-          fallback: project.languages
+          fallback: project.languages,
         })
       );
     });
@@ -171,7 +171,7 @@ describe('bundle preview', () => {
 
   describe('when bundle has images', () => {
     const generateImage = () => ({
-      url: faker.image.imageUrl(640, 480, faker.random.word())
+      url: faker.image.imageUrl(640, 480, faker.random.word()),
     });
 
     it('should display the first image as the main image', () => {
@@ -200,10 +200,7 @@ describe('bundle preview', () => {
 
       describe('when side image selected', () => {
         beforeEach(() => {
-          wrapper
-            .find(sideImage)
-            .first()
-            .simulate('click');
+          wrapper.find(sideImage).first().simulate('click');
           wrapper.update();
         });
 
@@ -240,26 +237,20 @@ describe('bundle preview', () => {
     it('when currency filter changed, should refetch bundle information with price scoped to currency', () => {
       const wrapper = loadBundlePreview();
       const currency = 'EUR';
-      wrapper
-        .find(PriceFilters)
-        .props()
-        .setCurrency(currency);
+      wrapper.find(PriceFilters).props().setCurrency(currency);
       expect(mocks.refetch).toHaveBeenCalledWith({
         ...priceFilters,
-        currency
+        currency,
       });
     });
 
     it('when country filter changed, should refetch bundle information with price scoped to country', () => {
       const wrapper = loadBundlePreview();
       const country = faker.address.country();
-      wrapper
-        .find(PriceFilters)
-        .props()
-        .setCountry(country);
+      wrapper.find(PriceFilters).props().setCountry(country);
       expect(mocks.refetch).toHaveBeenCalledWith({
         ...priceFilters,
-        country
+        country,
       });
     });
 
@@ -267,13 +258,10 @@ describe('bundle preview', () => {
       const wrapper = loadBundlePreview();
       const id = faker.random.uuid();
       const channel = JSON.stringify({ id });
-      wrapper
-        .find(PriceFilters)
-        .props()
-        .setChannel(channel);
+      wrapper.find(PriceFilters).props().setChannel(channel);
       expect(mocks.refetch).toHaveBeenCalledWith({
         ...priceFilters,
-        channel: id
+        channel: id,
       });
     });
 
@@ -281,26 +269,20 @@ describe('bundle preview', () => {
       const wrapper = loadBundlePreview();
       const id = faker.random.uuid();
       const customerGroup = JSON.stringify({ id });
-      wrapper
-        .find(PriceFilters)
-        .props()
-        .setCustomerGroup(customerGroup);
+      wrapper.find(PriceFilters).props().setCustomerGroup(customerGroup);
       expect(mocks.refetch).toHaveBeenCalledWith({
         ...priceFilters,
-        customerGroup: id
+        customerGroup: id,
       });
     });
 
     it('when date filter changed, should refetch bundle information with price scoped to date', () => {
       const wrapper = loadBundlePreview();
       const date = faker.date.recent(10).toISOString();
-      wrapper
-        .find(PriceFilters)
-        .props()
-        .setDate(date);
+      wrapper.find(PriceFilters).props().setDate(date);
       expect(mocks.refetch).toHaveBeenCalledWith({
         ...priceFilters,
-        date
+        date,
       });
     });
   });
@@ -315,12 +297,12 @@ describe('bundle preview', () => {
             ranges: [
               {
                 min,
-                max
-              }
-            ]
-          }
-        }
-      }
+                max,
+              },
+            ],
+          },
+        },
+      },
     };
 
     const priceRangeMin = '[data-testid="price-range-min"]';
@@ -515,8 +497,8 @@ describe('bundle preview', () => {
         .onChange({
           target: {
             name: `${category}.price`,
-            value: { centAmount: additionalCharge, currency: 'USD' }
-          }
+            value: { centAmount: additionalCharge, currency: 'USD' },
+          },
         });
     });
 
@@ -567,8 +549,8 @@ describe('bundle preview', () => {
         .onChange({
           target: {
             name: `${category}.price`,
-            value: { centAmount: additionalCharge, currency: 'USD' }
-          }
+            value: { centAmount: additionalCharge, currency: 'USD' },
+          },
         });
     });
 
@@ -630,8 +612,8 @@ describe('bundle preview', () => {
         .onChange({
           target: {
             name: `${category}.price`,
-            value: { centAmount: lineItemPrice, currency: 'USD' }
-          }
+            value: { centAmount: lineItemPrice, currency: 'USD' },
+          },
         });
     });
 
@@ -667,10 +649,10 @@ describe('bundle preview', () => {
           product: {
             value: JSON.stringify({
               productId: faker.random.uuid(),
-              id: faker.random.number({ min: 1, max: 5 })
-            })
-          }
-        }
+              id: faker.random.number({ min: 1, max: 5 }),
+            }),
+          },
+        },
       }),
       {}
     );
@@ -681,10 +663,10 @@ describe('bundle preview', () => {
       lineItems: [
         {
           productId: bundle.id,
-          quantity: 1
+          quantity: 1,
         },
-        ...lineItems
-      ]
+        ...lineItems,
+      ],
     });
 
     beforeAll(() => {
@@ -694,14 +676,11 @@ describe('bundle preview', () => {
     it('should create cart from bundle with selected products as line items', () => {
       setMutation({ loading: true });
       const wrapper = loadBundlePreview();
-      wrapper
-        .find(Formik)
-        .props()
-        .onSubmit(formValues);
+      wrapper.find(Formik).props().onSubmit(formValues);
       expect(mockMutation).toHaveBeenCalledWith({
         variables: {
-          cartDraft: getCartDraft(selections)
-        }
+          cartDraft: getCartDraft(selections),
+        },
       });
     });
 
@@ -714,8 +693,8 @@ describe('bundle preview', () => {
         .onSubmit({ category0: { quantity: null, product: null } });
       expect(mockMutation).toHaveBeenCalledWith({
         variables: {
-          cartDraft: getCartDraft()
-        }
+          cartDraft: getCartDraft(),
+        },
       });
     });
 
@@ -726,10 +705,7 @@ describe('bundle preview', () => {
       beforeEach(() => {
         setMutation({ data: { createCart: cart } });
         wrapper = loadBundlePreview();
-        wrapper
-          .find(Formik)
-          .props()
-          .onSubmit(formValues);
+        wrapper.find(Formik).props().onSubmit(formValues);
       });
 
       it('should display cart draft as formatted json', () => {
@@ -754,13 +730,10 @@ describe('bundle preview', () => {
       setMutation({ error: { message } });
       const wrapper = loadBundlePreview();
       try {
-        await wrapper
-          .find(Formik)
-          .props()
-          .onSubmit(formValues);
+        await wrapper.find(Formik).props().onSubmit(formValues);
       } catch (err) {
         expect(mockShowNotification).toHaveBeenCalledWith({
-          text: messages.addToCartError.id
+          text: messages.addToCartError.id,
         });
       }
     });

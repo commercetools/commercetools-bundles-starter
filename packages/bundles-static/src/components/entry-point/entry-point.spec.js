@@ -9,15 +9,16 @@ jest.mock('apollo-link-rest');
 jest.mock('apollo-client');
 
 const environment = {
-  mcApiUrl: 'https://mc-api.commercetools.co'
+  mcApiUrl: 'https://mc-api.commercetools.co',
 };
 
 const project = {
-  key: 'test-project'
+  key: 'test-project',
 };
 
 describe('rendering', () => {
   let wrapper;
+
   beforeEach(() => {
     jest
       .spyOn(AppContext, 'useApplicationContext')

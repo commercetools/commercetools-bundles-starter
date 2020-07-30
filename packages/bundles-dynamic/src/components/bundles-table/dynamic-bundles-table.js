@@ -6,7 +6,7 @@ import {
   FormattedNumber,
   useIntl,
 } from 'react-intl';
-import { minBy } from 'lodash';
+import minBy from 'lodash/minBy';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
 import { localize } from '@commercetools-us-ps/mc-app-core/util';

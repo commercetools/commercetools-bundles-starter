@@ -5,13 +5,14 @@ import { find, minBy } from 'lodash';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
 import { localize } from '@commercetools-us-ps/mc-app-core/util';
-import BundlesTable, {
-  COLUMN_KEYS
-} from '@commercetools-us-ps/mc-app-bundles-core/components/bundles-table';
+import {
+  BundlesTable,
+  COLUMN_KEYS,
+} from '@commercetools-us-ps-local/bundles-core/components';
 import {
   CategorySearchInput,
   ProductSearchInput,
-  StatusBadge
+  StatusBadge,
 } from '@commercetools-us-ps/mc-app-core/components';
 import { DATE_FORMAT_OPTIONS, PRODUCTS_ATTRIBUTE } from './constants';
 import columnDefinitions from './column-definitions';
@@ -51,11 +52,11 @@ const StaticBundlesTable = ({ match, history }) => {
           obj: bundle,
           key: 'name',
           language: dataLocale,
-          fallbackOrder: languages
+          fallbackOrder: languages,
         });
       case COLUMN_KEYS.PRODUCTS: {
         const products = find(masterVariant.attributes, {
-          name: PRODUCTS_ATTRIBUTE
+          name: PRODUCTS_ATTRIBUTE,
         });
         return products ? products.value.length : NO_VALUE_FALLBACK;
       }
@@ -96,21 +97,21 @@ const StaticBundlesTable = ({ match, history }) => {
       renderItem={renderItem}
       title={messages.title}
       subtitle={messages.titleResults}
-      filterInputs={filter => (
+      filterInputs={(filter) => (
         <>
           <CategorySearchInput
             name="category"
             placeholder={intl.formatMessage(messages.categoryFilterPlaceholder)}
             horizontalConstraint="m"
             value={category}
-            onChange={event => filterByCategory(event, filter)}
+            onChange={(event) => filterByCategory(event, filter)}
           />
           <ProductSearchInput
             name="product"
             placeholder={intl.formatMessage(messages.productFilterPlaceholder)}
             horizontalConstraint="m"
             value={product}
-            onChange={event => filterByProduct(event, filter)}
+            onChange={(event) => filterByProduct(event, filter)}
           />
         </>
       )}
@@ -124,12 +125,12 @@ StaticBundlesTable.propTypes = {
     path: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
     params: PropTypes.shape({
-      projectKey: PropTypes.string.isRequired
-    }).isRequired
+      projectKey: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
   history: PropTypes.shape({
-    push: PropTypes.func.isRequired
-  }).isRequired
+    push: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default StaticBundlesTable;

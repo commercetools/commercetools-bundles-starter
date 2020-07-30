@@ -4,7 +4,7 @@ import faker from 'faker';
 import { getQuery, setQuery } from '@apollo/react-hooks';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
 import { Table } from '@commercetools-frontend/ui-kit';
-import { mockUseEffect } from '@commercetools-us-ps/mc-app-core/test-util';
+import { useEffectMock } from '@commercetools-us-ps/mc-app-core/test-util';
 import { generateCategoryAttributes } from '../../test-util';
 import { getCategoryAttributes } from '../bundle-preview/category-product-field';
 import PricesTable from './prices-table';
@@ -12,22 +12,22 @@ import { COLUMN_KEYS } from './column-definitions';
 
 const customerGroup = {
   id: faker.random.uuid(),
-  name: faker.random.words()
+  name: faker.random.words(),
 };
 const channel = {
   id: faker.random.uuid(),
-  name: faker.random.words()
+  name: faker.random.words(),
 };
 const filters = {
   currency: faker.finance.currencyCode(),
   country: faker.address.countryCode(),
   customerGroup: JSON.stringify(customerGroup),
   channel: JSON.stringify(channel),
-  date: faker.date.recent(2).toISOString()
+  date: faker.date.recent(2).toISOString(),
 };
 const mocks = {
   mcUrl: faker.internet.url(),
-  categories: Array.from({ length: 3 }).map(generateCategoryAttributes)
+  categories: Array.from({ length: 3 }).map(generateCategoryAttributes),
 };
 
 const generatePriceRangeResults = (
@@ -40,12 +40,12 @@ const generatePriceRangeResults = (
         ranges: [
           {
             min,
-            max
-          }
-        ]
-      }
-    }
-  }
+            max,
+          },
+        ],
+      },
+    },
+  },
 });
 
 global.open = jest.fn();
@@ -53,11 +53,11 @@ global.open = jest.fn();
 const loadPricesTable = async (selectedFilters = filters) => {
   const wrapper = shallow(<PricesTable {...mocks} {...selectedFilters} />);
   return Promise.resolve(wrapper);
-}
+};
 
 describe('prices table', () => {
   beforeAll(() => {
-    jest.spyOn(React, 'useEffect').mockImplementation(mockUseEffect);
+    jest.spyOn(React, 'useEffect').mockImplementation(useEffectMock);
   });
 
   it('should retrieve price ranges for categories', () => {
@@ -89,10 +89,7 @@ describe('prices table', () => {
   it('should render fallback for default column', async () => {
     setQuery({ data: generatePriceRangeResults() });
     const wrapper = await loadPricesTable();
-    const actual = wrapper
-      .find(Table)
-      .props()
-      .itemRenderer({ rowIndex: 0 });
+    const actual = wrapper.find(Table).props().itemRenderer({ rowIndex: 0 });
     expect(actual).toEqual(NO_VALUE_FALLBACK);
   });
 
@@ -137,7 +134,7 @@ describe('prices table', () => {
       data: generatePriceRangeResults(
         faker.random.number({ min: 1000, max: 2000 }),
         null
-      )
+      ),
     });
     const wrapper = await loadPricesTable();
     const index = 0;

@@ -5,9 +5,9 @@ import {
   FlatButton,
   PlusBoldIcon,
   SecondaryButton,
-  Text
+  Text,
 } from '@commercetools-frontend/ui-kit';
-import BundleImages from '@commercetools-us-ps/mc-app-bundles-core/components/bundle-images';
+import { BundleImages } from '@commercetools-us-ps-local/bundles-core/components';
 import SelectVariantImagesModal from './select-variant-images-modal';
 import messages from './messages';
 
@@ -17,7 +17,7 @@ const StaticBundleImages = ({
   version,
   images,
   products,
-  onComplete
+  onComplete,
 }) => {
   const intl = useIntl();
   const [modalOpen, setModalOpen] = useState(false);
@@ -75,8 +75,8 @@ StaticBundleImages.displayName = 'BundleImages';
 StaticBundleImages.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      projectKey: PropTypes.string.isRequired
-    }).isRequired
+      projectKey: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
   id: PropTypes.string.isRequired,
   version: PropTypes.number.isRequired,
@@ -84,10 +84,10 @@ StaticBundleImages.propTypes = {
   images: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
-      url: PropTypes.string.isRequired
+      url: PropTypes.string.isRequired,
     })
   ),
-  onComplete: PropTypes.func.isRequired
+  onComplete: PropTypes.func.isRequired,
 };
 
 export default StaticBundleImages;

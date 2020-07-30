@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router';
 import { useIntl } from 'react-intl';
 import { find } from 'lodash';
-import BundleDetails from '@commercetools-us-ps/mc-app-bundles-core/components/bundle-details';
+import { BundleDetails } from '@commercetools-us-ps-local/bundles-core/components';
 import { TabHeader } from '@commercetools-us-ps/mc-app-core/components';
 import { transformLocalizedFieldToString } from '@commercetools-us-ps/mc-app-core/util';
 import { ROOT_PATH } from '../../constants';
@@ -12,7 +12,7 @@ import StaticBundleImages from '../bundle-images';
 import BundlePrices from '../bundle-prices';
 import messages from './messages';
 
-export const transformResults = results => ({
+export const transformResults = (results) => ({
   variantId: results.masterVariant.id,
   name: transformLocalizedFieldToString(results.nameAllLocales),
   description: transformLocalizedFieldToString(results.descriptionAllLocales),
@@ -20,7 +20,7 @@ export const transformResults = results => ({
   products: find(results.masterVariant.attributesRaw, { name: 'products' })
     .value,
   slug: results.slug,
-  images: results.masterVariant.images
+  images: results.masterVariant.images,
 });
 
 const StaticBundleDetails = ({ match }) => {
@@ -89,9 +89,9 @@ StaticBundleDetails.propTypes = {
     url: PropTypes.string,
     params: PropTypes.shape({
       projectKey: PropTypes.string.isRequired,
-      bundleId: PropTypes.string.isRequired
-    }).isRequired
-  }).isRequired
+      bundleId: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default StaticBundleDetails;

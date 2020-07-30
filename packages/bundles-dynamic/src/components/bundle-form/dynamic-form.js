@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { BundleForm } from '@commercetools-us-ps/mc-app-bundles-core/components';
+import { BundleForm } from '@commercetools-us-ps-local/bundles-core/components/bundle-form';
 import {
   CheckboxInput,
   ErrorMessage,
   FieldLabel,
   NumberInput,
   Spacings,
-  Text
+  Text,
 } from '@commercetools-frontend/ui-kit';
 import CategoryField from '../category-field';
 import messages from './messages';
@@ -18,10 +18,10 @@ const FIELDS = {
   DYNAMIC_PRICE: 'dynamicPrice',
   QUANTITY: 'quantity',
   MIN_QUANTITY: 'minQuantity',
-  MAX_QUANTITY: 'maxQuantity'
+  MAX_QUANTITY: 'maxQuantity',
 };
 
-const DynamicForm = props => {
+const DynamicForm = (props) => {
   const { values, touched, errors, handleBlur, handleChange } = props;
   const { dynamicPrice } = values;
 
@@ -88,7 +88,7 @@ const DynamicForm = props => {
           {errors.maxQuantity && (
             <ErrorMessage>{errors.maxQuantity}</ErrorMessage>
           )}
-        </Spacings.Stack>
+        </Spacings.Stack>,
       ]}
       component={{
         name: FIELDS.CATEGORIES,
@@ -109,7 +109,7 @@ const DynamicForm = props => {
             push={push}
             remove={remove}
           />
-        )
+        ),
       }}
     />
   );
@@ -118,7 +118,7 @@ DynamicForm.displayName = 'Form';
 DynamicForm.propTypes = {
   dataLocale: PropTypes.string.isRequired,
   initialValidation: PropTypes.shape({
-    slugDefined: PropTypes.bool
+    slugDefined: PropTypes.bool,
   }).isRequired,
   values: PropTypes.shape({
     name: PropTypes.objectOf(PropTypes.string).isRequired,
@@ -132,21 +132,21 @@ DynamicForm.propTypes = {
       PropTypes.shape({
         category: PropTypes.shape({
           label: PropTypes.string,
-          value: PropTypes.string
-        })
+          value: PropTypes.string,
+        }),
       })
-    ).isRequired
+    ).isRequired,
   }).isRequired,
   errors: PropTypes.shape({
     name: PropTypes.shape({
-      missing: PropTypes.bool
+      missing: PropTypes.bool,
     }),
     minQuantity: PropTypes.string,
     maxQuantity: PropTypes.string,
     categories: PropTypes.array,
     slug: PropTypes.shape({
-      missing: PropTypes.bool
-    })
+      missing: PropTypes.bool,
+    }),
   }).isRequired,
   touched: PropTypes.shape({
     name: PropTypes.objectOf(PropTypes.bool),
@@ -160,17 +160,17 @@ DynamicForm.propTypes = {
       PropTypes.shape({
         category: PropTypes.oneOfType([
           PropTypes.bool,
-          PropTypes.shape({ label: PropTypes.bool, value: PropTypes.bool })
-        ])
+          PropTypes.shape({ label: PropTypes.bool, value: PropTypes.bool }),
+        ]),
       })
-    )
+    ),
   }),
   isValid: PropTypes.bool.isRequired,
   isSubmitting: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleBlur: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  setFieldValue: PropTypes.func.isRequired
+  setFieldValue: PropTypes.func.isRequired,
 };
 
 export default DynamicForm;

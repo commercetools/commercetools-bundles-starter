@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { FieldArray } from 'formik';
-import { kebabCase, mapValues } from 'lodash';
+import kebabCase from 'lodash/kebabCase';
+import mapValues from 'lodash/mapValues';
 import {
   Card,
   CollapsiblePanel,
@@ -12,7 +13,7 @@ import {
   PrimaryButton,
   Spacings,
   Text,
-  TextField
+  TextField,
 } from '@commercetools-frontend/ui-kit';
 import messages from './messages';
 import styles from './form.mod.css';
@@ -31,7 +32,7 @@ const Form = ({
   handleBlur,
   handleChange,
   handleSubmit,
-  setFieldValue
+  setFieldValue,
 }) => {
   const intl = useIntl();
 
@@ -40,7 +41,7 @@ const Form = ({
       !initialValidation.slugDefined &&
       !LocalizedTextInput.isTouched(touched.slug)
     ) {
-      const slug = mapValues(values.name, value =>
+      const slug = mapValues(values.name, (value) =>
         kebabCase(value).toLowerCase()
       );
       setFieldValue('slug', slug);
@@ -119,7 +120,7 @@ const Form = ({
       >
         <Constraints.Horizontal constraint="l">
           {fields &&
-            fields.map(field => (
+            fields.map((field) => (
               <Card
                 key={field.props.name}
                 type="flat"
@@ -181,32 +182,32 @@ Form.propTypes = {
   fields: PropTypes.arrayOf(PropTypes.node),
   component: PropTypes.shape({
     name: PropTypes.string,
-    field: PropTypes.func
+    field: PropTypes.func,
   }),
   initialValidation: PropTypes.shape({
-    slugDefined: PropTypes.bool
+    slugDefined: PropTypes.bool,
   }).isRequired,
   values: PropTypes.shape({
     name: PropTypes.objectOf(PropTypes.string).isRequired,
     description: PropTypes.objectOf(PropTypes.string),
     key: PropTypes.string.isRequired,
     sku: PropTypes.string,
-    slug: PropTypes.objectOf(PropTypes.string).isRequired
+    slug: PropTypes.objectOf(PropTypes.string).isRequired,
   }).isRequired,
   errors: PropTypes.shape({
     name: PropTypes.shape({
-      missing: PropTypes.bool
+      missing: PropTypes.bool,
     }),
     slug: PropTypes.shape({
-      missing: PropTypes.bool
-    })
+      missing: PropTypes.bool,
+    }),
   }).isRequired,
   touched: PropTypes.shape({
     name: PropTypes.objectOf(PropTypes.bool),
     description: PropTypes.objectOf(PropTypes.bool),
     key: PropTypes.bool,
     sku: PropTypes.bool,
-    slug: PropTypes.objectOf(PropTypes.bool)
+    slug: PropTypes.objectOf(PropTypes.bool),
   }),
   dirty: PropTypes.bool.isRequired,
   isValid: PropTypes.bool.isRequired,
@@ -214,7 +215,7 @@ Form.propTypes = {
   handleChange: PropTypes.func.isRequired,
   handleBlur: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  setFieldValue: PropTypes.func.isRequired
+  setFieldValue: PropTypes.func.isRequired,
 };
 
 export default Form;

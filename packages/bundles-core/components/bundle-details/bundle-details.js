@@ -10,11 +10,11 @@ import {
   Loading,
   TabContainer,
   View,
-  ViewHeader
+  ViewHeader,
 } from '@commercetools-us-ps/mc-app-core/components';
 import { localize } from '@commercetools-us-ps/mc-app-core/util';
 import { usePathContext } from '../../context';
-import BundleCommands from '../bundle-commands';
+import { BundleCommands } from '../bundle-commands';
 import GetBundle from './get-bundle.graphql';
 import messages from './messages';
 
@@ -28,9 +28,9 @@ const BundleDetails = ({ match, transformResults, headers, container }) => {
       target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
       id: match.params.bundleId,
       locale: dataLocale,
-      currency: project.currencies[0]
+      currency: project.currencies[0],
     },
-    fetchPolicy: 'no-cache'
+    fetchPolicy: 'no-cache',
   });
 
   const { languages } = project;
@@ -50,7 +50,7 @@ const BundleDetails = ({ match, transformResults, headers, container }) => {
 
   const transformed = {
     current: transformResults(current),
-    staged: transformResults(staged)
+    staged: transformResults(staged),
   };
 
   const bundle = {
@@ -61,7 +61,7 @@ const BundleDetails = ({ match, transformResults, headers, container }) => {
     slug,
     ...(hasStagedChanges ? transformed.staged : transformed.current),
     current: transformed.current,
-    staged: transformed.staged
+    staged: transformed.staged,
   };
 
   return (
@@ -72,7 +72,7 @@ const BundleDetails = ({ match, transformResults, headers, container }) => {
           key: 'name',
           language: dataLocale,
           fallback: id,
-          fallbackOrder: languages
+          fallbackOrder: languages,
         })}
         backToList={
           <BackToList
@@ -104,12 +104,12 @@ BundleDetails.propTypes = {
     url: PropTypes.string,
     params: PropTypes.shape({
       projectKey: PropTypes.string.isRequired,
-      bundleId: PropTypes.string.isRequired
-    }).isRequired
+      bundleId: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
   transformResults: PropTypes.func.isRequired,
   headers: PropTypes.node.isRequired,
-  container: PropTypes.func.isRequired
+  container: PropTypes.func.isRequired,
 };
 
 export default BundleDetails;
