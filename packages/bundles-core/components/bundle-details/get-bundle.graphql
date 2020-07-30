@@ -1,0 +1,62 @@
+fragment BundleDetails on ProductData {
+  nameAllLocales {
+    locale
+    value
+  }
+  descriptionAllLocales {
+    locale
+    value
+  }
+  slug(locale: $locale)
+  masterVariant {
+    sku
+    attributesRaw {
+      name
+      value
+    }
+    images {
+      url
+      label
+    }
+    price(
+      currency: $currency
+      country: $country
+      customerGroupId: $customerGroup
+      channelId: $channel
+      date: $date
+    ) {
+      value {
+        type
+        currencyCode
+        centAmount
+        fractionDigits
+      }
+    }
+  }
+}
+
+query GetBundle(
+  $id: String!
+  $locale: Locale!
+  $currency: Currency!
+  $country: Country
+  $customerGroup: String
+  $channel: String
+  $date: DateTime
+) {
+  product(id: $id) {
+    id
+    key
+    version
+    masterData {
+      published
+      hasStagedChanges
+      current {
+        ...BundleDetails
+      }
+      staged {
+        ...BundleDetails
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": "Bundles",
+  "uriPath": "bundle-manager",
+  "icon": "RocketIcon",
+  "permissions": ["ViewProducts", "ManageProducts"],
+  "featureToggle": null,
+  "submenu": [],
+  "labelAllLocales": [
+    {
+      "locale": "en",
+      "value": "Bundles"
+    },
+    {
+      "locale": "de",
+      "value": "Bundles"
+    },
+    {
+      "locale": "es",
+      "value": "Bundles"
+    }
+  ]
+}

@@ -1,9 +1,6 @@
-node_modules/
-dist/
-coverage/
-public/
-csp.json
-env.json
-.firebase/
-firebase.json
-lambda.js
+node_modules
+coverage
+.terraform
+*.tfstate*
+*.tfvars
+.npmrc

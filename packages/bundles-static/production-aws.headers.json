@@ -1,0 +1,7 @@
+{
+  "csp": {
+    "script-src": [],
+    "connect-src": [],
+    "style-src": []
+  }
+}

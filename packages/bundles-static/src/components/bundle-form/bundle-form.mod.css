@@ -1,0 +1,16 @@
+.panel {
+  margin-bottom: var(--spacing-s) !important;
+}
+
+.field-card {
+  border: 1px solid var(--color-neutral);
+  margin-bottom: var(--spacing-s);
+}
+
+.field-card:last-of-type {
+  margin-bottom: 0;
+}
+
+.field-card > div {
+  padding: var(--spacing-s);
+}
