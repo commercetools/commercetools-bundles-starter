@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Bundles Development Accelerator
+title: Bundles Development Accelerator - Custom Applications
 description: Create and manage bundles on the commercetools platform.
 ---
 
