@@ -1,4 +1,5 @@
 title: Bundles Development Accelerator
+description: Create and manage bundles on the commercetools platform.
 plugins:
   - jekyll-relative-links
 relative_links:
