@@ -65,7 +65,7 @@ Professional Services team.
 auth token then run the following commands to configure npm. This will allow the
 installation of the private package.
 
-```shell script
+```shell
 export NPM_TOKEN=xxxx-xxxx-xxxx-xxxx
 npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
 ```
