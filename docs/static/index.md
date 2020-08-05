@@ -50,3 +50,22 @@ project and will deploy:
   – For managing 1...n variant references from a static bundle
 - [Custom Line Item Type](https://github.com/commercetools/platform-extension-static-bundles/blob/master/resourceDefinitions/types/static-bundle-parent-child-link.json)
   – For managing cart process
+
+## Installation
+
+Simply run `yarn` from the repository root to install the application's
+dependencies.
+
+The application has a dependency on the private package
+`@commercetools-us-ps/mc-app-core`, which requires an
+[npm auth token](https://docs.npmjs.com/about-authentication-tokens). To acquire
+an auth token, request access to the `@commercetools-us-ps` scope from the US
+Professional Services team.
+[Create](https://docs.npmjs.com/creating-and-viewing-authentication-tokens) the
+auth token then run the following commands to configure npm. This will allow the
+installation of the private package.
+
+```shell script
+export NPM_TOKEN=xxxx-xxxx-xxxx-xxxx
+npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
+```

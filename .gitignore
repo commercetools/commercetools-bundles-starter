@@ -3,4 +3,3 @@ coverage
 .terraform
 *.tfstate*
 *.tfvars
-.npmrc
