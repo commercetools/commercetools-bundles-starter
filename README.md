@@ -1,4 +1,4 @@
-# Bundles Custom Applications
+# Bundles Development Accelerator (Custom Applications)
 
 ## Installation
 
