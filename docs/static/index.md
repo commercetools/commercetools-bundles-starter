@@ -35,3 +35,18 @@ this solution assists merchandisers in creating and managing static bundles.
 - [Prettier](https://prettier.io/docs/en/index.html) - Code formatter
 - [ESLint](https://eslint.org/docs/user-guide/getting-started) - JS, CSS, and
   GraphQL linter
+
+## Configuration
+
+A
+[terraform script](https://github.com/commercetools/platform-extension-static-bundles#terraform)
+initializes the commercetools project for using static bundles. Prior to using
+static bundles, this terraform script must be executed against the commercetools
+project and will deploy:
+
+- [Static Bundle Product Type](https://github.com/commercetools/platform-extension-static-bundles/blob/master/resourceDefinitions/productTypes/static-bundle-parent.json)
+  – For creating new bundles
+- [Nested Product Type](https://github.com/commercetools/platform-extension-static-bundles/blob/master/resourceDefinitions/productTypes/static-bundle-child-variant.json)
+  – For managing 1...n variant references from a static bundle
+- [Custom Line Item Type](https://github.com/commercetools/platform-extension-static-bundles/blob/master/resourceDefinitions/types/static-bundle-parent-child-link.json)
+  – For managing cart process
