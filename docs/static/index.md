@@ -153,3 +153,23 @@ hooks are configured as follows:
 - **Commit Message**: Commit messages are linted against the
   [conventional commit format](https://www.conventionalcommits.org) using
   commitlint
+
+## Tests
+
+Run the following command to run the tests:
+
+```shell
+yarn test
+```
+
+To run the tests in watch mode:
+
+```shell
+yarn test:watch
+```
+
+To run the tests with coverage:
+
+```shell
+yarn test:coverage
+```
