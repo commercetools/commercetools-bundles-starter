@@ -173,3 +173,38 @@ To run the tests with coverage:
 ```shell
 yarn test:coverage
 ```
+
+## Build & Deployment
+
+Run the following command to build the
+[production bundles](https://docs.commercetools.com/custom-applications/deployment/production-build)
+with webpack:
+
+```bash
+yarn build
+```
+
+The application includes configuration for both AWS (S3 & CloudFront) and
+Firebase serverless deployments built with `mc-script compile-html`.
+
+- [Firebase](https://appkit.commercetools.com/deployment/example-firebase):
+  `yarn compile-html:firebase`
+- [AWS - S3 & CloudFront](https://appkit.commercetools.com/deployment/example-aws-s3-cloudfront):
+  `yarn compile-html:aws`
+
+For either deployment option, the corresponding `production-{cloud}.env.json`
+and `production-{cloud}.headers.json` files must be modified with values that
+match your deployment environment.
+
+### Registration with Merchant Center
+
+After deploying the custom application, it needs to be
+[registered](https://docs.commercetools.com/custom-applications/register-applications/configuring-a-custom-application)
+with a Merchant Center project.
+
+#### Configuration Values
+
+- **Main Route Path**: bundle-manager
+- **Link Permissions**: Manage Products, View Products
+
+![](./custom-application-registration.png)
