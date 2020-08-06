@@ -69,3 +69,87 @@ installation of the private package.
 export NPM_TOKEN=xxxx-xxxx-xxxx-xxxx
 npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
 ```
+
+## Development
+
+### Start the development server
+
+Run the following command to start the development server and launch the
+application:
+
+```shell
+yarn start
+```
+
+If this is the first time running the application locally, create an `env.json`
+file at the static bundles root directory using `env.local.json` as an example.
+Based on your [region](https://docs.commercetools.com/http-api.html#regions),
+you may find it necessary to modify the values of `frontendHost`, `mcApiUrl`,
+and `location`.
+
+### Troubleshooting
+
+#### `graphql_error.invalid_token` error
+
+Log out of [Merchant Center](https://mc.commercetools.co/). Log back in, then
+return to the custom application and reload.
+
+#### Do's and Don'ts
+
+- **Don't** use the application development login screen to authenticate.
+- **Do** make sure you are logged in to Merchant Center before developing or
+  running a custom application.
+
+### Linting & Formatting
+
+#### Formatting code
+
+Run the following command to format JS, CSS, JSON and GraphQL files
+
+```shell
+yarn format
+```
+
+#### Linting code
+
+Run the following command to lint JS, CSS, and GraphQL files
+
+```shell
+yarn lint
+```
+
+##### Linting GraphQL Queries
+
+A prerequisite for linting GraphQL queries is generating a `schema.graphql`
+file, which contains the Types exposed by CTP API. Every time the API introduces
+new Types, Queries or Mutations, the local `schema.graphql` must be updated.
+
+##### Generating CTP GraphQL schema
+
+1. If you haven't done so already, create an API client under
+   `Settings -> Developer Settings` in Merchant Center for your project
+2. Generate an access token using the
+   [Client Credentials flow](https://docs.commercetools.com/http-api-authorization#client-credentials-flow)
+3. Export both your Merchant Center project key and generated access token as
+   environment variables
+4. Retrieve schema with `graphql-cli`
+
+```shell
+export PROJECT_KEY={project_key}
+export AUTH_TOKEN={access_token}
+npx graphql-cli get-schema
+```
+
+### Git Hooks
+
+Git hooks are configured using
+[Husky](https://github.com/typicode/husky/blob/master/DOCS.md). The root
+workspace runs all workspace hooks using Lerna
+([example repository](https://github.com/sudo-suhas/lint-staged-multi-pkg)). The
+hooks are configured as follows:
+
+- **Pre-commit**: JS, CSS, and GraphQL files are linted (ESLint/Stylelint) and
+  formatted (Prettier). Fixes are automatically added to Git.
+- **Commit Message**: Commit messages are linted against the
+  [conventional commit format](https://www.conventionalcommits.org) using
+  commitlint
