@@ -51,6 +51,55 @@ project and will deploy:
 - [Custom Line Item Type](https://github.com/commercetools/platform-extension-static-bundles/blob/master/resourceDefinitions/types/static-bundle-parent-child-link.json)
   – For managing cart process
 
+## Architecture
+
+### Product
+
+A bundle is a commercetools
+[product](https://docs.commercetools.com/http-api-projects-products) with only a
+master variant. The bundle components are stored as attributes of the master
+variant in accordance with the bundle [product types](#product-types).
+
+### Product Types
+
+#### StaticBundleParent
+
+- **products** - Array of
+  [StaticBundleChildVariant](#staticbundlechildvariant) - Required\
+  The components of the bundle
+- **productsSearch** - Array of String - Required\
+  The bundle components stringified as `{productId}/{variantId}` and used to filter
+  the bundle list
+
+#### StaticBundleChildVariant
+
+A bundle component, which is a
+[product variant](https://docs.commercetools.com/http-api-projects-products.html#productvariant).
+
+- **variant-id** - Number - Required\
+  The ID of the product variant.
+- **quantity** - Number - Required\
+  The number of the component within the bundle.
+- **sku** - String\
+  The SKU of the product variant. Used for display purposes within the product search
+  when viewing a bundle.
+- **product-ref** - Product
+  [Reference](https://docs.commercetools.com/http-api-types.html#reference) \
+  A reference to the product associated with the bundle product variant. Used to
+  create the product search value.
+- **product-name** -
+  [LocalizedString](https://docs.commercetools.com/http-api-types.html#localizedstring)
+  \
+  The name of the product associated with the bundle product variant. Used for display
+  purposes within the product search when viewing a bundle.\
+
+_Note:_ If any of the underlying values of the selected product variant or
+product change, the attribute values will not be updated until the bundle
+component in question is re-selected and saved on the bundle with the new
+values.
+
+![](./static-bundle-parent.png) ![](./static-bundle-child-variant.png)
+
 ## Installation
 
 Simply run `yarn` from the repository root to install the application's
