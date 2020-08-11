@@ -91,7 +91,7 @@ A bundle component, which is a
   [LocalizedString](https://docs.commercetools.com/http-api-types.html#localizedstring)
   \
   The name of the product associated with the bundle product variant. Used for display
-  purposes within the product search when viewing a bundle.\
+  purposes within the product search when viewing a bundle.
 
 _Note:_ If any of the underlying values of the selected product variant or
 product change, the attribute values will not be updated until the bundle
@@ -257,3 +257,12 @@ with a Merchant Center project.
 - **Link Permissions**: Manage Products, View Products
 
 ![](./custom-application-registration.png)
+
+## Complete the Solution: Your Implementation Responsibilities
+
+To complete the bundles solution, you will need to supply a product detail page
+(PDP) for the static bundle products in your frontend implementation. Depending
+on your use case, the PDP can utilize the bundle attributes to display the
+individual bundle components, or you can rely on the bundle product's images to
+convey that information. Using the latter option means that you can use the same
+PDP implementation to display all of your commercetools products.
