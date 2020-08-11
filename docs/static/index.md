@@ -560,3 +560,8 @@ on your use case, the PDP can utilize the bundle attributes to display the
 individual bundle components, or you can rely on the bundle product's images to
 convey that information. Using the latter option means that you can use the same
 PDP implementation to display all of your commercetools products.
+
+## Support
+
+Contact the US Professional Services team for all support requests related to
+the static bundles solution.
