@@ -100,6 +100,300 @@ values.
 
 ![](./static-bundle-parent.png) ![](./static-bundle-child-variant.png)
 
+#### Sample Bundle
+
+```json
+{
+  "id": "c7e3e38e-870d-4359-8fbf-1cc4b4c53eae",
+  "version": 74,
+  "productType": {
+    "typeId": "product-type",
+    "id": "1a1b24be-ae4a-4b98-a2cd-3225d5e7ce04",
+    "obj": {
+      "id": "1a1b24be-ae4a-4b98-a2cd-3225d5e7ce04",
+      "version": 6,
+      "createdAt": "2019-08-26T14:38:06.189Z",
+      "lastModifiedAt": "2019-10-09T13:13:52.005Z",
+      "lastModifiedBy": {
+        "isPlatformClient": true,
+        "user": {
+          "typeId": "user",
+          "id": "f2303e24-a06c-458c-8986-363b8cf208c4"
+        }
+      },
+      "createdBy": {
+        "clientId": "RftQf1edB6sYPMh7uq8GisJ_",
+        "isPlatformClient": false
+      },
+      "name": "StaticBundleParent",
+      "description": "A static bundle of product variants",
+      "classifier": "Complex",
+      "attributes": [
+        {
+          "name": "products",
+          "label": { "en": "Products" },
+          "isRequired": false,
+          "type": {
+            "name": "set",
+            "elementType": {
+              "name": "nested",
+              "typeReference": {
+                "typeId": "product-type",
+                "id": "25583dd7-4177-4c3d-908b-a5030ca2d029"
+              }
+            }
+          },
+          "attributeConstraint": "None",
+          "isSearchable": true,
+          "inputHint": "SingleLine",
+          "displayGroup": "Other"
+        },
+        {
+          "name": "productSearch",
+          "label": { "en": "Products (Search)" },
+          "isRequired": false,
+          "type": { "name": "set", "elementType": { "name": "text" } },
+          "attributeConstraint": "None",
+          "isSearchable": true,
+          "inputHint": "SingleLine",
+          "displayGroup": "Other"
+        }
+      ],
+      "key": "static-bundle-parent"
+    }
+  },
+  "name": { "en": "Travel Bundle", "de": "Noch ein Bundle" },
+  "description": {
+    "de": "Alles was Sie brauchen, um zu wandern.",
+    "en": "Everything you need to wander."
+  },
+  "categories": [],
+  "categoryOrderHints": {},
+  "slug": { "en": "travel-bundle" },
+  "masterVariant": {
+    "id": 1,
+    "prices": [
+      {
+        "value": {
+          "type": "centPrecision",
+          "currencyCode": "USD",
+          "centAmount": 17339,
+          "fractionDigits": 2
+        },
+        "id": "d7f33a98-5f4f-4490-819b-0e4a396d4ed2"
+      },
+      {
+        "value": {
+          "type": "centPrecision",
+          "currencyCode": "USD",
+          "centAmount": 16000,
+          "fractionDigits": 2
+        },
+        "id": "06e1f3be-fbb6-4125-bb18-61fe310d2ef9",
+        "customerGroup": {
+          "typeId": "customer-group",
+          "id": "182489ba-57a0-486b-ab91-c3bc7d30976b",
+          "obj": {
+            "id": "182489ba-57a0-486b-ab91-c3bc7d30976b",
+            "version": 2,
+            "createdAt": "2019-05-31T14:02:03.178Z",
+            "lastModifiedAt": "2019-09-27T16:33:43.807Z",
+            "lastModifiedBy": {
+              "isPlatformClient": true,
+              "user": {
+                "typeId": "user",
+                "id": "f2303e24-a06c-458c-8986-363b8cf208c4"
+              }
+            },
+            "createdBy": {
+              "clientId": "AS2q4W4InSWREs5JQBltxP5V",
+              "isPlatformClient": false
+            },
+            "name": "Platinum",
+            "key": "platinum"
+          }
+        }
+      }
+    ],
+    "images": [
+      {
+        "url": "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/072599_1_medium.jpg",
+        "dimensions": { "w": 0, "h": 0 }
+      },
+      {
+        "url": "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/084058_1_large.jpg",
+        "dimensions": { "w": 0, "h": 0 }
+      },
+      {
+        "url": "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/085391_1_large.jpg",
+        "dimensions": { "w": 0, "h": 0 }
+      },
+      {
+        "url": "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/085314_1_medium.jpg",
+        "dimensions": { "w": 0, "h": 0 }
+      }
+    ],
+    "attributes": [
+      {
+        "name": "products",
+        "value": [
+          [
+            { "value": 1, "name": "variant-id" },
+            { "value": "A0E200000002ABW", "name": "sku" },
+            { "value": 2, "name": "quantity" },
+            {
+              "value": {
+                "typeId": "product",
+                "id": "52b4bf82-4050-4dfc-be35-75c1621cd63b"
+              },
+              "name": "product-ref"
+            },
+            {
+              "value": {
+                "de": "Polaroidkamera „Spirit 600 CL“ Impossible schwarz",
+                "en": "Polaroid Camera “Spirit 600 CL“ Impossible black"
+              },
+              "name": "product-name"
+            }
+          ],
+          [
+            { "value": 2, "name": "variant-id" },
+            { "value": "M0E20000000EH7O", "name": "sku" },
+            { "value": 1, "name": "quantity" },
+            {
+              "value": {
+                "typeId": "product",
+                "id": "038d1661-f61e-4b01-976c-0dfb523056ba"
+              },
+              "name": "product-ref"
+            },
+            {
+              "value": {
+                "de": "Shorts Maison Scotch multi",
+                "en": "Shorts Maison Scotch multi"
+              },
+              "name": "product-name"
+            }
+          ],
+          [
+            { "value": 7, "name": "variant-id" },
+            { "value": "M0E20000000DJQB", "name": "sku" },
+            { "value": 1, "name": "quantity" },
+            {
+              "value": {
+                "typeId": "product",
+                "id": "e999a590-0321-4956-bb87-cafb84b3c660"
+              },
+              "name": "product-ref"
+            },
+            {
+              "value": { "en": "Shirt Pinko beige", "de": "Bluse Pinko beige" },
+              "name": "product-name"
+            }
+          ],
+          [
+            { "value": 1, "name": "variant-id" },
+            { "value": "M0E20000000F67V", "name": "sku" },
+            { "value": 1, "name": "quantity" },
+            {
+              "value": {
+                "typeId": "product",
+                "id": "eb861953-7620-4c56-8f05-8e659af20e5a"
+              },
+              "name": "product-ref"
+            },
+            {
+              "value": { "en": "Hogan – Sneaker", "de": "Hogan – Sneaker" },
+              "name": "product-name"
+            }
+          ],
+          [
+            { "value": 7, "name": "variant-id" },
+            { "value": "M0E20000000F753", "name": "sku" },
+            { "value": 3, "name": "quantity" },
+            {
+              "value": {
+                "typeId": "product",
+                "id": "79ee9759-e37b-4b0c-b615-fa46dd2aa77b"
+              },
+              "name": "product-ref"
+            },
+            {
+              "value": { "de": "Cycle – Jeans", "en": "Cycle – Jeans" },
+              "name": "product-name"
+            }
+          ]
+        ]
+      },
+      {
+        "name": "productSearch",
+        "value": [
+          "52b4bf82-4050-4dfc-be35-75c1621cd63b/1",
+          "038d1661-f61e-4b01-976c-0dfb523056ba/2",
+          "e999a590-0321-4956-bb87-cafb84b3c660/7",
+          "eb861953-7620-4c56-8f05-8e659af20e5a/1",
+          "79ee9759-e37b-4b0c-b615-fa46dd2aa77b/7"
+        ]
+      }
+    ],
+    "assets": []
+  },
+  "variants": [],
+  "searchKeywords": {},
+  "hasStagedChanges": true,
+  "published": true,
+  "key": "c7e3e38e-870d-4359-8fbf-1cc4b4c53eae",
+  "taxCategory": {
+    "typeId": "tax-category",
+    "id": "a1af21d4-444c-409d-82a6-c3163b28b8e9",
+    "obj": {
+      "id": "a1af21d4-444c-409d-82a6-c3163b28b8e9",
+      "version": 1,
+      "createdAt": "2019-05-31T14:01:54.035Z",
+      "lastModifiedAt": "2019-05-31T14:01:54.035Z",
+      "lastModifiedBy": {
+        "clientId": "AS2q4W4InSWREs5JQBltxP5V",
+        "isPlatformClient": false
+      },
+      "createdBy": {
+        "clientId": "AS2q4W4InSWREs5JQBltxP5V",
+        "isPlatformClient": false
+      },
+      "name": "standard",
+      "rates": [
+        {
+          "name": "20% incl.",
+          "amount": 0.2,
+          "includedInPrice": true,
+          "country": "AT",
+          "id": "8us0Y-Ay",
+          "subRates": []
+        },
+        {
+          "name": "10% incl.",
+          "amount": 0.1,
+          "includedInPrice": true,
+          "country": "US",
+          "id": "EGg9RL8e",
+          "subRates": []
+        },
+        {
+          "name": "19% incl.",
+          "amount": 0.19,
+          "includedInPrice": true,
+          "country": "DE",
+          "id": "FIHSMRUP",
+          "subRates": []
+        }
+      ],
+      "key": "standard"
+    }
+  },
+  "createdAt": "2019-08-29T18:25:03.256Z",
+  "lastModifiedAt": "2020-07-31T15:37:26.719Z"
+}
+```
+
 ## Installation
 
 Simply run `yarn` from the repository root to install the application's
