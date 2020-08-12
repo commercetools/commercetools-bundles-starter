@@ -24,3 +24,4 @@ virtual SKU, the items are packaged and delivered. This solution targets these
 virtual or post-pack bundles.
 
 - [Static Bundles Documentation](./static/index.md)
+- [Dynamic Bundles Documentation](./dynamic/index.md)
