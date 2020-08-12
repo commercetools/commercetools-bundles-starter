@@ -36,20 +36,74 @@ this solution assists merchandisers in creating and managing static bundles.
 - [ESLint](https://eslint.org/docs/user-guide/getting-started) - JS, CSS, and
   GraphQL linter
 
-## Configuration
+## Features
 
-A
-[terraform script](https://github.com/commercetools/platform-extension-static-bundles#terraform)
-initializes the commercetools project for using static bundles. Prior to using
-static bundles, this terraform script must be executed against the commercetools
-project and will deploy:
+### Bundles List
 
-- [Static Bundle Product Type](https://github.com/commercetools/platform-extension-static-bundles/blob/master/resourceDefinitions/productTypes/static-bundle-parent.json)
-  – For creating new bundles
-- [Nested Product Type](https://github.com/commercetools/platform-extension-static-bundles/blob/master/resourceDefinitions/productTypes/static-bundle-child-variant.json)
-  – For managing 1...n variant references from a static bundle
-- [Custom Line Item Type](https://github.com/commercetools/platform-extension-static-bundles/blob/master/resourceDefinitions/types/static-bundle-parent-child-link.json)
-  – For managing cart process
+The landing page for the static bundles custom application is a list displaying
+the static bundles within the commercetools project.
+
+![Bundles List](./features/bundles-list.gif)
+
+- Pagination
+  - [Default page size](https://github.com/commercetools/mc-custom-app-bundles/blob/8664055fa790e88c3f681a0a08057d46fe176707/packages/bundles-core/components/bundles-table/constants.js#L4)
+    of 30,
+  - Displayed when the number of static bundles exceeds the page size
+- Sorting
+  - Sortable columns are Name, Price, and Last Modified
+  - [Initial sort](https://github.com/commercetools/mc-custom-app-bundles/blob/8664055fa790e88c3f681a0a08057d46fe176707/packages/bundles-core/components/bundles-table/constants.js#L5)
+    is Last Modified in descending order (most recent to least recent bundles)
+- Search for a bundle using
+  [product projections search](https://docs.commercetools.com/http-api-projects-products-search)
+- Filter
+  - By bundle category (must be set on bundle from Merchant Center Products
+    application: `https://mc.commercetools.co/{projectKey}/products/{bundleId}`)
+  - By product variant within bundle
+
+### Bundle Creation
+
+![Create Bundle](./features/bundle-creation.gif)
+
+- Single step to create a static bundle with basic information
+- Search for a product variant using
+  [product projections search](https://docs.commercetools.com/http-api-projects-products-search)
+- Automatic slug creation based on the name of the bundle, which can be modified
+  to suit your needs
+
+### Bundle Details
+
+Manage bundle information, add images, and determine pricing strategies.
+
+- Manage the bundle's published status
+- Delete unpublished bundle
+
+#### General
+
+Edit the bundle's general information.
+
+![Bundle Details - General](./features/bundle-details-general.gif)
+
+#### Images
+
+![Bundle Details - Images](./features/bundle-details-images.gif)
+
+- Add image(s) to the bundle from the images of the bundle's components (product
+  variants)
+- Add image(s) directly to the bundle via Merchant Center
+- Remove images
+- Manage other image properties via Merchant Center
+
+#### Prices
+
+View the prices of the bundle components in various scopes to determine its
+prices.
+
+![Bundle Details - Prices](./features/bundle-details-prices.gif)
+
+- View bundle component prices in different
+  [price scopes](https://docs.commercetools.com/http-api-projects-products#scopedprice)
+- Add a price via Merchant Center
+- View prices via Merchant Center
 
 ## Architecture
 
@@ -98,7 +152,8 @@ product change, the attribute values will not be updated until the bundle
 component in question is re-selected and saved on the bundle with the new
 values.
 
-![](./static-bundle-parent.png) ![](./static-bundle-child-variant.png)
+![StaticBundleParent](./architecture/static-bundle-parent.png)\
+![StaticBundleChildVariant](./architecture/static-bundle-child-variant.png)
 
 #### Sample Bundle
 
@@ -394,6 +449,21 @@ values.
 }
 ```
 
+## Configuration
+
+A
+[terraform script](https://github.com/commercetools/platform-extension-static-bundles#terraform)
+initializes the commercetools project for using static bundles. Prior to using
+static bundles, this terraform script must be executed against the commercetools
+project and will deploy:
+
+- [Static Bundle Product Type](https://github.com/commercetools/platform-extension-static-bundles/blob/master/resourceDefinitions/productTypes/static-bundle-parent.json)
+  – For creating new bundles
+- [Nested Product Type](https://github.com/commercetools/platform-extension-static-bundles/blob/master/resourceDefinitions/productTypes/static-bundle-child-variant.json)
+  – For managing 1...n variant references from a static bundle
+- [Custom Line Item Type](https://github.com/commercetools/platform-extension-static-bundles/blob/master/resourceDefinitions/types/static-bundle-parent-child-link.json)
+  – For managing cart process
+
 ## Installation
 
 Simply run `yarn` from the repository root to install the application's
@@ -550,7 +620,7 @@ with a Merchant Center project.
 - **Main Route Path**: bundle-manager
 - **Link Permissions**: Manage Products, View Products
 
-![](./custom-application-registration.png)
+![Merchant Center Registration](./deployment/custom-application-registration.png)
 
 ## Complete the Solution: Your Implementation Responsibilities
 
