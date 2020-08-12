@@ -28,3 +28,18 @@ references all the product groups and business rules within the bundle.
 The Merchant Center
 [custom application](https://docs.commercetools.com/custom-applications/) in
 this solution assists merchandisers in creating and managing dynamic bundles.
+
+## Technology
+
+- [ReactJS](https://reactjs.org/)
+- [Apollo](https://www.apollographql.com/docs/react/) &
+  [GraphQL](https://graphql.org/learn/)
+- [Merchant Center Application Kit](https://docs.commercetools.com/custom-applications/)
+- [UI Kit](https://uikit.commercetools.com/?path=/story/introduction--getting-started) -
+  Merchant Center component library
+- [Yarn](https://classic.yarnpkg.com/en/docs/getting-started) - Package manager
+- [Jest](https://jestjs.io/docs/en/getting-started) - Test runner
+- [Enzyme](https://enzymejs.github.io/enzyme/) - React testing utility
+- [Prettier](https://prettier.io/docs/en/index.html) - Code formatter
+- [ESLint](https://eslint.org/docs/user-guide/getting-started) - JS, CSS, and
+  GraphQL linter
