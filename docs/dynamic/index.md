@@ -498,3 +498,29 @@ with a Merchant Center project.
 - **Link Permissions**: Manage Products, View Products
 
 ![Merchant Center Registration](./deployment/custom-application-registration.png)
+
+## Complete the Solution: Your Implementation Responsibilities
+
+To complete the bundles solution, you will first need to supply a product detail
+page (PDP) for the dynamic bundle products in your frontend implementation. The
+custom application provides an
+[example PDP](https://github.com/commercetools/mc-custom-app-bundles/tree/master/packages/bundles-dynamic/src/components/bundle-preview)
+as a reference along with corresponding
+[documentation](https://github.com/commercetools/mc-custom-app-bundles/tree/master/packages/bundles-dynamic#development)
+for the necessary API calls. The UX for displaying the bundle components will
+depend on your specific use case.
+
+For dynamically priced bundles, you will need to provide the pricing algorithm
+for the bundles. The example PDP
+[sums the price](https://github.com/commercetools/mc-custom-app-bundles/blob/9784c3d83fba2a0bf6a29aca5bf68357ba97569c/packages/bundles-dynamic/src/components/bundle-preview/bundle-preview.js#L215)
+of the selected product variants
+[multiplied by the quantity](https://github.com/commercetools/mc-custom-app-bundles/blob/9784c3d83fba2a0bf6a29aca5bf68357ba97569c/packages/bundles-dynamic/src/components/bundle-preview/category-product-field.js#L54)
+of each.
+
+![Dynamic price preview](./complete-solution/dynamic-price.gif)
+
+For statically priced bundles with components that are designated with an
+additional charge, you will need to provide the algorithm for determining what
+that additional charge is and updating the bundle's price accordingly.
+
+![Additional charge preview](./complete-solution/additional-charge.gif)
