@@ -44,6 +44,63 @@ this solution assists merchandisers in creating and managing dynamic bundles.
 - [ESLint](https://eslint.org/docs/user-guide/getting-started) - JS, CSS, and
   GraphQL linter
 
+## Architecture
+
+### Product
+
+A bundle is a commercetools
+[product](https://docs.commercetools.com/http-api-projects-products) with only a
+master variant. The bundle components are stored as attributes of the master
+variant in accordance with the bundle [product types](#product-types).
+
+### Product Types
+
+#### DynamicBundleParent
+
+- **categories** - Array of
+  [DynamicBundleChildCategory](#dynamicbundlechildcategory) - Required\
+  The components of the bundle.
+- **category-search** - Array of String - Required\
+  The bundle category IDs that are used to filter the bundle list.
+- **min-quantity** - Number\
+  The minimum quantity of the bundle that must be added to a cart.
+- **max-quantity** - Number\
+  The maximum quantity of the bundle that may be added to a cart.
+- **dynamic-price** - Boolean\
+  Determines whether the bundle's price is determined by the selected product variants
+  or has a fixed price.
+
+#### DynamicBundleChildCategory
+
+A bundle component, which is a
+[product category](https://docs.commercetools.com/http-api-projects-categories)
+specifically created for use with the dynamic bundles solution.
+
+- **category-ref** - Category
+  [Reference](https://docs.commercetools.com/http-api-types.html#reference) -
+  Required\
+  A reference to the bundle category.
+- **category-path** - String - Required\
+  The path of the bundle category. Used for display purposes within the category
+  search when viewing a bundle.
+- **min-quantity** - Number\
+  The minimum quantity of the selected product variant from this category that must
+  be added to the bundle.
+- **max-quantity** - Number\
+  The maximum quantity of the selected product variant from this category that may
+  be added to the bundle.
+- **additional-charge** - Boolean\
+  Determines whether adding a product variant from this category to the bundle results
+  in an increase to the bundle price. Only available as a selection when the bundle
+  is statically priced.
+
+_Note:_ If any of the underlying values of the selected category change, the
+attribute values will not be updated until the bundle component in question is
+re-selected and saved on the bundle with the updated values.
+
+![DynamicBundleParent](./architecture/dynamic-bundle-parent.png)\
+![DynamicBundleChildCategory](./architecture/dynamic-bundle-child-category.png)
+
 ## Configuration
 
 A
