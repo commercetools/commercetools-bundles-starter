@@ -524,3 +524,8 @@ additional charge, you will need to provide the algorithm for determining what
 that additional charge is and updating the bundle's price accordingly.
 
 ![Additional charge preview](./complete-solution/additional-charge.gif)
+
+## Support
+
+Contact the US Professional Services team for all support requests related to
+the dynamic bundles solution.
