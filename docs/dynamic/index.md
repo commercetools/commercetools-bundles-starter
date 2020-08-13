@@ -101,6 +101,232 @@ re-selected and saved on the bundle with the updated values.
 ![DynamicBundleParent](./architecture/dynamic-bundle-parent.png)\
 ![DynamicBundleChildCategory](./architecture/dynamic-bundle-child-category.png)
 
+#### Sample Bundle
+
+```json
+{
+  "id": "fba0d3d7-40f8-494e-8159-7efad907299e",
+  "version": 16,
+  "productType": {
+    "typeId": "product-type",
+    "id": "d7a7078d-77fb-452c-9f89-c4f3ff580cd3",
+    "obj": {
+      "id": "d7a7078d-77fb-452c-9f89-c4f3ff580cd3",
+      "version": 8,
+      "createdAt": "2019-10-09T13:21:33.210Z",
+      "lastModifiedAt": "2019-12-05T17:33:08.919Z",
+      "lastModifiedBy": {
+        "isPlatformClient": true,
+        "user": {
+          "typeId": "user",
+          "id": "c9065b8c-aae2-45e6-988d-b453869396be"
+        }
+      },
+      "createdBy": {
+        "clientId": "kkwLptxStfpV2ga6cx1_iKLu",
+        "isPlatformClient": false
+      },
+      "name": "DynamicBundleParent",
+      "description": "A dynamic bundle of product categories",
+      "classifier": "Complex",
+      "attributes": [
+        {
+          "name": "categories",
+          "label": { "en": "Categories" },
+          "isRequired": false,
+          "type": {
+            "name": "set",
+            "elementType": {
+              "name": "nested",
+              "typeReference": {
+                "typeId": "product-type",
+                "id": "126dfa1e-bb88-4ca8-b4c6-90809a427ccd"
+              }
+            }
+          },
+          "attributeConstraint": "None",
+          "isSearchable": false,
+          "inputHint": "SingleLine",
+          "displayGroup": "Other"
+        },
+        {
+          "name": "min-quantity",
+          "label": { "de": "", "en": "Minimum Quantity" },
+          "inputTip": { "de": "", "en": "" },
+          "isRequired": false,
+          "type": { "name": "number" },
+          "attributeConstraint": "None",
+          "isSearchable": true,
+          "inputHint": "SingleLine",
+          "displayGroup": "Other"
+        },
+        {
+          "name": "max-quantity",
+          "label": { "de": "", "en": "Max Quantity" },
+          "inputTip": { "de": "", "en": "" },
+          "isRequired": false,
+          "type": { "name": "number" },
+          "attributeConstraint": "None",
+          "isSearchable": true,
+          "inputHint": "SingleLine",
+          "displayGroup": "Other"
+        },
+        {
+          "name": "dynamic-price",
+          "label": { "de": "", "en": "Dynamic Price" },
+          "inputTip": { "de": "", "en": "" },
+          "isRequired": false,
+          "type": { "name": "boolean" },
+          "attributeConstraint": "None",
+          "isSearchable": true,
+          "inputHint": "SingleLine",
+          "displayGroup": "Other"
+        },
+        {
+          "name": "category-search",
+          "label": { "de": "", "en": "Category (Search)" },
+          "inputTip": { "de": "", "en": "" },
+          "isRequired": false,
+          "type": { "name": "set", "elementType": { "name": "text" } },
+          "attributeConstraint": "None",
+          "isSearchable": true,
+          "inputHint": "SingleLine",
+          "displayGroup": "Other"
+        }
+      ],
+      "key": "dynamic-bundle-parent"
+    }
+  },
+  "name": { "en": "Test Bundle" },
+  "description": {
+    "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  },
+  "categories": [],
+  "categoryOrderHints": {},
+  "slug": { "en": "test-bundle-1" },
+  "masterVariant": {
+    "id": 1,
+    "prices": [
+      {
+        "value": {
+          "type": "centPrecision",
+          "currencyCode": "USD",
+          "centAmount": 0,
+          "fractionDigits": 2
+        },
+        "id": "6c49d1a0-410d-4ff3-9f4f-03f11b21efe3"
+      }
+    ],
+    "images": [
+      {
+        "url": "https://3e82993a4eb41d4c4033-d629e744ec32fa52597723d397b63314.ssl.cf1.rackcdn.com/sandals+black+again-rYgI68Y4.jpeg",
+        "dimensions": { "w": 262, "h": 192 }
+      },
+      {
+        "url": "https://3e82993a4eb41d4c4033-d629e744ec32fa52597723d397b63314.ssl.cf1.rackcdn.com/sandals+black-5VEcMfOQ.jpeg",
+        "dimensions": { "w": 225, "h": 225 }
+      },
+      {
+        "url": "https://via.placeholder.com/250",
+        "dimensions": { "w": 250, "h": 250 }
+      }
+    ],
+    "attributes": [
+      {
+        "name": "categories",
+        "value": [
+          [
+            {
+              "name": "category-ref",
+              "value": {
+                "typeId": "category",
+                "id": "33e6235b-def0-4ed6-aaf9-b23e8f364eae"
+              }
+            },
+            { "name": "category-path", "value": "New > Men > Shoes (2)" },
+            { "name": "min-quantity", "value": 2 }
+          ],
+          [
+            {
+              "name": "category-ref",
+              "value": {
+                "typeId": "category",
+                "id": "c93cedb4-464e-41ee-8031-2d7e8de2294f"
+              }
+            },
+            { "name": "category-path", "value": "New > Men > Clothing (11)" },
+            { "name": "max-quantity", "value": 2 }
+          ]
+        ]
+      },
+      {
+        "name": "category-search",
+        "value": [
+          "33e6235b-def0-4ed6-aaf9-b23e8f364eae",
+          "c93cedb4-464e-41ee-8031-2d7e8de2294f"
+        ]
+      },
+      { "name": "dynamic-price", "value": true },
+      { "name": "min-quantity", "value": 2 },
+      { "name": "max-quantity", "value": 3 }
+    ],
+    "assets": []
+  },
+  "variants": [],
+  "searchKeywords": {},
+  "hasStagedChanges": false,
+  "published": true,
+  "taxCategory": {
+    "typeId": "tax-category",
+    "id": "a1af21d4-444c-409d-82a6-c3163b28b8e9",
+    "obj": {
+      "id": "a1af21d4-444c-409d-82a6-c3163b28b8e9",
+      "version": 1,
+      "createdAt": "2019-05-31T14:01:54.035Z",
+      "lastModifiedAt": "2019-05-31T14:01:54.035Z",
+      "lastModifiedBy": {
+        "clientId": "AS2q4W4InSWREs5JQBltxP5V",
+        "isPlatformClient": false
+      },
+      "createdBy": {
+        "clientId": "AS2q4W4InSWREs5JQBltxP5V",
+        "isPlatformClient": false
+      },
+      "name": "standard",
+      "rates": [
+        {
+          "name": "20% incl.",
+          "amount": 0.2,
+          "includedInPrice": true,
+          "country": "AT",
+          "id": "8us0Y-Ay",
+          "subRates": []
+        },
+        {
+          "name": "10% incl.",
+          "amount": 0.1,
+          "includedInPrice": true,
+          "country": "US",
+          "id": "EGg9RL8e",
+          "subRates": []
+        },
+        {
+          "name": "19% incl.",
+          "amount": 0.19,
+          "includedInPrice": true,
+          "country": "DE",
+          "id": "FIHSMRUP",
+          "subRates": []
+        }
+      ],
+      "key": "standard"
+    }
+  },
+  "createdAt": "2020-01-21T13:54:37.110Z",
+  "lastModifiedAt": "2020-07-31T14:19:21.668Z"
+}
+```
+
 ## Configuration
 
 A
