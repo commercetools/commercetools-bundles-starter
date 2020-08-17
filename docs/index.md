@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Bundles Development Accelerator - Custom Applications
+title: Home
 ---
 
 Product bundles are several goods or services that are sold to customers as a
