@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Static Bundles
+nav_order: 2
 ---
 
 <!--prettier-ignore-start-->

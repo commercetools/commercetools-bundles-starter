@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Dynamic Bundles
+nav_order: 3
 ---
 
 <!--prettier-ignore-start-->

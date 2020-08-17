@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Home
+nav_order: 1
 ---
 
 Product bundles are several goods or services that are sold to customers as a
