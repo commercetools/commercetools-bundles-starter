@@ -1,11 +1,6 @@
 title: Bundles Custom Applications
 description: Create and manage bundles on the commercetools platform.
-plugins:
-  - jekyll-relative-links
-relative_links:
-  enabled: true
-  collections: true
 remote_theme: pmarsceill/just-the-docs
-kramdown:
-  auto_ids: true
-  toc_levels: 1,2
+aux_links:
+  "Bundles on GitHub":
+    - "//github.com/commercetools/mc-custom-app-bundles"
