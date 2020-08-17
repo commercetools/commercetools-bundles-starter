@@ -3,15 +3,17 @@ layout: default
 title: Static Bundles
 ---
 
+<!--prettier-ignore-start-->
 # Static Bundles
-
 {: .no_toc }
 
 ## Table of contents
-
 {: .no_toc .text-delta }
+<!--prettier-ignore-end-->
 
-1. TOC {:toc}
+<!--prettier-ignore-->
+1. TOC 
+{:toc}
 
 ## Overview
 
