@@ -518,12 +518,18 @@ and `location`.
 
 ### Troubleshooting
 
+<!--prettier-ignore-start-->
 #### `graphql_error.invalid_token` error
+{: .no_toc }
+<!--prettier-ignore-end-->
 
 Log out of [Merchant Center](https://mc.commercetools.co/). Log back in, then
 return to the custom application and reload.
 
+<!--prettier-ignore-start-->
 #### Do's and Don'ts
+{: .no_toc }
+<!--prettier-ignore-end-->
 
 - **Don't** use the application development login screen to authenticate.
 - **Do** make sure you are logged in to Merchant Center before developing or
@@ -547,13 +553,19 @@ Run the following command to lint JS, CSS, and GraphQL files
 yarn lint
 ```
 
+<!--prettier-ignore-start-->
 ##### Linting GraphQL Queries
+{: .no_toc }
+<!--prettier-ignore-end-->
 
 A prerequisite for linting GraphQL queries is generating a `schema.graphql`
 file, which contains the Types exposed by CTP API. Every time the API introduces
 new Types, Queries or Mutations, the local `schema.graphql` must be updated.
 
+<!--prettier-ignore-start-->
 ##### Generating CTP GraphQL schema
+{: .no_toc }
+<!--prettier-ignore-end-->
 
 1. If you haven't done so already, create an API client under
    `Settings -> Developer Settings` in Merchant Center for your project
@@ -631,7 +643,10 @@ After deploying the custom application, it needs to be
 [registered](https://docs.commercetools.com/custom-applications/register-applications/configuring-a-custom-application)
 with a Merchant Center project.
 
+<!--prettier-ignore-start-->
 #### Configuration Values
+{: .no_toc }
+<!--prettier-ignore-end-->
 
 - **Main Route Path**: bundle-manager
 - **Link Permissions**: Manage Products, View Products
