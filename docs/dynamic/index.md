@@ -44,6 +44,105 @@ this solution assists merchandisers in creating and managing dynamic bundles.
 - [ESLint](https://eslint.org/docs/user-guide/getting-started) - JS, CSS, and
   GraphQL linter
 
+## Features
+
+### Bundles List
+
+The landing page for the static bundles custom application is a list displaying
+the static bundles within the commercetools project.
+
+![Bundles List](./features/bundles-list.gif)
+
+- Pagination
+  - [Default page size](https://github.com/commercetools/mc-custom-app-bundles/blob/8664055fa790e88c3f681a0a08057d46fe176707/packages/bundles-core/components/bundles-table/constants.js#L4)
+    of 30,
+  - Displayed when the number of static bundles exceeds the page size
+- Sorting
+  - Sortable columns are Name, Price, and Last Modified
+  - [Initial sort](https://github.com/commercetools/mc-custom-app-bundles/blob/8664055fa790e88c3f681a0a08057d46fe176707/packages/bundles-core/components/bundles-table/constants.js#L5)
+    is Last Modified in descending order (most recent to least recent bundles)
+- Search for a bundle using
+  [product projections search](https://docs.commercetools.com/http-api-projects-products-search)
+- Filter
+  - By bundle price type (fixed or dynamic)
+  - By category within bundle
+
+### Bundle Creation
+
+![Create Bundle](./features/bundle-creation.gif)
+
+- Single step to create a static bundle with basic information
+- Search for a category using
+  [GraphQL category search](https://docs.commercetools.com/graphql-api#supported-entities)
+- Automatic slug creation based on the name of the bundle, which can be modified
+  to suit your needs
+- Only displays additional charge component option when bundle is a fixed price
+
+### Bundle Details
+
+Manage bundle information, add images, and determine pricing strategies.
+
+- Manage the bundle's published status
+- Delete unpublished bundle
+
+#### General
+
+Edit the bundle's general information.
+
+![Bundle Details - General](./features/bundle-details-general.gif)
+
+#### Images
+
+![Bundle Details - Images](./features/bundle-details-images.gif)
+
+- Add image(s) directly to the bundle via Merchant Center
+- Remove images
+- Manage other image properties via Merchant Center
+
+#### Prices
+
+View the prices of the bundle components in various scopes to determine its
+prices.
+
+![Bundle Details - Prices](./features/bundle-details-prices.gif)
+
+- View bundle component prices in different
+  [price scopes](https://docs.commercetools.com/http-api-projects-products#scopedprice)
+  - Displays the min and max prices of each category for the selected scope
+- Add a price via Merchant Center
+- View prices via Merchant Center
+
+_Note_: Dynamically priced bundles require a price defined (i.e. USD \$0) to be
+added to a cart.
+
+#### Preview
+
+A reference product detail page (PDP) for merchandisers to visualize the bundle.
+
+- Configurable
+  - Modify the price scope to see the bundle as different customers
+  - View each product projection
+- Search for and select a product variant from each bundle category
+- Form validation based on bundle configuration (min/max quantities for bundle
+  components)
+- Preview add to cart action
+- Displays bundle price based on the bundle's price type
+  - Fixed price
+    - Calculates additional charge components by adding price of selected
+      variant to the base fixed price
+  - Dynamic price
+    - Displays price range of bundle based on bundle categories
+    - Calculates price of bundle by summing price of selected product variant
+      multiplied by its quantity
+
+##### Fixed Price Bundle with Additional Charge Component
+
+![Bundle Details - Preview Fixed Price](./features/bundle-details-preview-fixed.gif)
+
+##### Dynamic Price Bundle
+
+![Bundle Details - Preview Dynamic Price](./features/bundle-details-preview-dynamic.gif)
+
 ## Architecture
 
 ### Product
