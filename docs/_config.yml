@@ -6,3 +6,6 @@ relative_links:
   enabled: true
   collections: true
 remote_theme: pmarsceill/just-the-docs
+kramdown:
+  auto_ids: true
+  toc_levels: 1,2
