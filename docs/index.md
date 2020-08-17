@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Bundles Development Accelerator - Custom Applications
-description: Create and manage bundles on the commercetools platform.
 ---
 
 Product bundles are several goods or services that are sold to customers as a
@@ -22,6 +21,3 @@ An alternative option is to create a new virtual SKU that represents the bundle.
 This new SKU points to all items in the bundle. After the customer purchases the
 virtual SKU, the items are packaged and delivered. This solution targets these
 virtual or post-pack bundles.
-
-- [Static Bundles Documentation](./static/index.md)
-- [Dynamic Bundles Documentation](./dynamic/index.md)
