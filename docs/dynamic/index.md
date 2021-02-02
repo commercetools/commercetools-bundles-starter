@@ -505,8 +505,8 @@ and `location`.
 {: .no_toc }
 <!--prettier-ignore-end-->
 
-Log out of [Merchant Center](https://mc.commercetools.co/). Log back in, then
-return to the custom application and reload.
+Log out of [Merchant Center](https://mc.us-central1.gcp.commercetools.com/). Log
+back in, then return to the custom application and reload.
 
 <!--prettier-ignore-start-->
 #### Do's and Don'ts

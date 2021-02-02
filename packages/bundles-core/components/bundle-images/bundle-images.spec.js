@@ -18,17 +18,17 @@ const { images } = bundle;
 const mocks = {
   match: {
     params: {
-      projectKey: 'test-project',
-    },
+      projectKey: 'test-project'
+    }
   },
   id,
   version,
-  onComplete: jest.fn(),
+  onComplete: jest.fn()
 };
 
 global.open = jest.fn();
 
-const frontendHost = `mc.commercetools.co`;
+const frontendHost = `mc.us-central1.gcp.commercetools.com`;
 const mcImageUrl = `https://${frontendHost}/${mocks.match.params.projectKey}/products/${id}/variants/${MASTER_VARIANT_ID}/images`;
 const noImagesMessage = '[data-testid="no-images-message"]';
 
@@ -40,7 +40,7 @@ describe('bundle images', () => {
 
   beforeEach(() => {
     jest.spyOn(AppContext, 'useApplicationContext').mockImplementation(() => ({
-      environment: { frontendHost },
+      environment: { frontendHost }
     }));
     mocks.onComplete.mockClear();
   });
@@ -93,8 +93,8 @@ describe('bundle images', () => {
           version,
           productId: id,
           variantId: MASTER_VARIANT_ID,
-          imageUrl: url,
-        },
+          imageUrl: url
+        }
       });
     });
 
@@ -118,7 +118,7 @@ describe('bundle images', () => {
           await firstImage.props().removeImage(url);
         } catch (error) {
           expect(mockShowNotification).toHaveBeenCalledWith({
-            text: messages.removeError.id,
+            text: messages.removeError.id
           });
         }
       });
