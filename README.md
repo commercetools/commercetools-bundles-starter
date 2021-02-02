@@ -11,7 +11,7 @@ At the root of the repository, run `yarn`. To run an application locally, naviga
 ### Troubleshooting
 
 #### `graphql_error.invalid_token` error
-Log out of [Merchant Center](https://mc.commercetools.co/). Log back in, then return to the custom application and reload.
+Log out of [Merchant Center](https://mc.us-central1.gcp.commercetools.com). Log back in, then return to the custom application and reload.
 
 ### Do's and Don'ts
 

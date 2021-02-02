@@ -73,7 +73,7 @@ the static bundles within the commercetools project.
   [product projections search](https://docs.commercetools.com/http-api-projects-products-search)
 - Filter
   - By bundle category (must be set on bundle from Merchant Center Products
-    application: `https://mc.commercetools.co/{projectKey}/products/{bundleId}`)
+    application: `https://mc.us-central1.gcp.commercetools.com/{projectKey}/products/{bundleId}`)
   - By product variant within bundle
 
 ### Bundle Creation
@@ -523,7 +523,7 @@ and `location`.
 {: .no_toc }
 <!--prettier-ignore-end-->
 
-Log out of [Merchant Center](https://mc.commercetools.co/). Log back in, then
+Log out of [Merchant Center](https://mc.us-central1.gcp.commercetools.com/). Log back in, then
 return to the custom application and reload.
 
 <!--prettier-ignore-start-->
