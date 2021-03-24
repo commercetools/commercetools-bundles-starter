@@ -1,0 +1,10 @@
+title: Bundles Development Accelerator - Platform Extension
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: true
+remote_theme: pmarsceill/just-the-docs
+aux_links:
+  "Extension on Github":
+    - "//github.com/commercetools/platform-extension-static-bundles"
