@@ -1,0 +1,60 @@
+   {
+      "id": "2d220c24-b61b-4d71-a14c-0483e0d6f7f6",
+      "version": 3,
+      "createdAt": "2020-08-18T13:58:41.702Z",
+      "lastModifiedAt": "2020-08-18T14:00:15.952Z",
+      "lastModifiedBy": {
+        "isPlatformClient": true,
+        "user": {
+          "typeId": "user",
+          "id": "36c902e3-53f5-4bd5-a037-8442c222131b"
+        }
+      },
+      "createdBy": {
+        "isPlatformClient": true,
+        "user": {
+          "typeId": "user",
+          "id": "36c902e3-53f5-4bd5-a037-8442c222131b"
+        }
+      },
+      "name": "Simple Product",
+      "description": "A simple product",
+      "classifier": "Complex",
+      "attributes": [
+        {
+          "name": "size",
+          "label": {
+            "en-US": "Size"
+          },
+          "inputTip": {
+            "en-US": ""
+          },
+          "isRequired": false,
+          "type": {
+            "name": "text"
+          },
+          "attributeConstraint": "None",
+          "isSearchable": true,
+          "inputHint": "SingleLine",
+          "displayGroup": "Other"
+        },
+        {
+          "name": "color",
+          "label": {
+            "en-US": "Color"
+          },
+          "inputTip": {
+            "en-US": ""
+          },
+          "isRequired": false,
+          "type": {
+            "name": "text"
+          },
+          "attributeConstraint": "Unique",
+          "isSearchable": true,
+          "inputHint": "SingleLine",
+          "displayGroup": "Other"
+        }
+      ],
+      "key": "simple"
+    }
