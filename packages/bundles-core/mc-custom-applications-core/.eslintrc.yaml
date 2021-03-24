@@ -1,0 +1,14 @@
+extends: "@commercetools-frontend/eslint-config-mc-app"
+rules:
+  'max-classes-per-file': 0
+  'react-hooks/rules-of-hooks': 'error'
+  'react-hooks/exhaustive-deps': 'warn'
+  "graphql/template-strings":
+    - "error"
+    - env: "literal"
+plugins:
+  - "graphql"
+  - react-hooks
+settings:
+  react:
+    version: '^16.0'
