@@ -1,0 +1,114 @@
+{
+  "name": "@commercetools-us-ps/platform-extension-static-bundles",
+  "version": "1.0.0",
+  "description": "API Extension for simple bundle products",
+  "main": "dist/index.js",
+  "scripts": {
+    "lint": "eslint --fix src",
+    "clean": "rm -rf dist",
+    "webpack": "webpack --config webpack.config.js",
+    "build": "yarn run clean && yarn run webpack",
+    "build:prod": "cross-env NODE_ENV=production yarn run build",
+    "start:prod": "node dist/index.js",
+    "start": "webpack --config=webpack.dev.config.js && node dist/server.js",
+    "jest": "cross-env NODE_ENV=development jest",
+    "test:watch": "yarn run jest --watch",
+    "test:coverage": "yarn run jest --coverage=true",
+    "test": "yarn run jest --coverage=false",
+    "precommit": "lint-staged",
+    "terraform:init": "cd terraform && terraform init",
+    "terraform:show": "cd terraform && terraform show",
+    "terraform:plan": "cd terraform && terraform plan -var-file=../config/default.env -var-file=../config/${NODE_ENV:-development}.env",
+    "terraform:apply": "cd terraform && terraform apply -var-file=../config/default.env -var-file=../config/${NODE_ENV:-development}.env",
+    "ci-package": "yarn run build",
+    "ci-deploy": "echo disabled",
+    "publish-release": "yarn publish --registry=https://registry.npmjs.org/",
+    "create-release": "yarn version --no-git-tag-version",
+    "preversion": "git stash && git clean -fd . && git checkout master && git pull",
+    "postversion": "git commit -am \"chore(release): version $npm_package_version\" && git push && git push --tags && echo \"Successfully released version $npm_package_version!\" && yarn run open-releases",
+    "open-releases": "open \"$(node -e 'console.log(`${require(\"./package.json\").repository.url}/releases`)')\""
+  },
+  "engines": {
+    "node": ">= 10"
+  },
+  "license": "MIT",
+  "keywords": [
+    "lambda",
+    "commercetools",
+    "serverless",
+    "nodejs"
+  ],
+  "author": "rob.senn@commercetools.com",
+  "repository": {
+    "url": "https://github.com/commercetools/platform-extension-static-bundles"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "devDependencies": {
+    "@babel/core": "7.7.5",
+    "@babel/plugin-proposal-optional-chaining": "7.7.5",
+    "@babel/preset-env": "7.7.6",
+    "babel-cli": "6.26.0",
+    "babel-eslint": "10.0.3",
+    "babel-jest": "24.9.0",
+    "babel-loader": "8.0.6",
+    "body-parser": "^1.19.0",
+    "cross-env": "6.0.3",
+    "dotenv-webpack": "1.7.0",
+    "eslint": "6.7.2",
+    "eslint-config-airbnb-base": "14.0.0",
+    "eslint-config-prettier": "6.7.0",
+    "eslint-formatter-pretty": "3.0.1",
+    "eslint-plugin-babel": "5.3.0",
+    "eslint-plugin-graphql": "3.1.0",
+    "eslint-plugin-import": "2.19.1",
+    "eslint-plugin-jest": "23.1.1",
+    "eslint-plugin-prefer-object-spread": "1.2.1",
+    "eslint-plugin-prettier": "3.1.1",
+    "express": "^4.17.1",
+    "jest": "24.9.0",
+    "lint-staged": "9.5.0",
+    "nock": "11.7.0",
+    "prettier": "1.19.1",
+    "prettier-eslint-cli": "5.0.0",
+    "validate-commit": "3.4.0",
+    "webpack": "4.41.2",
+    "webpack-cli": "3.3.10"
+  },
+  "dependencies": {
+    "@commercetools-us-ps/platform-extension-bundles": "*",
+    "@commercetools-us-ps/platform-extension-core": "*",
+    "@commercetools/api-request-builder": "5.4.0",
+    "@commercetools/sdk-client": "2.1.1",
+    "@commercetools/sdk-middleware-auth": "6.0.2",
+    "@commercetools/sdk-middleware-http": "6.0.2",
+    "@commercetools/sdk-middleware-queue": "2.1.1",
+    "@commercetools/sync-actions": "4.1.0",
+    "lodash": "4.17.15",
+    "node-cache": "5.1.0",
+    "node-fetch": "2.6.0",
+    "uuid": "3.3.3"
+  },
+  "jest": {
+    "rootDir": "src",
+    "collectCoverage": true,
+    "coverageReporters": [
+      "lcov",
+      "text-summary"
+    ],
+    "coverageDirectory": "../coverage",
+    "collectCoverageFrom": [
+      "**/*.js",
+      "!config.js",
+      "!index.js"
+    ],
+    "testEnvironment": "node"
+  },
+  "lint-staged": {
+    "src/**/*.{js,json}": [
+      "prettier-eslint --write",
+      "git add"
+    ]
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "id": "aa03ca93-1173-4b55-a965-316ab9a4e18d",
+  "version": 5,
+  "lastMessageSequenceNumber": 2,
+  "createdAt": "2020-08-18T14:08:56.077Z",
+  "lastModifiedAt": "2020-08-18T14:12:51.761Z",
+  "lastModifiedBy": {
+    "isPlatformClient": true,
+    "user": {
+      "typeId": "user",
+      "id": "36c902e3-53f5-4bd5-a037-8442c222131b"
+    }
+  },
+  "createdBy": {
+    "isPlatformClient": true,
+    "user": {
+      "typeId": "user",
+      "id": "36c902e3-53f5-4bd5-a037-8442c222131b"
+    }
+  },
+  "productType": {
+    "typeId": "product-type",
+    "id": "2d220c24-b61b-4d71-a14c-0483e0d6f7f6"
+  },
+  "catalogs": [],
+  "masterData": {
+    "current": {
+      "name": {
+        "en-US": "Camera Bag"
+      },
+      "description": {
+        "en-US": "Lorem ipsum dolor sit amet, eruditi alienum te pri. Paulo facete saperet his ex, usu ei duis blandit repudiandae, ius ponderum probatus volutpat te. His ceteros theophrastus et, no esse vulputate vis, cum congue putant regione ut. Per et vidit soleat, eum at justo aperiri mediocritatem."
+      },
+      "categories": [],
+      "categoryOrderHints": {},
+      "slug": {
+        "en-US": "camera-bag"
+      },
+      "metaTitle": {
+        "en-US": ""
+      },
+      "metaDescription": {
+        "en-US": ""
+      },
+      "masterVariant": {
+        "id": 1,
+        "sku": "green-bag",
+        "prices": [
+          {
+            "value": {
+              "type": "centPrecision",
+              "currencyCode": "USD",
+              "centAmount": 1000,
+              "fractionDigits": 2
+            },
+            "id": "33702b52-c3ce-4c99-98f1-7d9f94f2c4a4"
+          }
+        ],
+        "images": [],
+        "attributes": [
+          {
+            "name": "color",
+            "value": "green"
+          }
+        ],
+        "assets": []
+      },
+      "variants": [
+        {
+          "id": 2,
+          "sku": "black-bag",
+          "prices": [
+            {
+              "value": {
+                "type": "centPrecision",
+                "currencyCode": "USD",
+                "centAmount": 1000,
+                "fractionDigits": 2
+              },
+              "id": "d9d081c5-d52b-474e-acee-66c81768e68f"
+            }
+          ],
+          "images": [],
+          "attributes": [
+            {
+              "name": "color",
+              "value": "black"
+            }
+          ],
+          "assets": []
+        }
+      ],
+      "searchKeywords": {}
+    },
+    "staged": {
+      "name": {
+        "en-US": "Camera Bag"
+      },
+      "description": {
+        "en-US": "Lorem ipsum dolor sit amet, eruditi alienum te pri. Paulo facete saperet his ex, usu ei duis blandit repudiandae, ius ponderum probatus volutpat te. His ceteros theophrastus et, no esse vulputate vis, cum congue putant regione ut. Per et vidit soleat, eum at justo aperiri mediocritatem."
+      },
+      "categories": [],
+      "categoryOrderHints": {},
+      "slug": {
+        "en-US": "camera-bag"
+      },
+      "metaTitle": {
+        "en-US": ""
+      },
+      "metaDescription": {
+        "en-US": ""
+      },
+      "masterVariant": {
+        "id": 1,
+        "sku": "green-bag",
+        "prices": [
+          {
+            "value": {
+              "type": "centPrecision",
+              "currencyCode": "USD",
+              "centAmount": 1000,
+              "fractionDigits": 2
+            },
+            "id": "33702b52-c3ce-4c99-98f1-7d9f94f2c4a4"
+          }
+        ],
+        "images": [],
+        "attributes": [
+          {
+            "name": "color",
+            "value": "green"
+          }
+        ],
+        "assets": []
+      },
+      "variants": [
+        {
+          "id": 2,
+          "sku": "black-bag",
+          "prices": [
+            {
+              "value": {
+                "type": "centPrecision",
+                "currencyCode": "USD",
+                "centAmount": 1000,
+                "fractionDigits": 2
+              },
+              "id": "d9d081c5-d52b-474e-acee-66c81768e68f"
+            }
+          ],
+          "images": [],
+          "attributes": [
+            {
+              "name": "color",
+              "value": "black"
+            }
+          ],
+          "assets": []
+        }
+      ],
+      "searchKeywords": {}
+    },
+    "published": true,
+    "hasStagedChanges": false
+  },
+  "key": "camera-bag",
+  "catalogData": {},
+  "lastVariantId": 2
+}

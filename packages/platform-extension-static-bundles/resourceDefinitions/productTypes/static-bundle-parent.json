@@ -1,0 +1,46 @@
+{
+  "name": "StaticBundleParent",
+  "description": "A static bundle of product variants",
+  "classifier": "Complex",
+  "attributes": [
+    {
+      "name": "products",
+      "label": {
+        "en": "Products"
+      },
+      "isRequired": false,
+      "type": {
+        "name": "set",
+        "elementType": {
+          "name": "nested",
+          "typeReference": {
+            "typeId": "product-type",
+            "id": "<ID of static-bundle-child-variant product type goes here>"
+          }
+        }
+      },
+      "attributeConstraint": "None",
+      "isSearchable": true,
+      "inputHint": "SingleLine",
+      "displayGroup": "Other"
+    },
+    {
+      "name": "productSearch",
+      "label": {
+        "en": "Products (Search)"
+      },
+      "isRequired": false,
+      "type": {
+        "name": "set",
+        "elementType": {
+          "name": "text"
+        }
+      },
+      "attributeConstraint": "None",
+      "isSearchable": true,
+      "inputHint": "SingleLine",
+      "displayGroup": "Other"
+    }
+  ],
+  "key": "static-bundle-parent"
+}
