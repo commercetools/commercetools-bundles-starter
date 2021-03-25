@@ -77,8 +77,6 @@
     "webpack-cli": "3.3.10"
   },
   "dependencies": {
-    "@commercetools-us-ps/platform-extension-bundles": "*",
-    "@commercetools-us-ps/platform-extension-core": "*",
     "@commercetools/api-request-builder": "5.4.0",
     "@commercetools/sdk-client": "2.1.1",
     "@commercetools/sdk-middleware-auth": "6.0.2",
