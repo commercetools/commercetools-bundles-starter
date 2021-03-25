@@ -699,39 +699,6 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@commercetools-us-ps/platform-extension-bundles@*":
-  version "1.1.9"
-  resolved "https://registry.yarnpkg.com/@commercetools-us-ps/platform-extension-bundles/-/platform-extension-bundles-1.1.9.tgz#7c08c74d864c89328c4a321ae5e2e6628ed8ec3c"
-  integrity sha512-E3YZogorrVozsGUGaTK8taFHU+jSSxh7cbNpJZSZAkw4Q4fAf6tLW3pPscXUk7vsXvJ3ZE+eF4XRg8S94v/s3g==
-  dependencies:
-    "@commercetools-us-ps/platform-extension-core" "^1.1.9"
-    "@commercetools/api-request-builder" "5.6.1"
-    "@commercetools/sdk-client" "2.1.2"
-    "@commercetools/sdk-middleware-auth" "6.1.4"
-    "@commercetools/sdk-middleware-http" "6.0.7"
-    "@commercetools/sdk-middleware-queue" "2.1.4"
-    "@commercetools/sync-actions" "4.8.0"
-    lodash "4.17.15"
-    node-cache "5.1.2"
-    node-fetch "2.6.0"
-    uuid "7.0.3"
-
-"@commercetools-us-ps/platform-extension-core@*", "@commercetools-us-ps/platform-extension-core@^1.1.9":
-  version "1.1.9"
-  resolved "https://registry.yarnpkg.com/@commercetools-us-ps/platform-extension-core/-/platform-extension-core-1.1.9.tgz#c6890a2c7f01fc49376ee5f11794e3a72725942e"
-  integrity sha512-MuxtuivOuKEua7sjIvsvp+oflROmfPFSeNvUu5hz/1wqbBd1/TmoUhLvDIsgViFfRIIjZNpckSH8b4oUdkC9wg==
-  dependencies:
-    "@commercetools/api-request-builder" "5.6.1"
-    "@commercetools/sdk-client" "2.1.2"
-    "@commercetools/sdk-middleware-auth" "6.1.4"
-    "@commercetools/sdk-middleware-http" "6.0.7"
-    "@commercetools/sdk-middleware-queue" "2.1.4"
-    "@commercetools/sync-actions" "4.8.0"
-    lodash "4.17.15"
-    node-cache "5.1.2"
-    node-fetch "2.6.0"
-    uuid "7.0.3"
-
 "@commercetools/api-request-builder@5.4.0":
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/@commercetools/api-request-builder/-/api-request-builder-5.4.0.tgz#cb1318a8e42c5c4dbad8bece139e3b6db7e624ed"

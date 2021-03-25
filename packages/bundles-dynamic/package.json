@@ -39,7 +39,6 @@
     "@commercetools-frontend/permissions": "16.15.8",
     "@commercetools-frontend/sdk": "16.15.8",
     "@commercetools-frontend/ui-kit": "10.28.1",
-    "@commercetools-us-ps/mc-app-core": "1.1.24",
     "@commercetools-us-ps-local/bundles-core": "*",
     "@types/prop-types": "15.7.3",
     "@types/react": "16.9.44",
