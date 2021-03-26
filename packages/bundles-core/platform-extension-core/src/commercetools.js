@@ -44,7 +44,8 @@ export default ({
     ],
   });
 
-  commercetools.client.get = uri => commercetools.client.execute({ uri, method: 'GET' });
+  commercetools.client.get = (uri) =>
+    commercetools.client.execute({ uri, method: 'GET' });
 
   commercetools.getRequestBuilder = () => createRequestBuilder({ projectKey });
 

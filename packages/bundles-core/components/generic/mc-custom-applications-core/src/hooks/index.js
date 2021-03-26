@@ -9,7 +9,7 @@ export const useShowSideNotification = (kind, intlMessage) =>
   partial(
     useShowNotification({
       kind,
-      domain: DOMAINS.SIDE
+      domain: DOMAINS.SIDE,
     }),
     { text: <FormattedMessage {...intlMessage} /> }
   );
