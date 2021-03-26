@@ -12,7 +12,7 @@ import {
   PathProvider,
   GetBundleProductType,
 } from '@commercetools-us-ps-local/bundles-core/context';
-import { Error } from '@commercetools-us-ps/mc-app-core/components';
+import { Error } from '../../bundles-core/components/generic/mc-custom-applications-core/src/components';
 import StaticBundlesTable from './components/bundles-table';
 import CreateBundleForm from './components/create-bundle-form';
 import StaticBundleDetails from './components/bundle-details';
