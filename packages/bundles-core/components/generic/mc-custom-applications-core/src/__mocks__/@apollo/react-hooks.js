@@ -2,7 +2,7 @@ const base = {
   loading: false,
   error: null,
   data: null,
-  refetch: jest.fn()
+  refetch: jest.fn(),
 };
 
 let query = base;

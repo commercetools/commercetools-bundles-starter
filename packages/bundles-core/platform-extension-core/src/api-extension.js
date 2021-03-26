@@ -19,7 +19,7 @@ export const buildSuccessResponse = (actions = []) => ({
 /**
  * Returns an API-compliant error response
  */
-export const buildErrorResponse = error => ({
+export const buildErrorResponse = (error) => ({
   responseType: RESPONSE_TYPE.FAILED_VALIDATION,
   errors: [
     {

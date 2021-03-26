@@ -14,12 +14,12 @@ import pkg from './package.json';
 
 const { plugins, ...options } = getBabelPreset();
 
-const createPlugins = format => {
+const createPlugins = (format) => {
   const isFormatEs = format === 'es';
   const isProduction = process.env.NODE_ENV === 'production';
   return [
     external({
-      includeDependencies: true
+      includeDependencies: true,
     }),
     babel({
       ...options,
@@ -33,25 +33,25 @@ const createPlugins = format => {
         isFormatEs && [
           'transform-rename-import',
           {
-            replacements: [{ original: 'lodash', replacement: 'lodash-es' }]
-          }
-        ]
-      ].filter(Boolean)
+            replacements: [{ original: 'lodash', replacement: 'lodash-es' }],
+          },
+        ],
+      ].filter(Boolean),
     }),
     commonjs({
-      include: 'node_modules/**'
+      include: 'node_modules/**',
     }),
     resolve({
       mainFields: ['module', 'main', 'jsnext'],
       preferBuiltins: true,
-      modulesOnly: true
+      modulesOnly: true,
     }),
     copy({
-      targets:[
-        {src: "package.json", dest: "dist/"},
-        {src: "README.md", dest: "dist/"},
+      targets: [
+        { src: 'package.json', dest: 'dist/' },
+        { src: 'README.md', dest: 'dist/' },
       ],
-      flatten: false
+      flatten: false,
     }),
 
     builtins(),
@@ -65,12 +65,12 @@ const createPlugins = format => {
           preserve: false,
           importFrom: require.resolve(
             '@commercetools-uikit/design-system/materials/custom-properties.css'
-          )
+          ),
         }),
-        postcssColorModFunction()
-      ]
+        postcssColorModFunction(),
+      ],
     }),
-    isProduction && terser()
+    isProduction && terser(),
   ].filter(Boolean);
 };
 
@@ -78,7 +78,7 @@ const input = 'src/index.js';
 
 const FORMAT = {
   CJS: 'cjs',
-  ES: 'es'
+  ES: 'es',
 };
 export default [
   {
@@ -86,45 +86,45 @@ export default [
     output: {
       file: `dist/${pkg.main}`,
       format: FORMAT.CJS,
-      sourcemap: true
+      sourcemap: true,
     },
-    plugins: createPlugins(FORMAT.CJS)
+    plugins: createPlugins(FORMAT.CJS),
   },
   {
     input,
     output: {
       file: `dist/${pkg.module}`,
       format: FORMAT.ES,
-      sourcemap: true
+      sourcemap: true,
     },
-    plugins: createPlugins(FORMAT.ES)
+    plugins: createPlugins(FORMAT.ES),
   },
   {
     input: 'src/util/index.js',
     output: {
       format: FORMAT.CJS,
       file: 'dist/util/index.js',
-      sourcemap: true
+      sourcemap: true,
     },
-    plugins: createPlugins(FORMAT.CJS)
+    plugins: createPlugins(FORMAT.CJS),
   },
   {
     input: 'src/constants.js',
     output: {
       format: FORMAT.CJS,
       file: 'dist/constants.js',
-      sourcemap: true
+      sourcemap: true,
     },
-    plugins: createPlugins(FORMAT.CJS)
+    plugins: createPlugins(FORMAT.CJS),
   },
   {
     input: 'src/sdk-context.js',
     output: {
       format: FORMAT.CJS,
       file: 'dist/sdk-context.js',
-      sourcemap: true
+      sourcemap: true,
     },
-    plugins: createPlugins(FORMAT.CJS)
+    plugins: createPlugins(FORMAT.CJS),
   },
   {
     input: 'src/components/index.js',
@@ -133,24 +133,24 @@ export default [
       file: 'dist/components/index.js',
       sourcemap: true,
     },
-    plugins: createPlugins(FORMAT.CJS)
+    plugins: createPlugins(FORMAT.CJS),
   },
   {
     input: 'src/hooks/index.js',
     output: {
       format: FORMAT.CJS,
       file: 'dist/hooks/index.js',
-      sourcemap: true
+      sourcemap: true,
     },
-    plugins: createPlugins(FORMAT.CJS)
+    plugins: createPlugins(FORMAT.CJS),
   },
   {
     input: 'src/test-util/index.js',
     output: {
       format: FORMAT.CJS,
       file: 'dist/test-util/index.js',
-      sourcemap: true
+      sourcemap: true,
     },
-    plugins: createPlugins(FORMAT.CJS)
-  }
+    plugins: createPlugins(FORMAT.CJS),
+  },
 ];

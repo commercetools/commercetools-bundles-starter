@@ -25,7 +25,7 @@ describe('utils.asyncMemoize', () => {
     expect.assertions(2);
     const key = 'cache_key1';
     const value = 'value1';
-    const res = await utils.asyncMemoize(key, param => param, value);
+    const res = await utils.asyncMemoize(key, (param) => param, value);
     expect(cacheSetSpy).toHaveBeenCalledWith(key, value);
     expect(res).toEqual(value);
   });
@@ -44,7 +44,9 @@ describe('utils.asyncMemoize', () => {
   it('should throw if async fn rejects', async () => {
     expect.assertions(3);
     const key = 'cache_key1';
-    expect(utils.asyncMemoize(key, async () => Promise.reject(new Error()))).rejects.toThrow();
+    expect(
+      utils.asyncMemoize(key, async () => Promise.reject(new Error()))
+    ).rejects.toThrow();
     expect(cacheGetSpy).toHaveBeenCalledWith(key);
     expect(cacheSetSpy).not.toHaveBeenCalled();
   });
@@ -71,7 +73,7 @@ describe('utils.memoize', () => {
     expect.assertions(2);
     const key = 'cache_key1';
     const value = 'value1';
-    const res = utils.memoize(key, param => param, value);
+    const res = utils.memoize(key, (param) => param, value);
     expect(cacheSetSpy).toHaveBeenCalledWith(key, value);
     expect(res).toEqual(value);
   });
