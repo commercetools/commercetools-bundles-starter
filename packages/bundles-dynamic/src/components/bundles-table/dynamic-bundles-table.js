@@ -9,7 +9,7 @@ import {
 import minBy from 'lodash/minBy';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
-import { localize } from '@commercetools-us-ps/mc-app-core/util';
+import { localize } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/util';
 import {
   BundlesTable,
   COLUMN_KEYS,
@@ -18,7 +18,7 @@ import { getAttribute } from '@commercetools-us-ps-local/bundles-core/util';
 import {
   StatusBadge,
   CategorySearchInput,
-} from '@commercetools-us-ps/mc-app-core/components';
+} from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/components';
 import { SelectInput } from '@commercetools-frontend/ui-kit';
 import { ATTRIBUTES } from '../../constants';
 import { DATE_FORMAT_OPTIONS } from './constants';

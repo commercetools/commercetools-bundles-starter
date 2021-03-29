@@ -7,8 +7,8 @@ import {
   BundleImages,
 } from '@commercetools-us-ps-local/bundles-core/components';
 import { getAttribute } from '@commercetools-us-ps-local/bundles-core/util';
-import { TabHeader } from '@commercetools-us-ps/mc-app-core/components';
-import { transformLocalizedFieldToString } from '@commercetools-us-ps/mc-app-core/util';
+import { TabHeader } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/components';
+import { transformLocalizedFieldToString } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/util';
 import { ATTRIBUTES, ROOT_PATH } from '../../constants';
 import EditBundleForm from '../edit-bundle-form';
 import BundlePreview from '../bundle-preview';

@@ -8,8 +8,8 @@ import {
   BundlesTable,
   COLUMN_KEYS,
 } from '@commercetools-us-ps-local/bundles-core/components';
-import { PRODUCT_STATUS } from '@commercetools-us-ps/mc-app-core/components';
-import { localize } from '@commercetools-us-ps/mc-app-core/util';
+import { PRODUCT_STATUS } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/components';
+import { localize } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/util';
 import { generateProduct } from '../../test-util';
 import DynamicBundlesTable from './dynamic-bundles-table';
 import messages from './messages';

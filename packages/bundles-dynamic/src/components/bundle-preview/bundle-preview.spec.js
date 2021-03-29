@@ -12,8 +12,8 @@ import {
 import { mockShowNotification } from '@commercetools-frontend/actions-global';
 import * as AppContext from '@commercetools-frontend/application-shell-connectors';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
-import { localize } from '@commercetools-us-ps/mc-app-core/util';
-import { useEffectMock } from '@commercetools-us-ps/mc-app-core/test-util';
+import { localize } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/util';
+import { useEffectMock } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/test-util';
 import { PriceFilters } from '@commercetools-us-ps-local/bundles-core/components';
 import { generateCategoryAttributes, generateProduct } from '../../test-util';
 import { transformResults } from '../bundle-details/dynamic-bundle-details';
