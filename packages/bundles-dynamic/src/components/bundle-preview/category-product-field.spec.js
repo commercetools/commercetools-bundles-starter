@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import faker from 'faker';
 import { getLazyQuery, setLazyQuery } from '@apollo/react-hooks';
 import { FieldLabel } from '@commercetools-frontend/ui-kit';
-import { useEffectMock } from '@commercetools-us-ps/mc-app-core/test-util';
+import { useEffectMock } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/test-util';
 import { generateCategoryAttributes } from '../../test-util';
 import CategoryProductField, { PRICE } from './category-product-field';
 import messages from './messages';

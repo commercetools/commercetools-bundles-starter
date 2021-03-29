@@ -4,13 +4,13 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { useMutation } from '@apollo/react-hooks';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
 import { Spacings } from '@commercetools-frontend/ui-kit';
-import { useShowSideNotification } from '@commercetools-us-ps/mc-app-core/hooks';
+import { useShowSideNotification } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/hooks';
 import {
   BackToList,
   TabContainer,
   View,
   ViewHeader,
-} from '@commercetools-us-ps/mc-app-core/components';
+} from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/components';
 import { ATTRIBUTES, BUNDLE_PRODUCT_TYPE, ROOT_PATH } from '../../constants';
 import BundleForm from '../bundle-form';
 import CreateBundle from './create-bundle.graphql';
