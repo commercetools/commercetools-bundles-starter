@@ -24,7 +24,7 @@ import {
   Spacings,
   Text,
 } from '@commercetools-frontend/ui-kit';
-import { localize } from '@commercetools-us-ps/mc-app-core/util';
+import { localize } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/util';
 import { PriceFilters } from '@commercetools-us-ps-local/bundles-core/components';
 import { BUNDLE_CART_CUSTOM_TYPE } from '../../constants';
 import {

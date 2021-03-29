@@ -10,7 +10,7 @@ import {
   NumberInput,
   Spacings,
 } from '@commercetools-frontend/ui-kit';
-import { ProductSearchInput } from '@commercetools-us-ps/mc-app-core/components';
+import { ProductSearchInput } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/components';
 import { getAttribute } from '@commercetools-us-ps-local/bundles-core/util';
 import {
   ADDITIONAL_CHARGE,
