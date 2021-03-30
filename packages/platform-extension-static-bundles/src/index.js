@@ -5,8 +5,8 @@ import {
   Commercetools,
   buildErrorResponse,
   buildSuccessResponse,
-} from '@commercetools-us-ps/platform-extension-core';
-import { Helper } from '@commercetools-us-ps/platform-extension-bundles';
+} from '../platform-extension-core';
+import { Helper } from '../platform-extension-bundles';
 import { CONFIG_KEYS, TYPE_KEY } from './constants';
 
 import CartHandler from './cartHandler';
