@@ -12,9 +12,9 @@ import {
 import { mockShowNotification } from '@commercetools-frontend/actions-global';
 import * as AppContext from '@commercetools-frontend/application-shell-connectors';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
+import { PriceFilters } from '@commercetools-us-ps-local/bundles-core/components';
 import { localize } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/util';
 import { useEffectMock } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/test-util';
-import { PriceFilters } from '@commercetools-us-ps-local/bundles-core/components';
 import { generateCategoryAttributes, generateProduct } from '../../test-util';
 import { transformResults } from '../bundle-details/dynamic-bundle-details';
 import { getCategoryAttributes } from './category-product-field';

@@ -9,17 +9,17 @@ import {
 import minBy from 'lodash/minBy';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
-import { localize } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/util';
 import {
   BundlesTable,
   COLUMN_KEYS,
 } from '@commercetools-us-ps-local/bundles-core/components';
 import { getAttribute } from '@commercetools-us-ps-local/bundles-core/util';
+import { SelectInput } from '@commercetools-frontend/ui-kit';
+import { localize } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/util';
 import {
   StatusBadge,
   CategorySearchInput,
 } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/components';
-import { SelectInput } from '@commercetools-frontend/ui-kit';
 import { ATTRIBUTES } from '../../constants';
 import { DATE_FORMAT_OPTIONS } from './constants';
 import columnDefinitions from './column-definitions';
