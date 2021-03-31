@@ -1,0 +1,25 @@
+query ProductSearch($text: String, $locale: String, $filter: String) {
+  products(text: $text, locale: $locale, filter: $filter)
+    @rest(
+      path: "/product-projections/search?staged=true&markMatchingVariants=true&text.{args.locale}={args.text}&{args.filter}"
+      type: "ProductQueryResult!"
+      method: "GET"
+    ) {
+    results @type(name: "[Product!]!") {
+      id
+      name
+      variants @type(name: "ProductVariant!") {
+        id
+        sku
+        price
+        isMatchingVariant
+      }
+      masterVariant @type(name: "ProductVariant!") {
+        id
+        sku
+        price
+        isMatchingVariant
+      }
+    }
+  }
+}
