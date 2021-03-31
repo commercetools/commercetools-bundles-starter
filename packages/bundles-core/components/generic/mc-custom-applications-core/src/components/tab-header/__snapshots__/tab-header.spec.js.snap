@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering should match snapshot 1`] = `
+<li
+  className="header-list-item header-list-item--active"
+  data-testid="header-list-item-foo"
+  data-track-component="Tab"
+  data-track-event="click"
+  data-track-label="foo"
+>
+  <LinkWrapper
+    className="tab-text"
+    to="/foo"
+  >
+    <div>
+      hello
+    </div>
+  </LinkWrapper>
+</li>
+`;
