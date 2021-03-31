@@ -7,7 +7,7 @@ import { mockShowNotification } from '@commercetools-frontend/actions-global';
 import { ConfirmationDialog } from '@commercetools-frontend/application-components';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
 import { IconButton } from '@commercetools-frontend/ui-kit';
-import { StatusSelect } from '@commercetools-us-ps/mc-app-core/components';
+import { StatusSelect } from '../generic/mc-custom-applications-core/src/components';
 import * as PathContext from '../../context/path-context';
 import DeleteBundle from './delete-bundle.graphql';
 import EditBundle from './edit-bundle.graphql';

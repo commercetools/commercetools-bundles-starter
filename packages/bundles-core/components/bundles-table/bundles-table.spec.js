@@ -11,7 +11,7 @@ import {
   Loading,
   PaginatedTable,
   SearchInput,
-} from '@commercetools-us-ps/mc-app-core/components';
+} from '../generic/mc-custom-applications-core/src/components';
 import * as BundleContext from '../../context/bundle-context';
 import BundlesTable from './bundles-table';
 import BundleProductSearch from './bundle-search.rest.graphql';
