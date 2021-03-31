@@ -2,11 +2,12 @@
 
 ## Installation
 
-Prior to running `yarn`, ensure you have exported an auth token to npm in the NPM_TOKEN environment variable, e.g. `export NPM_TOKEN=xxxx-xxxx-xxxx-xxxx`  This will allow the installation of the private package (`@commercetools-us-ps/mc-app-core`).
+Run `yarn` from the root folder after insuring you are using the latest version of node.
 
 ### Running the Application
 
 At the root of the repository, run `yarn`. To run an application locally, navigate to the application directory and `yarn run start`.
+Be sure to deploy the cloud function 'platform-extension-static-bundles'. Please see the README found under the extension package which covers the "Simple Bundles API Extension".
 
 ### Troubleshooting
 
