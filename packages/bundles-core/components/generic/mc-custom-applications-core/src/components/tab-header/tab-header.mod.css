@@ -1,0 +1,47 @@
+/* Header list items */
+
+.header-list-item {
+  color: var(--color-accent);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: 100;
+  margin: var(--spacing-s) var(--spacing-m);
+  text-align: center;
+  transition: all 0.07s linear;
+  width: auto;
+}
+
+.header-list-item:first-of-type {
+  margin-left: 0;
+}
+
+.tab-text {
+  color: var(--color-accent);
+  font-size: 1.286rem;
+  font-weight: 400;
+  padding-bottom: var(--spacing-xs);
+}
+
+.tab-text--disabled {
+  composes: tab-text;
+  cursor: default;
+}
+
+.header-list-item--active .tab-text {
+  border-bottom: 4px var(--color-primary) solid;
+  color: var(--color-primary) !important;
+}
+
+.header-list-item--disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.header-list-item--disabled .tab-text {
+  cursor: default;
+}
+
+.header-list-item:hover {
+  color: var(--color-solid);
+}
