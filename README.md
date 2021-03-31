@@ -18,10 +18,12 @@ installation of the private package.
 export NPM_TOKEN=xxxx-xxxx-xxxx-xxxx
 npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
 ```
+Run `yarn` from the root folder after insuring you are using the latest version of node.
 
 ### Running the Application
 
 At the root of the repository, run `yarn`. To run an application locally, navigate to the application directory and `yarn run start`.
+Be sure to deploy the cloud function 'platform-extension-static-bundles'. Please see the README found under the extension package which covers the "Simple Bundles API Extension".
 
 ### Troubleshooting
 
