@@ -53,15 +53,6 @@ The API extension (this application) is executed during cart requests to validat
 
 ### Prerequisites
 
-#### NPM Token
-{:.no_toc}
-
-This application depends on NodeJS and the Yarn package manager to be installed.  The application has dependency on two private packages: `@commercetools-us-ps/platform-extension-core` and `@commercetools-us-ps/platform-extension-bundles`, which will require an npm auth token. To acquire an auth token, request access to the @commercetools-us-ps scope from the US Professional Services team. Create the auth token then run the following commands to configure npm/yarn. This will allow the installation of the private package.
-
-```shell
-export NPM_TOKEN=xxxx-xxxx-xxxx-xxxx
-npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
-```
 
 ### Dependency Installation
 
