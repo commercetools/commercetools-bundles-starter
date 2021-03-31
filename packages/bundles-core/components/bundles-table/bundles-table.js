@@ -19,8 +19,8 @@ import {
   Loading,
   PaginatedTable,
   SearchInput,
-} from '@commercetools-us-ps/mc-app-core/components';
-import { SORT_OPTIONS } from '@commercetools-us-ps/mc-app-core/constants';
+} from '../generic/mc-custom-applications-core/src/components';
+import { SORT_OPTIONS } from '../generic/mc-custom-applications-core/src/constants';
 import { useBundleContext } from '../../context/bundle-context';
 import { COLUMN_KEYS } from './column-definitions';
 import { DEFAULT_VARIABLES } from './constants';
