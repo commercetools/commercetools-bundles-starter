@@ -21,7 +21,6 @@
     "@commercetools-frontend/application-shell-connectors": "16.15.8",
     "@commercetools-frontend/constants": "16.15.3",
     "@commercetools-frontend/ui-kit": "10.28.1",
-    "@commercetools-us-ps/mc-app-core": "1.1.24",
     "@types/react": "16.9.44",
     "@types/react-dom": "16.9.8",
     "@types/react-redux": "7.1.9",

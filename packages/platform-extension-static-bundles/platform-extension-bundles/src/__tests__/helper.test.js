@@ -1,7 +1,7 @@
 import NodeCache from 'node-cache';
 import uuid from 'uuid/v4';
 import nock from 'nock';
-import { Commercetools } from '../platform-extension-core';
+import { Commercetools } from '../../../platform-extension-core';
 import Helper from '../helper';
 
 const clientId = 'client1';
@@ -81,7 +81,10 @@ describe('helper.getParentChildAssociationTypeId', () => {
       .reply(200, { id });
     expect.assertions(2);
     const res = await helper.getParentChildAssociationTypeId();
-    expect(cacheSetSpy).toHaveBeenCalledWith('parent_child_association_type_id', id);
+    expect(cacheSetSpy).toHaveBeenCalledWith(
+      'parent_child_association_type_id',
+      id
+    );
     expect(res).toEqual(id);
   });
 

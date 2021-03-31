@@ -1,5 +1,5 @@
 import faker from 'faker';
-import { transformLocalizedFieldToString } from '@commercetools-us-ps/mc-app-core/util';
+import { transformLocalizedFieldToString } from '../components/generic/mc-custom-applications-core/src/util';
 
 export const generateProduct = (
   languages = [],
