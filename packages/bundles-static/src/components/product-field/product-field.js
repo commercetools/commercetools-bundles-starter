@@ -13,8 +13,8 @@ import {
   Spacings,
 } from '@commercetools-frontend/ui-kit';
 import { getAttribute } from '@commercetools-us-ps-local/bundles-core/util';
-import { ProductSearchInput } from '@commercetools-us-ps/mc-app-core/components';
-import { localize } from '@commercetools-us-ps/mc-app-core/util';
+import { ProductSearchInput } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/components';
+import { localize } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/util';
 import {
   PRODUCT,
   PRODUCT_NAME,
