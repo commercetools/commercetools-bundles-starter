@@ -9,11 +9,11 @@ import {
   ViewHeader,
   Error,
   Loading,
-} from '@commercetools-us-ps/mc-app-core/components';
+} from '../generic/mc-custom-applications-core/src/components';
 import {
   localize,
   transformLocalizedFieldToString,
-} from '@commercetools-us-ps/mc-app-core/util';
+} from '../generic/mc-custom-applications-core/src/util';
 import { generateProduct } from '../../test-util';
 import GetBundle from './get-bundle.graphql';
 import messages from './messages';

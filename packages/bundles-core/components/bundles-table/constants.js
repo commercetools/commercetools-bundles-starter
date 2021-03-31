@@ -1,4 +1,4 @@
-import { SORT_OPTIONS } from '@commercetools-us-ps/mc-app-core/constants';
+import { SORT_OPTIONS } from '../generic/mc-custom-applications-core/src/constants';
 import { COLUMN_KEYS } from './column-definitions';
 
 export const PAGE_SIZE = 30;

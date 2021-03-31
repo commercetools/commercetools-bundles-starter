@@ -11,7 +11,7 @@ import {
   Spacings,
   Text,
 } from '@commercetools-frontend/ui-kit';
-import { useShowSideNotification } from '@commercetools-us-ps/mc-app-core/hooks';
+import { useShowSideNotification } from '../generic/mc-custom-applications-core/src/hooks';
 import MASTER_VARIANT_ID from './constants';
 import { BundleImage } from '../bundle-image';
 import RemoveImage from './remove-image.graphql';

@@ -9,7 +9,7 @@ import {
   TabContainer,
   View,
   ViewHeader,
-} from '@commercetools-us-ps/mc-app-core/components';
+} from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/components';
 import { useShowSideNotification } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/hooks';
 import { BUNDLE_PRODUCT_TYPE, ROOT_PATH } from '../../constants';
 import BundleForm from '../bundle-form';
