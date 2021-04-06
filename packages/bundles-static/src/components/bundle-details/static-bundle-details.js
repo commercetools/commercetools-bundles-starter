@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router';
 import { useIntl } from 'react-intl';
 import { find } from 'lodash';
-import { BundleDetails } from '@commercetools-us-ps-local/bundles-core/components';
+import { BundleDetails } from '../../../../bundles-core/components';
 import { TabHeader } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/components';
 import { transformLocalizedFieldToString } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/util';
 import { ROOT_PATH } from '../../constants';
