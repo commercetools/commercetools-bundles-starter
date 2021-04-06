@@ -9,12 +9,9 @@ import {
 import minBy from 'lodash/minBy';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
-import {
-  BundlesTable,
-  COLUMN_KEYS,
-} from '@commercetools-us-ps-local/bundles-core/components';
-import { getAttribute } from '@commercetools-us-ps-local/bundles-core/util';
 import { SelectInput } from '@commercetools-frontend/ui-kit';
+import { BundlesTable, COLUMN_KEYS } from '../../../../bundles-core/components';
+import { getAttribute } from '../../../../bundles-core/util';
 import { localize } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/util';
 import {
   StatusBadge,

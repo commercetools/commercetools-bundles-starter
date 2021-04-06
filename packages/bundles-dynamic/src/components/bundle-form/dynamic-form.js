@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { BundleForm } from '@commercetools-us-ps-local/bundles-core/components/bundle-form';
 import {
   CheckboxInput,
   ErrorMessage,
@@ -10,6 +9,7 @@ import {
   Spacings,
   Text,
 } from '@commercetools-frontend/ui-kit';
+import { BundleForm } from '../../../../bundles-core/components/bundle-form';
 import CategoryField from '../category-field';
 import messages from './messages';
 

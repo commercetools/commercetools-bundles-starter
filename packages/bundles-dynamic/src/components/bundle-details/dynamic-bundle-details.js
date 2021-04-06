@@ -5,8 +5,8 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import {
   BundleDetails,
   BundleImages,
-} from '@commercetools-us-ps-local/bundles-core/components';
-import { getAttribute } from '@commercetools-us-ps-local/bundles-core/util';
+} from '../../../../bundles-core/components';
+import { getAttribute } from '../../../../bundles-core/util';
 import { TabHeader } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/components';
 import { transformLocalizedFieldToString } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/util';
 import { ATTRIBUTES, ROOT_PATH } from '../../constants';
