@@ -9,7 +9,7 @@ import {
   Spacings,
   Text,
 } from '@commercetools-frontend/ui-kit';
-import { PriceFilters } from '@commercetools-us-ps-local/bundles-core/components';
+import { PriceFilters } from '../../../../bundles-core/components';
 import { MASTER_VARIANT_ID } from '../../constants';
 import messages from './messages';
 import PricesTable from './prices-table';

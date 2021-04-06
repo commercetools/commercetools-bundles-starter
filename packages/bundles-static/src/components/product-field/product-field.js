@@ -12,7 +12,7 @@ import {
   SecondaryButton,
   Spacings,
 } from '@commercetools-frontend/ui-kit';
-import { getAttribute } from '@commercetools-us-ps-local/bundles-core/util';
+import { getAttribute } from '../../../../bundles-core/util';
 import { ProductSearchInput } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/components';
 import { localize } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/util';
 import {

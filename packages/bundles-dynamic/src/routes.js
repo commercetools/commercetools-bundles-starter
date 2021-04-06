@@ -11,7 +11,7 @@ import {
   BundleProvider,
   GetBundleProductType,
   PathProvider,
-} from '@commercetools-us-ps-local/bundles-core/context';
+} from '../../bundles-core/context';
 import { Error } from '../../bundles-core/components/generic/mc-custom-applications-core/src/components';
 import CreateBundleForm from './components/create-bundle-form';
 import DynamicBundlesTable from './components/bundles-table';
