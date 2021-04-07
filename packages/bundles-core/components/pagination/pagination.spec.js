@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { intlMock } from '../../test-util';
+import { intlMock } from '../test-util';
 import { Pagination } from './pagination';
 
 const mockPrevious = jest.fn();

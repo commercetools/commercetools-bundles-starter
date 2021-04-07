@@ -4,7 +4,7 @@ import { FormattedNumber, useIntl } from 'react-intl';
 import { useQuery } from '@apollo/react-hooks';
 import { AsyncSelectInput, Spacings } from '@commercetools-frontend/ui-kit';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
-import { localize } from '../../util';
+import { localize } from '../util';
 import ProductSearch from './product-search.rest.graphql';
 import messages from './messages';
 

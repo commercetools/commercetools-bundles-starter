@@ -4,7 +4,7 @@ import AWS, { mockS3 } from 'aws-sdk';
 import * as AppContext from '@commercetools-frontend/application-shell-connectors';
 import { LoadingSpinner } from '@commercetools-frontend/ui-kit';
 import { mockShowNotification } from '@commercetools-frontend/actions-global';
-import { intlMock } from '../../test-util';
+import { intlMock } from '../test-util';
 import FileUploadInput, { uploadElementId } from './file-upload-input';
 import messages from './messages';
 
