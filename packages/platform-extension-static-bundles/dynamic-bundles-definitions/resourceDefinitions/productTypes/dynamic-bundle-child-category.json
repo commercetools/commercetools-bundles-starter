@@ -1,0 +1,79 @@
+{
+  "name": "DynamicBundleChildCategory",
+  "description": "The category included in a dynamic bundle",
+  "classifier": "Complex",
+  "attributes": [
+    {
+      "name": "category-ref",
+      "label": {
+        "en": "Category Ref"
+      },
+      "isRequired": true,
+      "type": {
+        "name": "reference",
+        "referenceTypeId": "category"
+      },
+      "attributeConstraint": "None",
+      "isSearchable": false,
+      "inputHint": "SingleLine",
+      "displayGroup": "Other"
+    },
+    {
+      "name": "min-quantity",
+      "label": {
+        "en": "Minimum Quantity"
+      },
+      "isRequired": false,
+      "type": {
+        "name": "number"
+      },
+      "attributeConstraint": "None",
+      "isSearchable": false,
+      "inputHint": "SingleLine",
+      "displayGroup": "Other"
+    },
+    {
+      "name": "max-quantity",
+      "label": {
+        "en": "Maximum Quantity"
+      },
+      "isRequired": false,
+      "type": {
+        "name": "number"
+      },
+      "attributeConstraint": "None",
+      "isSearchable": false,
+      "inputHint": "SingleLine",
+      "displayGroup": "Other"
+    },
+    {
+      "name": "additional-charge",
+      "label": {
+        "en": "Additional Charge"
+      },
+      "isRequired": false,
+      "type": {
+        "name": "boolean"
+      },
+      "attributeConstraint": "None",
+      "isSearchable": false,
+      "inputHint": "SingleLine",
+      "displayGroup": "Other"
+    },
+    {
+      "name": "category-path",
+      "label": {
+        "en": "Category Path"
+      },
+      "isRequired": true,
+      "type": {
+        "name": "text"
+      },
+      "attributeConstraint": "None",
+      "isSearchable": false,
+      "inputHint": "SingleLine",
+      "displayGroup": "Other"
+    }
+  ],
+  "key": "dynamic-bundle-child-category"
+}
