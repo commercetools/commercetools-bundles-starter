@@ -4,7 +4,7 @@ import faker from 'faker';
 import { getQuery, setQuery } from '@apollo/react-hooks';
 import * as AppContext from '@commercetools-frontend/application-shell-connectors';
 import { AsyncSelectInput } from '@commercetools-frontend/ui-kit';
-import { getPathName } from '../../util';
+import { getPathName } from '../util';
 import CategorySearchInput from './category-search-input';
 
 const project = {
