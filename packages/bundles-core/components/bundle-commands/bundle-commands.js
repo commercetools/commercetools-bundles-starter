@@ -12,7 +12,7 @@ import {
   Spacings,
   Text,
 } from '@commercetools-frontend/ui-kit';
-import { StatusSelect } from '../generic/mc-custom-applications-core/src/components';
+import { StatusSelect } from '../index';
 import { usePathContext } from '../../context';
 import EditBundle from './edit-bundle.graphql';
 import DeleteBundle from './delete-bundle.graphql';

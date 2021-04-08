@@ -14,13 +14,8 @@ import {
   Spacings,
   Text,
 } from '@commercetools-frontend/ui-kit';
-import {
-  Error,
-  Loading,
-  PaginatedTable,
-  SearchInput,
-} from '../generic/mc-custom-applications-core/src/components';
-import { SORT_OPTIONS } from '../generic/mc-custom-applications-core/src/constants';
+import { Error, Loading, PaginatedTable, SearchInput } from '../index';
+import { SORT_OPTIONS } from '../constants';
 import { useBundleContext } from '../../context/bundle-context';
 import { COLUMN_KEYS } from './column-definitions';
 import { DEFAULT_VARIABLES } from './constants';

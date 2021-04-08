@@ -1,4 +1,4 @@
-import { intlMock } from '../components/generic/mc-custom-applications-core/src/test-util';
+import { intlMock } from '../components/test-util';
 
 const useIntl = jest.fn(() => intlMock);
 export * from 'react-intl';

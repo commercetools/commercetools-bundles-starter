@@ -10,13 +10,14 @@ import minBy from 'lodash/minBy';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
 import { SelectInput } from '@commercetools-frontend/ui-kit';
-import { BundlesTable, COLUMN_KEYS } from '../../../../bundles-core/components';
 import { getAttribute } from '../../../../bundles-core/util';
-import { localize } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/util';
+import { localize } from '../../../../bundles-core/components/util';
 import {
+  BundlesTable,
+  COLUMN_KEYS,
   StatusBadge,
   CategorySearchInput,
-} from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/components';
+} from '../../../../bundles-core/components/index';
 import { ATTRIBUTES } from '../../constants';
 import { DATE_FORMAT_OPTIONS } from './constants';
 import columnDefinitions from './column-definitions';
