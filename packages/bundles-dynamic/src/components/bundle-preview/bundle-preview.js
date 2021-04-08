@@ -25,7 +25,7 @@ import {
   Text,
 } from '@commercetools-frontend/ui-kit';
 import { PriceFilters } from '../../../../bundles-core/components';
-import { localize } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/util';
+import { localize } from '../../../../bundles-core/components/util';
 import { BUNDLE_CART_CUSTOM_TYPE } from '../../constants';
 import {
   getScopedPriceParameters,

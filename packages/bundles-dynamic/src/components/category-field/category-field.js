@@ -19,7 +19,7 @@ import {
   Spacings,
 } from '@commercetools-frontend/ui-kit';
 import { getAttribute } from '../../../../bundles-core/util';
-import { CategorySearchInput } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/components';
+import { CategorySearchInput } from '../../../../bundles-core/components/index';
 import {
   ADDITIONAL_CHARGE,
   CATEGORY,

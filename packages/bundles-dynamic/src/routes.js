@@ -12,7 +12,7 @@ import {
   GetBundleProductType,
   PathProvider,
 } from '../../bundles-core/context';
-import { Error } from '../../bundles-core/components/generic/mc-custom-applications-core/src/components';
+import { Error } from '../../bundles-core/components/index';
 import CreateBundleForm from './components/create-bundle-form';
 import DynamicBundlesTable from './components/bundles-table';
 import DynamicBundleDetails from './components/bundle-details';

@@ -8,7 +8,7 @@ import { isEqual, pickBy } from 'lodash';
 import omitEmpty from 'omit-empty';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
 import { LocalizedTextInput } from '@commercetools-frontend/ui-kit';
-import { transformLocalizedStringToField } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/util';
+import { transformLocalizedStringToField } from '../../../../bundles-core/components/util';
 import StaticForm from './static-form';
 import ProductField from '../product-field';
 import messages from './messages';

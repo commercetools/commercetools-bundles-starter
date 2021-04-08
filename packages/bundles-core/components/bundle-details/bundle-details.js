@@ -11,8 +11,8 @@ import {
   TabContainer,
   View,
   ViewHeader,
-} from '../generic/mc-custom-applications-core/src/components';
-import { localize } from '../generic/mc-custom-applications-core/src/util';
+} from '../index';
+import { localize } from '../util';
 import { usePathContext } from '../../context';
 import { BundleCommands } from '../bundle-commands';
 import GetBundle from './get-bundle.graphql';
