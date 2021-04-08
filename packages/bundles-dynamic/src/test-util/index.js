@@ -1,5 +1,5 @@
 import faker from 'faker';
-import { transformLocalizedFieldToString } from '../../../bundles-core/components/generic/mc-custom-applications-core/src/util';
+import { transformLocalizedFieldToString } from '../../../bundles-core/components/util';
 import {
   CATEGORY,
   CATEGORY_PATH,

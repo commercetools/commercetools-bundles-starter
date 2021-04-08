@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router';
 import { useIntl } from 'react-intl';
 import { find } from 'lodash';
-import { BundleDetails } from '../../../../bundles-core/components';
-import { TabHeader } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/components';
-import { transformLocalizedFieldToString } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/util';
+import {
+  BundleDetails,
+  TabHeader,
+} from '../../../../bundles-core/components/index';
+import { transformLocalizedFieldToString } from '../../../../bundles-core/components/util';
 import { ROOT_PATH } from '../../constants';
 import EditBundleForm from '../edit-bundle-form';
 import StaticBundleImages from '../bundle-images';

@@ -4,16 +4,8 @@ import faker from 'faker';
 import { setQuery, useQuery } from '@apollo/react-hooks';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
 import * as AppContext from '@commercetools-frontend/application-shell-connectors';
-import {
-  TabHeader,
-  ViewHeader,
-  Error,
-  Loading,
-} from '../generic/mc-custom-applications-core/src/components';
-import {
-  localize,
-  transformLocalizedFieldToString,
-} from '../generic/mc-custom-applications-core/src/util';
+import { TabHeader, ViewHeader, Error, Loading } from '../index';
+import { localize, transformLocalizedFieldToString } from '../util';
 import { generateProduct } from '../../test-util';
 import GetBundle from './get-bundle.graphql';
 import messages from './messages';

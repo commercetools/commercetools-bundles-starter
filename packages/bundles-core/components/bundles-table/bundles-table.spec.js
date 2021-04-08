@@ -6,12 +6,7 @@ import { map } from 'lodash';
 import { useQuery, setQuery } from '@apollo/react-hooks';
 import * as AppContext from '@commercetools-frontend/application-shell-connectors';
 import { FlatButton } from '@commercetools-frontend/ui-kit';
-import {
-  Error,
-  Loading,
-  PaginatedTable,
-  SearchInput,
-} from '../generic/mc-custom-applications-core/src/components';
+import { Error, Loading, PaginatedTable, SearchInput } from '../index';
 import * as BundleContext from '../../context/bundle-context';
 import BundlesTable from './bundles-table';
 import BundleProductSearch from './bundle-search.rest.graphql';

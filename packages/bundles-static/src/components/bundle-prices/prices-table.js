@@ -6,7 +6,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
 import { Spacings, Table, Text } from '@commercetools-frontend/ui-kit';
-import { SORT_OPTIONS } from '../../../../bundles-core/components/generic/mc-custom-applications-core/src/constants';
+import { SORT_OPTIONS } from '../../../../bundles-core/components/constants';
 import { getSkus } from '../../util';
 import GetProductPrices from './get-product-prices.graphql';
 import { COLUMN_KEYS, columnDefinitions } from './column-definitions';
