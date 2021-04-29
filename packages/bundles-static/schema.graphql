@@ -1,4 +1,7 @@
-type AbsoluteDiscountValue implements CartDiscountValue, ProductDiscountValue {
+# source: https://api.commercetools.co/tire-discounters/graphql
+# timestamp: Wed Apr 28 2021 16:20:26 GMT-0400 (Eastern Daylight Time)
+
+type AbsoluteDiscountValue implements CartDiscountValue & ProductDiscountValue {
   money: [Money!]!
   type: String!
 }
@@ -12,7 +15,7 @@ enum ActionType {
   Create
 }
 
-# A field to access the active cart.
+"""A field to access the active cart."""
 interface ActiveCartInterface {
   activeCart: Cart
 }
@@ -203,7 +206,7 @@ input AddProductVariant {
   staged: Boolean = true
 }
 
-# An address represents a postal address.
+"""An address represents a postal address."""
 type Address {
   id: String
   streetName: String
@@ -476,24 +479,28 @@ input AddZoneLocation {
 }
 
 enum AnonymousCartSignInMode {
-  # The anonymous cart is used as new active customer cart. No `LineItem`s get merged.
+  """
+  The anonymous cart is used as new active customer cart. No `LineItem`s get merged.
+  """
   UseAsNewActiveCustomerCart
 
-  # `LineItem`s of the anonymous cart will be copied to the customer’s active cart that has been modified most recently.
-  #
-  # The `CartState` of the anonymous cart gets changed to `Merged` while the
-  # `CartState` of the customer’s cart remains `Active`.
-  #
-  # `CustomLineItems` and `CustomFields` of the anonymous cart will not be copied to the customers cart.
-  #
-  # If a `LineItem` in the anonymous cart matches an existing line item in the
-  # customer’s cart (same product ID and variant ID), the maximum quantity of both
-  # LineItems is used as the new quantity. In that case `CustomFields` on the
-  # `LineItem` of the anonymous cart will not be in the resulting `LineItem`.
+  """
+  `LineItem`s of the anonymous cart will be copied to the customer’s active cart that has been modified most recently.
+  
+  The `CartState` of the anonymous cart gets changed to `Merged` while the
+  `CartState` of the customer’s cart remains `Active`.
+  
+  `CustomLineItems` and `CustomFields` of the anonymous cart will not be copied to the customers cart.
+  
+  If a `LineItem` in the anonymous cart matches an existing line item in the
+  customer’s cart (same product ID and variant ID), the maximum quantity of both
+  LineItems is used as the new quantity. In that case `CustomFields` on the
+  `LineItem` of the anonymous cart will not be in the resulting `LineItem`.
+  """
   MergeWithExistingCustomerCart
 }
 
-# API Clients can be used to obtain OAuth 2 access tokens
+"""API Clients can be used to obtain OAuth 2 access tokens"""
 type APIClientWithoutSecret {
   id: String!
   name: String!
@@ -509,8 +516,10 @@ type APIClientWithoutSecretQueryResult {
   results: [APIClientWithoutSecret!]!
 }
 
-# API Clients can be used to obtain OAuth 2 access tokens. The secret is only
-# shown once in the response of creating the API Client.
+"""
+API Clients can be used to obtain OAuth 2 access tokens. The secret is only
+shown once in the response of creating the API Client.
+"""
 type APIClientWithSecret {
   id: String!
   name: String!
@@ -542,24 +551,32 @@ type Asset {
   key: String
   sources: [AssetSource!]!
   name(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   nameAllLocales: [LocalizedString!]!
   description(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   descriptionAllLocales: [LocalizedString!]
   tags: [String!]!
 
-  # This field would contain type data
+  """This field would contain type data"""
   customFields: Type @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
   custom: CustomFieldsType
 }
@@ -603,16 +620,18 @@ interface Attribute {
 }
 
 enum AttributeConstraint {
-  # No constraints are applied to the attribute
+  """No constraints are applied to the attribute"""
   None
 
-  # Attribute value should be different in each variant
+  """Attribute value should be different in each variant"""
   Unique
 
-  # A set of attributes, that have this constraint, should have different combinations in each variant
+  """
+  A set of attributes, that have this constraint, should have different combinations in each variant
+  """
   CombinationUnique
 
-  # Attribute value should be the same in all variants
+  """Attribute value should be the same in all variants"""
   SameForAll
 }
 
@@ -620,19 +639,27 @@ type AttributeDefinition {
   type: AttributeDefinitionType!
   name: String!
   label(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   isRequired: Boolean!
   attributeConstraint: AttributeConstraint!
   inputTip(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   inputHint: TextInputHint!
@@ -659,7 +686,9 @@ type AttributeDefinitionResult {
   results: [AttributeDefinition!]!
 }
 
-# (https://docs.commercetools.com/api/projects/productTypes#attributetype)[https://docs.commercetools.com/api/projects/productTypes#attributetype]
+"""
+(https://docs.commercetools.com/api/projects/productTypes#attributetype)[https://docs.commercetools.com/api/projects/productTypes#attributetype]
+"""
 interface AttributeDefinitionType {
   name: String!
 }
@@ -754,7 +783,9 @@ input BaseSearchKeywordInput {
   custom: CustomSuggestTokenizerInput
 }
 
-# The `BigDecimal` scalar type represents signed fractional values with arbitrary precision.
+"""
+The `BigDecimal` scalar type represents signed fractional values with arbitrary precision.
+"""
 scalar BigDecimal
 
 type BooleanAttribute implements Attribute {
@@ -775,8 +806,10 @@ type BooleanType implements FieldType {
   name: String!
 }
 
-# A shopping cart holds product variants and can be ordered. Each cart either
-# belongs to a registered customer or is an anonymous cart.
+"""
+A shopping cart holds product variants and can be ordered. Each cart either
+belongs to a registered customer or is an anonymous cart.
+"""
 type Cart implements Versioned {
   customerId: String
   customer: Customer
@@ -804,31 +837,41 @@ type Cart implements Versioned {
   shippingRateInput: ShippingRateInput
   origin: CartOrigin!
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   storeRef: KeyReference
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   store: Store
   itemShippingAddresses: [Address!]!
   cartState: CartState!
   key: String
 
-  # This field contains non-typed data. Consider using `customFields` as a typed alternative.
+  """
+  This field contains non-typed data. Consider using `customFields` as a typed alternative.
+  """
   customFieldsRaw(
-    # The names of the custom fields to include.
-    #
-    # If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
+    The names of the custom fields to include.
+    
+    If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
     includeNames: [String!]
 
-    # The names of the custom fields to exclude.
-    #
-    # If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
+    The names of the custom fields to exclude.
+    
+    If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
     excludeNames: [String!]
   ): [RawCustomField!] @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
 
-  # This field would contain type data
+  """This field would contain type data"""
   customFields: Type @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
   custom: CustomFieldsType
   deleteDaysAfterLastModification: Int
@@ -856,13 +899,15 @@ type CartCreated implements MessagePayload {
   type: String!
 }
 
-#
-# Cart discounts are recalculated every time LineItems or CustomLineItems are
-# added or removed from the Cart or an order is created from the cart.
-#
-# The number of active cart discounts that do not require a discount code
-# (isActive=true and requiresDiscountCode=false) is limited to 100.
-#       
+"""
+
+Cart discounts are recalculated every time LineItems or CustomLineItems are
+added or removed from the Cart or an order is created from the cart.
+
+The number of active cart discounts that do not require a discount code
+(isActive=true and requiresDiscountCode=false) is limited to 100.
+      
+"""
 type CartDiscount implements Versioned {
   cartPredicate: String!
   validFrom: DateTime
@@ -873,24 +918,32 @@ type CartDiscount implements Versioned {
   sortOrder: String!
   key: String
   name(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   description(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   nameAllLocales: [LocalizedString!]!
   descriptionAllLocales: [LocalizedString!]
   referenceRefs: [Reference!]!
 
-  # This field would contain type data
+  """This field would contain type data"""
   customFields: Type @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
   custom: CustomFieldsType
   value: CartDiscountValue!
@@ -1014,14 +1067,16 @@ type CartLimitWithCurrent implements LimitWithCurrent {
 }
 
 enum CartOrigin {
-  # The cart was created by the merchant on behalf of the customer
+  """The cart was created by the merchant on behalf of the customer"""
   Merchant
 
-  # The cart was created by the customer. This is the default value
+  """The cart was created by the customer. This is the default value"""
   Customer
 }
 
-# Fields to access carts. Includes direct access to a single cart and searching for carts.
+"""
+Fields to access carts. Includes direct access to a single cart and searching for carts.
+"""
 interface CartQueryInterface {
   cart(id: String!): Cart
   carts(where: String, sort: [String!], limit: Int, offset: Int): CartQueryResult!
@@ -1053,13 +1108,15 @@ type CartScoreType implements ShippingRateInputType {
 }
 
 enum CartState {
-  # The cart was ordered. No further operations on the cart are allowed.
+  """The cart was ordered. No further operations on the cart are allowed."""
   Ordered
 
-  # Anonymous cart whose content was merged into a customers cart on signin. No further operations on the cart are allowed.
+  """
+  Anonymous cart whose content was merged into a customers cart on signin. No further operations on the cart are allowed.
+  """
   Merged
 
-  # The cart can be updated and ordered. It is the default state.
+  """The cart can be updated and ordered. It is the default state."""
   Active
 }
 
@@ -1137,26 +1194,38 @@ type Category implements Versioned {
   key: String
   version: Long!
   name(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   nameAllLocales: [LocalizedString!]!
   description(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   descriptionAllLocales: [LocalizedString!]
   slug(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   slugAllLocales: [LocalizedString!]!
@@ -1167,59 +1236,77 @@ type Category implements Versioned {
   orderHint: String!
   externalId: String
   metaTitle(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   metaTitleAllLocales: [LocalizedString!]
   metaKeywords(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   metaKeywordsAllLocales: [LocalizedString!]
   metaDescription(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   metaDescriptionAllLocales: [LocalizedString!]
 
-  # Number of a products in the category subtree.
+  """Number of a products in the category subtree."""
   productCount: Int! @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. The returned number is representing only staged products. Use 'stagedProductCount' instead")
 
-  # Number of staged products in the category subtree.
+  """Number of staged products in the category subtree."""
   stagedProductCount: Int!
 
-  # Number of direct child categories.
+  """Number of direct child categories."""
   childCount: Int!
 
-  # Direct child categories.
+  """Direct child categories."""
   children: [Category!]
   createdAt: DateTime!
   lastModifiedAt: DateTime!
   assets: [Asset!]!
 
-  # This field contains non-typed data. Consider using `customFields` as a typed alternative.
+  """
+  This field contains non-typed data. Consider using `customFields` as a typed alternative.
+  """
   customFieldsRaw(
-    # The names of the custom fields to include.
-    #
-    # If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
+    The names of the custom fields to include.
+    
+    If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
     includeNames: [String!]
 
-    # The names of the custom fields to exclude.
-    #
-    # If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
+    The names of the custom fields to exclude.
+    
+    If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
     excludeNames: [String!]
   ): [RawCustomField!] @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
 
-  # This field would contain type data
+  """This field would contain type data"""
   customFields: Type @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
   custom: CustomFieldsType
   createdBy: Initiator
@@ -1272,26 +1359,38 @@ type CategorySearch {
   key: String
   version: Long!
   name(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   nameAllLocales: [LocalizedString!]!
   description(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   descriptionAllLocales: [LocalizedString!]
   slug(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   slugAllLocales: [LocalizedString!]!
@@ -1305,7 +1404,7 @@ type CategorySearch {
   childCount: Int!
   productTypeNames: [String!]!
 
-  # Direct child categories.
+  """Direct child categories."""
   children: [CategorySearch!]!
   createdAt: DateTime!
   lastModifiedAt: DateTime!
@@ -1323,17 +1422,25 @@ type CategorySearchResult {
 
 type CategorySlugChanged implements MessagePayload {
   slug(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   oldSlug(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   slugAllLocales: [LocalizedString!]!
@@ -1908,25 +2015,33 @@ input ChangeZoneName {
   name: String!
 }
 
-type Channel implements Versioned, ReviewTarget {
+type Channel implements Versioned & ReviewTarget {
   id: String!
   typeId: String! @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Use 'channelRef' to fetch the reference.")
   version: Long!
   key: String!
   roles: [ChannelRole!]!
   name(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   nameAllLocales: [LocalizedString!]
   description(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   descriptionAllLocales: [LocalizedString!]
@@ -1964,22 +2079,32 @@ type ChannelReferenceIdentifier {
 }
 
 enum ChannelRole {
-  # Role tells that this channel can be used to track inventory entries.Channels with this role can be treated as warehouses
+  """
+  Role tells that this channel can be used to track inventory entries.Channels with this role can be treated as warehouses
+  """
   InventorySupply
 
-  # Role tells that this channel can be used to expose products to a specific
-  # distribution channel. It can be used by the cart to select a product price.
+  """
+  Role tells that this channel can be used to expose products to a specific
+  distribution channel. It can be used by the cart to select a product price.
+  """
   ProductDistribution
 
-  # Role tells that this channel can be used to track order export activities.
+  """
+  Role tells that this channel can be used to track order export activities.
+  """
   OrderExport
 
-  # Role tells that this channel can be used to track order import activities.
+  """
+  Role tells that this channel can be used to track order import activities.
+  """
   OrderImport
 
-  # This role can be combined with some other roles (e.g. with `InventorySupply`)
-  # to represent the fact that this particular channel is the primary/master
-  # channel among the channels of the same type.
+  """
+  This role can be combined with some other roles (e.g. with `InventorySupply`)
+  to represent the fact that this particular channel is the primary/master
+  channel among the channels of the same type.
+  """
   Primary
 }
 
@@ -2003,10 +2128,14 @@ type ClassificationShippingRateInput implements ShippingRateInput {
   type: String!
   labelAllLocales: [LocalizedString!]!
   label(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
 }
@@ -2029,7 +2158,7 @@ input CloudEventsSubscriptionsFormatInput {
   cloudEventsVersion: String!
 }
 
-# [ISO 3166-1](http://en.wikipedia.org/wiki/ISO_3166-1) country code.
+"""[ISO 3166-1](http://en.wikipedia.org/wiki/ISO_3166-1) country code."""
 scalar Country
 
 input CreateApiClient {
@@ -2053,11 +2182,15 @@ input CreateZone {
   locations: [ZoneLocation!] = []
 }
 
-# Represents a currency. Currencies are identified by their [ISO
-# 4217](http://www.iso.org/iso/home/standards/currency_codes.htm) currency codes.
+"""
+Represents a currency. Currencies are identified by their [ISO
+4217](http://www.iso.org/iso/home/standards/currency_codes.htm) currency codes.
+"""
 scalar Currency
 
-# A customer is a person purchasing products. Carts, Orders and Reviews can be associated to a customer.
+"""
+A customer is a person purchasing products. Carts, Orders and Reviews can be associated to a customer.
+"""
 type Customer implements Versioned {
   customerNumber: String
   email: String!
@@ -2086,28 +2219,38 @@ type Customer implements Versioned {
   shippingAddresses: [Address!]!
   billingAddresses: [Address!]!
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   storesRef: [KeyReference!]!
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   stores: [Store!]!
 
-  # This field contains non-typed data. Consider using `customFields` as a typed alternative.
+  """
+  This field contains non-typed data. Consider using `customFields` as a typed alternative.
+  """
   customFieldsRaw(
-    # The names of the custom fields to include.
-    #
-    # If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
+    The names of the custom fields to include.
+    
+    If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
     includeNames: [String!]
 
-    # The names of the custom fields to exclude.
-    #
-    # If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
+    The names of the custom fields to exclude.
+    
+    If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
     excludeNames: [String!]
   ): [RawCustomField!] @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
 
-  # This field would contain type data
+  """This field would contain type data"""
   customFields: Type @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
   custom: CustomFieldsType
   id: String!
@@ -2118,7 +2261,7 @@ type Customer implements Versioned {
   lastModifiedBy: Initiator
 }
 
-# A field to access a customer's active cart.
+"""A field to access a customer's active cart."""
 interface CustomerActiveCartInterface {
   customerActiveCart(customerId: String!): Cart
 }
@@ -2174,9 +2317,11 @@ type CustomerEmailVerified implements MessagePayload {
   type: String!
 }
 
-# A customer can be a member in a customer group (e.g. reseller, gold member). A
-# customer group can be used in price calculations with special prices being
-# assigned to certain customer groups.
+"""
+A customer can be a member in a customer group (e.g. reseller, gold member). A
+customer group can be used in price calculations with special prices being
+assigned to certain customer groups.
+"""
 type CustomerGroup implements Versioned {
   id: String!
   typeId: String! @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Use 'customerGroupRef' to fetch the reference.")
@@ -2257,19 +2402,21 @@ type CustomerPasswordUpdated implements MessagePayload {
   type: String!
 }
 
-# Fields to access customer accounts. Includes direct access to a single customer and searching for customers.
+"""
+Fields to access customer accounts. Includes direct access to a single customer and searching for customers.
+"""
 interface CustomerQueryInterface {
   customer(
-    # Queries a customer with specified email token
+    """Queries a customer with specified email token"""
     emailToken: String
 
-    # Queries a customer with specified password token
+    """Queries a customer with specified password token"""
     passwordToken: String
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Customer
   customers(where: String, sort: [String!], limit: Int, offset: Int): CustomerQueryResult!
@@ -2286,7 +2433,7 @@ input CustomerSignInDraft {
   email: String!
   password: String!
 
-  # This field will be deprecated in favour of anonymousCart.id.
+  """This field will be deprecated in favour of anonymousCart.id."""
   anonymousCartId: String
   anonymousCart: ResourceIdentifierInput
   anonymousCartSignInMode: AnonymousCartSignInMode = MergeWithExistingCustomerCart
@@ -2318,20 +2465,28 @@ input CustomerSignMeUpDraft {
   vatId: String
   addresses: [AddressInput!] = []
 
-  # The index of the address in the `addresses` list. The
-  # `defaultBillingAddressId` of the customer will be set to the ID of that address.
+  """
+  The index of the address in the `addresses` list. The
+  `defaultBillingAddressId` of the customer will be set to the ID of that address.
+  """
   defaultBillingAddress: Int
 
-  # The index of the address in the `addresses` list. The
-  # `defaultShippingAddressId` of the customer will be set to the ID of that address.
+  """
+  The index of the address in the `addresses` list. The
+  `defaultShippingAddressId` of the customer will be set to the ID of that address.
+  """
   defaultShippingAddress: Int
 
-  # The indices of the shipping addresses in the `addresses` list. The
-  # `shippingAddressIds` of the `Customer` will be set to the IDs of that addresses.
+  """
+  The indices of the shipping addresses in the `addresses` list. The
+  `shippingAddressIds` of the `Customer` will be set to the IDs of that addresses.
+  """
   shippingAddresses: [Int!] = []
 
-  # The indices of the billing addresses in the `addresses` list. The
-  # `billingAddressIds` of the customer will be set to the IDs of that addresses.
+  """
+  The indices of the billing addresses in the `addresses` list. The
+  `billingAddressIds` of the customer will be set to the IDs of that addresses.
+  """
   billingAddresses: [Int!] = []
   custom: CustomFieldsDraft
   locale: Locale
@@ -2352,20 +2507,28 @@ input CustomerSignUpDraft {
   vatId: String
   addresses: [AddressInput!] = []
 
-  # The index of the address in the `addresses` list. The
-  # `defaultBillingAddressId` of the customer will be set to the ID of that address.
+  """
+  The index of the address in the `addresses` list. The
+  `defaultBillingAddressId` of the customer will be set to the ID of that address.
+  """
   defaultBillingAddress: Int
 
-  # The index of the address in the `addresses` list. The
-  # `defaultShippingAddressId` of the customer will be set to the ID of that address.
+  """
+  The index of the address in the `addresses` list. The
+  `defaultShippingAddressId` of the customer will be set to the ID of that address.
+  """
   defaultShippingAddress: Int
 
-  # The indices of the shipping addresses in the `addresses` list. The
-  # `shippingAddressIds` of the `Customer` will be set to the IDs of that addresses.
+  """
+  The indices of the shipping addresses in the `addresses` list. The
+  `shippingAddressIds` of the `Customer` will be set to the IDs of that addresses.
+  """
   shippingAddresses: [Int!] = []
 
-  # The indices of the billing addresses in the `addresses` list. The
-  # `billingAddressIds` of the customer will be set to the IDs of that addresses.
+  """
+  The indices of the billing addresses in the `addresses` list. The
+  `billingAddressIds` of the customer will be set to the IDs of that addresses.
+  """
   billingAddresses: [Int!] = []
   custom: CustomFieldsDraft
   locale: Locale
@@ -2374,7 +2537,7 @@ input CustomerSignUpDraft {
   stores: [ResourceIdentifierInput!]
   customerNumber: String
 
-  # This field will be deprecated in favour of anonymousCart.id.
+  """This field will be deprecated in favour of anonymousCart.id."""
   anonymousCartId: String
   anonymousCart: ResourceIdentifierInput
   externalId: String
@@ -2420,31 +2583,35 @@ interface CustomField {
   name: String!
 }
 
-# A key-value pair representing the field name and value of one single custom field.
-#
-# The value of this custom field consists of escaped JSON based on the FieldDefinition of the Type.
-#
-# Examples for `value`:
-#
-# * FieldType `String`: `"\"This is a string\""`
-# * FieldType `DateTimeType`: `"\"2001-09-11T14:00:00.000Z\""`
-# * FieldType `Number`: `"4"`
-# * FieldType `Set` with an elementType of `String`: `"[\"This is a string\", \"This is another string\"]"`
-# * FieldType `Reference`: `"{\"id\", \"b911b62d-353a-4388-93ee-8d488d9af962\", \"typeId\", \"product\"}"`
-#
+"""
+A key-value pair representing the field name and value of one single custom field.
+
+The value of this custom field consists of escaped JSON based on the FieldDefinition of the Type.
+
+Examples for `value`:
+
+* FieldType `String`: `"\"This is a string\""`
+* FieldType `DateTimeType`: `"\"2001-09-11T14:00:00.000Z\""`
+* FieldType `Number`: `"4"`
+* FieldType `Set` with an elementType of `String`: `"[\"This is a string\", \"This is another string\"]"`
+* FieldType `Reference`: `"{\"id\", \"b911b62d-353a-4388-93ee-8d488d9af962\", \"typeId\", \"product\"}"`
+
+"""
 input CustomFieldInput {
   name: String!
 
-  # The value of this custom field consists of escaped JSON based on the FieldDefinition of the Type.
-  #
-  # Examples for `value`:
-  #
-  # * FieldType `String`: `"\"This is a string\""`
-  # * FieldType `DateTimeType`: `"\"2001-09-11T14:00:00.000Z\""`
-  # * FieldType `Number`: `"4"`
-  # * FieldType `Set` with an elementType of `String`: `"[\"This is a string\", \"This is another string\"]"`
-  # * FieldType `Reference`: `"{\"id\", \"b911b62d-353a-4388-93ee-8d488d9af962\", \"typeId\", \"product\"}"`
-  #
+  """
+  The value of this custom field consists of escaped JSON based on the FieldDefinition of the Type.
+  
+  Examples for `value`:
+  
+  * FieldType `String`: `"\"This is a string\""`
+  * FieldType `DateTimeType`: `"\"2001-09-11T14:00:00.000Z\""`
+  * FieldType `Number`: `"4"`
+  * FieldType `Set` with an elementType of `String`: `"[\"This is a string\", \"This is another string\"]"`
+  * FieldType `Reference`: `"{\"id\", \"b911b62d-353a-4388-93ee-8d488d9af962\", \"typeId\", \"product\"}"`
+  
+  """
   value: String!
 }
 
@@ -2466,33 +2633,43 @@ type CustomFieldsType {
   typeRef: Reference!
   type: TypeDefinition
 
-  # This field contains non-typed data.
+  """This field contains non-typed data."""
   customFieldsRaw(
-    # The names of the custom fields to include.
-    #
-    # If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
+    The names of the custom fields to include.
+    
+    If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
     includeNames: [String!]
 
-    # The names of the custom fields to exclude.
-    #
-    # If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
+    The names of the custom fields to exclude.
+    
+    If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
     excludeNames: [String!]
   ): [RawCustomField!]
 
-  # This field would contain type data
+  """This field would contain type data"""
   customFields: Type! @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Typed custom fields are no longer supported, please use customFieldsRaw instead.")
 }
 
-# A custom line item is a generic item that can be added to the cart but is not
-# bound to a product. You can use it for discounts (negative money), vouchers,
-# complex cart rules, additional services or fees. You control the lifecycle of this item.
+"""
+A custom line item is a generic item that can be added to the cart but is not
+bound to a product. You can use it for discounts (negative money), vouchers,
+complex cart rules, additional services or fees. You control the lifecycle of this item.
+"""
 type CustomLineItem {
   id: String!
   name(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   nameAllLocales: [LocalizedString!]!
@@ -2507,20 +2684,26 @@ type CustomLineItem {
   taxedPrice: TaxedItemPrice
   discountedPricePerQuantity: [DiscountedLineItemPriceForQuantity!]!
 
-  # This field contains non-typed data. Consider using `customFields` as a typed alternative.
+  """
+  This field contains non-typed data. Consider using `customFields` as a typed alternative.
+  """
   customFieldsRaw(
-    # The names of the custom fields to include.
-    #
-    # If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
+    The names of the custom fields to include.
+    
+    If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
     includeNames: [String!]
 
-    # The names of the custom fields to exclude.
-    #
-    # If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
+    The names of the custom fields to exclude.
+    
+    If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
     excludeNames: [String!]
   ): [RawCustomField!] @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
 
-  # This field would contain type data
+  """This field would contain type data"""
   customFields: Type @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
   custom: CustomFieldsType
   shippingDetails: ItemShippingDetails
@@ -2545,10 +2728,14 @@ type CustomLineItemDraftOutput {
   custom: CustomFieldsCommand
   shippingDetails: ItemShippingDetailsDraftOutput
   name(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   taxCategoryResId: ResourceIdentifier
@@ -2603,7 +2790,7 @@ input CustomObjectDraft {
   key: String!
   container: String!
 
-  # The value should be passed in a form of escaped JSON
+  """The value should be passed in a form of escaped JSON"""
   value: String!
   version: Long
 }
@@ -2633,7 +2820,7 @@ input CustomSuggestTokenizerInput {
   inputs: [String!]!
 }
 
-# DateTime is a scalar value that represents an ISO8601 formatted date.
+"""DateTime is a scalar value that represents an ISO8601 formatted date."""
 scalar Date
 
 type DateAttribute implements Attribute {
@@ -2650,7 +2837,9 @@ type DateField implements CustomField {
   name: String!
 }
 
-# DateTime is a scalar value that represents an ISO8601 formatted date and time.
+"""
+DateTime is a scalar value that represents an ISO8601 formatted date and time.
+"""
 scalar DateTime
 
 type DateTimeAttribute implements Attribute {
@@ -2739,9 +2928,11 @@ input DimensionsInput {
   height: Int!
 }
 
-# With discount codes it is possible to give specific cart discounts to an
-# eligible amount of users. They are defined by a string value which can be added
-# to a cart so that specific cart discounts can be applied to the cart.
+"""
+With discount codes it is possible to give specific cart discounts to an
+eligible amount of users. They are defined by a string value which can be added
+to a cart so that specific cart discounts can be applied to the cart.
+"""
 type DiscountCode implements Versioned {
   code: String!
   isActive: Boolean!
@@ -2753,17 +2944,25 @@ type DiscountCode implements Versioned {
   validUntil: DateTime
   groups: [String!]!
   name(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   description(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   cartDiscounts: [CartDiscount!]!
@@ -2771,24 +2970,32 @@ type DiscountCode implements Versioned {
   nameAllLocales: [LocalizedString!]
   descriptionAllLocales: [LocalizedString!]
 
-  # This field contains non-typed data. Consider using `customFields` as a typed alternative.
+  """
+  This field contains non-typed data. Consider using `customFields` as a typed alternative.
+  """
   customFieldsRaw(
-    # The names of the custom fields to include.
-    #
-    # If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
+    The names of the custom fields to include.
+    
+    If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
     includeNames: [String!]
 
-    # The names of the custom fields to exclude.
-    #
-    # If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
+    The names of the custom fields to exclude.
+    
+    If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
     excludeNames: [String!]
   ): [RawCustomField!] @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
 
-  # This field would contain type data
+  """This field would contain type data"""
   customFields: Type @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
   custom: CustomFieldsType
 
-  # How many times this discount code was applied (only applications that were part of a successful checkout are considered)
+  """
+  How many times this discount code was applied (only applications that were part of a successful checkout are considered)
+  """
   applicationCount: Long!
   cartDiscountRefs: [Reference!]!
   id: String!
@@ -2828,29 +3035,41 @@ type DiscountCodeQueryResult {
 }
 
 enum DiscountCodeState {
-  # The discount code is active and none of the discounts were applied because the
-  # discount application was stopped by one discount that has the StackingMode of
-  # StopAfterThisDiscount defined
+  """
+  The discount code is active and none of the discounts were applied because the
+  discount application was stopped by one discount that has the StackingMode of
+  StopAfterThisDiscount defined
+  """
   ApplicationStoppedByPreviousDiscount
 
-  # The discount code is not valid or it does not contain any valid cart
-  # discounts. Validity is determined based on the validFrom and validUntil dates
+  """
+  The discount code is not valid or it does not contain any valid cart
+  discounts. Validity is determined based on the validFrom and validUntil dates
+  """
   NotValid
 
-  # maxApplications or maxApplicationsPerCustomer for discountCode has been reached.
+  """
+  maxApplications or maxApplicationsPerCustomer for discountCode has been reached.
+  """
   MaxApplicationReached
 
-  # The discount code is active and it contains at least one active and valid
-  # CartDiscount. The discount code cartPredicate matches the cart and at least
-  # one of the contained active discount’s cart predicates matches the cart.
+  """
+  The discount code is active and it contains at least one active and valid
+  CartDiscount. The discount code cartPredicate matches the cart and at least
+  one of the contained active discount’s cart predicates matches the cart.
+  """
   MatchesCart
 
-  # The discount code is active and it contains at least one active and valid
-  # CartDiscount. But its cart predicate does not match the cart or none of the
-  # contained active discount’s cart predicates match the cart
+  """
+  The discount code is active and it contains at least one active and valid
+  CartDiscount. But its cart predicate does not match the cart or none of the
+  contained active discount’s cart predicates match the cart
+  """
   DoesNotMatchCart
 
-  # The discount code is not active or it does not contain any active cart discounts.
+  """
+  The discount code is not active or it does not contain any active cart discounts.
+  """
   NotActive
 }
 
@@ -2905,14 +3124,18 @@ type EnumAttribute implements Attribute {
 
 type EnumAttributeDefinitionType implements AttributeDefinitionType {
   values(
-    # The keys of the enum values to include.
-    #
-    # If neither `includeKeys` nor `excludeKeys` are provided, then all enum values are returned.
+    """
+    The keys of the enum values to include.
+    
+    If neither `includeKeys` nor `excludeKeys` are provided, then all enum values are returned.
+    """
     includeKeys: [String!]
 
-    # The keys of the enum values to exclude.
-    #
-    # If neither `includeKeys` nor `excludeKeys` are provided, then all enum values are returned.
+    """
+    The keys of the enum values to exclude.
+    
+    If neither `includeKeys` nor `excludeKeys` are provided, then all enum values are returned.
+    """
     excludeKeys: [String!]
     limit: Int
     offset: Int
@@ -3059,16 +3282,22 @@ type ExternalTaxRateDraftOutput {
   includedInPrice: Boolean!
 }
 
-# Field definitions describe custom fields and allow you to define some meta-information associated with the field.
+"""
+Field definitions describe custom fields and allow you to define some meta-information associated with the field.
+"""
 type FieldDefinition {
   name: String!
   required: Boolean!
   inputHint: TextInputHint!
   label(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   labelAllLocales: [LocalizedString!]!
@@ -3265,110 +3494,144 @@ type Initiator {
   userRef: Reference
 }
 
-type InStore implements CartQueryInterface, CustomerActiveCartInterface, OrderQueryInterface, CustomerQueryInterface, ShippingMethodsByCartInterface, MeFieldInterface {
-  # This field can only be used with an access token created with the password flow or with an anonymous session.
-  #
-  # It gives access to the data that is specific to the customer or the anonymous session linked to the access token.
+type InStore implements CartQueryInterface & CustomerActiveCartInterface & OrderQueryInterface & CustomerQueryInterface & ShippingMethodsByCartInterface & MeFieldInterface {
+  """
+  This field can only be used with an access token created with the password flow or with an anonymous session.
+  
+  It gives access to the data that is specific to the customer or the anonymous session linked to the access token.
+  """
   me: InStoreMe!
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   shippingMethodsByCart(id: String!): [ShippingMethod!]!
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   customer(
-    # Queries a customer with specified email token
+    """Queries a customer with specified email token"""
     emailToken: String
 
-    # Queries a customer with specified password token
+    """Queries a customer with specified password token"""
     passwordToken: String
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Customer
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   customers(where: String, sort: [String!], limit: Int, offset: Int): CustomerQueryResult!
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   cart(id: String!): Cart
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   carts(where: String, sort: [String!], limit: Int, offset: Int): CartQueryResult!
   customerActiveCart(customerId: String!): Cart
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   order(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
     orderNumber: String
   ): Order
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   orders(where: String, sort: [String!], limit: Int, offset: Int): OrderQueryResult!
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   shoppingList(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): ShoppingList
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   shoppingLists(where: String, sort: [String!], limit: Int, offset: Int): ShoppingListQueryResult!
 }
 
-type InStoreMe implements MeQueryInterface, CartQueryInterface, ActiveCartInterface, OrderQueryInterface, ShoppingListQueryInterface {
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+type InStoreMe implements MeQueryInterface & CartQueryInterface & ActiveCartInterface & OrderQueryInterface & ShoppingListQueryInterface {
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   customer: Customer
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   cart(id: String!): Cart
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   carts(where: String, sort: [String!], limit: Int, offset: Int): CartQueryResult!
   activeCart: Cart
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   order(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
     orderNumber: String
   ): Order
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   orders(where: String, sort: [String!], limit: Int, offset: Int): OrderQueryResult!
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   shoppingList(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): ShoppingList
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   shoppingLists(where: String, sort: [String!], limit: Int, offset: Int): ShoppingListQueryResult!
 }
 
@@ -3376,14 +3639,18 @@ type InterfaceInteractionsRaw {
   typeRef: Reference!
   type: TypeDefinition
   fields(
-    # The names of the custom fields to include.
-    #
-    # If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
+    The names of the custom fields to include.
+    
+    If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
     includeNames: [String!]
 
-    # The names of the custom fields to exclude.
-    #
-    # If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
+    The names of the custom fields to exclude.
+    
+    If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
     excludeNames: [String!]
   ): [RawCustomField!]!
 }
@@ -3395,7 +3662,9 @@ type InterfaceInteractionsRawResult {
   results: [InterfaceInteractionsRaw!]!
 }
 
-# Inventory allows you to track stock quantity per SKU and optionally per supply channel
+"""
+Inventory allows you to track stock quantity per SKU and optionally per supply channel
+"""
 type InventoryEntry implements Versioned {
   sku: String!
   quantityOnStock: Long!
@@ -3476,18 +3745,24 @@ input InventoryEntryUpdateAction {
 }
 
 enum InventoryMode {
-  # Adding items to cart and ordering is independent of inventory. No inventory checks or modifications.
-  # This is the default mode for a new cart.
+  """
+  Adding items to cart and ordering is independent of inventory. No inventory checks or modifications.
+  This is the default mode for a new cart.
+  """
   None
 
-  # Creating an order will fail with an OutOfStock error if an unavailable line item exists. Line items in the cart
-  # are only reserved for the duration of the ordering transaction.
+  """
+  Creating an order will fail with an OutOfStock error if an unavailable line item exists. Line items in the cart
+  are only reserved for the duration of the ordering transaction.
+  """
   ReserveOnOrder
 
-  # Orders are tracked on inventory. That means, ordering a LineItem will decrement the available quantity on the
-  # respective InventoryEntry. Creating an order will succeed even if the line item’s available quantity is zero or
-  # negative. But creating an order will fail with an OutOfStock error if no matching inventory entry exists for a
-  # line item.
+  """
+  Orders are tracked on inventory. That means, ordering a LineItem will decrement the available quantity on the
+  respective InventoryEntry. Creating an order will succeed even if the line item’s available quantity is zero or
+  negative. But creating an order will fail with an OutOfStock error if no matching inventory entry exists for a
+  line item.
+  """
   TrackOnly
 }
 
@@ -3524,7 +3799,7 @@ input ItemStateDraftType {
   state: ReferenceInput!
 }
 
-# Raw JSON value
+"""Raw JSON value"""
 scalar Json
 
 type KeyReference {
@@ -3532,7 +3807,7 @@ type KeyReference {
   key: String!
 }
 
-# A key that references a resource.
+"""A key that references a resource."""
 scalar KeyReferenceInput
 
 type Limit {
@@ -3544,32 +3819,42 @@ interface LimitWithCurrent {
   current: Long
 }
 
-# A line item is a snapshot of a product variant at the time it was added to the cart.
-#
-# Since a product variant may change at any time, the ProductVariant data is copied into the field variant.
-# The relation to the Product is kept but the line item will not automatically update if the product variant changes.
-# On the cart, the line item can be updated manually. The productSlug refers to the current version of the product.
-# It can be used to link to the product. If the product has been deleted, the line item remains but refers to a
-# non-existent product and the productSlug is left empty.
-#
-# Please also note that creating an order is impossible if the product or product
-# variant a line item relates to has been deleted.
+"""
+A line item is a snapshot of a product variant at the time it was added to the cart.
+
+Since a product variant may change at any time, the ProductVariant data is copied into the field variant.
+The relation to the Product is kept but the line item will not automatically update if the product variant changes.
+On the cart, the line item can be updated manually. The productSlug refers to the current version of the product.
+It can be used to link to the product. If the product has been deleted, the line item remains but refers to a
+non-existent product and the productSlug is left empty.
+
+Please also note that creating an order is impossible if the product or product
+variant a line item relates to has been deleted.
+"""
 type LineItem {
   id: String!
   productId: String!
   name(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   nameAllLocales: [LocalizedString!]!
   productSlug(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   productSlugAllLocales: [LocalizedString!]
@@ -3592,20 +3877,26 @@ type LineItem {
   lineItemMode: LineItemMode!
   priceMode: LineItemPriceMode!
 
-  # This field contains non-typed data. Consider using `customFields` as a typed alternative.
+  """
+  This field contains non-typed data. Consider using `customFields` as a typed alternative.
+  """
   customFieldsRaw(
-    # The names of the custom fields to include.
-    #
-    # If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
+    The names of the custom fields to include.
+    
+    If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
     includeNames: [String!]
 
-    # The names of the custom fields to exclude.
-    #
-    # If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
+    The names of the custom fields to exclude.
+    
+    If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
     excludeNames: [String!]
   ): [RawCustomField!] @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
 
-  # This field would contain type data
+  """This field would contain type data"""
   customFields: Type @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
   custom: CustomFieldsType
   shippingDetails: ItemShippingDetails
@@ -3643,28 +3934,36 @@ type LineItemDraftOutput {
 }
 
 enum LineItemMode {
-  # The line item was added automatically, because a discount has added a free gift to the cart.
-  # The quantity can not be increased, and it won’t be merged when the same product variant is added.
-  # If the gift is removed, an entry is added to the "refusedGifts" array and the discount won’t be applied again
-  # to the cart. The price can not be changed externally.
-  # All other updates, such as the ones related to custom fields, can be used.
+  """
+  The line item was added automatically, because a discount has added a free gift to the cart.
+  The quantity can not be increased, and it won’t be merged when the same product variant is added.
+  If the gift is removed, an entry is added to the "refusedGifts" array and the discount won’t be applied again
+  to the cart. The price can not be changed externally.
+  All other updates, such as the ones related to custom fields, can be used.
+  """
   GiftLineItem
 
-  # The line item was added during cart creation or with the update action addLineItem. Its quantity can be
-  # changed without restrictions.
+  """
+  The line item was added during cart creation or with the update action addLineItem. Its quantity can be
+  changed without restrictions.
+  """
   Standard
 }
 
 enum LineItemPriceMode {
-  # The price is selected form the product variant. This is the default mode.
+  """
+  The price is selected form the product variant. This is the default mode.
+  """
   Platform
 
-  # The line item price was set externally. Cart discounts can apply to line items
-  # with this price mode. All update actions that change the quantity of a line
-  # item with this price mode require the externalPrice field to be given.
+  """
+  The line item price was set externally. Cart discounts can apply to line items
+  with this price mode. All update actions that change the quantity of a line
+  item with this price mode require the externalPrice field to be given.
+  """
   ExternalPrice
 
-  # The line item price with the total was set externally.
+  """The line item price with the total was set externally."""
   ExternalTotal
 }
 
@@ -3700,19 +3999,23 @@ type LineItemStateTransition implements MessagePayload {
   type: String!
 }
 
-# Locale is a scalar value represented as a string language tag.
+"""Locale is a scalar value represented as a string language tag."""
 scalar Locale
 
 type LocalizableEnumAttributeDefinitionType implements AttributeDefinitionType {
   values(
-    # The keys of the enum values to include.
-    #
-    # If neither `includeKeys` nor `excludeKeys` are provided, then all enum values are returned.
+    """
+    The keys of the enum values to include.
+    
+    If neither `includeKeys` nor `excludeKeys` are provided, then all enum values are returned.
+    """
     includeKeys: [String!]
 
-    # The keys of the enum values to exclude.
-    #
-    # If neither `includeKeys` nor `excludeKeys` are provided, then all enum values are returned.
+    """
+    The keys of the enum values to exclude.
+    
+    If neither `includeKeys` nor `excludeKeys` are provided, then all enum values are returned.
+    """
     excludeKeys: [String!]
     limit: Int
     offset: Int
@@ -3728,10 +4031,14 @@ input LocalizableEnumTypeDraft {
 type LocalizableEnumValueType {
   key: String!
   label(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   labelAllLocales: [LocalizedString!]!
@@ -3751,7 +4058,9 @@ type LocalizableTextAttributeDefinitionType implements AttributeDefinitionType {
 type LocalizedEnumAttribute implements Attribute {
   key: String!
   label(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale!
   ): String
   name: String!
@@ -3760,7 +4069,9 @@ type LocalizedEnumAttribute implements Attribute {
 type LocalizedEnumField implements CustomField {
   key: String!
   label(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale!
   ): String
   name: String!
@@ -3774,10 +4085,14 @@ type LocalizedEnumType implements FieldType {
 type LocalizedEnumValue {
   key: String!
   label(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   labelAllLocales: [LocalizedString!]!
@@ -3800,7 +4115,9 @@ type LocalizedString {
 
 type LocalizedStringAttribute implements Attribute {
   value(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale!
   ): String
   name: String!
@@ -3808,7 +4125,9 @@ type LocalizedStringAttribute implements Attribute {
 
 type LocalizedStringField implements CustomField {
   value(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale!
   ): String
   name: String!
@@ -3833,60 +4152,82 @@ type Location {
   state: String
 }
 
-# The `Long` scalar type represents non-fractional signed whole numeric values.
-# Long can represent values between -(2^63) and 2^63 - 1.
+"""
+The `Long` scalar type represents non-fractional signed whole numeric values.
+Long can represent values between -(2^63) and 2^63 - 1.
+"""
 scalar Long
 
-type Me implements MeQueryInterface, CartQueryInterface, ActiveCartInterface, OrderQueryInterface, ShoppingListQueryInterface {
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+type Me implements MeQueryInterface & CartQueryInterface & ActiveCartInterface & OrderQueryInterface & ShoppingListQueryInterface {
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   customer: Customer
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   cart(id: String!): Cart
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   carts(where: String, sort: [String!], limit: Int, offset: Int): CartQueryResult!
   activeCart: Cart
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   order(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
     orderNumber: String
   ): Order
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   orders(where: String, sort: [String!], limit: Int, offset: Int): OrderQueryResult!
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   shoppingList(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): ShoppingList
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   shoppingLists(where: String, sort: [String!], limit: Int, offset: Int): ShoppingListQueryResult!
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   payment(id: String!): MyPayment
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   payments(where: String, sort: [String!], limit: Int, offset: Int): MyPaymentQueryResult!
 }
 
-# The me field gives access to the data that is specific to the customer or anonymous session linked to the access token.
+"""
+The me field gives access to the data that is specific to the customer or anonymous session linked to the access token.
+"""
 interface MeFieldInterface {
   me: MeQueryInterface!
 }
@@ -3896,16 +4237,16 @@ interface MeQueryInterface {
   carts(where: String, sort: [String!], limit: Int, offset: Int): CartQueryResult!
   activeCart: Cart
   order(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
     orderNumber: String
   ): Order
   orders(where: String, sort: [String!], limit: Int, offset: Int): OrderQueryResult!
   shoppingList(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): ShoppingList
   shoppingLists(where: String, sort: [String!], limit: Int, offset: Int): ShoppingListQueryResult!
@@ -3967,7 +4308,9 @@ type Money implements BaseMoney {
   currencyCode: Currency!
   centAmount: Long!
 
-  # For the `Money` it equals to the default number of fraction digits used with the currency.
+  """
+  For the `Money` it equals to the default number of fraction digits used with the currency.
+  """
   fractionDigits: Int!
 }
 
@@ -4049,19 +4392,19 @@ type Mutation {
     version: Long!
     actions: [CustomerGroupUpdateAction!]!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): CustomerGroup
   deleteCustomerGroup(
     version: Long!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): CustomerGroup
   createCategory(draft: CategoryDraft!): Category
@@ -4069,19 +4412,19 @@ type Mutation {
     version: Long!
     actions: [CategoryUpdateAction!]!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Category
   deleteCategory(
     version: Long!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Category
   createChannel(draft: ChannelDraft!): Channel
@@ -4091,10 +4434,10 @@ type Mutation {
   deleteCustomObject(
     version: Long
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
     container: String
     personalDataErasure: Boolean = false
@@ -4104,19 +4447,19 @@ type Mutation {
     version: Long!
     actions: [ProductTypeUpdateAction!]!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): ProductTypeDefinition
   deleteProductType(
     version: Long!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): ProductTypeDefinition
   createTypeDefinition(draft: TypeDefinitionDraft!): TypeDefinition
@@ -4124,19 +4467,19 @@ type Mutation {
     version: Long!
     actions: [TypeUpdateAction!]!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): TypeDefinition
   deleteTypeDefinition(
     version: Long!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): TypeDefinition
   createShippingMethod(draft: ShippingMethodDraft!): ShippingMethod
@@ -4144,19 +4487,19 @@ type Mutation {
     version: Long!
     actions: [ShippingMethodUpdateAction!]!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): ShippingMethod
   deleteShippingMethod(
     version: Long!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): ShippingMethod
   createZone(draft: CreateZone!): Zone
@@ -4164,19 +4507,19 @@ type Mutation {
     version: Long!
     actions: [ZoneUpdateAction!]!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Zone
   deleteZone(
     version: Long!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Zone
   createTaxCategory(draft: TaxCategoryDraft!): TaxCategory
@@ -4184,19 +4527,19 @@ type Mutation {
     version: Long!
     actions: [TaxCategoryUpdateAction!]!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): TaxCategory
   deleteTaxCategory(
     version: Long!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): TaxCategory
   createDiscountCode(draft: DiscountCodeDraft!): DiscountCode
@@ -4207,19 +4550,19 @@ type Mutation {
     version: Long!
     actions: [CartDiscountUpdateAction!]!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): CartDiscount
   deleteCartDiscount(
     version: Long!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): CartDiscount
   createProductDiscount(draft: ProductDiscountDraft!): ProductDiscount
@@ -4227,19 +4570,19 @@ type Mutation {
     version: Long!
     actions: [ProductDiscountUpdateAction!]!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): ProductDiscount
   deleteProductDiscount(
     version: Long!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): ProductDiscount
   createProduct(draft: ProductDraft!): Product
@@ -4247,19 +4590,19 @@ type Mutation {
     version: Long!
     actions: [ProductUpdateAction!]!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Product
   deleteProduct(
     version: Long!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Product
   createState(draft: StateDraft!): State
@@ -4267,108 +4610,120 @@ type Mutation {
     version: Long!
     actions: [StateUpdateAction!]!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): State
   deleteState(
     version: Long!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): State
 
-  # Creates a customer. If an anonymous cart is given then the cart is assigned to
-  # the created customer and the version number of the Cart will increase. If the
-  # id of an anonymous session is given, all carts and orders will be assigned to
-  # the created customer.
+  """
+  Creates a customer. If an anonymous cart is given then the cart is assigned to
+  the created customer and the version number of the Cart will increase. If the
+  id of an anonymous session is given, all carts and orders will be assigned to
+  the created customer.
+  """
   customerSignUp(
     draft: CustomerSignUpDraft!
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
   ): CustomerSignInResult!
 
-  # Retrieves the authenticated customer (a customer that matches the given email/password pair).
-  #
-  # There may be carts and orders created before the sign in that should be
-  # assigned to the customer account. With the `anonymousCartId`, a single
-  # anonymous cart can be assigned. With the `anonymousId`, all orders and carts
-  # that have this `anonymousId` set will be assigned to the customer.
-  # If both `anonymousCartId` and `anonymousId` are given, the anonymous cart must have the `anonymousId`.
-  #
-  # Additionally, there might also exist one or more active customer carts from an
-  # earlier session. On customer sign in there are several ways how to proceed
-  # with this cart and the cart referenced by the `anonymousCartId`.
-  #
-  # * If the customer does not have a cart yet, the anonymous cart becomes the customer's cart.
-  # * If the customer already has one or more carts, the content of the anonymous
-  # cart will be copied to the customer's active cart that has been modified most recently.
-  #
-  #   In this case the `CartState` of the anonymous cart gets changed to `Merged`
-  # while the customer's cart remains the `Active` cart.
-  #
-  #   If a `LineItem` in the anonymous cart matches an existing line item, or a
-  # `CustomLineItem` matches an existing custom line item in the customer's cart,
-  # the maximum quantity of both line items is used as the new quantity.
-  #
-  #   `ItemShippingDetails` are copied from the item with the highest quantity.
-  #
-  #   If `itemShippingAddresses` are different in the two carts, the resulting cart
-  # contains the addresses of both the customer cart and the anonymous cart.
-  #
-  #   Note, that it is not possible to merge carts that differ in their currency (set during creation of the cart).
-  #
-  # If a cart is is returned as part of the `CustomerSignInResult`, it has been
-  # recalculated (it will have up-to-date prices, taxes and discounts, and invalid
-  # line items have been removed).
+  """
+  Retrieves the authenticated customer (a customer that matches the given email/password pair).
+  
+  There may be carts and orders created before the sign in that should be
+  assigned to the customer account. With the `anonymousCartId`, a single
+  anonymous cart can be assigned. With the `anonymousId`, all orders and carts
+  that have this `anonymousId` set will be assigned to the customer.
+  If both `anonymousCartId` and `anonymousId` are given, the anonymous cart must have the `anonymousId`.
+  
+  Additionally, there might also exist one or more active customer carts from an
+  earlier session. On customer sign in there are several ways how to proceed
+  with this cart and the cart referenced by the `anonymousCartId`.
+  
+  * If the customer does not have a cart yet, the anonymous cart becomes the customer's cart.
+  * If the customer already has one or more carts, the content of the anonymous
+  cart will be copied to the customer's active cart that has been modified most recently.
+  
+    In this case the `CartState` of the anonymous cart gets changed to `Merged`
+  while the customer's cart remains the `Active` cart.
+  
+    If a `LineItem` in the anonymous cart matches an existing line item, or a
+  `CustomLineItem` matches an existing custom line item in the customer's cart,
+  the maximum quantity of both line items is used as the new quantity.
+  
+    `ItemShippingDetails` are copied from the item with the highest quantity.
+  
+    If `itemShippingAddresses` are different in the two carts, the resulting cart
+  contains the addresses of both the customer cart and the anonymous cart.
+  
+    Note, that it is not possible to merge carts that differ in their currency (set during creation of the cart).
+  
+  If a cart is is returned as part of the `CustomerSignInResult`, it has been
+  recalculated (it will have up-to-date prices, taxes and discounts, and invalid
+  line items have been removed).
+  """
   customerSignIn(
     draft: CustomerSignInDraft!
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
   ): CustomerSignInResult!
   updateCustomer(
     version: Long!
     actions: [CustomerUpdateAction!]!
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Customer
   deleteCustomer(
     version: Long!
     personalDataErasure: Boolean = false
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Customer
   customerChangePassword(
@@ -4377,172 +4732,214 @@ type Mutation {
     currentPassword: String!
     newPassword: String!
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
   ): Customer
 
-  # The following workflow can be used to reset the customer’s password:
-  #
-  # 1. Create a password reset token and send it embedded in a link to the customer.
-  # 2. When the customer clicks on the link, you may optionally retrieve customer by password token.
-  # 3. When the customer entered new password, use reset customer’s password to reset the password.
+  """
+  The following workflow can be used to reset the customer’s password:
+  
+  1. Create a password reset token and send it embedded in a link to the customer.
+  2. When the customer clicks on the link, you may optionally retrieve customer by password token.
+  3. When the customer entered new password, use reset customer’s password to reset the password.
+  """
   customerResetPassword(
     version: Long
     tokenValue: String!
     newPassword: String!
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
   ): Customer
 
-  # Verifies customer's email using a token.
+  """Verifies customer's email using a token."""
   customerConfirmEmail(
     version: Long
     tokenValue: String!
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
   ): Customer
 
-  # The token value is used to reset the password of the customer with the given
-  # email. The token is valid only for 10 minutes.
+  """
+  The token value is used to reset the password of the customer with the given
+  email. The token is valid only for 10 minutes.
+  """
   customerCreatePasswordResetToken(
     email: String!
 
-    # The validity of the created token in minutes.
+    """The validity of the created token in minutes."""
     ttlMinutes: Int
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
   ): CustomerPasswordToken
   customerCreateEmailVerificationToken(
     id: String!
     version: Long
 
-    # The validity of the created token in minutes.
+    """The validity of the created token in minutes."""
     ttlMinutes: Int!
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
   ): CustomerEmailToken!
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features If used
-  # with an access token for Anonymous Sessions, all orders and carts belonging to
-  # the anonymousId will be assigned to the newly created customer.
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features If used
+  with an access token for Anonymous Sessions, all orders and carts belonging to
+  the anonymousId will be assigned to the newly created customer.
+  """
   customerSignMeUp(
     draft: CustomerSignMeUpDraft!
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
   ): CustomerSignInResult!
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
-  #
-  # Retrieves the authenticated customer (a customer that matches the given email/password pair).
-  #
-  # If used with an access token for Anonymous Sessions, all orders and carts
-  # belonging to the `anonymousId` will be assigned to the newly created customer.
-  #
-  # * If the customer does not have a cart yet, the anonymous cart that was
-  # modified most recently becomes the customer's cart.
-  # * If the customer already has a cart, the most recently modified anonymous
-  # cart will be handled according to the `AnonymousCartSignInMode`.
-  #
-  # If a cart is is returned as part of the `CustomerSignInResult`, it has been
-  # recalculated (it will have up-to-date prices, taxes and discounts, and invalid
-  # line items have been removed).
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  
+  Retrieves the authenticated customer (a customer that matches the given email/password pair).
+  
+  If used with an access token for Anonymous Sessions, all orders and carts
+  belonging to the `anonymousId` will be assigned to the newly created customer.
+  
+  * If the customer does not have a cart yet, the anonymous cart that was
+  modified most recently becomes the customer's cart.
+  * If the customer already has a cart, the most recently modified anonymous
+  cart will be handled according to the `AnonymousCartSignInMode`.
+  
+  If a cart is is returned as part of the `CustomerSignInResult`, it has been
+  recalculated (it will have up-to-date prices, taxes and discounts, and invalid
+  line items have been removed).
+  """
   customerSignMeIn(
     draft: CustomerSignMeInDraft!
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
   ): CustomerSignInResult!
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   updateMyCustomer(
     version: Long!
     actions: [MyCustomerUpdateAction!]!
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
   ): Customer
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   deleteMyCustomer(
     version: Long!
     personalDataErasure: Boolean = false
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
   ): Customer
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   customerChangeMyPassword(
     version: Long!
     currentPassword: String!
     newPassword: String!
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
   ): Customer
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   customerConfirmMyEmail(
     tokenValue: String!
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
   ): Customer
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   customerResetMyPassword(
     tokenValue: String!
     newPassword: String!
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
   ): Customer
   createInventoryEntry(draft: InventoryEntryDraft!): InventoryEntry
@@ -4551,113 +4948,137 @@ type Mutation {
   createCart(
     draft: CartDraft!
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
   ): Cart
   updateCart(
     version: Long!
     actions: [CartUpdateAction!]!
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Cart
   deleteCart(
     version: Long!
     personalDataErasure: Boolean = false
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Cart
   replicateCart(
     reference: ReferenceInput!
     key: String
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
   ): Cart
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   createMyCart(
     draft: MyCartDraft!
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
   ): Cart
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   updateMyCart(
     id: String!
     version: Long!
     actions: [MyCartUpdateAction!]!
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
   ): Cart
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   deleteMyCart(
     id: String!
     version: Long!
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
   ): Cart
   createOrderFromCart(
     draft: OrderCartCommand!
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
   ): Order
   updateOrder(
     version: Long!
     actions: [OrderUpdateAction!]!
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
     orderNumber: String
   ): Order
@@ -4665,26 +5086,32 @@ type Mutation {
     version: Long!
     personalDataErasure: Boolean = false
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
     orderNumber: String
   ): Order
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   createMyOrderFromCart(
     draft: OrderMyCartCommand!
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
   ): Order
   createOrderEdit(draft: OrderEditDraft!): OrderEdit
@@ -4693,109 +5120,127 @@ type Mutation {
     actions: [OrderEditUpdateAction!]!
     dryRun: Boolean = false
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): OrderEdit
   deleteOrderEdit(
     version: Long!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): OrderEdit
   createShoppingList(
     draft: ShoppingListDraft!
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
   ): ShoppingList
   updateShoppingList(
     version: Long!
     actions: [ShoppingListUpdateAction!]!
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): ShoppingList
   deleteShoppingList(
     version: Long!
     personalDataErasure: Boolean = false
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): ShoppingList
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   createMyShoppingList(
     draft: MyShoppingListDraft!
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
   ): ShoppingList
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   updateMyShoppingList(
     version: Long!
     actions: [MyShoppingListUpdateAction!]!
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): ShoppingList
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   deleteMyShoppingList(
     version: Long!
 
-    # BETA: This feature can be subject to change and should be used carefully in
-    # production. https://docs.commercetools.com/api/contract#beta-features The
-    # mutation is only performed if the resource is part of the store. Can be used
-    # with store-specific OAuth permissions.
+    """
+    BETA: This feature can be subject to change and should be used carefully in
+    production. https://docs.commercetools.com/api/contract#beta-features The
+    mutation is only performed if the resource is part of the store. Can be used
+    with store-specific OAuth permissions.
+    """
     storeKey: KeyReferenceInput
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): ShoppingList
   createPayment(draft: PaymentDraft!): Payment
@@ -4803,56 +5248,64 @@ type Mutation {
     version: Long!
     actions: [PaymentUpdateAction!]!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Payment
   deletePayment(
     version: Long!
     personalDataErasure: Boolean = false
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Payment
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   createMyPayment(draft: MyPaymentDraft!): MyPayment
   updateMyPayment(id: String!, version: Long!, actions: [MyPaymentUpdateAction!]!): MyPayment
   deleteMyPayment(id: String!, version: Long!): MyPayment
   updateProject(version: Long!, actions: [ProjectSettingsUpdateAction!]!): ProjectProjection
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   createStore(draft: CreateStore!): Store
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   updateStore(
     version: Long!
     actions: [StoreUpdateAction!]!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Store
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   deleteStore(
     version: Long!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Store
   createReview(draft: ReviewDraft!): Review
@@ -4860,20 +5313,20 @@ type Mutation {
     version: Long!
     actions: [ReviewUpdateAction!]!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Review
   deleteReview(
     version: Long!
     personalDataErasure: Boolean = false
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Review
   createSubscription(draft: SubscriptionDraft!): Subscription
@@ -4881,19 +5334,19 @@ type Mutation {
     version: Long!
     actions: [SubscriptionUpdateAction!]!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Subscription
   deleteSubscription(
     version: Long!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Subscription
   createExtension(draft: ExtensionDraft!): Extension
@@ -4901,19 +5354,19 @@ type Mutation {
     version: Long!
     actions: [ExtensionUpdateAction!]!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Extension
   deleteExtension(
     version: Long!
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Extension
   createApiClient(draft: CreateApiClient!): APIClientWithSecret
@@ -5012,8 +5465,10 @@ input MyLineItemDraft {
   addedAt: DateTime
 }
 
-# My Payments endpoint provides access to payments scoped to a specific user.
-# [documentation](https://docs.commercetools.com/http-api-projects-me-payments#mypayment)
+"""
+My Payments endpoint provides access to payments scoped to a specific user.
+[documentation](https://docs.commercetools.com/http-api-projects-me-payments#mypayment)
+"""
 type MyPayment {
   id: String!
   version: Long!
@@ -5120,8 +5575,10 @@ type NumberType implements FieldType {
   name: String!
 }
 
-# An order can be created from a cart, usually after a checkout process has been completed.
-# [documentation](https://docs.commercetools.com/http-api-projects-orders.html)
+"""
+An order can be created from a cart, usually after a checkout process has been completed.
+[documentation](https://docs.commercetools.com/http-api-projects-orders.html)
+"""
 type Order implements Versioned {
   customerId: String
   customer: Customer
@@ -5149,12 +5606,16 @@ type Order implements Versioned {
   shippingRateInput: ShippingRateInput
   origin: CartOrigin!
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   storeRef: KeyReference
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   store: Store
   itemShippingAddresses: [Address!]!
   completedAt: DateTime
@@ -5170,20 +5631,26 @@ type Order implements Versioned {
   cartRef: Reference
   cart: Cart
 
-  # This field contains non-typed data. Consider using `customFields` as a typed alternative.
+  """
+  This field contains non-typed data. Consider using `customFields` as a typed alternative.
+  """
   customFieldsRaw(
-    # The names of the custom fields to include.
-    #
-    # If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
+    The names of the custom fields to include.
+    
+    If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
     includeNames: [String!]
 
-    # The names of the custom fields to exclude.
-    #
-    # If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
+    The names of the custom fields to exclude.
+    
+    If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
     excludeNames: [String!]
   ): [RawCustomField!] @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
 
-  # This field would contain type data
+  """This field would contain type data"""
   customFields: Type @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
   custom: CustomFieldsType
   id: String!
@@ -5419,10 +5886,12 @@ type OrderPaymentStateChanged implements MessagePayload {
   type: String!
 }
 
-# Fields to access orders. Includes direct access to a single order and searching for orders.
+"""
+Fields to access orders. Includes direct access to a single order and searching for orders.
+"""
 interface OrderQueryInterface {
   order(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
     orderNumber: String
   ): Order
@@ -5617,8 +6086,10 @@ type ParcelTrackingDataUpdated implements MessagePayload {
   type: String!
 }
 
-# Payments hold information about the current state of receiving and/or refunding money.
-# [documentation](https://docs.commercetools.com/http-api-projects-payments)
+"""
+Payments hold information about the current state of receiving and/or refunding money.
+[documentation](https://docs.commercetools.com/http-api-projects-payments)
+"""
 type Payment implements Versioned {
   key: String
   customerRef: Reference
@@ -5671,10 +6142,14 @@ type PaymentMethodInfo {
   paymentInterface: String
   method: String
   name(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   nameAllLocales: [LocalizedString!]
@@ -5813,7 +6288,7 @@ input PriceFunctionDraft {
   currencyCode: Currency!
 }
 
-type Product implements Versioned, ReviewTarget {
+type Product implements Versioned & ReviewTarget {
   id: String!
   key: String
   version: Long!
@@ -5857,26 +6332,38 @@ type ProductCreated implements MessagePayload {
 
 type ProductData {
   name(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   description(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   nameAllLocales: [LocalizedString!]!
   descriptionAllLocales: [LocalizedString!]
   slug(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   slugAllLocales: [LocalizedString!]!
@@ -5885,66 +6372,86 @@ type ProductData {
   categoriesRef: [Reference!]!
   categories: [Category!]!
   searchKeyword(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale!
   ): [SearchKeyword!]
   searchKeywords: [SearchKeywords!]!
   metaTitle(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   metaTitleAllLocales: [LocalizedString!]
   metaKeywords(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   metaKeywordsAllLocales: [LocalizedString!]
   metaDescription(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   metaDescriptionAllLocales: [LocalizedString!]
   masterVariant: ProductVariant!
   variants(
-    # Queries for products with specified SKUs
+    """Queries for products with specified SKUs"""
     skus: [String!]
     isOnStock: Boolean
 
-    # The IDs of channels for which to check the stock of the `isOnStock`.
-    #
-    # Variant is returned if at least one of the channels is matching the `isOnStock`
-    #
-    # If the list is not provided then noChannel is checked for `isOnStock`
+    """
+    The IDs of channels for which to check the stock of the `isOnStock`.
+    
+    Variant is returned if at least one of the channels is matching the `isOnStock`
+    
+    If the list is not provided then noChannel is checked for `isOnStock`
+    """
     stockChannelIds: [String!]
     hasImages: Boolean
   ): [ProductVariant!]!
   allVariants(
-    # Queries for products with specified SKUs
+    """Queries for products with specified SKUs"""
     skus: [String!]
     isOnStock: Boolean
 
-    # The IDs of channels for which to check the stock of the `isOnStock`.
-    #
-    # Variant is returned if at least one of the channels is matching the `isOnStock`
-    #
-    # If the list is not provided then noChannel is checked for `isOnStock`
+    """
+    The IDs of channels for which to check the stock of the `isOnStock`.
+    
+    Variant is returned if at least one of the channels is matching the `isOnStock`
+    
+    If the list is not provided then noChannel is checked for `isOnStock`
+    """
     stockChannelIds: [String!]
     hasImages: Boolean
   ): [ProductVariant!]!
   variant(
-    # Queries for a variant with specified SKU
+    """Queries for a variant with specified SKU"""
     sku: String
 
-    # Queries for a variant with specified [key](https://docs.commercetools.com/api/projects/products#variant_key)
+    """
+    Queries for a variant with specified [key](https://docs.commercetools.com/api/projects/products#variant_key)
+    """
     key: String
   ): ProductVariant
   skus: [String!]!
@@ -5956,25 +6463,27 @@ type ProductDeleted implements MessagePayload {
   type: String!
 }
 
-#
-# A product price can be discounted in two ways:
-#
-# * with a relative or an absolute product discount, which will be automatically
-# applied to all prices in a product that match a discount predicate.
-#   A relative discount reduces the matching price by a fraction (for example 10 %
-# off). An absolute discount reduces the matching price by a fixed amount (for
-# example 10€ off). If more than one product discount matches a price, the
-# discount sort order determines which one will be applied.
-# * with an external product discount, which can then be used to explicitly set a
-# discounted value on a particular product price.
-#
-# The discounted price is stored in the discounted field of the Product Price.
-#
-# Note that when a discount is created, updated or removed it can take up to 15
-# minutes to update all the prices with the discounts.
-#
-# The maximum number of ProductDiscounts that can be active at the same time is **200**.
-#       
+"""
+
+A product price can be discounted in two ways:
+
+* with a relative or an absolute product discount, which will be automatically
+applied to all prices in a product that match a discount predicate.
+  A relative discount reduces the matching price by a fraction (for example 10 %
+off). An absolute discount reduces the matching price by a fixed amount (for
+example 10€ off). If more than one product discount matches a price, the
+discount sort order determines which one will be applied.
+* with an external product discount, which can then be used to explicitly set a
+discounted value on a particular product price.
+
+The discounted price is stored in the discounted field of the Product Price.
+
+Note that when a discount is created, updated or removed it can take up to 15
+minutes to update all the prices with the discounts.
+
+The maximum number of ProductDiscounts that can be active at the same time is **200**.
+      
+"""
 type ProductDiscount implements Versioned {
   predicate: String!
   validFrom: DateTime
@@ -5984,17 +6493,25 @@ type ProductDiscount implements Versioned {
   sortOrder: String!
   key: String
   name(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   description(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   referenceRefs: [Reference!]!
@@ -6104,20 +6621,26 @@ type ProductPrice {
   discounted: DiscountedProductPriceValue
   tiers: [ProductPriceTier!]
 
-  # This field contains non-typed data. Consider using `customFields` as a typed alternative.
+  """
+  This field contains non-typed data. Consider using `customFields` as a typed alternative.
+  """
   customFieldsRaw(
-    # The names of the custom fields to include.
-    #
-    # If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
+    The names of the custom fields to include.
+    
+    If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
     includeNames: [String!]
 
-    # The names of the custom fields to exclude.
-    #
-    # If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
+    The names of the custom fields to exclude.
+    
+    If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
     excludeNames: [String!]
   ): [RawCustomField!] @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
 
-  # This field would contain type data
+  """This field would contain type data"""
   customFields: Type @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
   custom: CustomFieldsType
 }
@@ -6175,26 +6698,38 @@ type ProductProjectionMessagePayload {
   productTypeRef: Reference!
   productType: ProductTypeDefinition
   name(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   nameAllLocales: [LocalizedString!]!
   description(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   descriptionAllLocales: [LocalizedString!]
   slug(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   slugAllLocales: [LocalizedString!]!
@@ -6203,26 +6738,38 @@ type ProductProjectionMessagePayload {
   categories: [Category!]!
   searchKeywords: [SearchKeywords!]!
   metaTitle(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   metaTitleAllLocales: [LocalizedString!]
   metaKeywords(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   metaKeywordsAllLocales: [LocalizedString!]
   metaDescription(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   metaDescriptionAllLocales: [LocalizedString!]
@@ -6270,17 +6817,25 @@ type ProductRevertedStagedChanges implements MessagePayload {
 
 type ProductSlugChanged implements MessagePayload {
   slug(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   oldSlug(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   slugAllLocales: [LocalizedString!]!
@@ -6300,14 +6855,18 @@ type ProductTypeDefinition implements Versioned {
   name: String!
   description: String!
   attributeDefinitions(
-    # The names of the attribute definitions to include.
-    #
-    # If neither `includeNames` nor `excludeNames` are provided, then all attribute definitions are returned.
+    """
+    The names of the attribute definitions to include.
+    
+    If neither `includeNames` nor `excludeNames` are provided, then all attribute definitions are returned.
+    """
     includeNames: [String!]
 
-    # The names of the attribute definitions to exclude.
-    #
-    # If neither `includeNames` nor `excludeNames` are provided, then all attribute definitions are returned.
+    """
+    The names of the attribute definitions to exclude.
+    
+    If neither `includeNames` nor `excludeNames` are provided, then all attribute definitions are returned.
+    """
     excludeNames: [String!]
     limit: Int
     offset: Int
@@ -6418,22 +6977,26 @@ type ProductVariant {
   sku: String
   prices: [ProductPrice!]
 
-  # Returns a single price based on the price selection rules.
+  """Returns a single price based on the price selection rules."""
   price(currency: Currency!, country: Country, customerGroupId: String, channelId: String, date: DateTime): ProductPrice
   images: [Image!]!
   assets: [Asset!]!
   availability: ProductVariantAvailabilityWithChannels
 
-  # This field contains raw attributes data
+  """This field contains raw attributes data"""
   attributesRaw(
-    # The names of the attributes to include.
-    #
-    # If neither `includeNames` nor `excludeNames` are provided, then all attributes are returned.
+    """
+    The names of the attributes to include.
+    
+    If neither `includeNames` nor `excludeNames` are provided, then all attributes are returned.
+    """
     includeNames: [String!]
 
-    # The names of the attributes to exclude.
-    #
-    # If neither `includeNames` nor `excludeNames` are provided, then all attributes are returned.
+    """
+    The names of the attributes to exclude.
+    
+    If neither `includeNames` nor `excludeNames` are provided, then all attributes are returned.
+    """
     excludeNames: [String!]
   ): [RawProductAttribute!]!
 }
@@ -6444,7 +7007,7 @@ type ProductVariantAdded implements MessagePayload {
   type: String!
 }
 
-# Product variant availabilities
+"""Product variant availabilities"""
 type ProductVariantAvailabilitiesResult {
   limit: Int
   offset: Int
@@ -6452,7 +7015,7 @@ type ProductVariantAvailabilitiesResult {
   results: [ProductVariantAvailabilityWithChannel!]!
 }
 
-# Product variant availability
+"""Product variant availability"""
 type ProductVariantAvailability {
   isOnStock: Boolean!
   restockableInDays: Int
@@ -6468,14 +7031,18 @@ type ProductVariantAvailabilityWithChannel {
 type ProductVariantAvailabilityWithChannels {
   noChannel: ProductVariantAvailability
   channels(
-    # The IDs of channels to include.
-    #
-    # If neither `includeChannelIds` nor `excludeChannelIds` are provided, then all channels are returned.
+    """
+    The IDs of channels to include.
+    
+    If neither `includeChannelIds` nor `excludeChannelIds` are provided, then all channels are returned.
+    """
     includeChannelIds: [String!]
 
-    # The IDs of channels to exclude.
-    #
-    # If neither `includeChannelIds` nor `excludeChannelIds` are provided, then all channels are returned.
+    """
+    The IDs of channels to exclude.
+    
+    If neither `includeChannelIds` nor `excludeChannelIds` are provided, then all channels are returned.
+    """
     excludeChannelIds: [String!]
     limit: Int
     offset: Int
@@ -6497,7 +7064,7 @@ input ProductVariantInput {
   assets: [AssetDraftInput!] = []
 }
 
-# Contains information about the limits of your project.
+"""Contains information about the limits of your project."""
 type ProjectCustomLimitsProjection {
   query: QueryLimitsProjection!
   products: ProductLimitsProjection!
@@ -6519,7 +7086,7 @@ type ProjectCustomLimitsProjection {
   category: CategoryLimitsProjection!
 }
 
-# Project contains information about project.
+"""Project contains information about project."""
 type ProjectProjection {
   key: String!
   name: String!
@@ -6557,198 +7124,216 @@ input PublishProduct {
 }
 
 enum PublishScope {
-  # Publishes the complete staged projection
+  """Publishes the complete staged projection"""
   All
 
-  # Publishes only prices on the staged projection
+  """Publishes only prices on the staged projection"""
   Prices
 }
 
-type Query implements CartQueryInterface, CustomerActiveCartInterface, OrderQueryInterface, CustomerQueryInterface, ShoppingListQueryInterface, ShippingMethodsByCartInterface, MeFieldInterface {
-  # This field can only be used with an access token created with the password flow or with an anonymous session.
-  #
-  # It gives access to the data that is specific to the customer or the anonymous session linked to the access token.
+type Query implements CartQueryInterface & CustomerActiveCartInterface & OrderQueryInterface & CustomerQueryInterface & ShoppingListQueryInterface & ShippingMethodsByCartInterface & MeFieldInterface {
+  """
+  This field can only be used with an access token created with the password flow or with an anonymous session.
+  
+  It gives access to the data that is specific to the customer or the anonymous session linked to the access token.
+  """
   me: Me!
 
-  # This field gives access to the resources (such as carts) that are inside the given store. Currently in beta.
+  """
+  This field gives access to the resources (such as carts) that are inside the given store. Currently in beta.
+  """
   inStore(key: KeyReferenceInput!): InStore!
 
-  # This field gives access to the resources (such as carts) that are inside one of the given stores. Currently in beta.
+  """
+  This field gives access to the resources (such as carts) that are inside one of the given stores. Currently in beta.
+  """
   inStores(keys: [KeyReferenceInput!]!): InStore!
   customerGroup(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): CustomerGroup
   customerGroups(where: String, sort: [String!], limit: Int, offset: Int): CustomerGroupQueryResult!
   category(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Category
   categories(where: String, sort: [String!], limit: Int, offset: Int): CategoryQueryResult!
 
-  # Autocomplete the categories based on category fields like name, description, etc.
+  """
+  Autocomplete the categories based on category fields like name, description, etc.
+  """
   categoryAutocomplete(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale!
 
-    # Incomplete user input.
+    """Incomplete user input."""
     text: String!
     limit: Int = 10
     offset: Int = 0
 
-    # Filters to apply during the search and autocomplete - supported fields are:
-    # * `id`
-    # * `slug`
-    # * `externalId`
-    # * `key`
-    # * `ancestors`
-    # * `parent.id`
-    # * `level`
-    # * `createdAt`
-    # * `modifiedAt`
-    # * `name.{language}:missing`
-    # * `externalId:missing`
-    # * `description.{language}:missing`
-    # * `childCount`
-    # * `productCount`
-    # * `productTypeNames`
+    """
+    Filters to apply during the search and autocomplete - supported fields are:
+    * `id`
+    * `slug`
+    * `externalId`
+    * `key`
+    * `ancestors`
+    * `parent.id`
+    * `level`
+    * `createdAt`
+    * `modifiedAt`
+    * `name.{language}:missing`
+    * `externalId:missing`
+    * `description.{language}:missing`
+    * `childCount`
+    * `productCount`
+    * `productTypeNames`
+    """
     filters: [SearchFilter!]
   ): CategorySearchResult!
 
-  # Search the categories using full-text search, filtering and sorting
+  """Search the categories using full-text search, filtering and sorting"""
   categorySearch(
-    # Full-text search input.
+    """Full-text search input."""
     fulltext: LocalizedText
     limit: Int = 10
     offset: Int = 0
 
-    # Filters to apply before the results of facets
+    """Filters to apply before the results of facets"""
     queryFilters: [SearchFilter!]
 
-    # Filters to apply during the search and autocomplete - supported fields are:
-    # * `id`
-    # * `slug`
-    # * `externalId`
-    # * `key`
-    # * `ancestors`
-    # * `parent.id`
-    # * `level`
-    # * `createdAt`
-    # * `modifiedAt`
-    # * `name.{language}:missing`
-    # * `externalId:missing`
-    # * `description.{language}:missing`
-    # * `childCount`
-    # * `productCount`
-    # * `productTypeNames`
+    """
+    Filters to apply during the search and autocomplete - supported fields are:
+    * `id`
+    * `slug`
+    * `externalId`
+    * `key`
+    * `ancestors`
+    * `parent.id`
+    * `level`
+    * `createdAt`
+    * `modifiedAt`
+    * `name.{language}:missing`
+    * `externalId:missing`
+    * `description.{language}:missing`
+    * `childCount`
+    * `productCount`
+    * `productTypeNames`
+    """
     filters: [SearchFilter!]
 
-    # Sort result - supported fields are:
-    #
-    # * `id`
-    # * `name`
-    # * `createdAt`
-    # * `modifiedAt`
-    #
-    # by default sorted by relevance (a score of matches against the search term in descending order)
-    #
+    """
+    Sort result - supported fields are:
+    
+    * `id`
+    * `name`
+    * `createdAt`
+    * `modifiedAt`
+    
+    by default sorted by relevance (a score of matches against the search term in descending order)
+    
+    """
     sorts: [SearchSort!]
   ): CategorySearchResult!
   channel(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Channel
   channels(where: String, sort: [String!], limit: Int, offset: Int): ChannelQueryResult!
   customObject(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
     container: String
   ): CustomObject
   customObjects(where: String, sort: [String!], limit: Int, offset: Int, container: String!): CustomObjectQueryResult!
   productType(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): ProductTypeDefinition
   productTypes(where: String, sort: [String!], limit: Int, offset: Int): ProductTypeDefinitionQueryResult!
   typeDefinition(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): TypeDefinition
   typeDefinitions(where: String, sort: [String!], limit: Int, offset: Int): TypeDefinitionQueryResult!
   shippingMethod(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): ShippingMethod
   shippingMethods(where: String, sort: [String!], limit: Int, offset: Int): ShippingMethodQueryResult!
   shippingMethodsByCart(id: String!): [ShippingMethod!]!
   shippingMethodsByLocation(country: Country!, state: String, currency: Currency): [ShippingMethod!]!
   zone(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Zone
   zones(where: String, sort: [String!], limit: Int, offset: Int): ZoneQueryResult!
   taxCategory(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): TaxCategory
   taxCategories(where: String, sort: [String!], limit: Int, offset: Int): TaxCategoryQueryResult!
   discountCode(id: String!): DiscountCode
   discountCodes(where: String, sort: [String!], limit: Int, offset: Int): DiscountCodeQueryResult!
   cartDiscount(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): CartDiscount
   cartDiscounts(where: String, sort: [String!], limit: Int, offset: Int): CartDiscountQueryResult!
   productDiscount(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): ProductDiscount
   productDiscounts(where: String, sort: [String!], limit: Int, offset: Int): ProductDiscountQueryResult!
   product(
-    # Queries for a product with specified SKU
+    """Queries for a product with specified SKU"""
     sku: String
 
-    # Queries for a product with specified [product variant
-    # key](https://docs.commercetools.com/api/projects/products#variant_key)
+    """
+    Queries for a product with specified [product variant
+    key](https://docs.commercetools.com/api/projects/products#variant_key)
+    """
     variantKey: String
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Product
   products(
@@ -6757,28 +7342,28 @@ type Query implements CartQueryInterface, CustomerActiveCartInterface, OrderQuer
     limit: Int
     offset: Int
 
-    # Queries for products with specified SKUs
+    """Queries for products with specified SKUs"""
     skus: [String!]
   ): ProductQueryResult!
   state(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): State
   states(where: String, sort: [String!], limit: Int, offset: Int): StateQueryResult!
   customer(
-    # Queries a customer with specified email token
+    """Queries a customer with specified email token"""
     emailToken: String
 
-    # Queries a customer with specified password token
+    """Queries a customer with specified password token"""
     passwordToken: String
 
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Customer
   customers(where: String, sort: [String!], limit: Int, offset: Int): CustomerQueryResult!
@@ -6788,80 +7373,84 @@ type Query implements CartQueryInterface, CustomerActiveCartInterface, OrderQuer
   carts(where: String, sort: [String!], limit: Int, offset: Int): CartQueryResult!
   customerActiveCart(customerId: String!): Cart
   message(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Message
   messages(where: String, sort: [String!], limit: Int, offset: Int): MessageQueryResult!
   order(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
     orderNumber: String
   ): Order
   orders(where: String, sort: [String!], limit: Int, offset: Int): OrderQueryResult!
   orderEdit(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): OrderEdit
   orderEdits(where: String, sort: [String!], limit: Int, offset: Int): OrderEditQueryResult!
   shoppingList(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): ShoppingList
   shoppingLists(where: String, sort: [String!], limit: Int, offset: Int): ShoppingListQueryResult!
   payment(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Payment
   payments(where: String, sort: [String!], limit: Int, offset: Int): PaymentQueryResult!
   productProjectionsSuggest(searchKeywords: [SearchKeywordArgument!]!, fuzzy: Boolean, limit: Int = 10, staged: Boolean = false): SuggestResult!
   project: ProjectProjection!
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   store(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Store
 
-  # BETA: This feature can be subject to change and should be used carefully in
-  # production. https://docs.commercetools.com/api/contract#beta-features
+  """
+  BETA: This feature can be subject to change and should be used carefully in
+  production. https://docs.commercetools.com/api/contract#beta-features
+  """
   stores(where: String, sort: [String!], limit: Int, offset: Int): StoreQueryResult!
   review(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Review
   reviews(where: String, sort: [String!], limit: Int, offset: Int): ReviewQueryResult!
   subscription(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Subscription
   subscriptions(where: String, sort: [String!], limit: Int, offset: Int): SubscriptionQueryResult!
   extension(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): Extension
   extensions(where: String, sort: [String!], limit: Int, offset: Int): ExtensionQueryResult!
@@ -6948,7 +7537,7 @@ type RefreshTokenLimitWithCurrent implements LimitWithCurrent {
   current: Long!
 }
 
-type RelativeDiscountValue implements CartDiscountValue, ProductDiscountValue {
+type RelativeDiscountValue implements CartDiscountValue & ProductDiscountValue {
   permyriad: Int!
   type: String!
 }
@@ -7195,7 +7784,7 @@ input ResourceIdentifierInput {
   key: String
 }
 
-# Stores information about returns connected to this order.
+"""Stores information about returns connected to this order."""
 type ReturnInfo {
   items: [ReturnItem!]!
   returnTrackingId: String
@@ -7355,15 +7944,19 @@ input ReviewUpdateAction {
 }
 
 enum RoundingMode {
-  # [Round half down](https://en.wikipedia.org/wiki/Rounding#Round_half_down).
-  # Rounding mode used by, e.g., [Avalara Sales TaxII](https://help.avalara.com/kb/001/How_does_Rounding_with_SalesTaxII_work%3F)
+  """
+  [Round half down](https://en.wikipedia.org/wiki/Rounding#Round_half_down).
+  Rounding mode used by, e.g., [Avalara Sales TaxII](https://help.avalara.com/kb/001/How_does_Rounding_with_SalesTaxII_work%3F)
+  """
   HalfDown
 
-  # [Round half up](https://en.wikipedia.org/wiki/Rounding#Round_half_up)
+  """[Round half up](https://en.wikipedia.org/wiki/Rounding#Round_half_up)"""
   HalfUp
 
-  # [Round half to even](https://en.wikipedia.org/wiki/Rounding#Round_half_to_even).
-  # Default rounding mode as used in IEEE 754 computing functions and operators.
+  """
+  [Round half to even](https://en.wikipedia.org/wiki/Rounding#Round_half_to_even).
+  Default rounding mode as used in IEEE 754 computing functions and operators.
+  """
   HalfEven
 }
 
@@ -7381,7 +7974,9 @@ type ScoreShippingRateInputDraftOutput implements ShippingRateInputDraftOutput {
   type: String!
 }
 
-# Search filter. It is represented as a string and has th same format as in REST API: "field:filter_criteria"
+"""
+Search filter. It is represented as a string and has th same format as in REST API: "field:filter_criteria"
+"""
 scalar SearchFilter
 
 type SearchIndexingConfiguration {
@@ -7429,16 +8024,18 @@ type SearchLimitsProjection {
   maxTextSize: Limit!
 }
 
-# Search sort
+"""Search sort"""
 scalar SearchSort
 
-# In order to decide which of the matching items will actually be discounted
+"""
+In order to decide which of the matching items will actually be discounted
+"""
 enum SelectionMode {
   MostExpensive
   Cheapest
 }
 
-# A set.
+"""A set."""
 scalar Set
 
 type SetAttributeDefinitionType implements AttributeDefinitionType {
@@ -9214,10 +9811,14 @@ type ShippingMethod implements Versioned {
   localizedDescriptionAllLocales: [LocalizedString!]
   description: String @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Use localizedDescription")
   localizedDescription(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   taxCategory: TaxCategory
@@ -9258,17 +9859,21 @@ type ShippingMethodQueryResult {
   results: [ShippingMethod!]!
 }
 
-# A field to retrieve available shipping methods for a cart.
+"""A field to retrieve available shipping methods for a cart."""
 interface ShippingMethodsByCartInterface {
   shippingMethodsByCart(id: String!): [ShippingMethod!]!
 }
 
 enum ShippingMethodState {
-  # Either there is no predicate defined for the ShippingMethod or the given predicate matches the cart
+  """
+  Either there is no predicate defined for the ShippingMethod or the given predicate matches the cart
+  """
   MatchesCart
 
-  # The ShippingMethod predicate does not match the cart. Ordering this cart will
-  # fail with error ShippingMethodDoesNotMatchCart
+  """
+  The ShippingMethod predicate does not match the cart. Ordering this cart will
+  fail with error ShippingMethodDoesNotMatchCart
+  """
   DoesNotMatchCart
 }
 
@@ -9288,7 +9893,7 @@ input ShippingMethodUpdateAction {
   setPredicate: SetShippingMethodPredicate
 }
 
-# Shipping Rate
+"""Shipping Rate"""
 type ShippingRate {
   price: Money!
   freeAbove: Money
@@ -9340,10 +9945,14 @@ interface ShippingRateInputDraftOutput {
 type ShippingRateInputLocalizedEnumValue {
   key: String!
   label(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   labelAllLocales: [LocalizedString!]!
@@ -9406,26 +10015,38 @@ input ShippingTargetInput {
 type ShoppingList implements Versioned {
   key: String
   name(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   nameAllLocales: [LocalizedString!]!
   description(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   descriptionAllLocales: [LocalizedString!]
   slug(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   slugAllLocales: [LocalizedString!]
@@ -9479,20 +10100,28 @@ type ShoppingListLineItem {
   quantity: Int!
   addedAt: DateTime!
   name(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   nameAllLocales: [LocalizedString!]!
   deactivatedAt: DateTime
   custom: CustomFieldsType
   productSlug(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   productSlugAllLocales: [LocalizedString!]
@@ -9508,13 +10137,15 @@ input ShoppingListLineItemDraft {
   addedAt: DateTime
 }
 
-# Fields to access shopping lists. Includes direct access to a single list and searching for shopping lists.
+"""
+Fields to access shopping lists. Includes direct access to a single list and searching for shopping lists.
+"""
 interface ShoppingListQueryInterface {
   shoppingList(
-    # Queries with specified ID
+    """Queries with specified ID"""
     id: String
 
-    # Queries with specified key
+    """Queries with specified key"""
     key: String
   ): ShoppingList
   shoppingLists(where: String, sort: [String!], limit: Int, offset: Int): ShoppingListQueryResult!
@@ -9598,12 +10229,14 @@ input SQSDestinationInput {
   region: String!
 }
 
-# Describes how this discount interacts with other discounts
+"""Describes how this discount interacts with other discounts"""
 enum StackingMode {
-  # Don’t apply any more matching discounts after this one.
+  """Don’t apply any more matching discounts after this one."""
   StopAfterThisDiscount
 
-  # Default. Continue applying other matching discounts after applying this one.
+  """
+  Default. Continue applying other matching discounts after applying this one.
+  """
   Stacking
 }
 
@@ -9694,7 +10327,7 @@ interface StagedOrderUpdateActionOutput {
   type: String!
 }
 
-# [State](https://docs.commercetools.com/api/projects/states)
+"""[State](https://docs.commercetools.com/api/projects/states)"""
 type State implements Versioned {
   id: String!
   version: Long!
@@ -9702,18 +10335,26 @@ type State implements Versioned {
   type: StateType!
   roles: [StateRole!]!
   name(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   nameAllLocales: [LocalizedString!]
   description(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   descriptionAllLocales: [LocalizedString!]
@@ -9769,16 +10410,20 @@ input StateUpdateAction {
   setTransitions: SetStateTransitions
 }
 
-# [BETA] Stores allow defining different contexts for a project.
+"""[BETA] Stores allow defining different contexts for a project."""
 type Store implements Versioned {
   id: String!
   version: Long!
   key: String!
   name(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   nameAllLocales: [LocalizedString!]
@@ -9913,7 +10558,9 @@ interface SuggestTokenizer {
   type: String!
 }
 
-# Stores information about order synchronization activities (like export or import).
+"""
+Stores information about order synchronization activities (like export or import).
+"""
 type SyncInfo {
   channelRef: Reference!
   channel: Channel
@@ -9928,16 +10575,22 @@ input TargetReferenceInput {
 }
 
 enum TaxCalculationMode {
-  # This calculation mode calculates the taxes on the unit price before multiplying with the quantity.
-  # E.g. `($1.08 * 1.19 = $1.2852 -> $1.29 rounded) * 3 = $3.87`
+  """
+  This calculation mode calculates the taxes on the unit price before multiplying with the quantity.
+  E.g. `($1.08 * 1.19 = $1.2852 -> $1.29 rounded) * 3 = $3.87`
+  """
   UnitPriceLevel
 
-  # Default. This calculation mode calculates the taxes after the unit price is multiplied with the quantity.
-  # E.g. `($1.08 * 3 = $3.24) * 1.19 = $3.8556 -> $3.86 rounded`
+  """
+  Default. This calculation mode calculates the taxes after the unit price is multiplied with the quantity.
+  E.g. `($1.08 * 3 = $3.24) * 1.19 = $3.8556 -> $3.86 rounded`
+  """
   LineItemLevel
 }
 
-# Tax Categories define how products are to be taxed in different countries.
+"""
+Tax Categories define how products are to be taxed in different countries.
+"""
 type TaxCategory implements Versioned {
   name: String!
   description: String
@@ -10016,28 +10669,36 @@ type TaxedPrice {
 }
 
 enum TaxMode {
-  # No taxes are added to the cart.
+  """No taxes are added to the cart."""
   Disabled
 
-  # The tax amounts and the tax rates as well as the tax portions are set externally per ExternalTaxAmountDraft.
-  # A cart with this tax mode can only be ordered if the cart itself and all line items, all custom line items and
-  # the shipping method have an external tax amount and rate set
+  """
+  The tax amounts and the tax rates as well as the tax portions are set externally per ExternalTaxAmountDraft.
+  A cart with this tax mode can only be ordered if the cart itself and all line items, all custom line items and
+  the shipping method have an external tax amount and rate set
+  """
   ExternalAmount
 
-  # The tax rates are set externally per ExternalTaxRateDraft. A cart with this tax mode can only be ordered if all
-  # line items, all custom line items and the shipping method have an external tax rate set. The totalNet and
-  # totalGross as well as the taxPortions fields are calculated by the platform according to the taxRoundingMode.
+  """
+  The tax rates are set externally per ExternalTaxRateDraft. A cart with this tax mode can only be ordered if all
+  line items, all custom line items and the shipping method have an external tax rate set. The totalNet and
+  totalGross as well as the taxPortions fields are calculated by the platform according to the taxRoundingMode.
+  """
   External
 
-  # The tax rates are selected by the platform from the TaxCategories based on the cart shipping address.
-  # The totalNet and totalGross as well as the taxPortions fields are calculated by the platform according to the
-  # taxRoundingMode.
+  """
+  The tax rates are selected by the platform from the TaxCategories based on the cart shipping address.
+  The totalNet and totalGross as well as the taxPortions fields are calculated by the platform according to the
+  taxRoundingMode.
+  """
   Platform
 }
 
-# Represents the portions that sum up to the totalGross field of a TaxedPrice. The portions are calculated
-# from the TaxRates. If a tax rate has SubRates, they are used and can be identified by name. Tax portions
-# from line items that have the same rate and name will be accumulated to the same tax portion.
+"""
+Represents the portions that sum up to the totalGross field of a TaxedPrice. The portions are calculated
+from the TaxRates. If a tax rate has SubRates, they are used and can be identified by name. Tax portions
+from line items that have the same rate and name will be accumulated to the same tax portion.
+"""
 type TaxPortion {
   rate: Float!
   amount: Money!
@@ -10073,7 +10734,9 @@ type TextAttributeDefinitionType implements AttributeDefinitionType {
   name: String!
 }
 
-# UI hint telling what kind of edit control should be displayed for a text attribute.
+"""
+UI hint telling what kind of edit control should be displayed for a text attribute.
+"""
 enum TextInputHint {
   SingleLine
   MultiLine
@@ -10082,18 +10745,26 @@ enum TextInputHint {
 type TextLineItem {
   id: String!
   name(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   nameAllLocales: [LocalizedString!]!
   description(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   descriptionAllLocales: [LocalizedString!]
@@ -10110,7 +10781,7 @@ input TextLineItemDraft {
   addedAt: DateTime
 }
 
-# Time is a scalar value that represents an ISO8601 formatted time.
+"""Time is a scalar value that represents an ISO8601 formatted time."""
 scalar Time
 
 type TimeAttribute implements Attribute {
@@ -10275,35 +10946,49 @@ interface Type {
   type: TypeDefinition
 }
 
-# Types define the structure of custom fields which can be attached to different entities throughout the platform.
+"""
+Types define the structure of custom fields which can be attached to different entities throughout the platform.
+"""
 type TypeDefinition implements Versioned {
   key: String!
   name(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   description(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   nameAllLocales: [LocalizedString!]!
   descriptionAllLocales: [LocalizedString!]
   resourceTypeIds: [String!]!
   fieldDefinitions(
-    # The names of the custom field definitions to include.
-    #
-    # If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
+    The names of the custom field definitions to include.
+    
+    If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
     includeNames: [String!]
 
-    # The names of the custom field definitions to exclude.
-    #
-    # If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
+    The names of the custom field definitions to exclude.
+    
+    If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
+    """
     excludeNames: [String!]
   ): [FieldDefinition!]!
   id: String!
@@ -10393,16 +11078,22 @@ type UserProvidedIdentifiers {
   externalId: String
   sku: String
   slug(
-    # String is defined for different locales. This argument specifies the desired locale.
+    """
+    String is defined for different locales. This argument specifies the desired locale.
+    """
     locale: Locale
 
-    # List of languages the client is able to understand, and which locale variant is preferred.
+    """
+    List of languages the client is able to understand, and which locale variant is preferred.
+    """
     acceptLanguage: [Locale!]
   ): String
   slugAllLocales: [LocalizedString!]
 }
 
-# Versioned object have an ID and version and modification. Every update of this object changes it's version.
+"""
+Versioned object have an ID and version and modification. Every update of this object changes it's version.
+"""
 interface Versioned {
   id: String!
   version: Long!
@@ -10420,10 +11111,12 @@ input WhitespaceSuggestTokenizerInput {
   dummy: String
 }
 
-# YearMonth is a scalar value that represents an ISO8601 formatted year and month.
+"""
+YearMonth is a scalar value that represents an ISO8601 formatted year and month.
+"""
 scalar YearMonth
 
-# Zones allow defining ShippingRates for specific Locations.
+"""Zones allow defining ShippingRates for specific Locations."""
 type Zone implements Versioned {
   name: String!
   key: String
@@ -10476,4 +11169,3 @@ input ZoneUpdateAction {
   setDescription: SetZoneDescription
   setKey: SetZoneKey
 }
-
