@@ -2,9 +2,10 @@
   "name": "mc-custom-app-bundles",
   "version": "1.0.0",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": {
+    "packages":["packages/*"],
+    "nohoist":["packages/*"]
+  },
   "repository": {
     "url": "https://github.com/commercetools/mc-custom-applications-gallery"
   },

@@ -5,7 +5,7 @@ import { FormattedDate, FormattedMessage, FormattedNumber } from 'react-intl';
 import { useQuery } from '@apollo/react-hooks';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
-import { Spacings, Table, Text } from '@commercetools-frontend/ui-kit';
+import { Spacings, DataTable, Text } from '@commercetools-frontend/ui-kit';
 import { SORT_OPTIONS } from '../../../../bundles-core/components/constants';
 import { getSkus } from '../../util';
 import GetProductPrices from './get-product-prices.graphql';
@@ -23,8 +23,8 @@ export const DateField = ({ date, message }) => (
       {date ? (
         <FormattedDate value={new Date(date)} {...DATE_FORMAT_OPTIONS} />
       ) : (
-        NO_VALUE_FALLBACK
-      )}
+          NO_VALUE_FALLBACK
+        )}
     </Text.Body>
   </Spacings.Inline>
 );
@@ -87,8 +87,8 @@ const PricesTable = ({
             currency={price.value.currencyCode}
           />
         ) : (
-          NO_VALUE_FALLBACK
-        );
+            NO_VALUE_FALLBACK
+          );
       case COLUMN_KEYS.COUNTRY:
         if (!price) {
           return NO_VALUE_FALLBACK;
@@ -96,8 +96,8 @@ const PricesTable = ({
         return price.country ? (
           price.country
         ) : (
-          <FormattedMessage {...messages.anyValue} />
-        );
+            <FormattedMessage {...messages.anyValue} />
+          );
       case COLUMN_KEYS.CUSTOMER_GROUP:
         if (!price) {
           return NO_VALUE_FALLBACK;
@@ -105,8 +105,8 @@ const PricesTable = ({
         return price.customerGroup ? (
           JSON.parse(customerGroup).name
         ) : (
-          <FormattedMessage {...messages.anyValue} />
-        );
+            <FormattedMessage {...messages.anyValue} />
+          );
       case COLUMN_KEYS.CHANNEL:
         return price && price.channel
           ? JSON.parse(channel).name
@@ -118,8 +118,8 @@ const PricesTable = ({
             <DateField date={price.validUntil} message={messages.validTo} />
           </Spacings.Stack>
         ) : (
-          NO_VALUE_FALLBACK
-        );
+            NO_VALUE_FALLBACK
+          );
       default:
         return NO_VALUE_FALLBACK;
     }
@@ -143,7 +143,7 @@ const PricesTable = ({
   const { results, total } = data.products;
 
   return (
-    <Table
+    <DataTable
       columns={columnDefinitions}
       items={results}
       itemRenderer={(item) => renderItem(results, item)}
