@@ -1,4 +1,5 @@
 {
+  "sourceType": "unambiguous",
   "presets": [
     [
       "@babel/preset-env",
@@ -9,7 +10,9 @@
       }
     ]
   ],
-  "plugins": ["@babel/plugin-proposal-optional-chaining"],
+  "plugins": [
+    "@babel/plugin-proposal-optional-chaining"
+  ],
   "sourceMaps": "inline",
   "retainLines": true
 }
