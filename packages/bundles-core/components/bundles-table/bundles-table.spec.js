@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import faker from 'faker';
 import { stringify } from 'qs';
 import { map } from 'lodash';
-import { useQuery, setQuery } from '@apollo/react-hooks';
+import { useQuery, setQuery } from '@apollo/client';
 import * as AppContext from '@commercetools-frontend/application-shell-connectors';
 import { FlatButton } from '@commercetools-frontend/ui-kit';
 import { Error, Loading, PaginatedTable, SearchInput } from '../index';

@@ -1,8 +1,8 @@
+import { useQuery } from "@apollo/client";
 import React from 'react';
 import PropTypes from 'prop-types';
 import { identity, pickBy } from 'lodash';
 import { FormattedDate, FormattedMessage, FormattedNumber } from 'react-intl';
-import { useQuery } from '@apollo/react-hooks';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
 import { Spacings, DataTable, Text } from '@commercetools-frontend/ui-kit';

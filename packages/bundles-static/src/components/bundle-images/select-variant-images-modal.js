@@ -1,8 +1,8 @@
+import { useQuery, useMutation } from "@apollo/client";
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { find, reduce, remove } from 'lodash';
 import { useIntl } from 'react-intl';
-import { useQuery, useMutation } from '@apollo/react-hooks';
 import { FormModalPage } from '@commercetools-frontend/application-components';
 import { useShowNotification } from '@commercetools-frontend/actions-global';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';

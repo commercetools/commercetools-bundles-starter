@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation } from '@apollo/client';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
 import { Spacings } from '@commercetools-frontend/ui-kit';
 import { useShowSideNotification } from '../../../../bundles-core/components/hooks';

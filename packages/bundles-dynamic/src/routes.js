@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Route, Switch } from 'react-router-dom';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 import { MaintenancePageLayout } from '@commercetools-frontend/application-components';
 import LockedDiamondSVG from '@commercetools-frontend/assets/images/locked-diamond.svg';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';

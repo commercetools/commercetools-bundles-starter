@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import faker from 'faker';
-import { getQuery, setQuery } from '@apollo/react-hooks';
+import { getQuery, setQuery } from '@apollo/client';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
 import { Table } from '@commercetools-frontend/ui-kit';
 import { useEffectMock } from '../../../../bundles-core/components/test-util';

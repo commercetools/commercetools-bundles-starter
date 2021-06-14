@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import faker from 'faker';
-import { setQuery, useQuery } from '@apollo/react-hooks';
+import { setQuery, useQuery } from '@apollo/client';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
 import * as AppContext from '@commercetools-frontend/application-shell-connectors';
 import { TabHeader, ViewHeader, Error, Loading } from '../index';

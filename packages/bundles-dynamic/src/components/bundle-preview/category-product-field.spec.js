@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import faker from 'faker';
-import { getLazyQuery, setLazyQuery } from '@apollo/react-hooks';
+import { getLazyQuery, setLazyQuery } from '@apollo/client';
 import { FieldLabel } from '@commercetools-frontend/ui-kit';
 import { useEffectMock } from '../../../../bundles-core/components/test-util';
 import { generateCategoryAttributes } from '../../test-util';

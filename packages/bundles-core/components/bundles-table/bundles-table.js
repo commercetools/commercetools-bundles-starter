@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 import omit from 'lodash/omit';
 import values from 'lodash/values';
 import { stringify } from 'qs';
@@ -76,7 +76,7 @@ const BundlesTable = ({
     getProducts(
       'sort',
       `${column}${
-        column === COLUMN_KEYS.NAME ? `.${dataLocale}` : ''
+      column === COLUMN_KEYS.NAME ? `.${dataLocale}` : ''
       } ${sortDirection}`
     );
   }
@@ -188,27 +188,27 @@ const BundlesTable = ({
             onSortChange={handleSortChange}
           />
         ) : (
-          <Spacings.Inline scale="xs">
-            <Text.Body
-              intlMessage={
-                query || hasFilters()
-                  ? messages.errorNoSearchResultsTitle
-                  : messages.errorNoResultsTitle
-              }
-              data-testid="no-results-error"
-            />
-            {!query && !hasFilters() && (
-              <FlatButton
-                as="a"
-                href={`${match.url}/new`}
-                label={`${intl.formatMessage(
-                  messages.linkToCreateBundleTitle
-                )}.`}
-                isDisabled={false}
+            <Spacings.Inline scale="xs">
+              <Text.Body
+                intlMessage={
+                  query || hasFilters()
+                    ? messages.errorNoSearchResultsTitle
+                    : messages.errorNoResultsTitle
+                }
+                data-testid="no-results-error"
               />
-            )}
-          </Spacings.Inline>
-        )}
+              {!query && !hasFilters() && (
+                <FlatButton
+                  as="a"
+                  href={`${match.url}/new`}
+                  label={`${intl.formatMessage(
+                    messages.linkToCreateBundleTitle
+                  )}.`}
+                  isDisabled={false}
+                />
+              )}
+            </Spacings.Inline>
+          )}
       </Spacings.Stack>
     </Spacings.Inset>
   );

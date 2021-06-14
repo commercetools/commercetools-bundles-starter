@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useMutation, useQuery } from '@apollo/react-hooks';
+import { useMutation, useQuery } from '@apollo/client';
 import { FormattedMessage, FormattedNumber, useIntl } from 'react-intl';
 import classNames from 'classnames';
 import { Formik } from 'formik';
@@ -387,11 +387,11 @@ const BundlePreview = ({ bundle, refetch }) => {
             </div>
           </Spacings.Inline>
         ) : (
-          <div
-            data-testid="no-image-placeholder"
-            className={styles['no-image']}
-          ></div>
-        )}
+            <div
+              data-testid="no-image-placeholder"
+              className={styles['no-image']}
+            ></div>
+          )}
         <div className={styles.details}>
           <Spacings.Stack scale="m">
             <Spacings.Inline justifyContent="space-between">
@@ -446,12 +446,12 @@ const BundlePreview = ({ bundle, refetch }) => {
                 })}
               </Text.Body>
             ) : (
-              <Text.Body
-                data-testid="no-description-message"
-                isItalic
-                intlMessage={messages.noDescription}
-              />
-            )}
+                <Text.Body
+                  data-testid="no-description-message"
+                  isItalic
+                  intlMessage={messages.noDescription}
+                />
+              )}
             <Formik
               enableReinitialize
               initialValues={initialValues}
@@ -469,125 +469,125 @@ const BundlePreview = ({ bundle, refetch }) => {
                 isValid,
                 isSubmitting,
               }) => (
-                <Spacings.Stack scale="m">
-                  {categories.map((category, index) => {
-                    const key = `category${index}`;
-                    return (
-                      <CategoryProductField
-                        key={key}
-                        name={key}
-                        category={category}
-                        priceFilters={getPriceFilters(
-                          currency,
-                          country,
-                          date,
-                          channel,
-                          customerGroup
-                        )}
-                        dynamicPrice={dynamicPrice}
-                        value={values[key]}
-                        touched={touched[key] || {}}
-                        errors={errors[key] || {}}
-                        onChange={(event) => onFormChange(event, handleChange)}
-                        onBlur={handleBlur}
-                      />
-                    );
-                  })}
-                  <div
-                    className={classNames({
-                      [styles.price]: lineItemPrices,
-                      [styles['total-price']]: !lineItemPrices || dynamicPrice,
-                    })}
-                  >
-                    <Spacings.Stack scale="xs">
-                      {(!dynamicPrice || (dynamicPrice && !lineItemPrices)) && (
-                        <Spacings.Inline
-                          alignItems="flex-end"
-                          justifyContent="space-between"
-                        >
-                          <Text.Subheadline
-                            data-testid="base-price-label"
-                            as={lineItemPrices ? 'h5' : 'h4'}
-                            isBold={!lineItemPrices}
-                            intlMessage={
-                              lineItemPrices
-                                ? messages.basePrice
-                                : messages.totalPrice
-                            }
-                          />
-                          <Text.Body data-testid="base-price-value-container">
-                            {price ? (
-                              <FormattedNumber
-                                data-testid="base-price-value"
-                                value={price.value.centAmount / 100}
-                                style="currency"
-                                currency={price.value.currencyCode}
-                              />
-                            ) : (
-                              NO_VALUE_FALLBACK
-                            )}
-                          </Text.Body>
-                        </Spacings.Inline>
-                      )}
-                      {!!lineItemPrices && (
-                        <Spacings.Stack scale="xs">
-                          {!dynamicPrice && (
-                            <Spacings.Inline
-                              alignItems="flex-end"
-                              justifyContent="space-between"
-                            >
-                              <Text.Subheadline
-                                data-testid="additional-price-label"
-                                as="h5"
-                                intlMessage={messages.additionalCharge}
-                              />
-                              <Text.Body>
-                                <FormattedNumber
-                                  data-testid="additional-price-value"
-                                  value={lineItemPrices / 100}
-                                  style="currency"
-                                  currency={currency}
-                                />
-                              </Text.Body>
-                            </Spacings.Inline>
+                  <Spacings.Stack scale="m">
+                    {categories.map((category, index) => {
+                      const key = `category${index}`;
+                      return (
+                        <CategoryProductField
+                          key={key}
+                          name={key}
+                          category={category}
+                          priceFilters={getPriceFilters(
+                            currency,
+                            country,
+                            date,
+                            channel,
+                            customerGroup
                           )}
+                          dynamicPrice={dynamicPrice}
+                          value={values[key]}
+                          touched={touched[key] || {}}
+                          errors={errors[key] || {}}
+                          onChange={(event) => onFormChange(event, handleChange)}
+                          onBlur={handleBlur}
+                        />
+                      );
+                    })}
+                    <div
+                      className={classNames({
+                        [styles.price]: lineItemPrices,
+                        [styles['total-price']]: !lineItemPrices || dynamicPrice,
+                      })}
+                    >
+                      <Spacings.Stack scale="xs">
+                        {(!dynamicPrice || (dynamicPrice && !lineItemPrices)) && (
                           <Spacings.Inline
                             alignItems="flex-end"
                             justifyContent="space-between"
                           >
                             <Text.Subheadline
-                              data-testid="total-price-label"
-                              as="h4"
-                              isBold
-                              intlMessage={messages.totalPrice}
+                              data-testid="base-price-label"
+                              as={lineItemPrices ? 'h5' : 'h4'}
+                              isBold={!lineItemPrices}
+                              intlMessage={
+                                lineItemPrices
+                                  ? messages.basePrice
+                                  : messages.totalPrice
+                              }
                             />
-                            <Text.Body>
-                              <FormattedNumber
-                                data-testid="total-price-value"
-                                value={
-                                  ((price ? price.value.centAmount : 0) +
-                                    lineItemPrices) /
-                                  100
-                                }
-                                style="currency"
-                                currency={currency}
-                              />
+                            <Text.Body data-testid="base-price-value-container">
+                              {price ? (
+                                <FormattedNumber
+                                  data-testid="base-price-value"
+                                  value={price.value.centAmount / 100}
+                                  style="currency"
+                                  currency={price.value.currencyCode}
+                                />
+                              ) : (
+                                  NO_VALUE_FALLBACK
+                                )}
                             </Text.Body>
                           </Spacings.Inline>
-                        </Spacings.Stack>
-                      )}
-                    </Spacings.Stack>
-                  </div>
-                  <Constraints.Horizontal>
-                    <PrimaryButton
-                      data-testid="add-to-cart"
-                      onClick={handleSubmit}
-                      label={intl.formatMessage(messages.addToCart)}
-                      isDisabled={!dirty || !isValid || isSubmitting}
-                    />
-                  </Constraints.Horizontal>
-                </Spacings.Stack>
-              )}
+                        )}
+                        {!!lineItemPrices && (
+                          <Spacings.Stack scale="xs">
+                            {!dynamicPrice && (
+                              <Spacings.Inline
+                                alignItems="flex-end"
+                                justifyContent="space-between"
+                              >
+                                <Text.Subheadline
+                                  data-testid="additional-price-label"
+                                  as="h5"
+                                  intlMessage={messages.additionalCharge}
+                                />
+                                <Text.Body>
+                                  <FormattedNumber
+                                    data-testid="additional-price-value"
+                                    value={lineItemPrices / 100}
+                                    style="currency"
+                                    currency={currency}
+                                  />
+                                </Text.Body>
+                              </Spacings.Inline>
+                            )}
+                            <Spacings.Inline
+                              alignItems="flex-end"
+                              justifyContent="space-between"
+                            >
+                              <Text.Subheadline
+                                data-testid="total-price-label"
+                                as="h4"
+                                isBold
+                                intlMessage={messages.totalPrice}
+                              />
+                              <Text.Body>
+                                <FormattedNumber
+                                  data-testid="total-price-value"
+                                  value={
+                                    ((price ? price.value.centAmount : 0) +
+                                      lineItemPrices) /
+                                    100
+                                  }
+                                  style="currency"
+                                  currency={currency}
+                                />
+                              </Text.Body>
+                            </Spacings.Inline>
+                          </Spacings.Stack>
+                        )}
+                      </Spacings.Stack>
+                    </div>
+                    <Constraints.Horizontal>
+                      <PrimaryButton
+                        data-testid="add-to-cart"
+                        onClick={handleSubmit}
+                        label={intl.formatMessage(messages.addToCart)}
+                        isDisabled={!dirty || !isValid || isSubmitting}
+                      />
+                    </Constraints.Horizontal>
+                  </Spacings.Stack>
+                )}
             </Formik>
             <div ref={cartPreview}>
               {cart && (

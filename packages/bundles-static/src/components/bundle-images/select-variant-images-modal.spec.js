@@ -1,13 +1,8 @@
+import { mockMutation, setMutation, setQuery, useQuery } from "@apollo/client";
 import React from 'react';
 import { shallow } from 'enzyme';
 import faker from 'faker';
 import { flatten } from 'lodash';
-import {
-  mockMutation,
-  setMutation,
-  setQuery,
-  useQuery,
-} from '@apollo/react-hooks';
 import { mockShowNotification } from '@commercetools-frontend/actions-global';
 import { FormModalPage } from '@commercetools-frontend/application-components';
 import * as AppContext from '@commercetools-frontend/application-shell-connectors';

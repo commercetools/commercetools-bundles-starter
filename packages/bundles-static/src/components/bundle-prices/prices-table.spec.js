@@ -1,9 +1,9 @@
+import { setQuery, useQuery } from "@apollo/client";
 import React from 'react';
 import { shallow } from 'enzyme';
 import faker from 'faker';
 import { omit } from 'lodash';
 import { FormattedDate } from 'react-intl';
-import { setQuery, useQuery } from '@apollo/react-hooks';
 import * as AppContext from '@commercetools-frontend/application-shell-connectors';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
 import { Table } from '@commercetools-frontend/ui-kit';

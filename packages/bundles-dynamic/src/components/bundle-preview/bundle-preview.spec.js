@@ -8,7 +8,7 @@ import {
   setMutation,
   getQuery,
   setQuery,
-} from '@apollo/react-hooks';
+} from '@apollo/client';
 import { mockShowNotification } from '@commercetools-frontend/actions-global';
 import * as AppContext from '@commercetools-frontend/application-shell-connectors';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';

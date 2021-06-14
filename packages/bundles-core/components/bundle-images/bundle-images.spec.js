@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { getMutation, setMutation } from '@apollo/react-hooks';
+import { getMutation, setMutation } from '@apollo/client';
 import { mockShowNotification } from '@commercetools-frontend/actions-global';
 import * as AppContext from '@commercetools-frontend/application-shell-connectors';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';

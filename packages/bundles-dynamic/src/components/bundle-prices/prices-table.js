@@ -4,7 +4,7 @@ import { FormattedNumber } from 'react-intl';
 import compact from 'lodash/compact';
 import map from 'lodash/map';
 import reduce from 'lodash/reduce';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
 import { Table } from '@commercetools-frontend/ui-kit';
 import { getPriceFilters, getScopedPriceParameters } from '../../util';
@@ -86,8 +86,8 @@ const PricesTable = ({
             currency={currency}
           />
         ) : (
-          NO_VALUE_FALLBACK
-        );
+            NO_VALUE_FALLBACK
+          );
       case COLUMN_KEYS.MAX_PRICE:
         return max ? (
           <FormattedNumber
@@ -96,8 +96,8 @@ const PricesTable = ({
             currency={currency}
           />
         ) : (
-          NO_VALUE_FALLBACK
-        );
+            NO_VALUE_FALLBACK
+          );
       default:
         return NO_VALUE_FALLBACK;
     }

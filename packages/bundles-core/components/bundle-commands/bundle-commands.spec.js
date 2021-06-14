@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import faker from 'faker';
 import { Redirect } from 'react-router';
-import { getMutation, setMutation } from '@apollo/react-hooks';
+import { getMutation, setMutation } from '@apollo/client';
 import { mockShowNotification } from '@commercetools-frontend/actions-global';
 import { ConfirmationDialog } from '@commercetools-frontend/application-components';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';

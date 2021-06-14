@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router';
 import { useIntl } from 'react-intl';
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation } from '@apollo/client';
 import { useShowNotification } from '@commercetools-frontend/actions-global';
 import { ConfirmationDialog } from '@commercetools-frontend/application-components';
 import { DOMAINS, GRAPHQL_TARGETS } from '@commercetools-frontend/constants';

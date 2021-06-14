@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useLazyQuery } from '@apollo/react-hooks';
+import { useLazyQuery } from '@apollo/client';
 import { useIntl, FormattedNumber } from 'react-intl';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
 import {

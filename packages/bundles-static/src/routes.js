@@ -1,8 +1,8 @@
+import { useQuery } from "@apollo/client";
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Route, Switch } from 'react-router-dom';
-import { useQuery } from '@apollo/react-hooks';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
 import { useIsAuthorized } from '@commercetools-frontend/permissions';
 import LockedDiamondSVG from '@commercetools-frontend/assets/images/locked-diamond.svg';

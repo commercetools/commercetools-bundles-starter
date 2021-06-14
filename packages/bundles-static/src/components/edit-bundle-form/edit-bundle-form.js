@@ -1,6 +1,6 @@
+import { useMutation } from "@apollo/client";
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useMutation } from '@apollo/react-hooks';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
 import { useShowSideNotification } from '../../../../bundles-core/components/hooks';
 import { MASTER_VARIANT_ID } from '../../constants';
