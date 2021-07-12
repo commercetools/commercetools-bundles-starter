@@ -7,7 +7,8 @@ import {
   SecondaryIconButton,
   TextInput,
 } from '@commercetools-frontend/ui-kit';
-import debounce from 'lodash/debounce';
+//import debounce from 'lodash/debounce';
+var debounce = require('lodash.debounce');
 import messages from './messages';
 import styles from './throttled-search-input.mod.css';
 
@@ -68,5 +69,5 @@ ThrottledSearchInput.propTypes = {
   query: PropTypes.string.isRequired,
   setQuery: PropTypes.func.isRequired,
 };
-
+export {debounce};
 export default ThrottledSearchInput;

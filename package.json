@@ -14,7 +14,9 @@
       "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
     }
   },
-  "dependencies": {},
+  "dependencies": {
+    "@babel/runtime": "^7.14.6"
+  },
   "devDependencies": {
     "@commitlint/cli": "9.1.1",
     "@commitlint/config-conventional": "9.1.1",
