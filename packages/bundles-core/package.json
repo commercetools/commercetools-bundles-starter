@@ -34,7 +34,7 @@
     "@emotion/core": "10.0.27",
     "@emotion/styled": "10.0.27",
     "graphql": "14.7.0",
-    "lodash": "4.17.19",
+    "lodash": "4.17.21",
     "lodash-es": "4.17.15",
     "moment": "2.27.0",
     "moment-timezone": "0.5.31",
