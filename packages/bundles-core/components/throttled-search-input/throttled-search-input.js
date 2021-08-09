@@ -69,5 +69,4 @@ ThrottledSearchInput.propTypes = {
   query: PropTypes.string.isRequired,
   setQuery: PropTypes.func.isRequired,
 };
-
 export default ThrottledSearchInput;

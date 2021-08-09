@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import faker from 'faker';
-import { getQuery, setQuery } from '@apollo/client';
+import { getQuery, setQuery } from '@apollo/react-hooks';
 import * as AppContext from '@commercetools-frontend/application-shell-connectors';
 import { AsyncSelectInput } from '@commercetools-frontend/ui-kit';
 import { getPathName } from '../util';

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DataTable } from '@commercetools-frontend/ui-kit';
+import { Table } from '@commercetools-frontend/ui-kit';
 import { Pagination } from '../pagination';
 
 const PaginatedTable = ({
@@ -19,30 +19,30 @@ const PaginatedTable = ({
   next,
   previous,
 }) => (
-    <>
-      <DataTable
-        columns={columns}
-        items={items}
-        itemRenderer={itemRenderer}
-        registerMeasurementCache={registerMeasurementCache}
-        onRowClick={onRowClick}
-        defaultHeight={defaultHeight}
+  <>
+    <Table
+      columns={columns}
+      items={items}
+      itemRenderer={itemRenderer}
+      registerMeasurementCache={registerMeasurementCache}
+      onRowClick={onRowClick}
+      defaultHeight={defaultHeight}
+      rowCount={rowCount}
+      sortBy={sortBy}
+      sortDirection={sortDirection}
+      onSortChange={onSortChange}
+    />
+    {rowCount !== total && (
+      <Pagination
+        next={next}
+        previous={previous}
+        offset={offset}
         rowCount={rowCount}
-        sortBy={sortBy}
-        sortDirection={sortDirection}
-        onSortChange={onSortChange}
+        total={total}
       />
-      {rowCount !== total && (
-        <Pagination
-          next={next}
-          previous={previous}
-          offset={offset}
-          rowCount={rowCount}
-          total={total}
-        />
-      )}
-    </>
-  );
+    )}
+  </>
+);
 PaginatedTable.displayName = 'PaginatedTable';
 PaginatedTable.propTypes = {
   columns: PropTypes.arrayOf(

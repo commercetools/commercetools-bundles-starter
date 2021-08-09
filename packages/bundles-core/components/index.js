@@ -7,6 +7,7 @@ export * from './price-filters';
 // from us ps mc package
 export * from './back-to-list';
 export * from './category-search-input';
+export * from './file-upload-input';
 export * from './paginated-table';
 export * from './pagination';
 export * from './product-search-input';

@@ -18,6 +18,7 @@ installation of the private package.
 export NPM_TOKEN=xxxx-xxxx-xxxx-xxxx
 npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
 ```
+Run `yarn` from the root folder after insuring you are using the latest version of node.
 
 Run `yarn` from the root folder after insuring you are using the latest version of node.
 
