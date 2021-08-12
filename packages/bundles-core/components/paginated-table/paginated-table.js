@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Table } from '@commercetools-frontend/ui-kit';
+import { DataTable } from '@commercetools-frontend/ui-kit';
 import { Pagination } from '../pagination';
 
 const PaginatedTable = ({
@@ -20,7 +20,7 @@ const PaginatedTable = ({
   previous,
 }) => (
   <>
-    <Table
+    <DataTable
       columns={columns}
       items={items}
       itemRenderer={itemRenderer}

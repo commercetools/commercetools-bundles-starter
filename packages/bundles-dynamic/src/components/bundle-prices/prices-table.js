@@ -6,7 +6,7 @@ import map from 'lodash/map';
 import reduce from 'lodash/reduce';
 import { useQuery } from '@apollo/client';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
-import { Table } from '@commercetools-frontend/ui-kit';
+import { DataTable } from '@commercetools-frontend/ui-kit';
 import { getPriceFilters, getScopedPriceParameters } from '../../util';
 import { getCategoryAttributes } from '../bundle-preview/category-product-field';
 import GetPriceRange from '../get-price-range.rest.graphql';
@@ -110,7 +110,7 @@ const PricesTable = ({
   if (!results) return null;
 
   return (
-    <Table
+    <DataTable
       columns={columnDefinitions}
       items={results}
       itemRenderer={(item) => renderItem(results, item)}
