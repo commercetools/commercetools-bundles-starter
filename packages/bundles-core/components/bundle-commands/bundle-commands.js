@@ -6,6 +6,7 @@ import { useMutation } from '@apollo/client';
 import { useShowNotification } from '@commercetools-frontend/actions-global';
 import { ConfirmationDialog } from '@commercetools-frontend/application-components';
 import { DOMAINS, GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
+
 import {
   BinLinearIcon,
   IconButton,

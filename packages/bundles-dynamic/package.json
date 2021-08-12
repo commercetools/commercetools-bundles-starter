@@ -25,10 +25,11 @@
     "deploy:firebase": "yarn compile-html:firebase && firebase deploy"
   },
   "dependencies": {
+    "@apollo/client": "3.4.7",
     "@apollo/react-components": "4.0.0",
     "@apollo/react-hooks": "4.0.0",
     "@babel/runtime": "7.15.3",
-    "@babel/runtime-corejs3":"7.15.3",
+    "@babel/runtime-corejs3": "7.15.3",
     "@commercetools-frontend/actions-global": "20.4.0",
     "@commercetools-frontend/application-components": "20.4.0",
     "@commercetools-frontend/application-shell": "20.4.0",
@@ -55,6 +56,7 @@
     "global": "4.4.0",
     "graphql": "15.5.1",
     "graphql-anywhere": "4.2.7",
+    "husky": "4.2.5",
     "lodash": "4.17.21",
     "moment": "2.27.0",
     "moment-timezone": "0.5.31",
@@ -74,7 +76,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.15.0",
-    "@babel/plugin-transform-runtime":"7.15.0",
+    "@babel/plugin-transform-runtime": "7.15.0",
     "@commercetools-frontend/eslint-config-mc-app": "16.15.3",
     "@commercetools-frontend/jest-preset-mc-app": "20.4.0",
     "@commercetools-frontend/mc-scripts": "20.5.0",
@@ -99,6 +101,7 @@
     "eslint-plugin-react-hooks": "4.0.8",
     "faker": "4.1.0",
     "graphql-tag": "2.11.0",
+    "husky": "4.2.5",
     "jest": "26.2.2",
     "jest-plugin-filename": "0.0.1",
     "jest-runner-eslint": "0.10.0",
