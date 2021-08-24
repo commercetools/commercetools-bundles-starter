@@ -4,3 +4,4 @@ coverage
 *.tfstate*
 *.tfvars
 .DS_Store
+dist
