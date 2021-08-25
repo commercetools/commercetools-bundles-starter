@@ -3,3 +3,7 @@ coverage
 .terraform
 *.tfstate*
 *.tfvars
+
+*.DS_Store
+
+dist/
