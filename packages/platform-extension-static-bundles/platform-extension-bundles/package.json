@@ -72,7 +72,7 @@
     "lodash": "4.17.21",
     "node-cache": "5.1.2",
     "node-fetch": "2.6.1",
-    "uuid": "7.0.3"
+    "uuid": "8.3.2"
   },
   "jest": {
     "rootDir": "src",
