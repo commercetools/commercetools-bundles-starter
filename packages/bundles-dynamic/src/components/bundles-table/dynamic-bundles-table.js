@@ -80,8 +80,8 @@ const DynamicBundlesTable = ({ match, history }) => {
             currency={price.value.currencyCode}
           />
         ) : (
-          NO_VALUE_FALLBACK
-        );
+            NO_VALUE_FALLBACK
+          );
       }
       case COLUMN_KEYS.MODIFIED:
         return (
@@ -108,7 +108,7 @@ const DynamicBundlesTable = ({ match, history }) => {
           <SelectInput
             name="price-type-filter"
             placeholder={intl.formatMessage(messages.priceFilterPlaceholder)}
-            horizontalConstraint="m"
+            horizontalConstraint="auto"
             isClearable
             onChange={(event) => filterByPriceType(event, filter)}
             value={priceType}
@@ -126,7 +126,7 @@ const DynamicBundlesTable = ({ match, history }) => {
           <CategorySearchInput
             name="category"
             placeholder={intl.formatMessage(messages.categoryFilterPlaceholder)}
-            horizontalConstraint="m"
+            horizontalConstraint="auto"
             value={category}
             onChange={(event) => filterByCategory(event, filter)}
           />

@@ -72,8 +72,8 @@ const StaticBundlesTable = ({ match, history }) => {
             currency={price.value.currencyCode}
           />
         ) : (
-          NO_VALUE_FALLBACK
-        );
+            NO_VALUE_FALLBACK
+          );
       }
       case COLUMN_KEYS.MODIFIED:
         return (
@@ -100,14 +100,14 @@ const StaticBundlesTable = ({ match, history }) => {
           <CategorySearchInput
             name="category"
             placeholder={intl.formatMessage(messages.categoryFilterPlaceholder)}
-            horizontalConstraint="m"
+            horizontalConstraint="auto"
             value={category}
             onChange={(event) => filterByCategory(event, filter)}
           />
           <ProductSearchInput
             name="product"
             placeholder={intl.formatMessage(messages.productFilterPlaceholder)}
-            horizontalConstraint="m"
+            horizontalConstraint="auto"
             value={product}
             onChange={(event) => filterByProduct(event, filter)}
           />
