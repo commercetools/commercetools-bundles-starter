@@ -12,7 +12,7 @@ import {
   PathProvider,
   GetBundleProductType,
 } from '../../bundles-core/context';
-import { Error } from '../../components/index';
+import { Error } from '../../bundles-core/components/index';
 import StaticBundlesTable from './components/bundles-table';
 import CreateBundleForm from './components/create-bundle-form';
 import StaticBundleDetails from './components/bundle-details';
