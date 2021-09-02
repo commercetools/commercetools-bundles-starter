@@ -419,7 +419,7 @@ const BundlePreview = ({ bundle, refetch }) => {
                 <div className={styles['projection-select']}>
                   <SelectInput
                     data-testid="projection-select"
-                    horizontalConstraint="m"
+                    horizontalConstraint="auto"
                     options={[
                       {
                         value: PROJECTION.CURRENT,
