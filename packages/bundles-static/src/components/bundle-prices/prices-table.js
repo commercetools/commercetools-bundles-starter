@@ -68,8 +68,8 @@ const PricesTable = ({
     fetchPolicy: 'no-cache',
   });
 
-  function renderItem(results, { rowIndex, columnKey }) {
-    const product = results[rowIndex];
+  function renderItem(row, columnKey) {
+    const product = row;
     const { name, allVariants } = product.masterData.current;
     const { price } = allVariants[0];
     const value = price ? price.value : null;
@@ -145,8 +145,8 @@ const PricesTable = ({
   return (
     <DataTable
       columns={columnDefinitions}
-      items={results}
-      itemRenderer={(item) => renderItem(results, item)}
+      rows={results}
+      itemRenderer={(row, column) => renderItem(row, column["key"])}
       rowCount={total}
       onRowClick={(event, rowIndex) => handleRowClick(results[rowIndex])}
     />

@@ -40,9 +40,11 @@ const StaticBundlesTable = ({ match, history }) => {
     setFilter(targetValue, 'product', getProductFilter);
   }
 
-  function renderItem(results, { rowIndex, columnKey }) {
-    const bundle = results[rowIndex];
-    const { masterVariant } = bundle;
+  function renderItem(row, columnKey) {
+    console.log("row: " + JSON.stringify(row));
+    console.log("columnKey: " + JSON.stringify(columnKey));
+    const bundle = row;
+    const masterVariant = bundle.masterVariant;
 
     switch (columnKey) {
       case COLUMN_KEYS.NAME:

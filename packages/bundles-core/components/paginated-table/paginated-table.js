@@ -5,7 +5,7 @@ import { Pagination } from '../pagination';
 
 const PaginatedTable = ({
   columns,
-  items,
+  rows,
   rowCount,
   sortBy,
   sortDirection,
@@ -22,7 +22,7 @@ const PaginatedTable = ({
   <>
     <DataTable
       columns={columns}
-      items={items}
+      rows={rows}
       itemRenderer={itemRenderer}
       registerMeasurementCache={registerMeasurementCache}
       onRowClick={onRowClick}
@@ -52,7 +52,7 @@ PaginatedTable.propTypes = {
       flexGrow: PropTypes.number,
     })
   ).isRequired,
-  items: PropTypes.arrayOf(PropTypes.object).isRequired,
+  rows: PropTypes.arrayOf(PropTypes.object).isRequired,
   registerMeasurementCache: PropTypes.func,
   onRowClick: PropTypes.func,
   defaultHeight: PropTypes.number,

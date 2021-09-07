@@ -172,8 +172,8 @@ const BundlesTable = ({
         {count > 0 ? (
           <PaginatedTable
             columns={columnDefinitions}
-            items={results}
-            itemRenderer={(item) => renderItem(results, item)}
+            rows={results}
+            itemRenderer={(row, column) => renderItem(row, column["key"])}
             rowCount={count}
             total={total}
             offset={offset}

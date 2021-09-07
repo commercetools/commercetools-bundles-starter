@@ -71,8 +71,8 @@ const PricesTable = ({
     getRanges();
   }, [currency, country, customerGroup, channel, date]);
 
-  function renderItem(data, { rowIndex, columnKey }) {
-    const row = data[rowIndex];
+  function renderItem(data, columnKey) {
+    const row = data;
     const { path, min, max } = row;
 
     switch (columnKey) {
@@ -112,8 +112,8 @@ const PricesTable = ({
   return (
     <DataTable
       columns={columnDefinitions}
-      items={results}
-      itemRenderer={(item) => renderItem(results, item)}
+      rows={results}
+      itemRenderer={(row, column) => renderItem(row, column["key"])}
       rowCount={categories.length}
       onRowClick={(event, rowIndex) => handleRowClick(results[rowIndex])}
     />
