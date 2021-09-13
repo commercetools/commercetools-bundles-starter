@@ -8,13 +8,13 @@ import {
   setMutation,
   getQuery,
   setQuery,
-} from '@apollo/react-hooks';
+} from '@apollo/client';
 import { mockShowNotification } from '@commercetools-frontend/actions-global';
 import * as AppContext from '@commercetools-frontend/application-shell-connectors';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
-import { localize } from '@commercetools-us-ps/mc-app-core/util';
-import { useEffectMock } from '@commercetools-us-ps/mc-app-core/test-util';
-import { PriceFilters } from '@commercetools-us-ps-local/bundles-core/components';
+import { PriceFilters } from '../../../../bundles-core/components';
+import { localize } from '../../../../bundles-core/components/util';
+import { useEffectMock } from '../../../../bundles-core/components/test-util';
 import { generateCategoryAttributes, generateProduct } from '../../test-util';
 import { transformResults } from '../bundle-details/dynamic-bundle-details';
 import { getCategoryAttributes } from './category-product-field';

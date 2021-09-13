@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
 import {
@@ -11,8 +11,8 @@ import {
   TabContainer,
   View,
   ViewHeader,
-} from '@commercetools-us-ps/mc-app-core/components';
-import { localize } from '@commercetools-us-ps/mc-app-core/util';
+} from '../index';
+import { localize } from '../util';
 import { usePathContext } from '../../context';
 import { BundleCommands } from '../bundle-commands';
 import GetBundle from './get-bundle.graphql';

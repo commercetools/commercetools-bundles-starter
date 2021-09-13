@@ -1,7 +1,7 @@
+import { useMutation } from "@apollo/client";
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { useMutation } from '@apollo/react-hooks';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
 import { Spacings } from '@commercetools-frontend/ui-kit';
 import {
@@ -9,8 +9,8 @@ import {
   TabContainer,
   View,
   ViewHeader,
-} from '@commercetools-us-ps/mc-app-core/components';
-import { useShowSideNotification } from '@commercetools-us-ps/mc-app-core/hooks';
+} from '../../../../bundles-core/components/index';
+import { useShowSideNotification } from '../../../../bundles-core/components/hooks';
 import { BUNDLE_PRODUCT_TYPE, ROOT_PATH } from '../../constants';
 import BundleForm from '../bundle-form';
 import CreateBundle from './create-bundle.graphql';

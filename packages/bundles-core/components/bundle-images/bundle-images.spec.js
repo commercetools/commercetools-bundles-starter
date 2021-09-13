@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { getMutation, setMutation } from '@apollo/react-hooks';
+import { getMutation, setMutation } from '@apollo/client';
 import { mockShowNotification } from '@commercetools-frontend/actions-global';
 import * as AppContext from '@commercetools-frontend/application-shell-connectors';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
@@ -18,12 +18,12 @@ const { images } = bundle;
 const mocks = {
   match: {
     params: {
-      projectKey: 'test-project'
-    }
+      projectKey: 'test-project',
+    },
   },
   id,
   version,
-  onComplete: jest.fn()
+  onComplete: jest.fn(),
 };
 
 global.open = jest.fn();
@@ -40,7 +40,7 @@ describe('bundle images', () => {
 
   beforeEach(() => {
     jest.spyOn(AppContext, 'useApplicationContext').mockImplementation(() => ({
-      environment: { frontendHost }
+      environment: { frontendHost },
     }));
     mocks.onComplete.mockClear();
   });
@@ -93,8 +93,8 @@ describe('bundle images', () => {
           version,
           productId: id,
           variantId: MASTER_VARIANT_ID,
-          imageUrl: url
-        }
+          imageUrl: url,
+        },
       });
     });
 
@@ -118,7 +118,7 @@ describe('bundle images', () => {
           await firstImage.props().removeImage(url);
         } catch (error) {
           expect(mockShowNotification).toHaveBeenCalledWith({
-            text: messages.removeError.id
+            text: messages.removeError.id,
           });
         }
       });

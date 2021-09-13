@@ -7,7 +7,7 @@ import {
   SecondaryButton,
   Text,
 } from '@commercetools-frontend/ui-kit';
-import { BundleImages } from '@commercetools-us-ps-local/bundles-core/components';
+import { BundleImages } from '../../../../bundles-core/components';
 import SelectVariantImagesModal from './select-variant-images-modal';
 import messages from './messages';
 

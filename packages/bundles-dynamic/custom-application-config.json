@@ -1,0 +1,11 @@
+{
+    "name": "bundles-dynamic",
+    "entryPointUriPath": "bundles-dynamic",
+    "cloudIdentifier": "gcp-us",
+    "env": {
+        "production": {
+            "url": "http://localhost:3001",
+            "cdnUrl": "http://localhost:3001"
+        }
+    }
+}

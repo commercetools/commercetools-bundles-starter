@@ -1,13 +1,10 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { ApolloProvider } from 'react-apollo';
-import { ApolloClient } from 'apollo-client';
-import { ApolloLink } from 'apollo-link';
+import { ApolloClient, InMemoryCache, ApolloProvider, ApolloLink } from '@apollo/client';
 import { RestLink } from 'apollo-link-rest';
-import { InMemoryCache } from 'apollo-cache-inmemory';
 import {
   ApplicationShell,
-  apolloClient,
+  createApolloClient,
   setupGlobalErrorListener,
   RouteCatchAll,
 } from '@commercetools-frontend/application-shell';
@@ -34,6 +31,13 @@ export const ApplicationDynamicBundleManager = () => {
       Accept: 'application/json',
     },
     credentials: 'include',
+  });
+
+  const apolloClient = createApolloClient({
+    cache: {
+      // Your custom configuration, according to the Apollo cache documentation.
+      // https://www.apollographql.com/docs/react/caching/cache-configuration/
+    },
   });
 
   const client = new ApolloClient({

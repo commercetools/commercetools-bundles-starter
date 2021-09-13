@@ -1,0 +1,71 @@
+{
+  "name": "DynamicBundleParent",
+  "description": "A dynamic bundle of product categories",
+  "classifier": "Complex",
+  "attributes": [
+    {
+      "name": "categories",
+      "label": {
+        "en": "Categories"
+      },
+      "isRequired": false,
+      "type": {
+        "name": "set",
+        "elementType": {
+          "name": "nested",
+          "typeReference": {
+            "typeId": "product-type",
+            "id": "<ID of dynamic-bundle-child-category product type goes here>"
+          }
+        }
+      },
+      "attributeConstraint": "None",
+      "isSearchable": false,
+      "inputHint": "SingleLine",
+      "displayGroup": "Other"
+    },
+    {
+      "name": "min-quantity",
+      "label": {
+        "en": "Minimum Quantity"
+      },
+      "isRequired": false,
+      "type": {
+        "name": "number"
+      },
+      "attributeConstraint": "None",
+      "isSearchable": true,
+      "inputHint": "SingleLine",
+      "displayGroup": "Other"
+    },
+    {
+      "name": "max-quantity",
+      "label": {
+        "en": "Maximum Quantity"
+      },
+      "isRequired": false,
+      "type": {
+        "name": "number"
+      },
+      "attributeConstraint": "None",
+      "isSearchable": true,
+      "inputHint": "SingleLine",
+      "displayGroup": "Other"
+    },
+    {
+      "name": "dynamic-price",
+      "label": {
+        "en": "Dynamic Price"
+      },
+      "isRequired": false,
+      "type": {
+        "name": "boolean"
+      },
+      "attributeConstraint": "None",
+      "isSearchable": true,
+      "inputHint": "SingleLine",
+      "displayGroup": "Other"
+    }
+  ],
+  "key": "dynamic-bundle-parent"
+}

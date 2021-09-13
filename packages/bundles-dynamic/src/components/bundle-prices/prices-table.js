@@ -4,9 +4,9 @@ import { FormattedNumber } from 'react-intl';
 import compact from 'lodash/compact';
 import map from 'lodash/map';
 import reduce from 'lodash/reduce';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
-import { Table } from '@commercetools-frontend/ui-kit';
+import { DataTable } from '@commercetools-frontend/ui-kit';
 import { getPriceFilters, getScopedPriceParameters } from '../../util';
 import { getCategoryAttributes } from '../bundle-preview/category-product-field';
 import GetPriceRange from '../get-price-range.rest.graphql';
@@ -71,8 +71,8 @@ const PricesTable = ({
     getRanges();
   }, [currency, country, customerGroup, channel, date]);
 
-  function renderItem(data, { rowIndex, columnKey }) {
-    const row = data[rowIndex];
+  function renderItem(data, columnKey) {
+    const row = data;
     const { path, min, max } = row;
 
     switch (columnKey) {
@@ -86,8 +86,8 @@ const PricesTable = ({
             currency={currency}
           />
         ) : (
-          NO_VALUE_FALLBACK
-        );
+            NO_VALUE_FALLBACK
+          );
       case COLUMN_KEYS.MAX_PRICE:
         return max ? (
           <FormattedNumber
@@ -96,8 +96,8 @@ const PricesTable = ({
             currency={currency}
           />
         ) : (
-          NO_VALUE_FALLBACK
-        );
+            NO_VALUE_FALLBACK
+          );
       default:
         return NO_VALUE_FALLBACK;
     }
@@ -110,10 +110,10 @@ const PricesTable = ({
   if (!results) return null;
 
   return (
-    <Table
+    <DataTable
       columns={columnDefinitions}
-      items={results}
-      itemRenderer={(item) => renderItem(results, item)}
+      rows={results}
+      itemRenderer={(row, column) => renderItem(row, column["key"])}
       rowCount={categories.length}
       onRowClick={(event, rowIndex) => handleRowClick(results[rowIndex])}
     />

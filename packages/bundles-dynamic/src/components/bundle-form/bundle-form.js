@@ -9,7 +9,7 @@ import pickBy from 'lodash/pickBy';
 import omitEmpty from 'omit-empty';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
 import { LocalizedTextInput } from '@commercetools-frontend/ui-kit';
-import { transformLocalizedStringToField } from '@commercetools-us-ps/mc-app-core/util';
+import { transformLocalizedStringToField } from '../../../../bundles-core/components/util';
 import CategoryField from '../category-field';
 import DynamicForm from './dynamic-form';
 import messages from './messages';

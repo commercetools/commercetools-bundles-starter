@@ -4,16 +4,14 @@ import { FormattedDate, FormattedNumber, useIntl } from 'react-intl';
 import { find, minBy } from 'lodash';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
-import { localize } from '@commercetools-us-ps/mc-app-core/util';
+import { localize } from '../../../../bundles-core/components/util';
 import {
   BundlesTable,
   COLUMN_KEYS,
-} from '@commercetools-us-ps-local/bundles-core/components';
-import {
   CategorySearchInput,
   ProductSearchInput,
   StatusBadge,
-} from '@commercetools-us-ps/mc-app-core/components';
+} from '../../../../bundles-core/components/index';
 import { DATE_FORMAT_OPTIONS, PRODUCTS_ATTRIBUTE } from './constants';
 import columnDefinitions from './column-definitions';
 import messages from './messages';
@@ -42,9 +40,11 @@ const StaticBundlesTable = ({ match, history }) => {
     setFilter(targetValue, 'product', getProductFilter);
   }
 
-  function renderItem(results, { rowIndex, columnKey }) {
-    const bundle = results[rowIndex];
-    const { masterVariant } = bundle;
+  function renderItem(row, columnKey) {
+    console.log("row: " + JSON.stringify(row));
+    console.log("columnKey: " + JSON.stringify(columnKey));
+    const bundle = row;
+    const masterVariant = bundle.masterVariant;
 
     switch (columnKey) {
       case COLUMN_KEYS.NAME:
@@ -74,8 +74,8 @@ const StaticBundlesTable = ({ match, history }) => {
             currency={price.value.currencyCode}
           />
         ) : (
-          NO_VALUE_FALLBACK
-        );
+            NO_VALUE_FALLBACK
+          );
       }
       case COLUMN_KEYS.MODIFIED:
         return (
@@ -102,14 +102,14 @@ const StaticBundlesTable = ({ match, history }) => {
           <CategorySearchInput
             name="category"
             placeholder={intl.formatMessage(messages.categoryFilterPlaceholder)}
-            horizontalConstraint="m"
+            horizontalConstraint="auto"
             value={category}
             onChange={(event) => filterByCategory(event, filter)}
           />
           <ProductSearchInput
             name="product"
             placeholder={intl.formatMessage(messages.productFilterPlaceholder)}
-            horizontalConstraint="m"
+            horizontalConstraint="auto"
             value={product}
             onChange={(event) => filterByProduct(event, filter)}
           />

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation } from '@apollo/client';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
 import {
@@ -11,7 +11,7 @@ import {
   Spacings,
   Text,
 } from '@commercetools-frontend/ui-kit';
-import { useShowSideNotification } from '@commercetools-us-ps/mc-app-core/hooks';
+import { useShowSideNotification } from '../hooks';
 import MASTER_VARIANT_ID from './constants';
 import { BundleImage } from '../bundle-image';
 import RemoveImage from './remove-image.graphql';
@@ -88,24 +88,24 @@ const BundleImages = ({
                 data-testid="add-image-link"
                 label={`${intl.formatMessage(messages.addImageLink)}${
                   !noImagesMessage ? '.' : ''
-                }`}
+                  }`}
                 onClick={addImage}
               />
               {noImagesMessage}
             </Spacings.Inline>
           </div>
         ) : (
-          <div className={styles.images}>
-            {images.map((image) => (
-              <BundleImage
-                key={image.url}
-                image={image}
-                editImage={editImage}
-                removeImage={handleRemoveImage}
-              />
-            ))}
-          </div>
-        )}
+            <div className={styles.images}>
+              {images.map((image) => (
+                <BundleImage
+                  key={image.url}
+                  image={image}
+                  editImage={editImage}
+                  removeImage={handleRemoveImage}
+                />
+              ))}
+            </div>
+          )}
       </div>
     </Spacings.Stack>
   );

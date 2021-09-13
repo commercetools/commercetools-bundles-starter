@@ -7,9 +7,9 @@ import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
 import {
   BundlesTable,
   COLUMN_KEYS,
-} from '@commercetools-us-ps-local/bundles-core/components';
-import { PRODUCT_STATUS } from '@commercetools-us-ps/mc-app-core/components';
-import { localize } from '@commercetools-us-ps/mc-app-core/util';
+  PRODUCT_STATUS,
+} from '../../../../bundles-core/components/index';
+import { localize } from '../../../../bundles-core/components/util';
 import { generateProduct } from '../../test-util';
 import StaticBundlesTable from './static-bundles-table';
 import { PRODUCTS_ATTRIBUTE } from './constants';

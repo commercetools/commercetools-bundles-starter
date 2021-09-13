@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 import omit from 'lodash/omit';
 import values from 'lodash/values';
 import { stringify } from 'qs';
@@ -14,13 +14,8 @@ import {
   Spacings,
   Text,
 } from '@commercetools-frontend/ui-kit';
-import {
-  Error,
-  Loading,
-  PaginatedTable,
-  SearchInput,
-} from '@commercetools-us-ps/mc-app-core/components';
-import { SORT_OPTIONS } from '@commercetools-us-ps/mc-app-core/constants';
+import { Error, Loading, PaginatedTable, SearchInput } from '../index';
+import { SORT_OPTIONS } from '../constants';
 import { useBundleContext } from '../../context/bundle-context';
 import { COLUMN_KEYS } from './column-definitions';
 import { DEFAULT_VARIABLES } from './constants';
@@ -81,7 +76,7 @@ const BundlesTable = ({
     getProducts(
       'sort',
       `${column}${
-        column === COLUMN_KEYS.NAME ? `.${dataLocale}` : ''
+      column === COLUMN_KEYS.NAME ? `.${dataLocale}` : ''
       } ${sortDirection}`
     );
   }
@@ -177,8 +172,8 @@ const BundlesTable = ({
         {count > 0 ? (
           <PaginatedTable
             columns={columnDefinitions}
-            items={results}
-            itemRenderer={(item) => renderItem(results, item)}
+            rows={results}
+            itemRenderer={(row, column) => renderItem(row, column["key"])}
             rowCount={count}
             total={total}
             offset={offset}
@@ -193,27 +188,27 @@ const BundlesTable = ({
             onSortChange={handleSortChange}
           />
         ) : (
-          <Spacings.Inline scale="xs">
-            <Text.Body
-              intlMessage={
-                query || hasFilters()
-                  ? messages.errorNoSearchResultsTitle
-                  : messages.errorNoResultsTitle
-              }
-              data-testid="no-results-error"
-            />
-            {!query && !hasFilters() && (
-              <FlatButton
-                as="a"
-                href={`${match.url}/new`}
-                label={`${intl.formatMessage(
-                  messages.linkToCreateBundleTitle
-                )}.`}
-                isDisabled={false}
+            <Spacings.Inline scale="xs">
+              <Text.Body
+                intlMessage={
+                  query || hasFilters()
+                    ? messages.errorNoSearchResultsTitle
+                    : messages.errorNoResultsTitle
+                }
+                data-testid="no-results-error"
               />
-            )}
-          </Spacings.Inline>
-        )}
+              {!query && !hasFilters() && (
+                <FlatButton
+                  as="a"
+                  href={`${match.url}/new`}
+                  label={`${intl.formatMessage(
+                    messages.linkToCreateBundleTitle
+                  )}.`}
+                  isDisabled={false}
+                />
+              )}
+            </Spacings.Inline>
+          )}
       </Spacings.Stack>
     </Spacings.Inset>
   );

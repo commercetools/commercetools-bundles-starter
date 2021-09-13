@@ -1,13 +1,8 @@
+import { mockMutation, setMutation, setQuery, useQuery } from "@apollo/client";
 import React from 'react';
 import { shallow } from 'enzyme';
 import faker from 'faker';
 import { flatten } from 'lodash';
-import {
-  mockMutation,
-  setMutation,
-  setQuery,
-  useQuery,
-} from '@apollo/react-hooks';
 import { mockShowNotification } from '@commercetools-frontend/actions-global';
 import { FormModalPage } from '@commercetools-frontend/application-components';
 import * as AppContext from '@commercetools-frontend/application-shell-connectors';
@@ -15,7 +10,7 @@ import {
   CheckActiveIcon,
   CheckInactiveIcon,
 } from '@commercetools-frontend/ui-kit';
-import { Loading } from '@commercetools-us-ps/mc-app-core/components';
+import { Loading } from '../../../../bundles-core/components/index';
 import { generateProduct } from '../../test-util';
 import { getSkus } from '../../util';
 import { transformResults } from '../bundle-details/static-bundle-details';

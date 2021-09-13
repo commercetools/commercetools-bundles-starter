@@ -11,5 +11,6 @@
   ],
   "plugins": ["@babel/plugin-proposal-optional-chaining"],
   "sourceMaps": "inline",
-  "retainLines": true
+  "retainLines": true,
+  "sourceType": "unambiguous"
 }

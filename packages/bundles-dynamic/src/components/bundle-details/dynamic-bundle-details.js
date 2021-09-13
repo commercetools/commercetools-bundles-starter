@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { getAttribute } from '../../../../bundles-core/util';
 import {
   BundleDetails,
   BundleImages,
-} from '@commercetools-us-ps-local/bundles-core/components';
-import { getAttribute } from '@commercetools-us-ps-local/bundles-core/util';
-import { TabHeader } from '@commercetools-us-ps/mc-app-core/components';
-import { transformLocalizedFieldToString } from '@commercetools-us-ps/mc-app-core/util';
+  TabHeader,
+} from '../../../../bundles-core/components/index';
+import { transformLocalizedFieldToString } from '../../../../bundles-core/components/util';
 import { ATTRIBUTES, ROOT_PATH } from '../../constants';
 import EditBundleForm from '../edit-bundle-form';
 import BundlePreview from '../bundle-preview';

@@ -1,8 +1,8 @@
+import { mockMutation, setMutation } from "@apollo/client";
 import React from 'react';
 import { shallow } from 'enzyme';
 import faker from 'faker';
 import { FormattedMessage } from 'react-intl';
-import { mockMutation, setMutation } from '@apollo/react-hooks';
 import { mockShowNotification } from '@commercetools-frontend/actions-global';
 import * as AppContext from '@commercetools-frontend/application-shell-connectors';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';

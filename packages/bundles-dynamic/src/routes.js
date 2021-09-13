@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Route, Switch } from 'react-router-dom';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 import { MaintenancePageLayout } from '@commercetools-frontend/application-components';
 import LockedDiamondSVG from '@commercetools-frontend/assets/images/locked-diamond.svg';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
@@ -11,8 +11,8 @@ import {
   BundleProvider,
   GetBundleProductType,
   PathProvider,
-} from '@commercetools-us-ps-local/bundles-core/context';
-import { Error } from '@commercetools-us-ps/mc-app-core/components';
+} from '../../bundles-core/context';
+import { Error } from '../../bundles-core/components/index';
 import CreateBundleForm from './components/create-bundle-form';
 import DynamicBundlesTable from './components/bundles-table';
 import DynamicBundleDetails from './components/bundle-details';

@@ -2,17 +2,18 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router';
 import { useIntl } from 'react-intl';
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation } from '@apollo/client';
 import { useShowNotification } from '@commercetools-frontend/actions-global';
 import { ConfirmationDialog } from '@commercetools-frontend/application-components';
 import { DOMAINS, GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
+
 import {
   BinLinearIcon,
   IconButton,
   Spacings,
   Text,
 } from '@commercetools-frontend/ui-kit';
-import { StatusSelect } from '@commercetools-us-ps/mc-app-core/components';
+import { StatusSelect } from '../index';
 import { usePathContext } from '../../context';
 import EditBundle from './edit-bundle.graphql';
 import DeleteBundle from './delete-bundle.graphql';

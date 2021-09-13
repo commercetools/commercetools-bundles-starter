@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import faker from 'faker';
-import { useQuery, setQuery } from '@apollo/react-hooks';
+import { useQuery, setQuery } from '@apollo/client';
 import * as AppContext from '@commercetools-frontend/application-shell-connectors';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
 import PriceFilters from './price-filters';

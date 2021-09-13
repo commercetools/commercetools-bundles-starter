@@ -8,9 +8,10 @@ mutation CreateCart($cartDraft: CartDraft!) {
     lineItems {
       productId
       quantity
-      customFields {
-        type {
-          key
+      custom {
+        customFieldsRaw {
+          name
+          value
         }
       }
     }

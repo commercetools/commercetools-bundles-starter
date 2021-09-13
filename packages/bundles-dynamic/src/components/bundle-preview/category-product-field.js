@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useLazyQuery } from '@apollo/react-hooks';
+import { useLazyQuery } from '@apollo/client';
 import { useIntl, FormattedNumber } from 'react-intl';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
 import {
@@ -10,8 +10,8 @@ import {
   NumberInput,
   Spacings,
 } from '@commercetools-frontend/ui-kit';
-import { ProductSearchInput } from '@commercetools-us-ps/mc-app-core/components';
-import { getAttribute } from '@commercetools-us-ps-local/bundles-core/util';
+import { getAttribute } from '../../../../bundles-core/util';
+import { ProductSearchInput } from '../../../../bundles-core/components/index';
 import {
   ADDITIONAL_CHARGE,
   CATEGORY_PATH,

@@ -9,17 +9,15 @@ import {
 import minBy from 'lodash/minBy';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
-import { localize } from '@commercetools-us-ps/mc-app-core/util';
+import { SelectInput } from '@commercetools-frontend/ui-kit';
+import { getAttribute } from '../../../../bundles-core/util';
+import { localize } from '../../../../bundles-core/components/util';
 import {
   BundlesTable,
   COLUMN_KEYS,
-} from '@commercetools-us-ps-local/bundles-core/components';
-import { getAttribute } from '@commercetools-us-ps-local/bundles-core/util';
-import {
   StatusBadge,
   CategorySearchInput,
-} from '@commercetools-us-ps/mc-app-core/components';
-import { SelectInput } from '@commercetools-frontend/ui-kit';
+} from '../../../../bundles-core/components/index';
 import { ATTRIBUTES } from '../../constants';
 import { DATE_FORMAT_OPTIONS } from './constants';
 import columnDefinitions from './column-definitions';
@@ -48,10 +46,9 @@ const DynamicBundlesTable = ({ match, history }) => {
     setFilter(value, 'dynamicPrice', getBundleByPrice);
   }
 
-  function renderItem(results, { rowIndex, columnKey }) {
-    const bundle = results[rowIndex];
-    const { masterVariant } = bundle;
-
+  function renderItem(row, columnKey) {
+    const bundle = row;
+    const masterVariant = bundle.masterVariant;
     switch (columnKey) {
       case COLUMN_KEYS.NAME:
         return localize({
@@ -82,8 +79,8 @@ const DynamicBundlesTable = ({ match, history }) => {
             currency={price.value.currencyCode}
           />
         ) : (
-          NO_VALUE_FALLBACK
-        );
+            NO_VALUE_FALLBACK
+          );
       }
       case COLUMN_KEYS.MODIFIED:
         return (
@@ -110,7 +107,7 @@ const DynamicBundlesTable = ({ match, history }) => {
           <SelectInput
             name="price-type-filter"
             placeholder={intl.formatMessage(messages.priceFilterPlaceholder)}
-            horizontalConstraint="m"
+            horizontalConstraint="auto"
             isClearable
             onChange={(event) => filterByPriceType(event, filter)}
             value={priceType}
@@ -128,7 +125,7 @@ const DynamicBundlesTable = ({ match, history }) => {
           <CategorySearchInput
             name="category"
             placeholder={intl.formatMessage(messages.categoryFilterPlaceholder)}
-            horizontalConstraint="m"
+            horizontalConstraint="auto"
             value={category}
             onChange={(event) => filterByCategory(event, filter)}
           />

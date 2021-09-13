@@ -6,7 +6,7 @@ import { ApplicationDynamicBundleManager } from './entry-point';
 import { ROOT_PATH } from '../../constants';
 
 jest.mock('apollo-link-rest');
-jest.mock('apollo-client');
+//jest.mock('apollo-client');
 
 const environment = {
   mcApiUrl: 'https://mc-api.commercetools.co',

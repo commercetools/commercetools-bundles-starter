@@ -1,8 +1,8 @@
+import { useQuery, useMutation } from "@apollo/client";
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { find, reduce, remove } from 'lodash';
 import { useIntl } from 'react-intl';
-import { useQuery, useMutation } from '@apollo/react-hooks';
 import { FormModalPage } from '@commercetools-frontend/application-components';
 import { useShowNotification } from '@commercetools-frontend/actions-global';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
@@ -13,7 +13,7 @@ import {
   Text,
   Tooltip,
 } from '@commercetools-frontend/ui-kit';
-import { Loading } from '@commercetools-us-ps/mc-app-core/components';
+import { Loading } from '../../../../bundles-core/components/index';
 import { getSkus } from '../../util';
 import { MASTER_VARIANT_ID } from '../../constants';
 import EditBundle from '../edit-bundle-form/edit-bundle.graphql';

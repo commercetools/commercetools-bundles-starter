@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation } from '@apollo/client';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
-import { useShowSideNotification } from '@commercetools-us-ps/mc-app-core/hooks';
+import { useShowSideNotification } from '../../../../bundles-core/components/hooks';
 import { ATTRIBUTES, MASTER_VARIANT_ID } from '../../constants';
 import BundleForm from '../bundle-form';
 import EditBundle from './edit-bundle.graphql';

@@ -1,5 +1,5 @@
 import faker from 'faker';
-import { transformLocalizedFieldToString } from '@commercetools-us-ps/mc-app-core/util';
+import { transformLocalizedFieldToString } from '../../../bundles-core/components/util';
 import {
   CATEGORY,
   CATEGORY_PATH,

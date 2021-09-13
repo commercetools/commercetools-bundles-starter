@@ -1,8 +1,8 @@
+import { useQuery } from "@apollo/client";
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Route, Switch } from 'react-router-dom';
-import { useQuery } from '@apollo/react-hooks';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
 import { useIsAuthorized } from '@commercetools-frontend/permissions';
 import LockedDiamondSVG from '@commercetools-frontend/assets/images/locked-diamond.svg';
@@ -11,8 +11,8 @@ import {
   BundleProvider,
   PathProvider,
   GetBundleProductType,
-} from '@commercetools-us-ps-local/bundles-core/context';
-import { Error } from '@commercetools-us-ps/mc-app-core/components';
+} from '../../bundles-core/context';
+import { Error } from '../../bundles-core/components/index';
 import StaticBundlesTable from './components/bundles-table';
 import CreateBundleForm from './components/create-bundle-form';
 import StaticBundleDetails from './components/bundle-details';

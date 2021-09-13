@@ -1,0 +1,79 @@
+{
+  "name": "StaticBundleChildVariant",
+  "description": "The product variant included in a static bundle",
+  "classifier": "Complex",
+  "attributes": [
+    {
+      "name": "quantity",
+      "label": {
+        "en": "Quantity"
+      },
+      "isRequired": true,
+      "type": {
+        "name": "number"
+      },
+      "attributeConstraint": "None",
+      "isSearchable": false,
+      "inputHint": "SingleLine",
+      "displayGroup": "Other"
+    },
+    {
+      "name": "sku",
+      "label": {
+        "en": "SKU"
+      },
+      "isRequired": false,
+      "type": {
+        "name": "text"
+      },
+      "attributeConstraint": "None",
+      "isSearchable": false,
+      "inputHint": "SingleLine",
+      "displayGroup": "Other"
+    },
+    {
+      "name": "variant-id",
+      "label": {
+        "en": "Variant ID"
+      },
+      "isRequired": true,
+      "type": {
+        "name": "number"
+      },
+      "attributeConstraint": "None",
+      "isSearchable": false,
+      "inputHint": "SingleLine",
+      "displayGroup": "Other"
+    },
+    {
+      "name": "product-ref",
+      "label": {
+        "en": "Product"
+      },
+      "isRequired": false,
+      "type": {
+        "name": "reference",
+        "referenceTypeId": "product"
+      },
+      "attributeConstraint": "None",
+      "isSearchable": false,
+      "inputHint": "SingleLine",
+      "displayGroup": "Other"
+    },
+    {
+      "name": "product-name",
+      "label": {
+        "en": "Product Name"
+      },
+      "isRequired": false,
+      "type": {
+        "name": "ltext"
+      },
+      "attributeConstraint": "None",
+      "isSearchable": false,
+      "inputHint": "SingleLine",
+      "displayGroup": "Other"
+    }
+  ],
+  "key": "static-bundle-child-variant"
+}
