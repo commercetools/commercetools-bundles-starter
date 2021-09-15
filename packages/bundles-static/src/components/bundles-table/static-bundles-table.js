@@ -102,14 +102,14 @@ const StaticBundlesTable = ({ match, history }) => {
           <CategorySearchInput
             name="category"
             placeholder={intl.formatMessage(messages.categoryFilterPlaceholder)}
-            horizontalConstraint="auto"
+            horizontalConstraint="scale"
             value={category}
             onChange={(event) => filterByCategory(event, filter)}
           />
           <ProductSearchInput
             name="product"
             placeholder={intl.formatMessage(messages.productFilterPlaceholder)}
-            horizontalConstraint="auto"
+            horizontalConstraint="scale"
             value={product}
             onChange={(event) => filterByProduct(event, filter)}
           />
