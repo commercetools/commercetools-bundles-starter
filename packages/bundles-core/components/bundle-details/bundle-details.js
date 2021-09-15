@@ -33,6 +33,8 @@ const BundleDetails = ({ match, transformResults, headers, container }) => {
     fetchPolicy: 'no-cache',
   });
 
+  console.log("GetBundle data: " + JSON.stringify(data));
+
   const { languages } = project;
 
   if (loading) return <Loading />;
