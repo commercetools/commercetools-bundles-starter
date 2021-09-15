@@ -107,7 +107,7 @@ const DynamicBundlesTable = ({ match, history }) => {
           <SelectInput
             name="price-type-filter"
             placeholder={intl.formatMessage(messages.priceFilterPlaceholder)}
-            horizontalConstraint="auto"
+            horizontalConstraint="scale"
             isClearable
             onChange={(event) => filterByPriceType(event, filter)}
             value={priceType}
@@ -125,7 +125,7 @@ const DynamicBundlesTable = ({ match, history }) => {
           <CategorySearchInput
             name="category"
             placeholder={intl.formatMessage(messages.categoryFilterPlaceholder)}
-            horizontalConstraint="auto"
+            horizontalConstraint="scale"
             value={category}
             onChange={(event) => filterByCategory(event, filter)}
           />
