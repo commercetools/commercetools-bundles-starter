@@ -1,0 +1,112 @@
+
+{
+  "id": "fff29b21-cc32-4af2-96ee-f10603484b25",
+  "version": 4,
+  "lastMessageSequenceNumber": 2,
+  "createdAt": "2020-08-18T14:07:34.848Z",
+  "lastModifiedAt": "2020-08-18T14:08:07.574Z",
+  "lastModifiedBy": {
+    "isPlatformClient": true,
+    "user": {
+      "typeId": "user",
+      "id": "36c902e3-53f5-4bd5-a037-8442c222131b"
+    }
+  },
+  "createdBy": {
+    "isPlatformClient": true,
+    "user": {
+      "typeId": "user",
+      "id": "36c902e3-53f5-4bd5-a037-8442c222131b"
+    }
+  },
+  "productType": {
+    "typeId": "product-type",
+    "id": "2d220c24-b61b-4d71-a14c-0483e0d6f7f6"
+  },
+  "catalogs": [],
+  "masterData": {
+    "current": {
+      "name": {
+        "en-US": "Camera"
+      },
+      "description": {
+        "en-US": "Lorem ipsum dolor sit amet, eruditi alienum te pri. Paulo facete saperet his ex, usu ei duis blandit repudiandae, ius ponderum probatus volutpat te. His ceteros theophrastus et, no esse vulputate vis, cum congue putant regione ut. Per et vidit soleat, eum at justo aperiri mediocritatem."
+      },
+      "categories": [],
+      "categoryOrderHints": {},
+      "slug": {
+        "en-US": "camera"
+      },
+      "metaTitle": {
+        "en-US": ""
+      },
+      "metaDescription": {
+        "en-US": ""
+      },
+      "masterVariant": {
+        "id": 1,
+        "sku": "camera",
+        "prices": [
+          {
+            "value": {
+              "type": "centPrecision",
+              "currencyCode": "USD",
+              "centAmount": 35000,
+              "fractionDigits": 2
+            },
+            "id": "39534701-a543-4ac9-a184-4580f85b653b"
+          }
+        ],
+        "images": [],
+        "attributes": [],
+        "assets": []
+      },
+      "variants": [],
+      "searchKeywords": {}
+    },
+    "staged": {
+      "name": {
+        "en-US": "Camera"
+      },
+      "description": {
+        "en-US": "Lorem ipsum dolor sit amet, eruditi alienum te pri. Paulo facete saperet his ex, usu ei duis blandit repudiandae, ius ponderum probatus volutpat te. His ceteros theophrastus et, no esse vulputate vis, cum congue putant regione ut. Per et vidit soleat, eum at justo aperiri mediocritatem."
+      },
+      "categories": [],
+      "categoryOrderHints": {},
+      "slug": {
+        "en-US": "camera"
+      },
+      "metaTitle": {
+        "en-US": ""
+      },
+      "metaDescription": {
+        "en-US": ""
+      },
+      "masterVariant": {
+        "id": 1,
+        "sku": "camera",
+        "prices": [
+          {
+            "value": {
+              "type": "centPrecision",
+              "currencyCode": "USD",
+              "centAmount": 35000,
+              "fractionDigits": 2
+            },
+            "id": "39534701-a543-4ac9-a184-4580f85b653b"
+          }
+        ],
+        "images": [],
+        "attributes": [],
+        "assets": []
+      },
+      "variants": [],
+      "searchKeywords": {}
+    },
+    "published": true,
+    "hasStagedChanges": false
+  },
+  "key": "camera",
+  "catalogData": {},
+  "lastVariantId": 1
+}
