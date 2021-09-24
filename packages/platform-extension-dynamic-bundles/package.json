@@ -1,7 +1,7 @@
 {
-  "name": "@commercetools-us-ps/platform-extension-static-bundles",
+  "name": "@commercetools-us-ps/platform-extension-dynamic-bundles",
   "version": "1.0.0",
-  "description": "API Extension for simple bundle products",
+  "description": "API Extension for dynamic bundle products",
   "main": "dist/index.js",
   "scripts": {
     "lint": "eslint --fix src",
