@@ -2,9 +2,9 @@
 layout: default
 title: Platform Extension - Dynamic Bundles
 ---
-Based of the static bundles extension. This package serves as a starter for dynamic bundles to customize your cart flow solution.
+NOTE: This package is based of the static bundles extension. This package serves as a starter for dynamic bundles to customize your cart flow solution.
 
-# Platform Extension - Static Bundles
+# Platform Extension - Dynamic Bundles
 {: .no_toc }
 
 ## Index
