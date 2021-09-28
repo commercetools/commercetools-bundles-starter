@@ -5,7 +5,7 @@
 Simply run `yarn` from the repository root to install the application's
 dependencies.
 
-You should use the latest version of node.
+It is recommended to use the latest version of node.
 
 ### Running the Application
 
