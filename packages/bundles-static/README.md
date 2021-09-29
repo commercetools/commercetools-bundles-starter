@@ -32,7 +32,7 @@ $ yarn build
 The skeleton includes configuration for both AWS (S3 & CloudFront) and Firebase serverless deployments built with 
 `mc-script compile-html`. 
 
-- [Firebase](https://appkit.commercetools.com/deployment/example-firebase)
+- [Firebase](https://docs.commercetools.com/custom-applications/deployment/example-deployment-firebase)
 - [AWS - S3 & CloudFront](https://appkit.commercetools.com/deployment/example-aws-s3-cloudfront)
 
 ## Linting, formatting, and so on
