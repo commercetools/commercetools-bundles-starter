@@ -9,4 +9,5 @@ Ensure you have first built platform-extension-bundles and platform-extension-co
 from platform-extension-static-bundles/platform-extension-bundles and platform-extension-static-bundles/platform-extension-core.
 
 Then:
-`yarn run "build:prod"` from the static bundle root folder. Deploy the build from the dist/ folder.
+`yarn run "build:prod"` from the static bundle root folder. Deploy the build from the dist/ folder. Deploying to AWS lambda is the recommended option.
+https://docs.commercetools.com/api/projects/api-extensions
