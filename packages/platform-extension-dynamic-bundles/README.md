@@ -4,4 +4,5 @@ This starter sample extension provides API-level support for dynamic bundle prod
 
 To build: Ensure you have first built platform-extension-bundles and platform-extension-core. To do this run `yarn` and then `yarn build` from platform-extension-dynamic-bundles/platform-extension-bundles and platform-extension-dynamic-bundles/platform-extension-core.
 
-Then: `yarn run "build:prod"` from the dynamic bundle root folder. Deploy the build from the dist/ folder.
+Then: `yarn run "build:prod"` from the dynamic bundle root folder. Deploy the build from the dist/ folder. Deploying to AWS lambda is the recommended option.
+https://docs.commercetools.com/api/projects/api-extensions
