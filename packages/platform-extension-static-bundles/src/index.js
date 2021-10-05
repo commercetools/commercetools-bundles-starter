@@ -24,7 +24,7 @@ const commercetools = Commercetools({
   clientId: process.env[CONFIG_KEYS.CT_CLIENT_ID] || process.env.commercetools_client_id,
   clientSecret: process.env[CONFIG_KEYS.CT_SECRET] || process.env.commercetools_client_secret,
   projectKey: process.env[CONFIG_KEYS.CT_PROJECT_KEY] || process.env.commercetools_project_key,
-  scopes: process.env[CONFIG_KEYS.CT_SCOPES] ? process.env[CONFIG_KEYS.CT_SCOPES].split(',') : process.env.commercetools_client_secret.split(','),
+  scopes: process.env[CONFIG_KEYS.CT_SCOPES] ? process.env[CONFIG_KEYS.CT_SCOPES].split(',') : process.env.commercetools_scopes.split(','),
 });
 const cache = new NodeCache({ stdTTL: process.env[CONFIG_KEYS.CACHE_TTL] });
 const helper = Helper({
