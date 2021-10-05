@@ -1,4 +1,4 @@
-# Dynamic Bundles API Extension Starter
+# Dynamic Bundles API Extension Starter Sample Code
 
 NOTE: Dynamic Bundles requires building a custom frontend shop UI to handle the selection of products from the categories selected by the customer of the shop. The dynamic bundles checkout flow can then proceed through adding line items to the cart from the items selected by the customer. A custom backend may also be built based on customer requirements.  The custom built backend solution for dynamic bundles is not included in this repo and should be developed for the custom solution.
 
