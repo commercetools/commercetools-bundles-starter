@@ -30,8 +30,8 @@ const cache = new NodeCache({ stdTTL: process.env[CONFIG_KEYS.CACHE_TTL] });
 const helper = Helper({
   commercetools,
   cache,
-  bundleProductTypeKey: TYPE_KEY.STATIC_BUNDLE_PARENT,
-  customTypeKey: TYPE_KEY.STATIC_BUNDLE_PARENT_CHILD_LINK,
+  bundleProductTypeKey: TYPE_KEY.DYNAMIC_BUNDLE_PARENT,
+  customTypeKey: TYPE_KEY.DYNAMIC_BUNDLE_PARENT_CHILD_LINK,
 });
 const cartHandler = CartHandler({ helper });
 
