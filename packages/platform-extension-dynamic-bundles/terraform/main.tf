@@ -1,135 +1,153 @@
 # https://github.com/labd/terraform-provider-commercetools
 # This plugin must be manually installed
 provider "commercetools" {
-  client_id     = var.commercetools_client_id
-  client_secret = var.commercetools_client_secret
-  project_key   = var.commercetools_project_key
-  token_url     = var.commercetools_token_url
-  api_url       = var.commercetools_api_url
-  scopes        = var.commercetools_scopes
+client_id     = var.commercetools_client_id
+client_secret = var.commercetools_client_secret
+project_key   = var.commercetools_project_key
+token_url     = var.commercetools_token_url
+api_url       = var.commercetools_api_url
+scopes        = var.commercetools_scopes
 }
 
-resource "commercetools_product_type" "static_bundle_child_variant" {
-  key         = "static-bundle-child-variant"
-  name        = "StaticBundleChildVariant"
-  description = "The child product variant included in a bundle; for use as a nested product type only!"
+resource "commercetools_product_type" "dynamic_bundle_child_category" {
+key         = "dynamic-bundle-child-category"
+name        = "DynamicBundleChildCategory"
+description = "The category included in a dynamic bundle"
 
-  attribute {
-    name = "quantity"
-    label = {
-      en = "Quantity"
-    }
-    required = true
-    type {
-      name = "number"
-    }
-  }
-
-  attribute {
-    name = "sku"
-    label = {
-      en = "SKU"
-    }
-    type {
-      name = "text"
-    }
-  }
-
-  attribute {
-    name = "variant-id"
-    label = {
-      en = "Variant ID"
-    }
-    required = true
-    type {
-      name = "number"
-    }
-  }
-
-  attribute {
-    name = "product-ref"
-    label = {
-      en = "Product"
-    }
-    type {
-      name              = "reference"
-      reference_type_id = "product"
-    }
-  }
-
-  attribute {
-    name = "product-name"
-    label = {
-      en = "Product Name"
-    }
-    type {
-      name = "ltext"
-    }
-  }
+attribute {
+name = "category-ref"
+label = {
+en = "Category Ref"
+}
+required = true
+type {
+name              = "reference"
+reference_type_id = "category"
+}
 }
 
-resource "commercetools_product_type" "static_bundle_parent" {
-  key         = "static-bundle-parent"
-  name        = "StaticBundleParent"
-  description = "A static bundle of product variants"
-
-  attribute {
-    name = "products"
-    label = {
-      en = "Products"
-    }
-    searchable = true
-    type {
-      name = "set"
-      element_type {
-        name           = "nested"
-        type_reference = commercetools_product_type.static_bundle_child_variant.id
-      }
-    }
-  }
-
-  attribute {
-    name = "productSearch"
-    label = {
-      en = "Products (Search)"
-    }
-    searchable = true
-    type {
-      name = "set"
-      element_type {
-        name = "text"
-      }
-    }
-  }
+attribute {
+name = "min-quantity"
+label = {
+en = "Minimum Quantity"
+}
+type {
+name = "number"
+}
 }
 
-resource "commercetools_type" "static_bundle_parent_child_link" {
-  key               = "static-bundle-parent-child-link"
-  resource_type_ids = ["line-item", "custom-line-item"]
-  name = {
-    en = "StaticBundleParentChildLink"
-  }
-  description = {
-    en = "Link to a parent static bundle product by custom ID"
-  }
+attribute {
+name = "max-quantity"
+label = {
+en = "Maximum Quantity"
+}
+type {
+name = "number"
+}
+}
 
-  field {
-    name = "external-id"
-    label = {
-      en = "External ID"
-    }
-    type {
-      name = "String"
-    }
-  }
+attribute {
+name = "additional-charge"
+label = {
+en = "Additional Charge"
+}
+type {
+name = "boolean"
+}
+}
 
-  field {
-    name = "parent"
-    label = {
-      en = "Parent External ID"
-    }
-    type {
-      name = "String"
-    }
-  }
+attribute {
+name = "category-path"
+label = {
+en = "Category Path"
+}
+required = true
+type {
+name = "text"
+}
+}
+}
+
+resource "commercetools_product_type" "dynamic_bundle_parent" {
+key         = "dynamic-bundle-parent"
+name        = "DynamicBundleParent"
+description = "A dynamic bundle of product categories"
+
+attribute {
+name = "categories"
+label = {
+en = "Categories"
+}
+type {
+name = "set"
+element_type {
+name           = "nested"
+type_reference = commercetools_product_type.dynamic_bundle_child_category.id
+}
+}
+}
+
+attribute {
+name = "min-quantity"
+label = {
+en = "Minimum Quantity"
+}
+searchable = true
+type {
+name = "number"
+}
+}
+
+attribute {
+name = "max-quantity"
+label = {
+en = "Maximum Quantity"
+}
+searchable = true
+type {
+name = "number"
+}
+}
+
+attribute {
+name = "dynamic-price"
+label = {
+en = "Dynamic Price"
+}
+searchable = true
+type {
+name = "boolean"
+}
+}
+}
+
+resource "commercetools_type" "dynamic_bundle_parent_child_link" {
+key               = "dynamic-bundle-parent-child-link"
+resource_type_ids = ["line-item", "custom-line-item"]
+name = {
+en = "DynamicBundleParentChildLink"
+}
+description = {
+en = "Link to a parent dynamic bundle product by custom ID"
+}
+
+field {
+name = "external-id"
+label = {
+en = "External ID"
+}
+type {
+name = "String"
+}
+}
+
+field {
+name = "parent"
+label = {
+en = "Parent External ID"
+}
+type {
+name = "String"
+}
+}
 }
