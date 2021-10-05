@@ -88,7 +88,7 @@ export const buildParentChildAssociation = (extId, parent) => ({
 export const buildSetLineItemCustomTypeActionResults = (dummyUuid = DEFAULT_UUID) => ({
   action: UPDATE_ACTION_TYPE.SET_LINE_ITEM_CUSTOM_TYPE,
   lineItemId: dummyUuid,
-  type: { key: TYPE_KEY.STATIC_BUNDLE_PARENT_CHILD_LINK },
+  type: { key: TYPE_KEY.DYNAMIC_BUNDLE_PARENT_CHILD_LINK },
   fields: {
     'external-id': dummyUuid,
   },
@@ -119,7 +119,7 @@ export const buildAddLineItemActionResults = (dummyUuid = DEFAULT_UUID) => ({
     },
   },
   custom: {
-    type: { key: TYPE_KEY.STATIC_BUNDLE_PARENT_CHILD_LINK },
+    type: { key: TYPE_KEY.DYNAMIC_BUNDLE_PARENT_CHILD_LINK },
     fields: {
       'external-id': dummyUuid,
       parent: dummyUuid,
