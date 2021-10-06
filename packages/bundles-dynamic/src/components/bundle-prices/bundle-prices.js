@@ -17,7 +17,7 @@ import messages from './messages';
 const BundlePrices = ({ match, id, categories, dynamicPrice }) => {
   const intl = useIntl();
   const { environment, project } = useApplicationContext();
-  const { frontendHost } = environment;
+  const { mcURL } = environment;
   const { currencies } = project;
   const [currency, setCurrency] = useState(currencies[0]);
   const [country, setCountry] = useState(null);
@@ -25,7 +25,7 @@ const BundlePrices = ({ match, id, categories, dynamicPrice }) => {
   const [channel, setChannel] = useState(null);
   const [date, setDate] = useState('');
 
-  const MC_URL = `https://${frontendHost}/${match.params.projectKey}`;
+  const MC_URL = `https://${mcURL}/${match.params.projectKey}`;
   const MC_PRICE_URL = `${MC_URL}/products/${id}/variants/${MASTER_VARIANT_ID}/prices`;
 
   function viewPrices() {
