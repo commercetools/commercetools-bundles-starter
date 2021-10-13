@@ -37,6 +37,9 @@ const cartHandler = CartHandler({ helper });
 
 export const handler = async event => {
   console.log(util.inspect(event, { depth: null }));
+  //TODO: Implement your custom extension for dynamic bundles.
+
+  /***** Example usage of platform-extension-bundles library below
   try {
     const [bundleProductTypeId, customTypeId] = await Promise.all([
       helper.getBundleProductTypeId(),
@@ -55,7 +58,8 @@ export const handler = async event => {
   } catch (error) {
     console.error(error);
     return buildErrorResponse(error);
-  }
+  } ******/
+
 };
 
 export default handler;
