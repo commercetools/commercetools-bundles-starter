@@ -2,7 +2,7 @@
 
 This extension allows users to manage product bundles.  
 
-## Start the development server
+## Prerequisites
 
 Make sure your CTP project contains bundles [product types](../platform-extension-static-bundles/resourceDefinitions/productTypes) and [types](../platform-extension-static-bundles/resourceDefinitions/types). 
 
@@ -18,6 +18,8 @@ Make sure your CTP project has [product search indexing enabled](https://docs.co
   ]
 }
 ```
+
+## Start the development server
 
 Run the following command to start the development server and launch the application:
 
