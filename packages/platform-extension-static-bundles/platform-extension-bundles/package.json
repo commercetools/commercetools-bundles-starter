@@ -42,7 +42,7 @@
     "babel-jest": "25.5.1",
     "babel-loader": "8.2.2",
     "cross-env": "7.0.3",
-    "dotenv-webpack": "1.8.0",
+    "dotenv-webpack": "7.0.3",
     "eslint": "6.8.0",
     "eslint-config-airbnb-base": "14.2.1",
     "eslint-config-prettier": "6.15.0",
