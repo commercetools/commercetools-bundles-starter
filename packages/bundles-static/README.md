@@ -2,6 +2,23 @@
 
 This extension allows users to manage product bundles.  
 
+## Prerequisites
+
+Make sure your CTP project contains bundles [product types](../platform-extension-static-bundles/resourceDefinitions/productTypes) and [types](../platform-extension-static-bundles/resourceDefinitions/types). 
+
+Make sure your CTP project has [product search indexing enabled](https://docs.commercetools.com/api/projects/project#change-product-search-indexing-enabled). If not, use the following update action to do it:
+```json
+{
+  "version": 1,
+  "actions": [
+    {
+      "action": "changeProductSearchIndexingEnabled",
+      "enabled": true
+    }
+  ]
+}
+```
+
 ## Start the development server
 
 Run the following command to start the development server and launch the application:
