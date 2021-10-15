@@ -2,6 +2,23 @@
 
 This extension allows users to manage product bundles.  
 
+## Prerequisites
+
+Make sure your CTP project contains bundles [product types](../platform-extension-static-bundles/resourceDefinitions/productTypes) and [types](../platform-extension-static-bundles/resourceDefinitions/types). 
+
+Make sure your CTP project has [product search indexing enabled](https://docs.commercetools.com/api/projects/project#change-product-search-indexing-enabled). If not, use the following update action to do it:
+```json
+{
+  "version": 1,
+  "actions": [
+    {
+      "action": "changeProductSearchIndexingEnabled",
+      "enabled": true
+    }
+  ]
+}
+```
+
 ## Start the development server
 
 Run the following command to start the development server and launch the application:
@@ -32,8 +49,11 @@ $ yarn build
 The skeleton includes configuration for both AWS (S3 & CloudFront) and Firebase serverless deployments built with 
 `mc-script compile-html`. 
 
-- [Firebase](https://appkit.commercetools.com/deployment/example-firebase)
+- [Firebase](https://docs.commercetools.com/custom-applications/deployment/example-deployment-firebase)
 - [AWS - S3 & CloudFront](https://appkit.commercetools.com/deployment/example-aws-s3-cloudfront)
+ 
+ NOTE: Be sure to set the env vars in custom-application-config.json. Update the value for your Merchant Center URL in that config: "mcURL":"..."
+
 
 ## Linting, formatting, and so on
 

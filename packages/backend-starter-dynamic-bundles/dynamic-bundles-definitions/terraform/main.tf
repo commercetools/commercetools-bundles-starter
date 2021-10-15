@@ -88,6 +88,21 @@ resource "commercetools_product_type" "dynamic_bundle_parent" {
   }
 
   attribute {
+    name = "category-search"
+    label = {
+      en = "Category Search"
+    }
+    searchable = true
+    constraint = "None"
+    type {
+      name = "set"
+      element_type {
+        name = "text"
+      }
+    }
+  }
+
+  attribute {
     name = "min-quantity"
     label = {
       en = "Minimum Quantity"

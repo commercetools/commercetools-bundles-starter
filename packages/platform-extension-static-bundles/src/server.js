@@ -13,12 +13,12 @@ app.get('/', (req, res) => {
   res.send("POST an event's payload to /.");
 });
 
-app.post('/', (req, res) => {
+app.post('/', async (req, res) => {
   if (!req.body) {
     return res.send('No body POSTed.');
   }
   try {
-    const result = handler(req.body);
+    const result = await handler(req.body);
     res.send(result);
   } catch (e) {
     res.sendStatus(500).send(e);

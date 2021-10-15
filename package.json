@@ -29,7 +29,8 @@
     "husky": "7.0.2",
     "install-peers": "^1.0.3",
     "jscodeshift": "^0.13.0",
-    "lerna": "^4.0.0"
+    "lerna": "^4.0.0",
+    "yarn": "^1.22.15"
   },
   "dependencies": {
     "@babel/preset-env": "^7.15.0"
