@@ -8,7 +8,7 @@ on: [push]
 
 jobs:
   extension_static_bundles:
-    name: Static bundles
+    name: Extension static bundles
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -20,6 +20,5 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14.x'
-      - run: npm cache clear --force
       - run: npm install
       - run: npm test
