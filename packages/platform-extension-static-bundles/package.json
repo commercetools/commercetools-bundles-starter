@@ -2,15 +2,15 @@
   "name": "@commercetools-us-ps/platform-extension-static-bundles",
   "version": "1.0.0",
   "description": "API Extension for simple bundle products",
-  "main": "dist/index.js",
+  "main": "dist/index.mjs",
   "scripts": {
     "lint": "eslint --fix src",
     "clean": "rm -rf dist",
     "webpack": "webpack --config webpack.config.js",
     "build": "yarn run clean && yarn run webpack",
     "build:prod": "cross-env NODE_ENV=production yarn run build",
-    "start:prod": "node dist/index.js",
-    "start": "webpack --config=webpack.dev.config.js && node dist/server.js",
+    "start:prod": "node dist/index.mjs",
+    "start": "webpack --config=webpack.dev.config.js && node src/start-server.mjs",
     "jest": "cross-env NODE_ENV=development jest",
     "test:watch": "yarn run jest --watch",
     "test:coverage": "yarn run jest --coverage=true",
@@ -30,7 +30,7 @@
     "open-releases": "open \"$(node -e 'console.log(`${require(\"./package.json\").repository.url}/releases`)')\""
   },
   "engines": {
-    "node": ">= 10"
+    "node": ">= 14"
   },
   "license": "MIT",
   "keywords": [
@@ -54,7 +54,6 @@
     "babel-eslint": "10.1.0",
     "babel-jest": "27.1.0",
     "babel-loader": "8.2.2",
-    "body-parser": "^1.19.0",
     "cross-env": "7.0.3",
     "dotenv-webpack": "7.0.3",
     "eslint": "7.32.0",
@@ -67,9 +66,9 @@
     "eslint-plugin-jest": "24.4.0",
     "eslint-plugin-prefer-object-spread": "1.2.1",
     "eslint-plugin-prettier": "4.0.0",
-    "express": "^4.17.1",
     "jest": "27.1.0",
     "lint-staged": "11.1.2",
+    "localtunnel": "^2.0.2",
     "mocha": "7.1.2",
     "mocha-junit-reporter": "1.23.3",
     "nock": "13.1.3",
@@ -86,6 +85,8 @@
     "@commercetools/sdk-middleware-http": "6.0.11",
     "@commercetools/sdk-middleware-queue": "2.1.4",
     "@commercetools/sync-actions": "4.9.6",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
     "lodash": "4.17.21",
     "node-cache": "5.1.2",
     "node-fetch": "3.0.0",

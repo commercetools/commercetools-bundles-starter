@@ -1,15 +1,17 @@
 import * as util from 'util';
-import { noop } from 'lodash';
+import lodash from 'lodash';
+
+const { noop } = lodash;
 import NodeCache from 'node-cache';
 import {
   Commercetools,
   buildErrorResponse,
   buildSuccessResponse,
-} from '../platform-extension-core';
-import { Helper } from '../platform-extension-bundles';
-import { CONFIG_KEYS, TYPE_KEY } from './constants';
+} from '../platform-extension-core/src/index.mjs';
+import { Helper } from '../platform-extension-bundles/src/index.mjs';
+import { CONFIG_KEYS, TYPE_KEY } from './constants.mjs';
 
-import CartHandler from './cartHandler';
+import CartHandler from './cartHandler.mjs';
 
 // Disable verbose logging if not in development env
 if (process.env.NODE_ENV !== 'development') {

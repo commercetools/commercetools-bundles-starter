@@ -12,7 +12,7 @@ import {
   ApiExtensionTimeoutError,
   ConcurrentModificationError,
   handleError,
-} from "../commercetools";
+} from "../../platform-extension-core/src/commercetools.mjs";
 
 export const TEST_TIMEOUT = 10000;
 

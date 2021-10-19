@@ -1,4 +1,4 @@
-import { Utils } from '../../platform-extension-core';
+import { Utils } from '../../platform-extension-core/src/index.mjs';
 
 export default ({
   commercetools, cache, bundleProductTypeKey, customTypeKey

@@ -3,9 +3,9 @@
  */
 import express from 'express';
 import bodyParser from 'body-parser';
-import { handler } from './index';
+import { handler } from './index.mjs';
 
-const app = express();
+export const app = express();
 
 app.use(bodyParser.json());
 
@@ -23,9 +23,4 @@ app.post('/', async (req, res) => {
   } catch (e) {
     res.sendStatus(500).send(e);
   }
-});
-
-// Serve the files on port 3000.
-app.listen(3000, () => {
-  console.log('Local development server listening on port 3000!\n');
 });
