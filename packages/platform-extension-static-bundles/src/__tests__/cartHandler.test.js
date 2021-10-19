@@ -1,4 +1,5 @@
-import uuid from 'uuid/v4';
+// import uuid from 'uuid/v4';
+import { v4 as uuid } from 'uuid';
 import { noop } from 'lodash';
 import NodeCache from 'node-cache';
 import { Commercetools } from '../../platform-extension-core';
