@@ -11,7 +11,7 @@
     "build:prod": "cross-env NODE_ENV=production yarn run build",
     "start:prod": "node dist/index.js",
     "start": "webpack --config=webpack.dev.config.js && node dist/server.js",
-    "jest": "cross-env NODE_ENV=development jest",
+    "jest": "cross-env NODE_ENV=development --experimental-vm-modules jest",
     "test:watch": "yarn run jest --watch",
     "test:coverage": "yarn run jest --coverage=true",
     "test": "yarn run jest --coverage=false",
