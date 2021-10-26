@@ -6,7 +6,7 @@ import {
   buildErrorResponse,
   buildSuccessResponse,
 } from '../platform-extension-core/src/index';
-import { Helper } from '../platform-extension-bundles';
+import { Helper } from '../platform-extension-bundles/src/index';
 import { CONFIG_KEYS, TYPE_KEY } from './constants';
 
 import CartHandler from './cartHandler';
