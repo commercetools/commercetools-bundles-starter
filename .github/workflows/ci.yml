@@ -21,23 +21,8 @@ jobs:
       - run: yarn
       - run: yarn build
 
-  extension-bundles:
-    needs: extension-core
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: packages/platform-extension-static-bundles/platform-extension-bundles
-    steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js 14.x
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14.x'
-      - run: yarn
-      - run: yarn build
-
   extension_static_bundles:
-    needs: extension-bundles
+    needs: extension-core
     name: Extension static bundles
     runs-on: ubuntu-latest
     defaults:
@@ -50,7 +35,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14.x'
-      - run: npm install
+      - run: yarn build
       - run: npm test
 
 
