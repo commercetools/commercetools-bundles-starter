@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "API Extension for simple bundle products",
   "main": "dist/index.js",
+  "type": "modules",
   "scripts": {
     "lint": "eslint --fix src",
     "clean": "rm -rf dist",
