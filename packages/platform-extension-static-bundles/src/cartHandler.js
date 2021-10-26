@@ -1,6 +1,6 @@
 import * as util from 'util';
 import { pickBy } from 'lodash';
-import { ACTION_TYPE, COPIED_LINE_ITEM_FIELDS, UPDATE_ACTION_TYPE } from './constants';
+import { ACTION_TYPE, COPIED_LINE_ITEM_FIELDS, UPDATE_ACTION_TYPE } from './constants.js';
 
 const validActionType = actionType => Object.values(ACTION_TYPE).includes(actionType);
 const byName = attrName => attr => attr.name === attrName;
