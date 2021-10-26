@@ -5,7 +5,7 @@ import {
   Commercetools,
   buildErrorResponse,
   buildSuccessResponse,
-} from '../platform-extension-core';
+} from '../platform-extension-core/src/index';
 import { Helper } from '../platform-extension-bundles';
 import { CONFIG_KEYS, TYPE_KEY } from './constants';
 

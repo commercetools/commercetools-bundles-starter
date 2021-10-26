@@ -1,8 +1,14 @@
 import uuid from 'uuid/v4';
 import { noop } from 'lodash';
 import NodeCache from 'node-cache';
-import { Commercetools } from '../../platform-extension-core';
-import { Helper } from '../../platform-extension-bundles';
+import extensionCore from '../../platform-extension-core/src/index';
+
+const { Commercetools } = extensionCore;
+
+import helperFile from '../../platform-extension-bundles/src/helper';
+
+const { Helper } = helperFile;
+
 import CartHandler from '../cartHandler';
 import {
   DEFAULT_UUID,
