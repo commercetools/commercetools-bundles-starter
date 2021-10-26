@@ -37,6 +37,7 @@ jobs:
       - run: yarn build
 
   extension_static_bundles:
+    needs: extension-bundles
     name: Extension static bundles
     runs-on: ubuntu-latest
     defaults:
