@@ -3,6 +3,7 @@
   "version": "1.1.9",
   "description": "Shared library for static and dynamic bundle extensions",
   "main": "dist/index.js",
+  "type": "module",
   "scripts": {
     "lint": "prettier-eslint --write $INIT_CWD/src/**/*.js",
     "clean": "rm -rf dist",
