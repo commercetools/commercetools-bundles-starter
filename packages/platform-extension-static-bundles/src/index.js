@@ -5,11 +5,11 @@ import {
   Commercetools,
   buildErrorResponse,
   buildSuccessResponse,
-} from '../platform-extension-core';
-import { Helper } from '../platform-extension-bundles';
-import { CONFIG_KEYS, TYPE_KEY } from './constants';
+} from '../platform-extension-core/src/index.js';
+import { Helper } from '../platform-extension-bundles/src/index.js';
+import { CONFIG_KEYS, TYPE_KEY } from './constants.js';
 
-import CartHandler from './cartHandler';
+import CartHandler from './cartHandler.js';
 
 // Disable verbose logging if not in development env
 if (process.env.NODE_ENV !== 'development') {

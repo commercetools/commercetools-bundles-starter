@@ -1,9 +1,15 @@
 import { v4 as uuid } from 'uuid';
 import { noop } from 'lodash';
 import NodeCache from 'node-cache';
-import Commercetools from '../../platform-extension-core/src/commercetools.js';
-import Helper from '../../platform-extension-bundles/src/helper.js';
-import CartHandler from '../cartHandler';
+import extensionCore from '../../platform-extension-core/src/index.js';
+
+const { Commercetools } = extensionCore;
+
+import helperFile from '../../platform-extension-bundles/src/helper.js';
+
+const { Helper } = helperFile;
+
+import CartHandler from '../cartHandler.js';
 import {
   DEFAULT_UUID,
   bundleProductTypeId,
@@ -18,7 +24,7 @@ import {
   buildSetLineItemCustomTypeActionResults,
   buildRemoveLineItemActionResults,
 } from '../__fixtures__/cartHandler.fixtures';
-import { ACTION_TYPE, UPDATE_ACTION_TYPE, TYPE_KEY } from '../constants';
+import { ACTION_TYPE, UPDATE_ACTION_TYPE, TYPE_KEY } from '../constants.js';
 
 // Disable console logging during tests
 console.log = noop;

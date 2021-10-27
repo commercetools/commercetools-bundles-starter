@@ -3,10 +3,11 @@
   "version": "1.1.9",
   "description": "Shared library for static and dynamic bundle extensions",
   "main": "dist/index.js",
+  "type": "module",
   "scripts": {
     "lint": "prettier-eslint --write $INIT_CWD/src/**/*.js",
     "clean": "rm -rf dist",
-    "webpack": "webpack --config webpack.config.js",
+    "webpack": "webpack --config webpack.config.cjs",
     "build": "yarn run clean && yarn run webpack",
     "build:prod": "cross-env NODE_ENV=production yarn run build",
     "jest": "jest",
