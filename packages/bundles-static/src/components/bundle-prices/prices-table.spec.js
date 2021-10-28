@@ -18,11 +18,11 @@ import { COLUMN_KEYS } from './column-definitions';
 
 const dataLocale = faker.random.locale();
 const customerGroup = {
-  id: faker.random.uuid(),
+  id: faker.datatype.uuid(),
   name: faker.random.words(),
 };
 const channel = {
-  id: faker.random.uuid(),
+  id: faker.datatype.uuid(),
   name: faker.random.words(),
 };
 const filters = {
@@ -49,7 +49,7 @@ const variables = {
   date: filters.date,
 };
 const variant = {
-  id: faker.random.uuid(),
+  id: faker.datatype.uuid(),
   price: {
     country: filters.country,
     customerGroup: customerGroup.id,
@@ -58,13 +58,13 @@ const variant = {
     validUntil: faker.date.future(2).toISOString(),
     value: {
       currencyCode: faker.finance.currencyCode(),
-      centAmount: faker.random.number(2000),
+      centAmount: faker.datatype.number(2000),
     },
   },
 };
 const generateResults = (item = variant) => [
   {
-    id: faker.random.uuid(),
+    id: faker.datatype.uuid(),
     masterData: {
       current: {
         name: faker.random.words(),
