@@ -41,8 +41,8 @@ const StaticBundlesTable = ({ match, history }) => {
   }
 
   function renderItem(row, columnKey) {
-    console.log("row: " + JSON.stringify(row));
-    console.log("columnKey: " + JSON.stringify(columnKey));
+    // console.log("row: " + JSON.stringify(row));
+    // console.log("columnKey: " + JSON.stringify(columnKey));
     const bundle = row;
     const masterVariant = bundle.masterVariant;
 
