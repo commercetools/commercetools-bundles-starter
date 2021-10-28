@@ -75,7 +75,7 @@
     "eslint-plugin-react": "7.20.5",
     "eslint-plugin-react-hooks": "4.0.8",
     "faker": "4.1.0",
-    "graphql": "14.7.0",
+    "graphql": "15.7.2",
     "graphql-tag": "2.11.0",
     "jest": "26.2.2",
     "jest-plugin-filename": "0.0.1",
