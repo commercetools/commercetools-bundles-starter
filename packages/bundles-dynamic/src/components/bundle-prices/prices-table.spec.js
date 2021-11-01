@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import faker from 'faker';
 import { getQuery, setQuery } from '@apollo/client';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
-import { Table } from '@commercetools-frontend/ui-kit';
+import { DataTable } from '@commercetools-frontend/ui-kit';
 import { useEffectMock } from '../../../../bundles-core/components/test-util';
 import { generateCategoryAttributes } from '../../test-util';
 import { getCategoryAttributes } from '../bundle-preview/category-product-field';
@@ -70,14 +70,14 @@ describe('prices table', () => {
   it('when query returns data, should render category table', async () => {
     setQuery({ data: generatePriceRangeResults() });
     const wrapper = await loadPricesTable();
-    expect(wrapper.find(Table).exists()).toEqual(true);
+    expect(wrapper.find(DataTable).exists()).toEqual(true);
   });
 
   it('when row clicked, should open MC category products page', async () => {
     setQuery({ data: generatePriceRangeResults() });
     const wrapper = await loadPricesTable();
     const index = 0;
-    const table = wrapper.find(Table);
+    const table = wrapper.find(DataTable);
     const results = table.prop('items');
     const item = results[index];
     table.props().onRowClick({}, index);
@@ -89,7 +89,7 @@ describe('prices table', () => {
   it('should render fallback for default column', async () => {
     setQuery({ data: generatePriceRangeResults() });
     const wrapper = await loadPricesTable();
-    const actual = wrapper.find(Table).props().itemRenderer({ rowIndex: 0 });
+    const actual = wrapper.find(DataTable).props().itemRenderer({ rowIndex: 0 });
     expect(actual).toEqual(NO_VALUE_FALLBACK);
   });
 
@@ -99,7 +99,7 @@ describe('prices table', () => {
     const index = 0;
     const { path } = getCategoryAttributes(mocks.categories[index]);
     const actual = wrapper
-      .find(Table)
+      .find(DataTable)
       .props()
       .itemRenderer({ rowIndex: index, columnKey: COLUMN_KEYS.CATEGORY });
     expect(actual).toEqual(path);
@@ -110,7 +110,7 @@ describe('prices table', () => {
     const wrapper = await loadPricesTable();
     const index = 0;
     const actual = wrapper
-      .find(Table)
+      .find(DataTable)
       .props()
       .itemRenderer({ rowIndex: index, columnKey: COLUMN_KEYS.MIN_PRICE });
     expect(actual).toEqual(NO_VALUE_FALLBACK);
@@ -120,7 +120,7 @@ describe('prices table', () => {
     setQuery({ data: generatePriceRangeResults() });
     const wrapper = await loadPricesTable();
     const index = 0;
-    const table = wrapper.find(Table);
+    const table = wrapper.find(DataTable);
     const results = table.prop('items');
     const { min } = results[index];
     const actual = table
@@ -139,7 +139,7 @@ describe('prices table', () => {
     const wrapper = await loadPricesTable();
     const index = 0;
     const actual = wrapper
-      .find(Table)
+      .find(DataTable)
       .props()
       .itemRenderer({ rowIndex: index, columnKey: COLUMN_KEYS.MAX_PRICE });
     expect(actual).toEqual(NO_VALUE_FALLBACK);
@@ -149,7 +149,7 @@ describe('prices table', () => {
     setQuery({ data: generatePriceRangeResults() });
     const wrapper = await loadPricesTable();
     const index = 0;
-    const table = wrapper.find(Table);
+    const table = wrapper.find(DataTable);
     const results = table.prop('items');
     const { max } = results[index];
     const actual = table
