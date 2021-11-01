@@ -83,11 +83,12 @@ describe('prices table', () => {
   let wrapper;
 
   const getValueForColumn = (item, columnKey) => {
+    const results = generateResults(item)
     setQuery({
-      data: { products: { results: generateResults(item), total: 1 } },
+      data: { products: { results, total: 1 } },
     });
     wrapper = loadPricesTable();
-    return wrapper.find(DataTable).props().itemRenderer({ rowIndex: 0, columnKey });
+    return wrapper.find(DataTable).props().itemRenderer(results[0], { key: columnKey });
   };
 
   beforeEach(() => {
@@ -176,11 +177,13 @@ describe('prices table', () => {
   });
 
   it('should render fallback for default column', () => {
+    const results = generateResults()
     setQuery({
-      data: { products: { results: generateResults(), total: 1 } },
+      data: { products: { results, total: 1 } },
     });
     wrapper = loadPricesTable();
-    const actual = wrapper.find(DataTable).props().itemRenderer({ rowIndex: 0 });
+    const actual = wrapper.find(DataTable).props()
+        .itemRenderer(results[0], {key: 'not-exists'});
     expect(actual).toEqual(NO_VALUE_FALLBACK);
   });
 
@@ -193,15 +196,16 @@ describe('prices table', () => {
     const actual = wrapper
       .find(DataTable)
       .props()
-      .itemRenderer({ rowIndex: 0, columnKey: COLUMN_KEYS.NAME });
+      .itemRenderer(results[0], { key: COLUMN_KEYS.NAME });
     expect(actual).toEqual(results[0].masterData.current.name);
   });
 
   describe('when price empty', () => {
     const item = omit(variant, 'price');
+    const results = generateResults(item)
     beforeEach(() => {
       setQuery({
-        data: { products: { results: generateResults(item), total: 1 } },
+        data: { products: { results, total: 1 } },
       });
       wrapper = loadPricesTable();
     });
@@ -210,7 +214,7 @@ describe('prices table', () => {
       const actual = wrapper
         .find(DataTable)
         .props()
-        .itemRenderer({ rowIndex: 0, columnKey: COLUMN_KEYS.CURRENCY });
+        .itemRenderer(results[0], { key: COLUMN_KEYS.CURRENCY });
       expect(actual).toEqual(NO_VALUE_FALLBACK);
     });
 
@@ -218,7 +222,7 @@ describe('prices table', () => {
       const actual = wrapper
         .find(DataTable)
         .props()
-        .itemRenderer({ rowIndex: 0, columnKey: COLUMN_KEYS.PRICE });
+        .itemRenderer(results[0], { key: COLUMN_KEYS.PRICE });
       expect(actual).toEqual(NO_VALUE_FALLBACK);
     });
 
@@ -226,7 +230,7 @@ describe('prices table', () => {
       const actual = wrapper
         .find(DataTable)
         .props()
-        .itemRenderer({ rowIndex: 0, columnKey: COLUMN_KEYS.COUNTRY });
+        .itemRenderer(results[0], { key: COLUMN_KEYS.COUNTRY });
       expect(actual).toEqual(NO_VALUE_FALLBACK);
     });
 
@@ -234,7 +238,7 @@ describe('prices table', () => {
       const actual = wrapper
         .find(DataTable)
         .props()
-        .itemRenderer({ rowIndex: 0, columnKey: COLUMN_KEYS.CUSTOMER_GROUP });
+        .itemRenderer(results[0], { key: COLUMN_KEYS.CUSTOMER_GROUP });
       expect(actual).toEqual(NO_VALUE_FALLBACK);
     });
 
@@ -242,7 +246,7 @@ describe('prices table', () => {
       const actual = wrapper
         .find(DataTable)
         .props()
-        .itemRenderer({ rowIndex: 0, columnKey: COLUMN_KEYS.CHANNEL });
+        .itemRenderer(results[0], { key: COLUMN_KEYS.CHANNEL });
       expect(actual).toEqual(NO_VALUE_FALLBACK);
     });
 
@@ -250,15 +254,16 @@ describe('prices table', () => {
       const actual = wrapper
         .find(DataTable)
         .props()
-        .itemRenderer({ rowIndex: 0, columnKey: COLUMN_KEYS.VALID_DATES });
+        .itemRenderer(results[0], { key: COLUMN_KEYS.VALID_DATES });
       expect(actual).toEqual(NO_VALUE_FALLBACK);
     });
   });
 
   describe('when price provided', () => {
+    const results = generateResults()
     beforeEach(() => {
       setQuery({
-        data: { products: { results: generateResults(), total: 1 } },
+        data: { products: { results, total: 1 } },
       });
       wrapper = loadPricesTable();
     });
@@ -267,7 +272,7 @@ describe('prices table', () => {
       const actual = wrapper
         .find(DataTable)
         .props()
-        .itemRenderer({ rowIndex: 0, columnKey: COLUMN_KEYS.CURRENCY });
+        .itemRenderer(results[0], { key: COLUMN_KEYS.CURRENCY });
       expect(actual).toEqual(variant.price.value.currencyCode);
     });
 
@@ -275,7 +280,7 @@ describe('prices table', () => {
       const actual = wrapper
         .find(DataTable)
         .props()
-        .itemRenderer({ rowIndex: 0, columnKey: COLUMN_KEYS.PRICE });
+        .itemRenderer(results[0], { key: COLUMN_KEYS.PRICE });
       expect(actual.props.value).toEqual(variant.price.value.centAmount / 100);
     });
 
@@ -283,7 +288,7 @@ describe('prices table', () => {
       const actual = wrapper
         .find(DataTable)
         .props()
-        .itemRenderer({ rowIndex: 0, columnKey: COLUMN_KEYS.COUNTRY });
+        .itemRenderer(results[0], { key: COLUMN_KEYS.COUNTRY });
       expect(actual).toEqual(variant.price.country);
     });
 
@@ -291,7 +296,7 @@ describe('prices table', () => {
       const actual = wrapper
         .find(DataTable)
         .props()
-        .itemRenderer({ rowIndex: 0, columnKey: COLUMN_KEYS.CUSTOMER_GROUP });
+        .itemRenderer(results[0], { key: COLUMN_KEYS.CUSTOMER_GROUP });
       expect(actual).toEqual(customerGroup.name);
     });
 
@@ -299,7 +304,7 @@ describe('prices table', () => {
       const actual = wrapper
         .find(DataTable)
         .props()
-        .itemRenderer({ rowIndex: 0, columnKey: COLUMN_KEYS.CHANNEL });
+        .itemRenderer(results[0], { key: COLUMN_KEYS.CHANNEL });
       expect(actual).toEqual(channel.name);
     });
 
@@ -307,7 +312,7 @@ describe('prices table', () => {
       const actual = wrapper
         .find(DataTable)
         .props()
-        .itemRenderer({ rowIndex: 0, columnKey: COLUMN_KEYS.VALID_DATES });
+        .itemRenderer(results[0], { key: COLUMN_KEYS.VALID_DATES });
       const dateValue = shallow(actual)
         .find(DateField)
         .first()
@@ -322,7 +327,7 @@ describe('prices table', () => {
       const actual = wrapper
         .find(DataTable)
         .props()
-        .itemRenderer({ rowIndex: 0, columnKey: COLUMN_KEYS.VALID_DATES });
+        .itemRenderer(results[0], { key: COLUMN_KEYS.VALID_DATES });
       const dateValue = shallow(actual)
         .find(DateField)
         .last()
