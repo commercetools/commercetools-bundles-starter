@@ -21,9 +21,9 @@ const mocks = {
 
 function generateCategories(count) {
   return Array.from({ length: count }, () => ({
-    id: faker.random.uuid(),
-    childCount: faker.random.number(100),
-    stagedProductCount: faker.random.number(100),
+    id: faker.datatype.uuid(),
+    childCount: faker.datatype.number(100),
+    stagedProductCount: faker.datatype.number(100),
     nameAllLocales: [
       { locale: faker.random.locale(), value: faker.random.word() },
       { locale: faker.random.locale(), value: faker.random.word() },

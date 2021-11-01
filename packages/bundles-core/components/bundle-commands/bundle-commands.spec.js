@@ -16,12 +16,12 @@ import messages from './messages';
 
 const ROOT_PATH = '/';
 const mocks = {
-  id: faker.random.uuid(),
-  version: faker.random.number(5),
+  id: faker.datatype.uuid(),
+  version: faker.datatype.number(5),
   match: {
     params: {
       projectKey: 'test-project',
-      bundleId: faker.random.uuid(),
+      bundleId: faker.datatype.uuid(),
     },
   },
   onComplete: jest.fn(),
