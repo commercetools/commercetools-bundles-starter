@@ -11,11 +11,11 @@ import PricesTable from './prices-table';
 import { COLUMN_KEYS } from './column-definitions';
 
 const customerGroup = {
-  id: faker.random.uuid(),
+  id: faker.datatype.uuid(),
   name: faker.random.words(),
 };
 const channel = {
-  id: faker.random.uuid(),
+  id: faker.datatype.uuid(),
   name: faker.random.words(),
 };
 const filters = {
@@ -31,8 +31,8 @@ const mocks = {
 };
 
 const generatePriceRangeResults = (
-  min = faker.random.number({ min: 1000, max: 2000 }),
-  max = faker.random.number({ min: 2000, max: 4000 })
+  min = faker.datatype.number({ min: 1000, max: 2000 }),
+  max = faker.datatype.number({ min: 2000, max: 4000 })
 ) => ({
   products: {
     facets: {
@@ -132,7 +132,7 @@ describe('prices table', () => {
   it('when maximum price missing, should render fallback for max price column', async () => {
     setQuery({
       data: generatePriceRangeResults(
-        faker.random.number({ min: 1000, max: 2000 }),
+        faker.datatype.number({ min: 1000, max: 2000 }),
         null
       ),
     });

@@ -8,7 +8,7 @@ import { generateCategoryAttributes } from '../../test-util';
 import CategoryProductField, { PRICE } from './category-product-field';
 import messages from './messages';
 
-const productId = faker.random.uuid();
+const productId = faker.datatype.uuid();
 const sku = faker.lorem.slug();
 const centAmount = faker.finance.amount() * 100;
 const currencyCode = faker.finance.currencyCode();
@@ -20,7 +20,7 @@ const product = {
     price: { value: { centAmount, currencyCode } },
   }),
 };
-const quantity = faker.random.number({ min: 1, max: 3 });
+const quantity = faker.datatype.number({ min: 1, max: 3 });
 const emptyValue = {
   product: null,
   quantity: '',
