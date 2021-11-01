@@ -5,7 +5,7 @@ import PaginatedTable from './paginated-table';
 import { Pagination } from '../pagination';
 
 const mockItems = [];
-const mockColumns = [{ key: faker.random.uuid(), label: faker.random.word() }];
+const mockColumns = [{ key: faker.datatype.uuid(), label: faker.random.word() }];
 const mockSort = {
   column: 'test.column.key',
   direction: 'ASC',
