@@ -5,8 +5,7 @@ import * as AppContext from '@commercetools-frontend/application-shell-connector
 import { ApplicationDynamicBundleManager } from './entry-point';
 import { ROOT_PATH } from '../../constants';
 
-jest.mock('apollo-link-rest');
-//jest.mock('apollo-client');
+jest.unmock('@apollo/client')
 
 const environment = {
   mcApiUrl: 'https://mc-api.commercetools.co',
