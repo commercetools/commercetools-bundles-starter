@@ -78,7 +78,7 @@ describe('prices table', () => {
     const wrapper = await loadPricesTable();
     const index = 0;
     const table = wrapper.find(DataTable);
-    const results = table.prop('items');
+    const results = table.prop('rows');
     const item = results[index];
     table.props().onRowClick({}, index);
     expect(global.open).toHaveBeenCalledWith(
@@ -87,9 +87,10 @@ describe('prices table', () => {
   });
 
   it('should render fallback for default column', async () => {
-    setQuery({ data: generatePriceRangeResults() });
+    const results = generatePriceRangeResults()
+    setQuery({ data: results });
     const wrapper = await loadPricesTable();
-    const actual = wrapper.find(DataTable).props().itemRenderer({ rowIndex: 0 });
+    const actual = wrapper.find(DataTable).props().itemRenderer(results.products, {key: 'not-exists'});
     expect(actual).toEqual(NO_VALUE_FALLBACK);
   });
 
@@ -98,10 +99,11 @@ describe('prices table', () => {
     const wrapper = await loadPricesTable();
     const index = 0;
     const { path } = getCategoryAttributes(mocks.categories[index]);
-    const actual = wrapper
-      .find(DataTable)
+    const table = wrapper.find(DataTable);
+    const results = table.prop('rows');
+    const actual = table
       .props()
-      .itemRenderer({ rowIndex: index, columnKey: COLUMN_KEYS.CATEGORY });
+      .itemRenderer(results[index], { key: COLUMN_KEYS.CATEGORY });
     expect(actual).toEqual(path);
   });
 
@@ -109,10 +111,11 @@ describe('prices table', () => {
     setQuery({ data: generatePriceRangeResults(null) });
     const wrapper = await loadPricesTable();
     const index = 0;
-    const actual = wrapper
-      .find(DataTable)
+    const table = wrapper.find(DataTable);
+    const results = table.prop('rows');
+    const actual = table
       .props()
-      .itemRenderer({ rowIndex: index, columnKey: COLUMN_KEYS.MIN_PRICE });
+      .itemRenderer(results[index], { key: COLUMN_KEYS.MIN_PRICE });
     expect(actual).toEqual(NO_VALUE_FALLBACK);
   });
 
@@ -121,11 +124,11 @@ describe('prices table', () => {
     const wrapper = await loadPricesTable();
     const index = 0;
     const table = wrapper.find(DataTable);
-    const results = table.prop('items');
+    const results = table.prop('rows');
     const { min } = results[index];
     const actual = table
       .props()
-      .itemRenderer({ rowIndex: index, columnKey: COLUMN_KEYS.MIN_PRICE });
+      .itemRenderer(results[index], { key: COLUMN_KEYS.MIN_PRICE });
     expect(actual.props.value).toEqual(min / 100);
   });
 
@@ -138,10 +141,12 @@ describe('prices table', () => {
     });
     const wrapper = await loadPricesTable();
     const index = 0;
+    const table = wrapper.find(DataTable);
+    const results = table.prop('rows');
     const actual = wrapper
       .find(DataTable)
       .props()
-      .itemRenderer({ rowIndex: index, columnKey: COLUMN_KEYS.MAX_PRICE });
+      .itemRenderer(results[index], { key: COLUMN_KEYS.MAX_PRICE });
     expect(actual).toEqual(NO_VALUE_FALLBACK);
   });
 
@@ -150,11 +155,11 @@ describe('prices table', () => {
     const wrapper = await loadPricesTable();
     const index = 0;
     const table = wrapper.find(DataTable);
-    const results = table.prop('items');
+    const results = table.prop('rows');
     const { max } = results[index];
     const actual = table
       .props()
-      .itemRenderer({ rowIndex: index, columnKey: COLUMN_KEYS.MAX_PRICE });
+      .itemRenderer(results[index], { key: COLUMN_KEYS.MAX_PRICE });
     expect(actual.props.value).toEqual(max / 100);
   });
 });
