@@ -55,7 +55,6 @@
     "global": "4.4.0",
     "graphql": "15.5.2",
     "graphql-anywhere": "4.2.7",
-    "husky": "7.0.2",
     "lodash": "4.17.21",
     "moment": "2.29.1",
     "moment-timezone": "0.5.33",
