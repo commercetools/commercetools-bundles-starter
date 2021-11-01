@@ -10,4 +10,5 @@ module.exports = {
   transformIgnorePatterns: [
     '/node_modules/(?!intl-messageformat|intl-messageformat-parser).+\\.js$',
   ],
+  collectCoverage: true,
 };
