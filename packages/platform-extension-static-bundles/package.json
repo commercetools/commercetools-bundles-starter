@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "description": "API Extension for simple bundle products",
   "main": "dist/index.js",
-  "type": "module",
   "scripts": {
     "lint": "eslint --fix src",
     "clean": "rm -rf dist",
-    "webpack": "webpack --config webpack.config.cjs",
+    "webpack": "webpack --config webpack.config.js",
     "build": "yarn run clean && yarn run webpack",
     "build:prod": "cross-env NODE_ENV=production yarn run build",
     "start:prod": "node dist/index.js",

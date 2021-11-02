@@ -3,7 +3,7 @@
  */
 import express from 'express';
 import bodyParser from 'body-parser';
-import { handler } from './index';
+import { handler } from './index.js';
 
 const app = express();
 
