@@ -1,5 +1,5 @@
 import NodeCache from 'node-cache';
-import uuid from 'uuid/v4';
+import { v4 as uuid } from 'uuid';
 import nock from 'nock';
 import Commercetools from '../core/commercetools.js';
 import Helper from '../bundles/helper.js';
