@@ -1,11 +1,11 @@
 import * as util from 'util';
 import { noop } from 'lodash';
 import NodeCache from 'node-cache';
-import Commercetools from './commercetools.js';
-import { buildErrorResponse, buildSuccessResponse } from './api-extension.js';
-import Helper from './helper.js';
-import { CONFIG_KEYS, TYPE_KEY } from './constants.js';
-import CartHandler from './cartHandler.js';
+import Commercetools from './commercetools';
+import { buildErrorResponse, buildSuccessResponse } from './api-extension';
+import Helper from './helper';
+import { CONFIG_KEYS, TYPE_KEY } from './constants';
+import CartHandler from './cartHandler';
 
 // Disable verbose logging if not in development env
 if (process.env.NODE_ENV !== 'development') {

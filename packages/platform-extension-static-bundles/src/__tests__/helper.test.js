@@ -1,8 +1,8 @@
 import NodeCache from 'node-cache';
 import { v4 as uuid } from 'uuid';
 import nock from 'nock';
-import Commercetools from '../commercetools.js';
-import Helper from '../helper.js';
+import Commercetools from '../commercetools';
+import Helper from '../helper';
 
 const clientId = 'client1';
 const clientSecret = 'secret1';

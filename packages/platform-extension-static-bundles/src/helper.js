@@ -1,4 +1,4 @@
-import Utils from './utils.js';
+import Utils from './utils';
 
 export default ({
   commercetools, cache, bundleProductTypeKey, customTypeKey
