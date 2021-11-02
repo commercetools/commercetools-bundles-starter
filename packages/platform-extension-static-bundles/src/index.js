@@ -1,14 +1,10 @@
 import * as util from 'util';
 import { noop } from 'lodash';
 import NodeCache from 'node-cache';
-import {
-  Commercetools,
-  buildErrorResponse,
-  buildSuccessResponse,
-} from '../platform-extension-core/src/index.js';
-import { Helper } from '../platform-extension-bundles/src/index.js';
+import { default as Commercetools } from './core/commercetools.js';
+import { buildErrorResponse, buildSuccessResponse } from './core/api-extension.js';
+import { default as Helper } from './bundles/helper.js';
 import { CONFIG_KEYS, TYPE_KEY } from './constants.js';
-
 import CartHandler from './cartHandler.js';
 
 // Disable verbose logging if not in development env

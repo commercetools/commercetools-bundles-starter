@@ -1,8 +1,8 @@
 import NodeCache from 'node-cache';
 import uuid from 'uuid/v4';
 import nock from 'nock';
-import { Commercetools } from '../../../platform-extension-core';
-import Helper from '../helper';
+import Commercetools from '../core/commercetools.js';
+import Helper from '../bundles/helper.js';
 
 const clientId = 'client1';
 const clientSecret = 'secret1';

@@ -1,5 +1,4 @@
-import utilsFile from '../../platform-extension-core/src/utils.js';
-const { Utils } = utilsFile;
+import Utils from '../core/utils.js';
 
 export default ({
   commercetools, cache, bundleProductTypeKey, customTypeKey

@@ -1,5 +1,0 @@
-package.json
-helm/**/*.yaml
-**/i18n/*.json
-**/dist/
-**/public/
