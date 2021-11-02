@@ -1,9 +1,9 @@
 import * as util from 'util';
 import { noop } from 'lodash';
 import NodeCache from 'node-cache';
-import Commercetools from './core/commercetools.js';
-import { buildErrorResponse, buildSuccessResponse } from './core/api-extension.js';
-import Helper from './bundles/helper.js';
+import Commercetools from './commercetools.js';
+import { buildErrorResponse, buildSuccessResponse } from './api-extension.js';
+import Helper from './helper.js';
 import { CONFIG_KEYS, TYPE_KEY } from './constants.js';
 import CartHandler from './cartHandler.js';
 

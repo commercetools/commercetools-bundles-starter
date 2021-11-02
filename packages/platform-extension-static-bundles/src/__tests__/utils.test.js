@@ -1,5 +1,5 @@
 import NodeCache from 'node-cache';
-import Utils from '../core/utils.js';
+import Utils from '../utils.js';
 
 const cache = new NodeCache();
 const utils = Utils({ cache });
