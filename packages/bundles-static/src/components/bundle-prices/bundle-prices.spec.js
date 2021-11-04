@@ -11,7 +11,7 @@ const project = {
   currencies: Array.from({ length: 3 }, () => faker.finance.currencyCode()),
 };
 const environment = {
-  frontendHost: 'mc.us-central1.gcp.commercetools.com',
+  mcURL: 'mc.us-central1.gcp.commercetools.com',
 };
 const mocks = {
   match: {
@@ -21,7 +21,7 @@ const mocks = {
   },
   bundle: generateProduct(),
 };
-const mcPriceUrl = `https://${environment.frontendHost}/${mocks.match.params.projectKey}/products/${mocks.bundle.id}/variants/${MASTER_VARIANT_ID}/prices`;
+const mcPriceUrl = `https://${environment.mcURL}/${mocks.match.params.projectKey}/products/${mocks.bundle.id}/variants/${MASTER_VARIANT_ID}/prices`;
 
 global.open = jest.fn();
 

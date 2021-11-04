@@ -22,7 +22,7 @@ const mocks = {
   match: {
     params: {
       projectKey: project.key,
-      bundleId: faker.random.uuid(),
+      bundleId: faker.datatype.uuid(),
     },
   },
   transformResults: jest.fn((projection) => ({

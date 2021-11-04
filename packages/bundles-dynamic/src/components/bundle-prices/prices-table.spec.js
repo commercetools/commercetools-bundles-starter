@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import faker from 'faker';
 import { getQuery, setQuery } from '@apollo/client';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
-import { Table } from '@commercetools-frontend/ui-kit';
+import { DataTable } from '@commercetools-frontend/ui-kit';
 import { useEffectMock } from '../../../../bundles-core/components/test-util';
 import { generateCategoryAttributes } from '../../test-util';
 import { getCategoryAttributes } from '../bundle-preview/category-product-field';
@@ -11,11 +11,11 @@ import PricesTable from './prices-table';
 import { COLUMN_KEYS } from './column-definitions';
 
 const customerGroup = {
-  id: faker.random.uuid(),
+  id: faker.datatype.uuid(),
   name: faker.random.words(),
 };
 const channel = {
-  id: faker.random.uuid(),
+  id: faker.datatype.uuid(),
   name: faker.random.words(),
 };
 const filters = {
@@ -31,8 +31,8 @@ const mocks = {
 };
 
 const generatePriceRangeResults = (
-  min = faker.random.number({ min: 1000, max: 2000 }),
-  max = faker.random.number({ min: 2000, max: 4000 })
+  min = faker.datatype.number({ min: 1000, max: 2000 }),
+  max = faker.datatype.number({ min: 2000, max: 4000 })
 ) => ({
   products: {
     facets: {
@@ -70,15 +70,15 @@ describe('prices table', () => {
   it('when query returns data, should render category table', async () => {
     setQuery({ data: generatePriceRangeResults() });
     const wrapper = await loadPricesTable();
-    expect(wrapper.find(Table).exists()).toEqual(true);
+    expect(wrapper.find(DataTable).exists()).toEqual(true);
   });
 
   it('when row clicked, should open MC category products page', async () => {
     setQuery({ data: generatePriceRangeResults() });
     const wrapper = await loadPricesTable();
     const index = 0;
-    const table = wrapper.find(Table);
-    const results = table.prop('items');
+    const table = wrapper.find(DataTable);
+    const results = table.prop('rows');
     const item = results[index];
     table.props().onRowClick({}, index);
     expect(global.open).toHaveBeenCalledWith(
@@ -87,9 +87,10 @@ describe('prices table', () => {
   });
 
   it('should render fallback for default column', async () => {
-    setQuery({ data: generatePriceRangeResults() });
+    const results = generatePriceRangeResults()
+    setQuery({ data: results });
     const wrapper = await loadPricesTable();
-    const actual = wrapper.find(Table).props().itemRenderer({ rowIndex: 0 });
+    const actual = wrapper.find(DataTable).props().itemRenderer(results.products, {key: 'not-exists'});
     expect(actual).toEqual(NO_VALUE_FALLBACK);
   });
 
@@ -98,10 +99,11 @@ describe('prices table', () => {
     const wrapper = await loadPricesTable();
     const index = 0;
     const { path } = getCategoryAttributes(mocks.categories[index]);
-    const actual = wrapper
-      .find(Table)
+    const table = wrapper.find(DataTable);
+    const results = table.prop('rows');
+    const actual = table
       .props()
-      .itemRenderer({ rowIndex: index, columnKey: COLUMN_KEYS.CATEGORY });
+      .itemRenderer(results[index], { key: COLUMN_KEYS.CATEGORY });
     expect(actual).toEqual(path);
   });
 
@@ -109,10 +111,11 @@ describe('prices table', () => {
     setQuery({ data: generatePriceRangeResults(null) });
     const wrapper = await loadPricesTable();
     const index = 0;
-    const actual = wrapper
-      .find(Table)
+    const table = wrapper.find(DataTable);
+    const results = table.prop('rows');
+    const actual = table
       .props()
-      .itemRenderer({ rowIndex: index, columnKey: COLUMN_KEYS.MIN_PRICE });
+      .itemRenderer(results[index], { key: COLUMN_KEYS.MIN_PRICE });
     expect(actual).toEqual(NO_VALUE_FALLBACK);
   });
 
@@ -120,28 +123,30 @@ describe('prices table', () => {
     setQuery({ data: generatePriceRangeResults() });
     const wrapper = await loadPricesTable();
     const index = 0;
-    const table = wrapper.find(Table);
-    const results = table.prop('items');
+    const table = wrapper.find(DataTable);
+    const results = table.prop('rows');
     const { min } = results[index];
     const actual = table
       .props()
-      .itemRenderer({ rowIndex: index, columnKey: COLUMN_KEYS.MIN_PRICE });
+      .itemRenderer(results[index], { key: COLUMN_KEYS.MIN_PRICE });
     expect(actual.props.value).toEqual(min / 100);
   });
 
   it('when maximum price missing, should render fallback for max price column', async () => {
     setQuery({
       data: generatePriceRangeResults(
-        faker.random.number({ min: 1000, max: 2000 }),
+        faker.datatype.number({ min: 1000, max: 2000 }),
         null
       ),
     });
     const wrapper = await loadPricesTable();
     const index = 0;
+    const table = wrapper.find(DataTable);
+    const results = table.prop('rows');
     const actual = wrapper
-      .find(Table)
+      .find(DataTable)
       .props()
-      .itemRenderer({ rowIndex: index, columnKey: COLUMN_KEYS.MAX_PRICE });
+      .itemRenderer(results[index], { key: COLUMN_KEYS.MAX_PRICE });
     expect(actual).toEqual(NO_VALUE_FALLBACK);
   });
 
@@ -149,12 +154,12 @@ describe('prices table', () => {
     setQuery({ data: generatePriceRangeResults() });
     const wrapper = await loadPricesTable();
     const index = 0;
-    const table = wrapper.find(Table);
-    const results = table.prop('items');
+    const table = wrapper.find(DataTable);
+    const results = table.prop('rows');
     const { max } = results[index];
     const actual = table
       .props()
-      .itemRenderer({ rowIndex: index, columnKey: COLUMN_KEYS.MAX_PRICE });
+      .itemRenderer(results[index], { key: COLUMN_KEYS.MAX_PRICE });
     expect(actual.props.value).toEqual(max / 100);
   });
 });

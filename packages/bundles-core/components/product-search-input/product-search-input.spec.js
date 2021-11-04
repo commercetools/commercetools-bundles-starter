@@ -22,19 +22,19 @@ const mocks = {
 
 const generateVariant = (isMatchingVariant) => ({
   isMatchingVariant,
-  id: faker.random.uuid(),
+  id: faker.datatype.uuid(),
   sku: faker.lorem.slug(),
 });
 
 const generateProduct = (isMatchingVariant) => ({
-  id: faker.random.uuid(),
+  id: faker.datatype.uuid(),
   name: project.languages.reduce(
     (names, value) => ({ ...names, [value]: faker.random.words() }),
     {}
   ),
   key: faker.lorem.slug(),
   masterVariant: generateVariant(isMatchingVariant),
-  variants: Array.from({ length: faker.random.number(5) }).map(() =>
+  variants: Array.from({ length: faker.datatype.number(5) }).map(() =>
     generateVariant(false)
   ),
 });
