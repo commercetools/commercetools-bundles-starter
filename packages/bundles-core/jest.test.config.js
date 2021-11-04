@@ -11,5 +11,14 @@ module.exports = {
     '/node_modules/(?!intl-messageformat|intl-messageformat-parser).+\\.js$',
   ],
   collectCoverage: true,
+  collectCoverageFrom: [
+    "components/**/*.{js,jsx}",
+    "!components/**/{index,constants,messages}.js",
+  ],
+  coverageThreshold: {
+    global: {
+      statements: 77
+    }
+  }
 };
 

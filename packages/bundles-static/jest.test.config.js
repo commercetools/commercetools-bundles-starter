@@ -15,10 +15,10 @@ module.exports = {
     "src/components/**/*.{js,jsx}",
     "!src/components/**/{index,constants,messages}.js",
   ],
-  "coverageThreshold": {
-    "global": {
-      "branches": 85,
-      "statements": 82
+  coverageThreshold: {
+    global: {
+      branches: 85,
+      statements: 82
     }
   }
 };
