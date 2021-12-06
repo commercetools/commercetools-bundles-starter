@@ -181,7 +181,7 @@ describe('bundle preview', () => {
     });
 
     describe('when bundle has more than one image', () => {
-      const length = faker.random.number({ min: 2, max: 10 });
+      const length = faker.datatype.number({ min: 2, max: 10 });
       const images = Array.from({ length }).map(generateImage);
       const [, ...side] = images;
       const mockBundle = cloneDeep(bundle);
@@ -256,7 +256,7 @@ describe('bundle preview', () => {
 
     it('when channel filter changed, should refetch bundle information with price scoped to channel', () => {
       const wrapper = loadBundlePreview();
-      const id = faker.random.uuid();
+      const id = faker.datatype.uuid();
       const channel = JSON.stringify({ id });
       wrapper.find(PriceFilters).props().setChannel(channel);
       expect(mocks.refetch).toHaveBeenCalledWith({
@@ -267,7 +267,7 @@ describe('bundle preview', () => {
 
     it('when customer group filter changed, should refetch bundle information with price scoped to customer group', () => {
       const wrapper = loadBundlePreview();
-      const id = faker.random.uuid();
+      const id = faker.datatype.uuid();
       const customerGroup = JSON.stringify({ id });
       wrapper.find(PriceFilters).props().setCustomerGroup(customerGroup);
       expect(mocks.refetch).toHaveBeenCalledWith({
@@ -288,8 +288,8 @@ describe('bundle preview', () => {
   });
 
   describe('price range', () => {
-    const min = faker.random.number({ min: 1000, max: 2000 });
-    const max = faker.random.number({ min: 2000, max: 4000 });
+    const min = faker.datatype.number({ min: 1000, max: 2000 });
+    const max = faker.datatype.number({ min: 2000, max: 4000 });
     const data = {
       products: {
         facets: {
@@ -363,8 +363,8 @@ describe('bundle preview', () => {
     describe('when dynamically priced bundle has categories with only min quantities', () => {
       const categories = Array.from({ length: 2 }).map(() =>
         generateCategoryAttributes(
-          faker.random.boolean(),
-          faker.random.number({ min: 1, max: 10 }),
+          faker.datatype.boolean(),
+          faker.datatype.number({ min: 1, max: 10 }),
           0
         )
       );
@@ -398,9 +398,9 @@ describe('bundle preview', () => {
     describe('when dynamically priced bundle has categories with only max quantities', () => {
       const categories = Array.from({ length: 2 }).map(() =>
         generateCategoryAttributes(
-          faker.random.boolean(),
+          faker.datatype.boolean(),
           0,
-          faker.random.number({ min: 1, max: 10 })
+          faker.datatype.number({ min: 1, max: 10 })
         )
       );
       const mockBundle = cloneDeep(dynamicPriceBundle);
@@ -432,7 +432,7 @@ describe('bundle preview', () => {
 
     describe('when dynamically priced bundle has categories with no min or max quantities', () => {
       const categories = Array.from({ length: 2 }).map(() =>
-        generateCategoryAttributes(faker.random.boolean(), 0, 0)
+        generateCategoryAttributes(faker.datatype.boolean(), 0, 0)
       );
       const mockBundle = cloneDeep(dynamicPriceBundle);
       set(mockBundle, 'staged.categories', categories);
@@ -645,11 +645,11 @@ describe('bundle preview', () => {
       (form, value, index) => ({
         ...form,
         [`category${index}`]: {
-          quantity: faker.random.number({ min: 1, max: 5 }),
+          quantity: faker.datatype.number({ min: 1, max: 5 }),
           product: {
             value: JSON.stringify({
-              productId: faker.random.uuid(),
-              id: faker.random.number({ min: 1, max: 5 }),
+              productId: faker.datatype.uuid(),
+              id: faker.datatype.number({ min: 1, max: 5 }),
             }),
           },
         },

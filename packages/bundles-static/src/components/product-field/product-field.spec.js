@@ -22,13 +22,13 @@ const INPUT = (index, field) => `[name="${mocks.name}.${index}.${field}"]`;
 const product = {
   label: faker.random.word(),
   value: JSON.stringify({
-    productId: faker.random.uuid(),
+    productId: faker.datatype.uuid(),
     name: faker.random.words(),
-    id: faker.random.number(5),
+    id: faker.datatype.number(5),
     sku: faker.lorem.slug(),
   }),
 };
-const quantity = faker.random.number();
+const quantity = faker.datatype.number();
 const value = {
   product,
   quantity,
@@ -39,12 +39,12 @@ const valueNoSku = {
   product: {
     label: faker.random.word(),
     value: JSON.stringify({
-      productId: faker.random.uuid(),
+      productId: faker.datatype.uuid(),
       name: faker.random.words(),
-      id: faker.random.number(5),
+      id: faker.datatype.number(5),
     }),
   },
-  quantity: faker.random.number(),
+  quantity: faker.datatype.number(),
 };
 
 function loadProductField(values, touched, errors) {

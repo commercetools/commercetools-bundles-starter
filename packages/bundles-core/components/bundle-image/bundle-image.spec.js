@@ -6,7 +6,7 @@ import { TextField } from '@commercetools-frontend/ui-kit';
 import BundleImage from './bundle-image';
 
 const mocks = {
-  bundleId: faker.random.uuid(),
+  bundleId: faker.datatype.uuid(),
   image: {
     url: faker.image.imageUrl(),
     label: faker.random.word(),

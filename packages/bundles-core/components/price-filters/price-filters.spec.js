@@ -15,14 +15,14 @@ const project = {
 
 const dataLocale = faker.random.locale();
 const results = Array.from({ length: 3 }, () => ({
-  id: faker.random.uuid(),
+  id: faker.datatype.uuid(),
   name: faker.random.words(),
 }));
 const mocks = {
   currency: faker.finance.currencyCode(),
   country: faker.address.countryCode(),
-  customerGroup: JSON.stringify({ id: faker.random.uuid() }),
-  channel: JSON.stringify({ id: faker.random.uuid() }),
+  customerGroup: JSON.stringify({ id: faker.datatype.uuid() }),
+  channel: JSON.stringify({ id: faker.datatype.uuid() }),
   date: faker.date.recent(10).toISOString(),
   setCurrency: jest.fn(),
   setCountry: jest.fn(),

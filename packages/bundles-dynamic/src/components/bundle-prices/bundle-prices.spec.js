@@ -12,7 +12,7 @@ const project = {
   currencies: Array.from({ length: 3 }, () => faker.finance.currencyCode()),
 };
 const environment = {
-  frontendHost: 'mc.us-central1.gcp.commercetools.com',
+  mcURL: 'mc.us-central1.gcp.commercetools.com',
 };
 const mocks = {
   match: {
@@ -20,10 +20,10 @@ const mocks = {
       projectKey: 'test-project',
     },
   },
-  id: faker.random.uuid(),
+  id: faker.datatype.uuid(),
   categories: Array.from({ length: 3 }).map(generateCategoryAttributes),
 };
-const mcPriceUrl = `https://${environment.frontendHost}/${mocks.match.params.projectKey}/products/${mocks.id}/variants/${MASTER_VARIANT_ID}/prices`;
+const mcPriceUrl = `https://${environment.mcURL}/${mocks.match.params.projectKey}/products/${mocks.id}/variants/${MASTER_VARIANT_ID}/prices`;
 
 global.open = jest.fn();
 
@@ -31,7 +31,7 @@ const TITLE = '[data-testid="price-title"]';
 const SUBTITLE = '[data-testid="price-subtitle"]';
 const ACTIONS = '[data-testid="price-actions"]';
 
-const loadBundlePrices = (dynamicPrice = faker.random.boolean()) =>
+const loadBundlePrices = (dynamicPrice = faker.datatype.boolean()) =>
   shallow(<BundlePrices {...mocks} dynamicPrice={dynamicPrice} />);
 
 describe('bundle prices', () => {

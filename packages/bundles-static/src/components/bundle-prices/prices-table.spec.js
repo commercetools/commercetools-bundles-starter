@@ -6,7 +6,7 @@ import { omit } from 'lodash';
 import { FormattedDate } from 'react-intl';
 import * as AppContext from '@commercetools-frontend/application-shell-connectors';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
-import { Table } from '@commercetools-frontend/ui-kit';
+import { DataTable } from '@commercetools-frontend/ui-kit';
 import { SORT_OPTIONS } from '../../../../bundles-core/components/constants';
 import { generateProduct } from '../../test-util';
 import { getSkus } from '../../util';
@@ -18,11 +18,11 @@ import { COLUMN_KEYS } from './column-definitions';
 
 const dataLocale = faker.random.locale();
 const customerGroup = {
-  id: faker.random.uuid(),
+  id: faker.datatype.uuid(),
   name: faker.random.words(),
 };
 const channel = {
-  id: faker.random.uuid(),
+  id: faker.datatype.uuid(),
   name: faker.random.words(),
 };
 const filters = {
@@ -49,7 +49,7 @@ const variables = {
   date: filters.date,
 };
 const variant = {
-  id: faker.random.uuid(),
+  id: faker.datatype.uuid(),
   price: {
     country: filters.country,
     customerGroup: customerGroup.id,
@@ -58,13 +58,13 @@ const variant = {
     validUntil: faker.date.future(2).toISOString(),
     value: {
       currencyCode: faker.finance.currencyCode(),
-      centAmount: faker.random.number(2000),
+      centAmount: faker.datatype.number(2000),
     },
   },
 };
 const generateResults = (item = variant) => [
   {
-    id: faker.random.uuid(),
+    id: faker.datatype.uuid(),
     masterData: {
       current: {
         name: faker.random.words(),
@@ -83,11 +83,12 @@ describe('prices table', () => {
   let wrapper;
 
   const getValueForColumn = (item, columnKey) => {
+    const results = generateResults(item)
     setQuery({
-      data: { products: { results: generateResults(item), total: 1 } },
+      data: { products: { results, total: 1 } },
     });
     wrapper = loadPricesTable();
-    return wrapper.find(Table).props().itemRenderer({ rowIndex: 0, columnKey });
+    return wrapper.find(DataTable).props().itemRenderer(results[0], { key: columnKey });
   };
 
   beforeEach(() => {
@@ -108,7 +109,7 @@ describe('prices table', () => {
   it('should render nothing when loading', () => {
     setQuery({ loading: true });
     wrapper = loadPricesTable();
-    expect(wrapper.find(Table).exists()).toEqual(false);
+    expect(wrapper.find(DataTable).exists()).toEqual(false);
   });
 
   it('should render error when query returns error', () => {
@@ -124,7 +125,7 @@ describe('prices table', () => {
       data: { products: { results: generateResults(), total: 1 } },
     });
     wrapper = loadPricesTable();
-    expect(wrapper.find(Table).exists()).toEqual(true);
+    expect(wrapper.find(DataTable).exists()).toEqual(true);
   });
 
   it('when country not selected, it should not be included in query variables', () => {
@@ -170,17 +171,19 @@ describe('prices table', () => {
       data: { products: { results, total: 1 } },
     });
     wrapper = loadPricesTable();
-    wrapper.find(Table).props().onRowClick({}, 0);
+    wrapper.find(DataTable).props().onRowClick({}, 0);
     expect(global.open).toHaveBeenCalled();
     expect(mocks.getMcPriceUrl).toHaveBeenCalledWith(item.id, variant.id);
   });
 
   it('should render fallback for default column', () => {
+    const results = generateResults()
     setQuery({
-      data: { products: { results: generateResults(), total: 1 } },
+      data: { products: { results, total: 1 } },
     });
     wrapper = loadPricesTable();
-    const actual = wrapper.find(Table).props().itemRenderer({ rowIndex: 0 });
+    const actual = wrapper.find(DataTable).props()
+        .itemRenderer(results[0], {key: 'not-exists'});
     expect(actual).toEqual(NO_VALUE_FALLBACK);
   });
 
@@ -191,123 +194,125 @@ describe('prices table', () => {
     });
     wrapper = loadPricesTable();
     const actual = wrapper
-      .find(Table)
+      .find(DataTable)
       .props()
-      .itemRenderer({ rowIndex: 0, columnKey: COLUMN_KEYS.NAME });
+      .itemRenderer(results[0], { key: COLUMN_KEYS.NAME });
     expect(actual).toEqual(results[0].masterData.current.name);
   });
 
   describe('when price empty', () => {
     const item = omit(variant, 'price');
+    const results = generateResults(item)
     beforeEach(() => {
       setQuery({
-        data: { products: { results: generateResults(item), total: 1 } },
+        data: { products: { results, total: 1 } },
       });
       wrapper = loadPricesTable();
     });
 
     it('should render fallback for currency column', () => {
       const actual = wrapper
-        .find(Table)
+        .find(DataTable)
         .props()
-        .itemRenderer({ rowIndex: 0, columnKey: COLUMN_KEYS.CURRENCY });
+        .itemRenderer(results[0], { key: COLUMN_KEYS.CURRENCY });
       expect(actual).toEqual(NO_VALUE_FALLBACK);
     });
 
     it('should render fallback for price column', () => {
       const actual = wrapper
-        .find(Table)
+        .find(DataTable)
         .props()
-        .itemRenderer({ rowIndex: 0, columnKey: COLUMN_KEYS.PRICE });
+        .itemRenderer(results[0], { key: COLUMN_KEYS.PRICE });
       expect(actual).toEqual(NO_VALUE_FALLBACK);
     });
 
     it('should render fallback for country column', () => {
       const actual = wrapper
-        .find(Table)
+        .find(DataTable)
         .props()
-        .itemRenderer({ rowIndex: 0, columnKey: COLUMN_KEYS.COUNTRY });
+        .itemRenderer(results[0], { key: COLUMN_KEYS.COUNTRY });
       expect(actual).toEqual(NO_VALUE_FALLBACK);
     });
 
     it('should render fallback for customer group column', () => {
       const actual = wrapper
-        .find(Table)
+        .find(DataTable)
         .props()
-        .itemRenderer({ rowIndex: 0, columnKey: COLUMN_KEYS.CUSTOMER_GROUP });
+        .itemRenderer(results[0], { key: COLUMN_KEYS.CUSTOMER_GROUP });
       expect(actual).toEqual(NO_VALUE_FALLBACK);
     });
 
     it('should render fallback for channel column', () => {
       const actual = wrapper
-        .find(Table)
+        .find(DataTable)
         .props()
-        .itemRenderer({ rowIndex: 0, columnKey: COLUMN_KEYS.CHANNEL });
+        .itemRenderer(results[0], { key: COLUMN_KEYS.CHANNEL });
       expect(actual).toEqual(NO_VALUE_FALLBACK);
     });
 
     it('should render fallback for valid dates column', () => {
       const actual = wrapper
-        .find(Table)
+        .find(DataTable)
         .props()
-        .itemRenderer({ rowIndex: 0, columnKey: COLUMN_KEYS.VALID_DATES });
+        .itemRenderer(results[0], { key: COLUMN_KEYS.VALID_DATES });
       expect(actual).toEqual(NO_VALUE_FALLBACK);
     });
   });
 
   describe('when price provided', () => {
+    const results = generateResults()
     beforeEach(() => {
       setQuery({
-        data: { products: { results: generateResults(), total: 1 } },
+        data: { products: { results, total: 1 } },
       });
       wrapper = loadPricesTable();
     });
 
     it('should render currency code for currency column', () => {
       const actual = wrapper
-        .find(Table)
+        .find(DataTable)
         .props()
-        .itemRenderer({ rowIndex: 0, columnKey: COLUMN_KEYS.CURRENCY });
+        .itemRenderer(results[0], { key: COLUMN_KEYS.CURRENCY });
       expect(actual).toEqual(variant.price.value.currencyCode);
     });
 
     it('should render formatted price for price column', () => {
       const actual = wrapper
-        .find(Table)
+        .find(DataTable)
         .props()
-        .itemRenderer({ rowIndex: 0, columnKey: COLUMN_KEYS.PRICE });
+        .itemRenderer(results[0], { key: COLUMN_KEYS.PRICE });
       expect(actual.props.value).toEqual(variant.price.value.centAmount / 100);
     });
 
     it('should render country code for country column', () => {
       const actual = wrapper
-        .find(Table)
+        .find(DataTable)
         .props()
-        .itemRenderer({ rowIndex: 0, columnKey: COLUMN_KEYS.COUNTRY });
+        .itemRenderer(results[0], { key: COLUMN_KEYS.COUNTRY });
       expect(actual).toEqual(variant.price.country);
     });
 
     it('should render customer group name for customer group column', () => {
       const actual = wrapper
-        .find(Table)
+        .find(DataTable)
         .props()
-        .itemRenderer({ rowIndex: 0, columnKey: COLUMN_KEYS.CUSTOMER_GROUP });
+        .itemRenderer(results[0], { key: COLUMN_KEYS.CUSTOMER_GROUP });
       expect(actual).toEqual(customerGroup.name);
     });
 
     it('should render channel name for channel column', () => {
       const actual = wrapper
-        .find(Table)
+        .find(DataTable)
         .props()
-        .itemRenderer({ rowIndex: 0, columnKey: COLUMN_KEYS.CHANNEL });
+        .itemRenderer(results[0], { key: COLUMN_KEYS.CHANNEL });
       expect(actual).toEqual(channel.name);
     });
 
     it('should render valid from date for date column', () => {
       const actual = wrapper
-        .find(Table)
+        .find(DataTable)
         .props()
-        .itemRenderer({ rowIndex: 0, columnKey: COLUMN_KEYS.VALID_DATES });
+        .itemRenderer(results[0], { key: COLUMN_KEYS.VALID_DATES });
       const dateValue = shallow(actual)
         .find(DateField)
         .first()
@@ -320,9 +325,9 @@ describe('prices table', () => {
 
     it('should render valid until date for date column', () => {
       const actual = wrapper
-        .find(Table)
+        .find(DataTable)
         .props()
-        .itemRenderer({ rowIndex: 0, columnKey: COLUMN_KEYS.VALID_DATES });
+        .itemRenderer(results[0], { key: COLUMN_KEYS.VALID_DATES });
       const dateValue = shallow(actual)
         .find(DateField)
         .last()
