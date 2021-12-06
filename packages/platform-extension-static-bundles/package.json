@@ -85,7 +85,7 @@
     "@commercetools/sync-actions": "4.9.6",
     "lodash": "4.17.21",
     "node-cache": "5.1.2",
-    "node-fetch": "3.0.0",
+    "node-fetch": "2.6.1",
     "uuid": "8.3.2"
   },
   "jest": {

@@ -2,6 +2,23 @@
 
 This extension allows users to manage product bundles.  
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  
+- [Bundles Custom Application](#bundles-custom-application)
+  - [Prerequisites](#prerequisites)
+  - [Start the development server](#start-the-development-server)
+  - [Run tests](#run-tests)
+  - [Build the production bundles](#build-the-production-bundles)
+  - [Deployment](#deployment)
+  - [Linting, formatting, and so on](#linting-formatting-and-so-on)
+    - [Formatting code](#formatting-code)
+    - [Git Hooks](#git-hooks)
+    - [Linting GraphQL Queries](#linting-graphql-queries)
+    - [Generating GraphQL schema](#generating-graphql-schema)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Prerequisites
 
 Make sure your CTP project contains bundles [product types](../platform-extension-static-bundles/resourceDefinitions/productTypes) and [types](../platform-extension-static-bundles/resourceDefinitions/types). 

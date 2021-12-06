@@ -1,4 +1,4 @@
-import { Utils } from '../../platform-extension-core';
+import Utils from './utils';
 
 export default ({
   commercetools, cache, bundleProductTypeKey, customTypeKey

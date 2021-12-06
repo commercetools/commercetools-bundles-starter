@@ -1,8 +1,8 @@
-import uuid from 'uuid/v4';
+import { v4 as uuid } from 'uuid';
 import { noop } from 'lodash';
 import NodeCache from 'node-cache';
-import { Commercetools } from '../../platform-extension-core';
-import { Helper } from '../../platform-extension-bundles';
+import Commercetools from '../commercetools';
+import Helper from '../helper';
 import CartHandler from '../cartHandler';
 import {
   DEFAULT_UUID,
@@ -42,8 +42,8 @@ const cache = new NodeCache();
 const helper = Helper({
   commercetools,
   cache,
-  bundleProductTypeKey: TYPE_KEY.DYNAMIC_BUNDLE_PARENT,
-  customTypeKey: TYPE_KEY.DYNAMIC_BUNDLE_PARENT_CHILD_LINK,
+  bundleProductTypeKey: TYPE_KEY.STATIC_BUNDLE_PARENT,
+  customTypeKey: TYPE_KEY.STATIC_BUNDLE_PARENT_CHILD_LINK,
 });
 
 const cartHandler = CartHandler({ helper, cache });

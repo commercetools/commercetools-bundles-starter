@@ -4,13 +4,37 @@ title: Platform Extension - Static Bundles
 ---
 
 # Platform Extension - Static Bundles
-{: .no_toc }
 
-## Index
-{: .no_toc .text-delta }
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+- [Platform Extension - Static Bundles](#platform-extension---static-bundles)
+  - [Application Overview](#application-overview)
+    - [Merchant Center Custom application](#merchant-center-custom-application)
+    - [API Extension](#api-extension)
+  - [Application Features](#application-features)
+  - [Technology Used](#technology-used)
+  - [Installation](#installation)
+    - [Prerequisites](#prerequisites)
+    - [Dependency Installation](#dependency-installation)
+  - [Terraform](#terraform)
+  - [Configuration](#configuration)
+    - [Environment Variables](#environment-variables)
+    - [Application Assumptions](#application-assumptions)
+  - [Local Development](#local-development)
+  - [Tests](#tests)
+  - [Data Model](#data-model)
+    - [Product Types](#product-types)
+      - [StaticBundleParent](#staticbundleparent)
+      - [StaticBundleChildVariant](#staticbundlechildvariant)
+    - [Types](#types)
+      - [StaticBundleParentChildLink](#staticbundleparentchildlink)
+  - [Application Flow](#application-flow)
+  - [Implementation Responsibilities](#implementation-responsibilities)
+  - [Sample Data](#sample-data)
+  - [Support](#support)
 
-- TOC
-{:toc}
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Application Overview
 
