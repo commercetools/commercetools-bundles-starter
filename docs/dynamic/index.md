@@ -6,15 +6,50 @@ nav_order: 3
 
 <!--prettier-ignore-start-->
 # Dynamic Bundles
-{: .no_toc }
 
 ## Table of contents
-{: .no_toc .text-delta }
-<!--prettier-ignore-end-->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+- [Dynamic Bundles](#dynamic-bundles)
+  - [Overview](#overview)
+  - [Technology](#technology)
+  - [Features](#features)
+    - [Bundles List](#bundles-list)
+    - [Bundle Creation](#bundle-creation)
+    - [Bundle Details](#bundle-details)
+      - [General](#general)
+      - [Images](#images)
+      - [Prices](#prices)
+      - [Preview](#preview)
+        - [Fixed Price Bundle with Additional Charge Component](#fixed-price-bundle-with-additional-charge-component)
+        - [Dynamic Price Bundle](#dynamic-price-bundle)
+  - [Architecture](#architecture)
+    - [Product](#product)
+    - [Product Types](#product-types)
+      - [DynamicBundleParent](#dynamicbundleparent)
+      - [DynamicBundleChildCategory](#dynamicbundlechildcategory)
+      - [Sample Bundle](#sample-bundle)
+  - [Configuration](#configuration)
+  - [Installation](#installation)
+  - [Development](#development)
+    - [Start the development server](#start-the-development-server)
+    - [Troubleshooting](#troubleshooting)
+      - [`graphql_error.invalid_token` error](#graphql_errorinvalid_token-error)
+      - [Do's and Don'ts](#dos-and-donts)
+    - [Linting & Formatting](#linting--formatting)
+      - [Formatting code](#formatting-code)
+      - [Linting code](#linting-code)
+        - [Linting GraphQL Queries](#linting-graphql-queries)
+        - [Generating CTP GraphQL schema](#generating-ctp-graphql-schema)
+    - [Git Hooks](#git-hooks)
+  - [Tests](#tests)
+  - [Build & Deployment](#build--deployment)
+    - [Registration with Merchant Center](#registration-with-merchant-center)
+      - [Configuration Values](#configuration-values)
+  - [Complete the Solution: Your Implementation Responsibilities](#complete-the-solution-your-implementation-responsibilities)
+  - [Support](#support)
 
-<!--prettier-ignore-->
-1. TOC 
-{:toc}
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Overview
 
@@ -151,17 +186,11 @@ A reference product detail page (PDP) for merchandisers to visualize the bundle.
     - Calculates price of bundle by summing price of selected product variant
       multiplied by its quantity
 
-<!--prettier-ignore-start-->
 ##### Fixed Price Bundle with Additional Charge Component
-{: .no_toc }
-<!--prettier-ignore-end-->
 
 ![Bundle Details - Preview Fixed Price](./features/bundle-details-preview-fixed.gif)
 
-<!--prettier-ignore-start-->
 ##### Dynamic Price Bundle
-{: .no_toc }
-<!--prettier-ignore-end-->
 
 ![Bundle Details - Preview Dynamic Price](./features/bundle-details-preview-dynamic.gif)
 
@@ -486,18 +515,12 @@ and `location`.
 
 ### Troubleshooting
 
-<!--prettier-ignore-start-->
 #### `graphql_error.invalid_token` error
-{: .no_toc }
-<!--prettier-ignore-end-->
 
 Log out of [Merchant Center](https://mc.us-central1.gcp.commercetools.com/). Log
 back in, then return to the custom application and reload.
 
-<!--prettier-ignore-start-->
 #### Do's and Don'ts
-{: .no_toc }
-<!--prettier-ignore-end-->
 
 - **Don't** use the application development login screen to authenticate.
 - **Do** make sure you are logged in to Merchant Center before developing or
@@ -521,19 +544,13 @@ Run the following command to lint JS, CSS, and GraphQL files
 yarn lint
 ```
 
-<!--prettier-ignore-start-->
 ##### Linting GraphQL Queries
-{: .no_toc }
-<!--prettier-ignore-end-->
 
 A prerequisite for linting GraphQL queries is generating a `schema.graphql`
 file, which contains the Types exposed by CTP API. Every time the API introduces
 new Types, Queries or Mutations, the local `schema.graphql` must be updated.
 
-<!--prettier-ignore-start-->
 ##### Generating CTP GraphQL schema
-{: .no_toc }
-<!--prettier-ignore-end-->
 
 1. If you haven't done so already, create an API client under
    `Settings -> Developer Settings` in Merchant Center for your project
@@ -611,10 +628,7 @@ After deploying the custom application, it needs to be
 [registered](https://docs.commercetools.com/custom-applications/register-applications/configuring-a-custom-application)
 with a Merchant Center project.
 
-<!--prettier-ignore-start-->
 #### Configuration Values
-{: .no_toc }
-<!--prettier-ignore-end-->
 
 - **Main Route Path**: dynamic-bundle-manager
 - **Link Permissions**: Manage Products, View Products
