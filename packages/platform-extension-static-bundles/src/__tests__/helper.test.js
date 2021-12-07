@@ -1,7 +1,7 @@
 import NodeCache from 'node-cache';
-import uuid from 'uuid/v4';
+import { v4 as uuid } from 'uuid';
 import nock from 'nock';
-import { Commercetools } from '../../../platform-extension-core';
+import Commercetools from '../commercetools';
 import Helper from '../helper';
 
 const clientId = 'client1';

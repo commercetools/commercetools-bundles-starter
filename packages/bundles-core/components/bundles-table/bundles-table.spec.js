@@ -19,7 +19,7 @@ const project = {
   languages: [faker.random.locale(), faker.random.locale()],
 };
 const dataLocale = project.languages[0];
-const where = `productType.id:"${faker.random.uuid()}"`;
+const where = `productType.id:"${faker.datatype.uuid()}"`;
 
 const QUERY_VARIABLES = { ...DEFAULT_VARIABLES, filter: [where] };
 
@@ -35,12 +35,12 @@ const mocks = {
     push: jest.fn(),
   },
   title: {
-    id: faker.random.uuid(),
+    id: faker.datatype.uuid(),
     description: faker.random.words(),
     defaultMessage: faker.random.words(),
   },
   subtitle: {
-    id: faker.random.uuid(),
+    id: faker.datatype.uuid(),
     description: faker.random.words(),
     defaultMessage: faker.random.words(),
   },
@@ -58,7 +58,7 @@ function generateResults(total) {
       count,
       total,
       results: Array.from({ length: count }, () => ({
-        id: faker.random.uuid(),
+        id: faker.datatype.uuid(),
       })),
     },
   };

@@ -84,7 +84,7 @@ describe('dynamic bundles table', () => {
       const actual = wrapper
         .find(BundlesTable)
         .props()
-        .renderItem(results, { rowIndex: 0, columnKey: COLUMN_KEYS.NAME });
+        .renderItem(bundle, COLUMN_KEYS.NAME);
       expect(actual).toEqual(expected);
     });
 
@@ -92,12 +92,11 @@ describe('dynamic bundles table', () => {
       const bundle = transformProduct(
         generateProduct(project.languages, true, false)
       );
-      const results = [bundle];
       const wrapper = loadBundlesTable();
       const actual = wrapper
         .find(BundlesTable)
         .props()
-        .renderItem(results, { rowIndex: 0, columnKey: COLUMN_KEYS.STATUS });
+        .renderItem(bundle, COLUMN_KEYS.STATUS);
       expect(actual.props.code).toEqual(PRODUCT_STATUS.PUBLISHED);
     });
 
@@ -105,12 +104,11 @@ describe('dynamic bundles table', () => {
       const bundle = transformProduct(
         generateProduct(project.languages, true, true)
       );
-      const results = [bundle];
       const wrapper = loadBundlesTable();
       const actual = wrapper
         .find(BundlesTable)
         .props()
-        .renderItem(results, { rowIndex: 0, columnKey: COLUMN_KEYS.STATUS });
+        .renderItem(bundle, COLUMN_KEYS.STATUS);
       expect(actual.props.code).toEqual(PRODUCT_STATUS.MODIFIED);
     });
 
@@ -118,12 +116,11 @@ describe('dynamic bundles table', () => {
       const bundle = transformProduct(
         generateProduct(project.languages, false, true)
       );
-      const results = [bundle];
       const wrapper = loadBundlesTable();
       const actual = wrapper
         .find(BundlesTable)
         .props()
-        .renderItem(results, { rowIndex: 0, columnKey: COLUMN_KEYS.STATUS });
+        .renderItem(bundle, COLUMN_KEYS.STATUS);
       expect(actual.props.code).toEqual(PRODUCT_STATUS.UNPUBLISHED);
     });
 
@@ -131,12 +128,11 @@ describe('dynamic bundles table', () => {
       const bundle = transformProduct(
         generateProduct(project.languages, false, true, true)
       );
-      const results = [bundle];
       const wrapper = loadBundlesTable();
       const actual = wrapper
         .find(BundlesTable)
         .props()
-        .renderItem(results, { rowIndex: 0, columnKey: COLUMN_KEYS.PRICE });
+        .renderItem(bundle, COLUMN_KEYS.PRICE);
       expect(actual.props.id).toEqual(messages.dynamicValue.id);
     });
 
@@ -154,7 +150,7 @@ describe('dynamic bundles table', () => {
       const actual = wrapper
         .find(BundlesTable)
         .props()
-        .renderItem(results, { rowIndex: 0, columnKey: COLUMN_KEYS.PRICE });
+        .renderItem(bundle, COLUMN_KEYS.PRICE);
       expect(actual.props.value).toEqual(expected);
     });
 
@@ -165,12 +161,11 @@ describe('dynamic bundles table', () => {
         ),
         'masterVariant.prices'
       );
-      const results = [bundle];
       const wrapper = loadBundlesTable();
       const actual = wrapper
         .find(BundlesTable)
         .props()
-        .renderItem(results, { rowIndex: 0, columnKey: COLUMN_KEYS.PRICE });
+        .renderItem(bundle, COLUMN_KEYS.PRICE);
       expect(actual).toEqual(NO_VALUE_FALLBACK);
     });
 
@@ -181,7 +176,7 @@ describe('dynamic bundles table', () => {
       const actual = wrapper
         .find(BundlesTable)
         .props()
-        .renderItem(results, { rowIndex: 0, columnKey: COLUMN_KEYS.MODIFIED });
+        .renderItem(bundle, COLUMN_KEYS.MODIFIED);
       expect(actual.props.value).toEqual(bundle.lastModifiedAt);
     });
   });

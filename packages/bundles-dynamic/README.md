@@ -2,6 +2,38 @@
 
 This extension allows users to manage dynamic product bundles. 
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+- [Dynamic Bundle Custom Application](#dynamic-bundle-custom-application)
+  - [Usage](#usage)
+  - [Development Server](#development-server)
+    - [Tests](#tests)
+    - [Production Build](#production-build)
+    - [Deployment](#deployment)
+  - [Linting, formatting, and so on](#linting-formatting-and-so-on)
+    - [Formatting Code](#formatting-code)
+    - [Git Hooks](#git-hooks)
+    - [Linting GraphQL Queries](#linting-graphql-queries)
+    - [Generating GraphQL Schema](#generating-graphql-schema)
+  - [Development](#development)
+    - [Retrieving Bundle Information](#retrieving-bundle-information)
+      - [GraphQL](#graphql)
+        - [Parameters](#parameters)
+      - [HTTP Request](#http-request)
+        - [Parameters](#parameters-1)
+      - [Examples](#examples)
+    - [Retrieving Product Variants for Bundle Categories](#retrieving-product-variants-for-bundle-categories)
+      - [Endpoint](#endpoint)
+      - [Parameters](#parameters-2)
+      - [Examples](#examples-1)
+    - [Creating a Cart with a Bundle](#creating-a-cart-with-a-bundle)
+      - [Cart Draft](#cart-draft)
+      - [Parameters](#parameters-3)
+      - [Examples](#examples-2)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Usage
 
 ## Development Server

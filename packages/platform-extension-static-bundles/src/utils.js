@@ -1,4 +1,4 @@
-import uuid from 'uuid/v4';
+import { v4 as uuid } from 'uuid';
 
 /**
  * Utility helper containing common functions for caching/memoization,

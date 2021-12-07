@@ -1,4 +1,4 @@
-import uuid from 'uuid/v4';
+import { v4 as uuid } from 'uuid';
 import { TYPE_KEY, UPDATE_ACTION_TYPE } from '../constants';
 
 export const DEFAULT_UUID = uuid();

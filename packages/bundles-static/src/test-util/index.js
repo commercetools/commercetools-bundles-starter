@@ -11,18 +11,18 @@ import {
 
 export const generateProduct = (
   languages = [],
-  published = faker.random.boolean(),
-  hasStagedChanges = faker.random.boolean()
+  published = faker.datatype.boolean(),
+  hasStagedChanges = faker.datatype.boolean()
 ) => {
   const nameAllLocales = Array.from(
-    { length: languages.length || faker.random.number(4) },
+    { length: languages.length || faker.datatype.number(4) },
     (item, index) => ({
       locale: languages ? languages[index] : faker.random.locale(),
       value: faker.commerce.productName(),
     })
   );
   const descriptionAllLocales = Array.from(
-    { length: languages.length || faker.random.number(4) },
+    { length: languages.length || faker.datatype.number(4) },
     (item, index) => ({
       locale: languages ? languages[index] : faker.random.locale(),
       value: faker.random.word(),
@@ -30,14 +30,14 @@ export const generateProduct = (
   );
   const products = {
     name: 'products',
-    value: Array.from({ length: faker.random.number(5) }, () => [
+    value: Array.from({ length: faker.datatype.number(5) }, () => [
       {
         name: VARIANT_ID,
-        value: faker.random.number(12),
+        value: faker.datatype.number(12),
       },
       {
         name: SKU,
-        value: faker.random.number(),
+        value: faker.datatype.number(),
       },
       {
         name: PRODUCT_NAME,
@@ -47,12 +47,12 @@ export const generateProduct = (
         name: PRODUCT_REF,
         value: {
           typeId: PRODUCT,
-          id: faker.random.uuid(),
+          id: faker.datatype.uuid(),
         },
       },
       {
         name: QUANTITY,
-        value: faker.random.number(10),
+        value: faker.datatype.number(10),
       },
     ]),
   };
@@ -66,25 +66,25 @@ export const generateProduct = (
       attributes: [products],
       attributesRaw: [products],
       images: Array.from({
-        length: faker.random.number({ min: 1, max: 3 }),
+        length: faker.datatype.number({ min: 1, max: 3 }),
       }).map(() => ({
         label: faker.random.word(),
         url: faker.image.imageUrl(640, 480, faker.random.word()),
       })),
       prices: Array.from({
-        length: faker.random.number({ min: 1, max: 3 }),
+        length: faker.datatype.number({ min: 1, max: 3 }),
       }).map(() => ({
         value: {
-          centAmount: faker.random.number({ min: 1, max: 20000 }),
+          centAmount: faker.datatype.number({ min: 1, max: 20000 }),
           currencyCode: faker.finance.currencyCode(),
-          fractionsDigits: faker.random.number(2),
+          fractionsDigits: faker.datatype.number(2),
         },
       })),
     },
     allVariants: [
       {
         images: Array.from({
-          length: faker.random.number({ min: 1, max: 3 }),
+          length: faker.datatype.number({ min: 1, max: 3 }),
         }).map(() => ({
           label: faker.random.word(),
           url: faker.image.imageUrl(640, 480, faker.random.word()),
@@ -93,9 +93,9 @@ export const generateProduct = (
     ],
   });
   return {
-    id: faker.random.uuid(),
+    id: faker.datatype.uuid(),
     lastModifiedAt: faker.date.recent(100),
-    version: faker.random.number(10),
+    version: faker.datatype.number(10),
     name: transformLocalizedFieldToString(nameAllLocales),
     description: transformLocalizedFieldToString(descriptionAllLocales),
     masterData: {
@@ -111,25 +111,25 @@ const products = Array.from({ length: 2 }).map(() => ({
   product: {
     label: faker.random.word(),
     value: JSON.stringify({
-      productId: faker.random.uuid(),
+      productId: faker.datatype.uuid(),
       name: faker.random.words(),
-      id: faker.random.number(5),
+      id: faker.datatype.number(5),
       sku: faker.lorem.slug(),
     }),
   },
-  quantity: faker.random.number(5),
+  quantity: faker.datatype.number(5),
 }));
 
 export const generateFormValues = () => ({
-  id: faker.random.uuid(),
-  version: faker.random.number(6),
+  id: faker.datatype.uuid(),
+  version: faker.datatype.number(6),
   name: {
     [faker.random.locale()]: faker.random.word(),
   },
   description: {
     [faker.random.locale()]: faker.random.word(),
   },
-  sku: faker.random.number({ min: 10000, max: 20000 }).toString(),
+  sku: faker.datatype.number({ min: 10000, max: 20000 }).toString(),
   products,
   productSearch: products,
   slug: {
@@ -142,8 +142,8 @@ export const generateFormValues = () => ({
 });
 
 export const generateSubmittedFormValues = () => ({
-  id: faker.random.uuid(),
-  version: faker.random.number(6),
+  id: faker.datatype.uuid(),
+  version: faker.datatype.number(6),
   name: [
     {
       locale: faker.random.locale(),
@@ -157,31 +157,31 @@ export const generateSubmittedFormValues = () => ({
     },
   ],
   key: faker.lorem.slug(),
-  sku: faker.random.number({ min: 10000, max: 20000 }).toString(),
+  sku: faker.datatype.number({ min: 10000, max: 20000 }).toString(),
   products: JSON.stringify(
     Array.from({ length: 2 }).map(() => [
       {
         name: VARIANT_ID,
-        value: faker.random.number(5),
+        value: faker.datatype.number(5),
       },
       { name: SKU, value: faker.lorem.slug() },
       {
         name: PRODUCT_REF,
         value: {
           typeId: PRODUCT,
-          id: faker.random.uuid(),
+          id: faker.datatype.uuid(),
         },
       },
       {
         name: PRODUCT_NAME,
         value: faker.commerce.productName(),
       },
-      { name: QUANTITY, value: faker.random.number(2) },
+      { name: QUANTITY, value: faker.datatype.number(2) },
     ])
   ),
   productSearch: JSON.stringify(
     Array.from({ length: 2 }).map(
-      () => `${faker.random.uuid()}/${faker.random.number(5)}`
+      () => `${faker.datatype.uuid()}/${faker.datatype.number(5)}`
     )
   ),
   slug: [

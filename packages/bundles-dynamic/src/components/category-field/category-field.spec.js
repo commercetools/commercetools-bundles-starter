@@ -139,7 +139,7 @@ describe('category field', () => {
 });
 
 describe('parse category attributes to form value', () => {
-  const id = faker.random.uuid();
+  const id = faker.datatype.uuid();
   const path = faker.commerce.productName();
   const categoryRefAttribute = {
     name: CATEGORY_REF,

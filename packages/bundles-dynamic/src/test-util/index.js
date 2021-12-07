@@ -11,15 +11,15 @@ import {
 import { ATTRIBUTES } from '../constants';
 
 export const generateCategoryAttributes = (
-  additionalCharge = faker.random.boolean(),
-  minQuantity = faker.random.number({ min: 1, max: 10 }),
-  maxQuantity = faker.random.number({ min: 1, max: 10 })
+  additionalCharge = faker.datatype.boolean(),
+  minQuantity = faker.datatype.number({ min: 1, max: 10 }),
+  maxQuantity = faker.datatype.number({ min: 1, max: 10 })
 ) => [
   {
     name: CATEGORY_REF,
     value: {
       typeId: CATEGORY,
-      id: faker.random.uuid(),
+      id: faker.datatype.uuid(),
     },
   },
   {
@@ -42,19 +42,19 @@ export const generateCategoryAttributes = (
 
 export const generateProduct = (
   languages = [],
-  published = faker.random.boolean(),
-  hasStagedChanges = faker.random.boolean(),
-  dynamic = faker.random.boolean()
+  published = faker.datatype.boolean(),
+  hasStagedChanges = faker.datatype.boolean(),
+  dynamic = faker.datatype.boolean()
 ) => {
   const nameAllLocales = Array.from(
-    { length: languages.length || faker.random.number(4) },
+    { length: languages.length || faker.datatype.number(4) },
     (item, index) => ({
       locale: languages ? languages[index] : faker.random.locale(),
       value: faker.commerce.productName(),
     })
   );
   const descriptionAllLocales = Array.from(
-    { length: languages.length || faker.random.number(4) },
+    { length: languages.length || faker.datatype.number(4) },
     (item, index) => ({
       locale: languages ? languages[index] : faker.random.locale(),
       value: faker.random.word(),
@@ -63,7 +63,7 @@ export const generateProduct = (
   const categories = {
     name: ATTRIBUTES.CATEGORIES,
     value: Array.from(
-      { length: faker.random.number({ min: 1, max: 5 }) },
+      { length: faker.datatype.number({ min: 1, max: 5 }) },
       generateCategoryAttributes
     ),
   };
@@ -74,9 +74,9 @@ export const generateProduct = (
 
   const generatePrice = () => ({
     value: {
-      centAmount: faker.random.number({ min: 1, max: 20000 }),
+      centAmount: faker.datatype.number({ min: 1, max: 20000 }),
       currencyCode: faker.finance.currencyCode(),
-      fractionsDigits: faker.random.number(2),
+      fractionsDigits: faker.datatype.number(2),
     },
   });
   const generateDetails = () => ({
@@ -89,20 +89,20 @@ export const generateProduct = (
       attributes: [categories, dynamicPrice],
       attributesRaw: [categories, dynamicPrice],
       images: Array.from({
-        length: faker.random.number({ min: 1, max: 3 }),
+        length: faker.datatype.number({ min: 1, max: 3 }),
       }).map(() => ({
         label: faker.random.word(),
         url: faker.image.imageUrl(640, 480, faker.random.word()),
       })),
       price: generatePrice(),
       prices: Array.from({
-        length: faker.random.number({ min: 1, max: 3 }),
+        length: faker.datatype.number({ min: 1, max: 3 }),
       }).map(generatePrice),
     },
     allVariants: [
       {
         images: Array.from({
-          length: faker.random.number({ min: 1, max: 3 }),
+          length: faker.datatype.number({ min: 1, max: 3 }),
         }).map(() => ({
           label: faker.random.word(),
           url: faker.image.imageUrl(640, 480, faker.random.word()),
@@ -111,9 +111,9 @@ export const generateProduct = (
     ],
   });
   return {
-    id: faker.random.uuid(),
+    id: faker.datatype.uuid(),
     lastModifiedAt: faker.date.recent(100),
-    version: faker.random.number(10),
+    version: faker.datatype.number(10),
     name: transformLocalizedFieldToString(nameAllLocales),
     description: transformLocalizedFieldToString(descriptionAllLocales),
     masterData: {
@@ -128,16 +128,16 @@ export const generateProduct = (
 export const generateCategoryFormValues = () => ({
   category: {
     label: faker.commerce.productName(),
-    value: faker.random.uuid(),
+    value: faker.datatype.uuid(),
   },
-  minQuantity: faker.random.number({ min: 1, max: 10 }),
-  maxQuantity: faker.random.number({ min: 1, max: 10 }),
-  additionalCharge: faker.random.boolean(),
+  minQuantity: faker.datatype.number({ min: 1, max: 10 }),
+  maxQuantity: faker.datatype.number({ min: 1, max: 10 }),
+  additionalCharge: faker.datatype.boolean(),
 });
 
 export const generateFormValues = () => ({
-  id: faker.random.uuid(),
-  version: faker.random.number(6),
+  id: faker.datatype.uuid(),
+  version: faker.datatype.number(6),
   name: {
     [faker.random.locale()]: faker.random.word(),
   },
@@ -145,19 +145,19 @@ export const generateFormValues = () => ({
     [faker.random.locale()]: faker.random.word(),
   },
   key: faker.lorem.slug(),
-  sku: faker.random.number({ min: 10000, max: 20000 }).toString(),
+  sku: faker.datatype.number({ min: 10000, max: 20000 }).toString(),
   categories: Array.from({ length: 2 }).map(generateCategoryFormValues),
-  dynamicPrice: faker.random.boolean(),
-  minQuantity: faker.random.number({ min: 1, max: 5 }),
-  maxQuantity: faker.random.number({ min: 1, max: 5 }),
+  dynamicPrice: faker.datatype.boolean(),
+  minQuantity: faker.datatype.number({ min: 1, max: 5 }),
+  maxQuantity: faker.datatype.number({ min: 1, max: 5 }),
   slug: {
     [faker.random.locale()]: faker.lorem.slug(),
   },
 });
 
 export const generateSubmittedFormValues = () => ({
-  id: faker.random.uuid(),
-  version: faker.random.number(6),
+  id: faker.datatype.uuid(),
+  version: faker.datatype.number(6),
   name: [
     {
       locale: faker.random.locale(),
@@ -171,14 +171,14 @@ export const generateSubmittedFormValues = () => ({
     },
   ],
   key: faker.lorem.slug(),
-  sku: faker.random.number({ min: 10000, max: 20000 }).toString(),
-  dynamicPrice: JSON.stringify(faker.random.boolean()),
-  minQuantity: JSON.stringify(faker.random.number({ min: 1, max: 5 })),
-  maxQuantity: JSON.stringify(faker.random.number({ min: 1, max: 5 })),
+  sku: faker.datatype.number({ min: 10000, max: 20000 }).toString(),
+  dynamicPrice: JSON.stringify(faker.datatype.boolean()),
+  minQuantity: JSON.stringify(faker.datatype.number({ min: 1, max: 5 })),
+  maxQuantity: JSON.stringify(faker.datatype.number({ min: 1, max: 5 })),
   categories: JSON.stringify(
     Array.from({ length: 2 }).map(generateCategoryAttributes)
   ),
-  categorySearch: [faker.random.uuid(), faker.random.uuid()],
+  categorySearch: [faker.datatype.uuid(), faker.datatype.uuid()],
   slug: [
     {
       locale: faker.random.locale(),
