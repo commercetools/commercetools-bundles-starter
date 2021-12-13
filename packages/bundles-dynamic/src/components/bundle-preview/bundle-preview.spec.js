@@ -341,6 +341,7 @@ describe('bundle preview', () => {
           },
           0
         );
+        expect(wrapper.find(priceRangeMin).exists()).toEqual(true);
         expect(wrapper.find(priceRangeMin).prop('value')).toEqual(
           totalMin / 100
         );
