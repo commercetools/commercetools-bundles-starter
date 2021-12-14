@@ -7,9 +7,6 @@ import { createRequestBuilder } from '@commercetools/api-request-builder';
 import { createHttpMiddleware } from '@commercetools/sdk-middleware-http';
 import { createQueueMiddleware } from '@commercetools/sdk-middleware-queue';
 import {
-  isArray, cloneDeep, uniq, flatten, intersection
-} from 'lodash';
-import {
   DEFAULT_CONCURRENCY,
   ApiExtensionTimeoutError,
   handleError,
@@ -85,7 +82,7 @@ export const ensureResourcesExist = async (
   expand = [],
 ) => {
   let drafts = draftOrDrafts;
-  if (!isArray(draftOrDrafts)) {
+  if (!Array.isArray(draftOrDrafts)) {
     drafts = [draftOrDrafts];
   }
   const { ct, ctresources } = global;
@@ -132,7 +129,7 @@ export const ensureResourcesExist = async (
       return resource;
     }),
   );
-  if (!isArray(draftOrDrafts)) {
+  if (!Array.isArray(draftOrDrafts)) {
     return resources[0];
   }
   return resources;

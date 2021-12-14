@@ -15,7 +15,7 @@
     "test:watch": "yarn run jest --watch",
     "test:coverage": "yarn run jest --coverage=true",
     "test:unit": "yarn run jest --coverage=false --testRegex=src/__tests__",
-    "integration:test": "yarn run jest --testRegex=src/integration_tests/__tests__",
+    "test:integration": "yarn run jest --testRegex=src/integration_tests/__tests__",
     "precommit": "lint-staged",
     "terraform:init": "cd terraform && terraform init",
     "terraform:show": "cd terraform && terraform show",
