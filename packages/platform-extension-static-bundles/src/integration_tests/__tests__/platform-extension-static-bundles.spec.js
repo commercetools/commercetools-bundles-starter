@@ -1,12 +1,12 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 // import localtunnel from 'localtunnel';
 // import { app } from '../server';
-import { createCTClient, ensureResourcesExist } from './test-utils';
-import * as ProductTypes from './shared-fixtures/product-types/index';
+import { createCTClient, ensureResourcesExist } from '../test-utils';
+import * as ProductTypes from '../shared-fixtures/product-types';
 import staticBundleParentProductType
-  from '../../resourceDefinitions/productTypes/static-bundle-parent.json';
+  from '../../../resourceDefinitions/productTypes/static-bundle-parent.json';
 import staticBundleChildVariantProductType
-  from '../../resourceDefinitions/productTypes/static-bundle-child-variant.json';
+  from '../../../resourceDefinitions/productTypes/static-bundle-child-variant.json';
 
 describe('Integration test - platform extension static bundle', () => {
   // let server;
