@@ -5,7 +5,8 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { handler } from './index';
 
-const app = express();
+// eslint-disable-next-line import/prefer-default-export
+export const app = express();
 
 app.use(bodyParser.json());
 
