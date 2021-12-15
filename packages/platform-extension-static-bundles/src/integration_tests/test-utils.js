@@ -85,7 +85,7 @@ export const ensureResourcesExist = async (
   if (!Array.isArray(draftOrDrafts)) {
     drafts = [draftOrDrafts];
   }
-  const { ct, ctresources } = global;
+  const { ct } = global;
   const resources = await Promise.all(
     drafts.map(async (draft) => {
       let resource;
@@ -101,10 +101,6 @@ export const ensureResourcesExist = async (
         };
         const existingResponse = await ct.client.execute(fetchRequest);
         resource = existingResponse.body;
-        if (!ctresources[resourceTypeId]) {
-          ctresources[resourceTypeId] = {};
-        }
-        ctresources[resourceTypeId][resource.id] = resource;
       } catch (err) {
         const request = {
           uri: ct.requestBuilder()[resourceTypeId].build(),
@@ -114,10 +110,6 @@ export const ensureResourcesExist = async (
         try {
           const response = await ct.client.execute(request);
           resource = response.body;
-          if (!ctresources[resourceTypeId]) {
-            ctresources[resourceTypeId] = {};
-          }
-          ctresources[resourceTypeId][resource.id] = resource;
         } catch (creationError) {
           if (!retried) {
             return ensureResourcesExist(draft, resourceTypeId, true);

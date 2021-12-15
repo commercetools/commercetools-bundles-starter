@@ -28,13 +28,6 @@ describe('Integration test - platform extension static bundle', () => {
     console.debug(
         `commercetools client created on project ${ct.projectKey}`,
     );
-    global.ctresources = {
-      orders: {},
-      carts: {},
-      cartDiscounts: {},
-      discountCodes: {},
-      payments: {},
-    };
   });
 
   // eslint-disable-next-line no-undef
