@@ -21,13 +21,13 @@ export const TEST_TIMEOUT = 10000;
  */
 export const createCTClient = () => {
   const projectKey = process.env.PROJECT_KEY || process.env.CT_PROJECT_KEY;
-  const scopeStr = process.env.CLIENT_SCOPES || process.env.CT_CLIENT_SCOPES;
+  const scopeStr = process.env.CT_SCOPES || process.env.CT_CLIENT_SCOPES;
   const authMiddleware = createAuthMiddlewareForClientCredentialsFlow({
     host: 'https://auth.us-central1.gcp.commercetools.com',
     projectKey,
     credentials: {
       clientId: process.env.CLIENT_ID || process.env.CT_CLIENT_ID,
-      clientSecret: process.env.CLIENT_SECRET || process.env.CT_CLIENT_SECRET,
+      clientSecret: process.env.CT_SECRET || process.env.CT_CLIENT_SECRET,
     },
     scopes: [scopeStr],
     enableRetry: true,

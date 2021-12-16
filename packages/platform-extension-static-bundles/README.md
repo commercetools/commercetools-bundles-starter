@@ -4,11 +4,9 @@ This extension provides API-level support for simple bundle products. It include
 
 For more info check the [full documentation](./docs/index.md).
 
-### Running locally
-1. Create a config file similar to `example.env` and name it `default.env` or `development.env`. This can be [done also with terraform](./terraform).
-1. Create dynamic bundles [product types](./resourceDefinitions/productTypes) and [types](./resourceDefinitions/types) in the CTP project. This can be [done also with terraform](./terraform).
-1. Build platform-extension-static-bundles using `yarn` and then `yarn build`.
-1. Run platform-extension-static-bundles with `yarn start`.
+## Contribution Guide
+
+Follow the [Contribution Guide](docs/ContributionGuide.md) if you would like to run and develop the app locally.
 
 ### Deployment
 `yarn run "build:prod"` from the static bundle root folder. Deploy the build from the dist/ folder. Deploying to AWS lambda is the recommended option.
