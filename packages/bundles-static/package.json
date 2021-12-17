@@ -36,7 +36,6 @@
     "@commercetools-frontend/application-shell-connectors": "20.9.4",
     "@commercetools-frontend/assets": "20.8.0",
     "@commercetools-frontend/constants": "20.9.3",
-    "@commercetools-frontend/cypress": "^20.12.1",
     "@commercetools-frontend/i18n": "20.9.4",
     "@commercetools-frontend/l10n": "20.9.4",
     "@commercetools-frontend/permissions": "20.9.4",
