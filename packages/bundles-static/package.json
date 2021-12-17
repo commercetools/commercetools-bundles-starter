@@ -23,8 +23,7 @@
     "unit": "jest --config jest.test.config.js",
     "test:watch": "jest --config jest.test.config.js --watch",
     "test:coverage": "jest --config jest.test.config.js --coverage --collectCoverageFrom=src/components/**/*.js --collectCoverageFrom=!'src/**/(index|messages).js'",
-    "deploy:firebase": "yarn compile-html:firebase && firebase deploy",
-    "test:e2e": "cypress run --env environment=ctp-gcp-production-eu"
+    "deploy:firebase": "yarn compile-html:firebase && firebase deploy"
   },
   "dependencies": {
     "@apollo/client": "3.4.10",
@@ -50,10 +49,6 @@
     "@types/react-redux": "7.1.18",
     "@types/react-router": "5.1.16",
     "@types/react-router-dom": "5.1.8",
-    "@testing-library/cypress": "8.0.2",
-    "@cypress/skip-test": "2.6.1",
-    "cypress": "9.1.1",
-    "cypress-failed-log": "2.9.2",
     "apollo-cache": "1.3.5",
     "apollo-cache-inmemory": "1.6.6",
     "apollo-link": "1.2.14",
