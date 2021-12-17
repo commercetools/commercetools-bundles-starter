@@ -33,7 +33,8 @@
     "install-peers": "^1.0.3",
     "jscodeshift": "^0.13.0",
     "lerna": "^4.0.0",
-    "yarn": "^1.22.15"
+    "yarn": "^1.22.15",
+    "dotenv": "10.0.0"
   },
   "dependencies": {
     "@babel/preset-env": "^7.15.0",
@@ -41,6 +42,7 @@
     "@testing-library/cypress": "8.0.2",
     "@cypress/skip-test": "2.6.1",
     "cypress": "9.1.1",
-    "cypress-failed-log": "2.9.2"
+    "cypress-failed-log": "2.9.2",
+    "@flopflip/cypress-plugin": "2.0.34"
   }
 }
