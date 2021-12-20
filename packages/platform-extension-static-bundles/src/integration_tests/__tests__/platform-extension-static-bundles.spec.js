@@ -23,11 +23,6 @@ describe('Integration test - platform extension static bundle', () => {
     //   port: 3001, subdomain: 'ctp-bundles-starter-integration-tests'
     // });
 
-    const ct = createCTClient();
-    global.ct = ct;
-    console.debug(
-        `commercetools client created on project ${ct.projectKey}`,
-    );
   });
 
   // eslint-disable-next-line no-undef
@@ -37,8 +32,9 @@ describe('Integration test - platform extension static bundle', () => {
   });
 
   it('ensure product types exist in the CT project', async () => {
-    await ensureResourcesExist(Object.values(ProductTypes), 'productTypes');
-    await ensureResourcesExist(staticBundleParentProductType, 'productTypes');
-    await ensureResourcesExist(staticBundleChildVariantProductType, 'productTypes');
+    const ctClient = createCTClient();
+    await ensureResourcesExist(ctClient, Object.values(ProductTypes), 'productTypes');
+    await ensureResourcesExist(ctClient, staticBundleParentProductType, 'productTypes');
+    await ensureResourcesExist(ctClient, staticBundleChildVariantProductType, 'productTypes');
   });
 });

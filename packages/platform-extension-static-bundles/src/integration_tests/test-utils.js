@@ -76,6 +76,7 @@ export const createCTClient = () => {
  * @returns {Promise[]} Array of resources from get/post requests to fetch them from ct.
  */
 export const ensureResourcesExist = async (
+  ctClient,
   draftOrDrafts,
   resourceTypeId,
   retried = false,
@@ -85,7 +86,6 @@ export const ensureResourcesExist = async (
   if (!Array.isArray(draftOrDrafts)) {
     drafts = [draftOrDrafts];
   }
-  const { ct } = global;
   const resources = await Promise.all(
     drafts.map(async (draft) => {
       let resource;
@@ -95,20 +95,20 @@ export const ensureResourcesExist = async (
           ({ code: key } = draft);
         }
         const fetchRequest = {
-          uri: ct.requestBuilder()[resourceTypeId].parse({ key, expand })
+          uri: ctClient.requestBuilder()[resourceTypeId].parse({ key, expand })
             .build(),
           method: 'GET',
         };
-        const existingResponse = await ct.client.execute(fetchRequest);
+        const existingResponse = await ctClient.client.execute(fetchRequest);
         resource = existingResponse.body;
       } catch (err) {
         const request = {
-          uri: ct.requestBuilder()[resourceTypeId].build(),
+          uri: ctClient.requestBuilder()[resourceTypeId].build(),
           method: 'POST',
           body: draft,
         };
         try {
-          const response = await ct.client.execute(request);
+          const response = await ctClient.client.execute(request);
           resource = response.body;
         } catch (creationError) {
           if (!retried) {
