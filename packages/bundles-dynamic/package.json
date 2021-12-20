@@ -19,7 +19,7 @@
     "format:js": "prettier --write '**/*.js'",
     "format:graphql": "prettier --write '**/*.{gql|graphql}'",
     "format:css": "prettier --write '**/*.css'",
-    "test": "jest --config jest.test.config.js",
+    "test:unit": "jest --config jest.test.config.js",
     "test:watch": "jest --config jest.test.config.js --watch",
     "test:coverage": "jest --config jest.test.config.js --coverage --collectCoverageFrom=src/components/**/*.js --collectCoverageFrom=!'src/**/(index|messages).js'",
     "deploy:firebase": "yarn compile-html:firebase && firebase deploy"
@@ -103,7 +103,7 @@
     "eslint-plugin-react-hooks": "4.2.0",
     "faker": "5.5.3",
     "graphql-tag": "2.12.5",
-    "husky": "4.2.5",
+    "husky": "7.0.2",
     "install-peers": "^1.0.3",
     "jest": "27.1.0",
     "jest-enzyme": "^7.1.2",
