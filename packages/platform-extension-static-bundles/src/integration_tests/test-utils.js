@@ -7,9 +7,6 @@ import { createRequestBuilder } from '@commercetools/api-request-builder';
 import { createHttpMiddleware } from '@commercetools/sdk-middleware-http';
 import { createQueueMiddleware } from '@commercetools/sdk-middleware-queue';
 import {
-  isArray, cloneDeep, uniq, flatten, intersection
-} from 'lodash';
-import {
   DEFAULT_CONCURRENCY,
   ApiExtensionTimeoutError,
   handleError,
@@ -24,13 +21,13 @@ export const TEST_TIMEOUT = 10000;
  */
 export const createCTClient = () => {
   const projectKey = process.env.PROJECT_KEY || process.env.CT_PROJECT_KEY;
-  const scopeStr = process.env.CLIENT_SCOPES || process.env.CT_CLIENT_SCOPES;
+  const scopeStr = process.env.CT_SCOPES || process.env.CT_CLIENT_SCOPES;
   const authMiddleware = createAuthMiddlewareForClientCredentialsFlow({
     host: 'https://auth.us-central1.gcp.commercetools.com',
     projectKey,
     credentials: {
       clientId: process.env.CLIENT_ID || process.env.CT_CLIENT_ID,
-      clientSecret: process.env.CLIENT_SECRET || process.env.CT_CLIENT_SECRET,
+      clientSecret: process.env.CT_SECRET || process.env.CT_CLIENT_SECRET,
     },
     scopes: [scopeStr],
     enableRetry: true,
@@ -79,16 +76,16 @@ export const createCTClient = () => {
  * @returns {Promise[]} Array of resources from get/post requests to fetch them from ct.
  */
 export const ensureResourcesExist = async (
+  ctClient,
   draftOrDrafts,
   resourceTypeId,
   retried = false,
   expand = [],
 ) => {
   let drafts = draftOrDrafts;
-  if (!isArray(draftOrDrafts)) {
+  if (!Array.isArray(draftOrDrafts)) {
     drafts = [draftOrDrafts];
   }
-  const { ct, ctresources } = global;
   const resources = await Promise.all(
     drafts.map(async (draft) => {
       let resource;
@@ -98,29 +95,21 @@ export const ensureResourcesExist = async (
           ({ code: key } = draft);
         }
         const fetchRequest = {
-          uri: ct.requestBuilder()[resourceTypeId].parse({ key, expand })
+          uri: ctClient.requestBuilder()[resourceTypeId].parse({ key, expand })
             .build(),
           method: 'GET',
         };
-        const existingResponse = await ct.client.execute(fetchRequest);
+        const existingResponse = await ctClient.client.execute(fetchRequest);
         resource = existingResponse.body;
-        if (!ctresources[resourceTypeId]) {
-          ctresources[resourceTypeId] = {};
-        }
-        ctresources[resourceTypeId][resource.id] = resource;
       } catch (err) {
         const request = {
-          uri: ct.requestBuilder()[resourceTypeId].build(),
+          uri: ctClient.requestBuilder()[resourceTypeId].build(),
           method: 'POST',
           body: draft,
         };
         try {
-          const response = await ct.client.execute(request);
+          const response = await ctClient.client.execute(request);
           resource = response.body;
-          if (!ctresources[resourceTypeId]) {
-            ctresources[resourceTypeId] = {};
-          }
-          ctresources[resourceTypeId][resource.id] = resource;
         } catch (creationError) {
           if (!retried) {
             return ensureResourcesExist(draft, resourceTypeId, true);
@@ -132,7 +121,7 @@ export const ensureResourcesExist = async (
       return resource;
     }),
   );
-  if (!isArray(draftOrDrafts)) {
+  if (!Array.isArray(draftOrDrafts)) {
     return resources[0];
   }
   return resources;

@@ -8,31 +8,29 @@ title: Platform Extension - Static Bundles
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
-- [Platform Extension - Static Bundles](#platform-extension---static-bundles)
-  - [Application Overview](#application-overview)
-    - [Merchant Center Custom application](#merchant-center-custom-application)
-    - [API Extension](#api-extension)
-  - [Application Features](#application-features)
-  - [Technology Used](#technology-used)
-  - [Installation](#installation)
-    - [Prerequisites](#prerequisites)
-    - [Dependency Installation](#dependency-installation)
-  - [Terraform](#terraform)
-  - [Configuration](#configuration)
-    - [Environment Variables](#environment-variables)
-    - [Application Assumptions](#application-assumptions)
-  - [Local Development](#local-development)
-  - [Tests](#tests)
-  - [Data Model](#data-model)
-    - [Product Types](#product-types)
-      - [StaticBundleParent](#staticbundleparent)
-      - [StaticBundleChildVariant](#staticbundlechildvariant)
-    - [Types](#types)
-      - [StaticBundleParentChildLink](#staticbundleparentchildlink)
-  - [Application Flow](#application-flow)
-  - [Implementation Responsibilities](#implementation-responsibilities)
-  - [Sample Data](#sample-data)
-  - [Support](#support)
+
+- [Application Overview](#application-overview)
+  - [Merchant Center Custom application](#merchant-center-custom-application)
+  - [API Extension](#api-extension)
+- [Application Features](#application-features)
+- [Technology Used](#technology-used)
+- [Installation](#installation)
+  - [Prerequisites](#prerequisites)
+  - [Dependency Installation](#dependency-installation)
+- [Terraform](#terraform)
+- [Configuration](#configuration)
+  - [Environment Variables](#environment-variables)
+  - [Application Assumptions](#application-assumptions)
+- [Data Model](#data-model)
+  - [Product Types](#product-types)
+    - [StaticBundleParent](#staticbundleparent)
+    - [StaticBundleChildVariant](#staticbundlechildvariant)
+  - [Types](#types)
+    - [StaticBundleParentChildLink](#staticbundleparentchildlink)
+- [Application Flow](#application-flow)
+- [Implementation Responsibilities](#implementation-responsibilities)
+- [Sample Data](#sample-data)
+- [Support](#support)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -77,7 +75,6 @@ The API extension (this application) is executed during cart requests to validat
 
 ### Prerequisites
 
-
 ### Dependency Installation
 
 This application's dependencies may be installed using yarn.  Simply run `yarn` or `yarn install`.  Once the dependencies are installed, you may begin configuring your installation.  
@@ -111,42 +108,19 @@ A deployed serverless function should rely on secrets/environment variables set 
 The extension operates on the following assumptions:
 
 - Bundles are not configurable, i.e. they have a fixed set of component products included in the cart any time a bundle parent product is added
-- Bundle price is set on the parent product level and is not dynamic
+- Bundle price has been set on the parent product level and is not dynamic
 - Bundle component line items always have a total price of 0
 
 It also requires the following conditions to be met in order to function without code changes:
 
-- The API extension is deployed to AWS Lambda (*TODO:* Support GCP, Azure, and Kubeless deployment)
+- The API extension has been deployed to AWS Lambda (*TODO:* Support GCP, Azure, and Kubeless deployment)
+- Api Extension has been added [add the extension](https://docs.commercetools.com/http-api-projects-api-extensions) to the commercetools project.
 - The [commercetools Terraform provider](https://github.com/labd/terraform-provider-commercetools) is manually installed if using Terraform
 - The StaticBundleParent and StaticBundleChildVariant product types, and the StaticBundleParentChildLink custom type, (defined in [./terraform/main.tf](./terraform/main.tf)) are installed using Terraform (see below), or manually installed using the JSON representations in [`./resourceDefinitions`](./resourceDefinitions)
-- Bundle products are built using the StaticBundleParent product type
-- No custom types are assigned to bundle parent or child line items in the cart by another process
+- Bundle products has been built using the StaticBundleParent product type
+- No custom types has been assigned to bundle parent or child line items in the cart by another process
 
-Bundle products may also be easiliy constructed and managed using the [companion Merchant Center custom application](https://commercetools.github.io/mc-custom-app-bundles/static/).
-
-## Local Development
-
-To begin a server to facilitate local development, simply run `yarn start`.  You will need to [add the extension](https://docs.commercetools.com/http-api-projects-api-extensions) to your commercetools project.  This requires the outside internet (at least commercetools) to access the local server.  We recommend using a tool like [ngrok](https://ngrok.com/) to do so.  Alternatively, you could use a tool like [Postman](https://www.postman.com/) to send requests to the local server.
-
-## Tests
-
-This application uses [Jest](https://jestjs.io) for its testing framework.  You may run the following command to run the tests:
-
-```shell
-yarn test
-```
-
-To run the tests in watch mode:
-
-```shell
-yarn test:watch
-```
-
-To run the tests with coverage:
-
-```shell
-yarn test:coverage
-```
+Bundle products may also be easily constructed and managed using the [companion Merchant Center custom application](https://commercetools.github.io/mc-custom-app-bundles/static/).
 
 ## Data Model
 
@@ -156,10 +130,7 @@ yarn test:coverage
 
 This application defines static bundles via several [Product Types](#https://docs.commercetools.com/http-api-projects-productTypes) in commercetools.  The parent Product Type is named `StaticBundleParent`.  Products created with this Product Type will be treated as static bundles.  The `StaticBundleChildVariant` Product Type defines several attributes to identify a particular variant of a product, along with a desired quantity.  `StaticBundleChildVariant` is used by `StaticBundleParent` as a [nested Product Type](https://docs.commercetools.com/tutorial-nested-types).
 
-
-
 #### StaticBundleParent
-{:.no_toc}
 
 - **products** - Array of
   [StaticBundleChildVariant](#staticbundlechildvariant) - Required\
@@ -169,7 +140,6 @@ This application defines static bundles via several [Product Types](#https://doc
   the bundle list
 
 #### StaticBundleChildVariant
-{:.no_toc}
 
 - **variant-id** - Number - Required\
   The ID of the product variant.
@@ -188,24 +158,18 @@ This application defines static bundles via several [Product Types](#https://doc
   The name of the product associated with the bundle product variant. Used for display
   purposes within the product search when viewing a bundle.
 
-
-
 ### Types
 
 This application defines a Type to allow Line Items or Custom Line Items to include a reference back to the configured bundle product.  The Type identifies the bundle's components in a cart, so that it is clear they were ordered as a bundle and not individually.
 
-
 #### StaticBundleParentChildLink
-{:.no_toc}
 
-- **external-id** - Text - A unique identifer used by this application to track Line Items belonging to bundles.
+- **external-id** - Text - A unique identifier used by this application to track Line Items belonging to bundles.
 - **parent** - [Reference](https://docs.commercetools.com/http-api-types.html#reference) A reference to the bundle product
-
 
 ## Application Flow
 
-This application is intended to react to Cart create and update requests, as an [API Extension](#https://docs.commercetools.com/http-api-projects-api-extensions.html).  When a cart is created or updated, commercetools will make a request to this function, which will then check the triggering cart resource to see if any line items or custom line items have been added that are static bundle products, or components of static bundles.  If so, the application will add/update/remove any bundle components to/from the cart as needed.  E.g.  Given a bundle defined with two components: product A at quantity 1 and product B at quantity 2, a customer adds a static bundle to their cart.  The application will add the component line items to the cart with the quantities specified  - 1 of product A and 2 of product B.  Then the customer increases the quantity of the bundle by 1.  This causes the application to alter the quantities of the previously added component line items to 2 of product A and 4 of product B.
-
+This application has been intended to react to Cart create and update requests, as an [API Extension](#https://docs.commercetools.com/http-api-projects-api-extensions.html).  When a cart has been created or updated, commercetools will make a request to this function, which will then check the triggering cart resource to see if any line items or custom line items have been added that are static bundle products, or components of static bundles.  If so, the application will add/update/remove any bundle components to/from the cart as needed.  E.g.  Given a bundle defined with two components: product A at quantity 1 and product B at quantity 2, a customer adds a static bundle to their cart.  The application will add the component line items to the cart with the quantities specified  - 1 of product A and 2 of product B.  Then the customer increases the quantity of the bundle by 1.  This causes the application to alter the quantities of the previously added component line items to 2 of product A and 4 of product B.
 
 ![Data Flow](./assets/data_flow.svg)
 

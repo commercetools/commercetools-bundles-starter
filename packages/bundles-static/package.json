@@ -19,8 +19,7 @@
     "format:js": "prettier --write '**/*.js'",
     "format:graphql": "prettier --write '**/*.{gql|graphql}'",
     "format:css": "prettier --write '**/*.css'",
-    "test": "yarn run unit",
-    "unit": "jest --config jest.test.config.js",
+    "test:unit": "jest --config jest.test.config.js",
     "test:watch": "jest --config jest.test.config.js --watch",
     "test:coverage": "jest --config jest.test.config.js --coverage --collectCoverageFrom=src/components/**/*.js --collectCoverageFrom=!'src/**/(index|messages).js'",
     "deploy:firebase": "yarn compile-html:firebase && firebase deploy"
