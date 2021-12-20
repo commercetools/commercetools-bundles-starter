@@ -1,10 +1,10 @@
 {
   "name": "bundles-static",
-  "entryPointUriPath": "bundles-static",
+  "entryPointUriPath": "bundles-test",
   "cloudIdentifier": "gcp-us",
   "env": {
     "development": {
-      "initialProjectKey": "bundles-static"
+      "initialProjectKey": "bundles-test"
     },
     "production": {
       "url": "http://localhost:3001",
