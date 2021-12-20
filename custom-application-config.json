@@ -12,6 +12,6 @@
     }
   },
   "additionalEnv": {
-    "mcURL":"mc.us-central1.gcp.commercetools.com"
+      "mcURL":"mc.us-central1.gcp.commercetools.com"
   }
 }

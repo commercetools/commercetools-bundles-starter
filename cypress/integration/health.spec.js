@@ -2,9 +2,10 @@ import { entryPointUriPath } from '../support/constants';
 
 describe('Health', () => {
   const initialUri = 'bundles-test';
+  const dotfiles = ["./config/.env"];
 
   it(`should open the accounts url and show the profile`, () => {
-    cy.loginByOidc({ entryPointUriPath });
+    cy.loginByOidc({ entryPointUriPath, dotfiles });
 
     cy.url().should('include', 'bundles-test');
 
