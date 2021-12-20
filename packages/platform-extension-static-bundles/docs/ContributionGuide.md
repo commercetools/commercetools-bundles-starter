@@ -32,7 +32,7 @@ yarn (or) yarn install
 1. Build platform-extension-static-bundles using `yarn` and then `yarn build`.
 1. Run platform-extension-static-bundles with `yarn start`.
 
-You will need to [add the extension](https://docs.commercetools.com/http-api-projects-api-extensions) to your commercetools project.  This requires the outside internet (at least commercetools) to access the local server.  We recommend using a tool like [ngrok](https://ngrok.com/) to do so.  Alternatively, you could use a tool like [Postman](https://www.postman.com/) to send requests to the local server.
+You will need to [add the extension](https://docs.commercetools.com/http-api-projects-api-extensions) to your commercetools project.  This requires the outside internet (at least commercetools) to access the local server.  We recommend using a tool like [ngrok](https://ngrok.com/) to do so.  Additionally, you could use a tool like [Postman](https://www.postman.com/) to send requests to the local server.
 
 ### Tests
 
