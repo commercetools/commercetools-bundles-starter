@@ -40,9 +40,9 @@ module.exports = (on, cypressConfig) => {
         ...cypressConfig,
         env: {
             ...cypressConfig.env,
-            LOGIN_USER: "praveen.kumar@commercetools.com",
-            LOGIN_PASSWORD: "",
-            PROJECT_KEY: "bundles-test"
+            LOGIN_USER: process.env.CYPRESS_LOGIN_USER,
+            LOGIN_PASSWORD: process.env.CYPRESS_LOGIN_PASSWORD,
+            PROJECT_KEY: process.env.CYPRESS_PROJECT_KEY
         },
     };
 };
