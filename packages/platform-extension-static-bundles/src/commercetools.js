@@ -5,8 +5,6 @@ import { createQueueMiddleware } from '@commercetools/sdk-middleware-queue';
 import { createRequestBuilder } from '@commercetools/api-request-builder';
 import fetch from 'node-fetch';
 
-export const DEFAULT_CONCURRENCY = 10;
-
 export const CONFIG_KEYS = Object.freeze({
   CT_TOKEN_URL: 'commercetools_token_url',
   CT_API_URL: 'commercetools_api_url',

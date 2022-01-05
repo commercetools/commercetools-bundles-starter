@@ -6,9 +6,9 @@ import { createAuthMiddlewareForClientCredentialsFlow } from '@commercetools/sdk
 import { createRequestBuilder } from '@commercetools/api-request-builder';
 import { createHttpMiddleware } from '@commercetools/sdk-middleware-http';
 import { createQueueMiddleware } from '@commercetools/sdk-middleware-queue';
-import { DEFAULT_CONCURRENCY } from '../commercetools.mjs';
 
 export const TEST_TIMEOUT = 10000;
+export const DEFAULT_CONCURRENCY = 10;
 
 /**
  * Creates a commercetools client configured (via env vars) for client credentials flow
