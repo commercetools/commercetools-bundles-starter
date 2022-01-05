@@ -22,5 +22,6 @@ jobs:
           node-version: '14.x'
       - run: yarn
       - run: lerna run test:unit
+      - run: lerna run test:integration
 
 
