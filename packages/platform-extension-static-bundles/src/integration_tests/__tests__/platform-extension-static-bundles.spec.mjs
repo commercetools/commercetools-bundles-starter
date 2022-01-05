@@ -1,8 +1,8 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 // import localtunnel from 'localtunnel';
 // import { app } from '../server';
-import { createCTClient, ensureResourcesExist } from '../test-utils';
-import * as ProductTypes from '../shared-fixtures/product-types';
+import { createCTClient, ensureResourcesExist } from '../test-utils.mjs';
+import * as ProductTypes from '../shared-fixtures/product-types/index.mjs';
 import staticBundleParentProductType
   from '../../../resourceDefinitions/productTypes/static-bundle-parent.json';
 import staticBundleChildVariantProductType
@@ -31,10 +31,11 @@ describe('Integration test - platform extension static bundle', () => {
     // await tunnel.close();
   });
 
-  it('ensure product types exist in the CT project', async () => {
+  it('ensure product types exist in the CT project', (done) => {
     const ctClient = createCTClient();
-    await ensureResourcesExist(ctClient, Object.values(ProductTypes), 'productTypes');
-    await ensureResourcesExist(ctClient, staticBundleParentProductType, 'productTypes');
-    await ensureResourcesExist(ctClient, staticBundleChildVariantProductType, 'productTypes');
+    ensureResourcesExist(ctClient, Object.values(ProductTypes), 'productTypes');
+    ensureResourcesExist(ctClient, staticBundleParentProductType, 'productTypes');
+    ensureResourcesExist(ctClient, staticBundleChildVariantProductType, 'productTypes');
+    done();
   });
 });
