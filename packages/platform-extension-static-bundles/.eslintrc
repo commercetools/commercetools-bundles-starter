@@ -23,6 +23,7 @@
     "import/no-extraneous-dependencies": ["error", {"devDependencies": ["src/server.js","webpack.dev.config.js"], "optionalDependencies": false, "peerDependencies": false}]
   },
   "env": {
-    "jest/globals": true
+    "jest/globals": true,
+    "mocha": true
   }
 }
