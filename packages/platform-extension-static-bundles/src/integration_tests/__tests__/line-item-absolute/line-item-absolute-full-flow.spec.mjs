@@ -6,7 +6,7 @@ import {
   deleteResources,
   updateResource,
   TEST_TIMEOUT,
-  fetchResource,
+  fetchResource, createCTClient,
 } from '../../test-utils.mjs';
 
 const { get } = lodashPkg;
@@ -178,21 +178,26 @@ describe('When creating a cart with several pants and belt items and 3 discounts
   let createdCartDiscountTierGte100 = {};
   let createdCartDiscountTierGte50 = {};
   let createdDiscountIds = {};
+  const ctClient = createCTClient();
 
   before(async () => {
     createdBogoCartDiscount = await ensureResourcesExist(
+      ctClient,
       cartDiscountPantsBogo,
       'cartDiscounts',
     );
     createdCartDiscountTierGte200 = await ensureResourcesExist(
+      ctClient,
       cartDiscountTierGte200,
       'cartDiscounts',
     );
     createdCartDiscountTierGte100 = await ensureResourcesExist(
+      ctClient,
       cartDiscountTierGte100,
       'cartDiscounts',
     );
     createdCartDiscountTierGte50 = await ensureResourcesExist(
+      ctClient,
       cartDiscountTierGte50,
       'cartDiscounts',
     );
@@ -206,6 +211,7 @@ describe('When creating a cart with several pants and belt items and 3 discounts
     };
 
     createdDiscountCodeAbsolute = await ensureResourcesExist(
+      ctClient,
       discountCodeToCreate,
       'discountCodes',
     );

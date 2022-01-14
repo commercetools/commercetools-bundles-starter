@@ -14,9 +14,9 @@ import {
   Products
 } from '../shared-fixtures/index.mjs';
 import * as Types from '../shared-fixtures/types/index.mjs';
-import staticBundleParentProductType from "../../../resourceDefinitions/productTypes/static-bundle-parent.json";
+import staticBundleParentProductType from '../../../resourceDefinitions/productTypes/static-bundle-parent.json';
 import staticBundleChildVariantProductType
-  from "../../../resourceDefinitions/productTypes/static-bundle-child-variant.json";
+  from '../../../resourceDefinitions/productTypes/static-bundle-child-variant.json';
 
 const TEARDOWN_TIMEOUT = 30000;
 
@@ -34,28 +34,28 @@ before('Integration test setup suite', async (done) => {
   ensureResourcesExist(ctClient, Object.values(Types), 'types');
   // ensureResourcesExist(ctClient, Object.values(IntegrationTestTypes), 'types');
   console.debug(
-      `Types created, ensuring tax categories exist on project ${ctClient.projectKey}`,
+    `Types created, ensuring tax categories exist on project ${ctClient.projectKey}`,
   );
 
   // adding TaxCategories
   ensureResourcesExist(ctClient, Object.values(TaxCategories), 'taxCategories');
   console.debug(
-      `Tax categories created, ensuring shipping zones exist on project ${ctClient.projectKey}`,
+    `Tax categories created, ensuring shipping zones exist on project ${ctClient.projectKey}`,
   );
 
   ensureResourcesExist(ctClient, Object.values(ShippingZones), 'zones');
   console.debug(
-      `Shipping zones created, ensuring shipping methods exist on project ${ctClient.projectKey}`,
+    `Shipping zones created, ensuring shipping methods exist on project ${ctClient.projectKey}`,
   );
 
   ensureResourcesExist(ctClient, Object.values(ShippingMethods), 'shippingMethods');
   console.debug(
-      `Shipping methods created, ensuring customer groups exist on project ${ctClient.projectKey}`,
+    `Shipping methods created, ensuring customer groups exist on project ${ctClient.projectKey}`,
   );
 
   ensureResourcesExist(ctClient, Object.values(CustomerGroups), 'customerGroups');
   console.debug(
-      `Customer groups created, ensuring customers exist on project ${ctClient.projectKey}`,
+    `Customer groups created, ensuring customers exist on project ${ctClient.projectKey}`,
   );
 
   ensureResourcesExist(ctClient, Object.values(Customers), 'customers');
@@ -158,14 +158,4 @@ after(async function () {
   });
 
   console.info('Teardown complete!');
-});
-
-describe('Test the cart checkout flow', () => {
-  it('ensure product types exist in the CT project', (done) => {
-    const ctClient = createCTClient();
-    ensureResourcesExist(ctClient, Object.values(ProductTypes), 'productTypes');
-    ensureResourcesExist(ctClient, staticBundleParentProductType, 'productTypes');
-    ensureResourcesExist(ctClient, staticBundleChildVariantProductType, 'productTypes');
-    done();
-  });
 });

@@ -6,7 +6,7 @@ import {
   deleteResources,
   fetchResource,
   updateResource,
-  TEST_TIMEOUT,
+  TEST_TIMEOUT, createCTClient,
 } from '../../test-utils.mjs';
 
 const { get } = lodashPkg;
@@ -159,17 +159,21 @@ describe('When creating a cart with several pants and belt items and 3 discounts
   let createdDiscount = {};
   let cartPayment = {};
   let updatedCartOrder = {};
+  const ctClient = createCTClient();
 
   before(async () => {
     createdDiscount = await ensureResourcesExist(
+      ctClient,
       tierCartDiscount,
       'cartDiscounts',
     );
     createdCartDiscountTierTwo = await ensureResourcesExist(
+      ctClient,
       cartDiscountTierTwo,
       'cartDiscounts',
     );
     createdCartDiscountPants2 = await ensureResourcesExist(
+      ctClient,
       cartDiscountPants2,
       'cartDiscounts',
     );
@@ -180,6 +184,7 @@ describe('When creating a cart with several pants and belt items and 3 discounts
       cartDiscounts: [{ typeId: 'cart-discount', id: createdDiscount.id }],
     };
     createdCode = await ensureResourcesExist(
+      ctClient,
       discountCodeToCreate,
       'discountCodes',
     );
@@ -187,21 +192,21 @@ describe('When creating a cart with several pants and belt items and 3 discounts
 
   after(async () => {
     if (createdCode.id) {
-      await deleteResources(createdCode, 'discountCodes');
+      await deleteResources(ctClient, createdCode, 'discountCodes');
     }
     if (createdDiscount.id) {
-      await deleteResources(createdDiscount, 'cartDiscounts');
+      await deleteResources(ctClient, createdDiscount, 'cartDiscounts');
     }
     if (createdCartDiscountTierTwo.id) {
-      await deleteResources(createdCartDiscountTierTwo, 'cartDiscounts');
+      await deleteResources(ctClient, createdCartDiscountTierTwo, 'cartDiscounts');
     }
     if (createdCartDiscountPants2.id) {
-      await deleteResources(createdCartDiscountPants2, 'cartDiscounts');
+      await deleteResources(ctClient, createdCartDiscountPants2, 'cartDiscounts');
     }
   });
 
   it('Cart should handle discounts appropriately after removing a line item and then adding shipping, tax, recalculate, payment, order flow', async () => {
-    const createdCart = await ensureResourcesExist(cartForThings, 'carts');
+    const createdCart = await ensureResourcesExist(ctClient, cartForThings, 'carts');
     let runningTotal = Products.pantsTax.masterVariant.prices[0].value.centAmount * 3
       + 2 * 3000
       + cartForThings.lineItems[1].quantity
@@ -397,7 +402,7 @@ describe('When creating a cart with several pants and belt items and 3 discounts
         fractionDigits: 2,
       },
     };
-    cartPayment = await ensureResourcesExist(payment, 'payments');
+    cartPayment = await ensureResourcesExist(ctClient, payment, 'payments');
     expect(cartPayment.amountPlanned.centAmount).to.equal(runningTotal);
 
     // create order
@@ -405,7 +410,7 @@ describe('When creating a cart with several pants and belt items and 3 discounts
       id: createdCart.id,
       version: updatedCartTaxMode2.version,
     };
-    updatedCartOrder = await ensureResourcesExist(order, 'orders');
+    updatedCartOrder = await ensureResourcesExist(ctClient, order, 'orders');
     expect(updatedCartOrder.totalPrice.centAmount).to.equal(runningTotal);
     const finalCode = await fetchResource(createdCode.id, 'discountCodes');
     createdCode.version = finalCode.version;
