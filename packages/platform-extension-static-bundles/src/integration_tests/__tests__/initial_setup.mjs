@@ -14,9 +14,6 @@ import {
   Products
 } from '../shared-fixtures/index.mjs';
 import * as Types from '../shared-fixtures/types/index.mjs';
-import staticBundleParentProductType from '../../../resourceDefinitions/productTypes/static-bundle-parent.json';
-import staticBundleChildVariantProductType
-  from '../../../resourceDefinitions/productTypes/static-bundle-child-variant.json';
 
 const TEARDOWN_TIMEOUT = 30000;
 

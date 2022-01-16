@@ -15,7 +15,7 @@
     "test:watch": "yarn run jest --watch",
     "test:coverage": "yarn run jest --coverage=true",
     "test:unit": "yarn run jest --coverage=false --testRegex=src/__tests__",
-    "test:integration": "cross-env mocha --experimental-json-modules --timeout 30000 --file ./src/integration_tests/__tests__/initial_setup.mjs src/integration_tests/**/*.spec.mjs",
+    "test:integration": "cross-env mocha --timeout 40000 --file ./src/integration_tests/__tests__/initial_setup.mjs src/integration_tests/**/*.spec.mjs",
     "precommit": "lint-staged",
     "terraform:init": "cd terraform && terraform init",
     "terraform:show": "cd terraform && terraform show",
