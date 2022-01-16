@@ -25,7 +25,7 @@ global.assert = import('assert');
 /**
  * Global before() hook to setup project for integration tests
  */
-before('Integration test setup suite', async (done) => {
+before('Integration test setup suite', async () => {
   console.info('Beginning setup prior to test suites running...');
   // setup project by creating ctp client and adding to global scope
   const ctClient = createCTClient();
@@ -70,7 +70,6 @@ before('Integration test setup suite', async (done) => {
   await ensureResourcesExist(ctClient, Object.values(Products), 'products');
 
   console.info('Setup complete!  Test suites will now run.');
-  done();
 });
 
 /**
