@@ -31,43 +31,43 @@ before('Integration test setup suite', async (done) => {
   const ctClient = createCTClient();
 
   // adding custom types to project
-  ensureResourcesExist(ctClient, Object.values(Types), 'types');
+  await ensureResourcesExist(ctClient, Object.values(Types), 'types');
   // ensureResourcesExist(ctClient, Object.values(IntegrationTestTypes), 'types');
   console.debug(
     `Types created, ensuring tax categories exist on project ${ctClient.projectKey}`,
   );
 
+  await ensureResourcesExist(ctClient, Object.values(ProductTypes), 'productTypes');
+  console.debug('Product types exist on the project, adding product discounts.',);
+
+  await ensureResourcesExist(ctClient, Object.values(ShippingZones), 'zones');
+  console.debug(
+      `Shipping zones created, ensuring shipping methods exist on project ${ctClient.projectKey}`,
+  );
+
   // adding TaxCategories
-  ensureResourcesExist(ctClient, Object.values(TaxCategories), 'taxCategories');
+  await ensureResourcesExist(ctClient, Object.values(TaxCategories), 'taxCategories');
   console.debug(
     `Tax categories created, ensuring shipping zones exist on project ${ctClient.projectKey}`,
   );
 
-  ensureResourcesExist(ctClient, Object.values(ShippingZones), 'zones');
-  console.debug(
-    `Shipping zones created, ensuring shipping methods exist on project ${ctClient.projectKey}`,
-  );
-
-  ensureResourcesExist(ctClient, Object.values(ShippingMethods), 'shippingMethods');
+  await ensureResourcesExist(ctClient, Object.values(ShippingMethods), 'shippingMethods');
   console.debug(
     `Shipping methods created, ensuring customer groups exist on project ${ctClient.projectKey}`,
   );
 
-  ensureResourcesExist(ctClient, Object.values(CustomerGroups), 'customerGroups');
+  await ensureResourcesExist(ctClient, Object.values(CustomerGroups), 'customerGroups');
   console.debug(
     `Customer groups created, ensuring customers exist on project ${ctClient.projectKey}`,
   );
 
-  ensureResourcesExist(ctClient, Object.values(Customers), 'customers');
+  await ensureResourcesExist(ctClient, Object.values(Customers), 'customers');
   console.debug('Customers exist on the project, adding product types.');
 
-  ensureResourcesExist(ctClient, Object.values(ProductTypes), 'productTypes');
-  console.debug('Product types exist on the project, adding product discounts.',);
-
-  ensureResourcesExist(ctClient, Object.values(ProductDiscounts), 'productDiscounts');
+  await ensureResourcesExist(ctClient, Object.values(ProductDiscounts), 'productDiscounts');
   console.debug('Product discounts exist on the project, adding products.');
 
-  ensureResourcesExist(ctClient, Object.values(Products), 'products');
+  await ensureResourcesExist(ctClient, Object.values(Products), 'products');
 
   console.info('Setup complete!  Test suites will now run.');
   done();
@@ -140,7 +140,6 @@ after(async function () {
   await deleteKnownResources(ctClient, 'customers');
   await deleteKnownResources(ctClient, 'customerGroups');
   await deleteKnownResources(ctClient, 'shippingMethods');
-  await deleteKnownResources(ctClient, 'zones');
   await deleteKnownResources(ctClient, 'taxCategories');
 
   console.log('Removing product types, but retain types in use by the project');
@@ -156,6 +155,8 @@ after(async function () {
     resourceTypeId: 'types',
     where: 'key != "static-bundle-parent-child-link"',
   });
+
+  await deleteKnownResources(ctClient, 'zones');
 
   console.info('Teardown complete!');
 });
