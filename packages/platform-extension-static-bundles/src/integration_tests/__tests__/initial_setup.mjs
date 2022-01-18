@@ -14,15 +14,17 @@ import {
   Products
 } from '../shared-fixtures/index.mjs';
 import * as Types from '../shared-fixtures/types/index.mjs';
+import simpleProductType from '../../../sampleData/productTypes/simpleProduct.json';
 
-const TEARDOWN_TIMEOUT = 30000;
+const TIMEOUT = 50000;
 
 global.assert = import('assert');
 
 /**
  * Global before() hook to setup project for integration tests
  */
-before('Integration test setup suite', async () => {
+before('Integration test setup suite', async function () {
+  this.timeout(TIMEOUT);
   console.info('Beginning setup prior to test suites running...');
   // setup project by creating ctp client and adding to global scope
   const ctClient = createCTClient();
@@ -33,6 +35,8 @@ before('Integration test setup suite', async () => {
   console.debug(
     `Types created, ensuring tax categories exist on project ${ctClient.projectKey}`,
   );
+
+  // await ensureResourcesExist(ctClient, Object.values(simpleProductType), 'productTypes');
 
   await ensureResourcesExist(ctClient, Object.values(ProductTypes), 'productTypes');
   console.debug('Product types exist on the project, adding product discounts.',);
@@ -73,7 +77,7 @@ before('Integration test setup suite', async () => {
  * Global after() hook to teardown project after integration tests
  */
 after(async function () {
-  this.timeout(TEARDOWN_TIMEOUT);
+  this.timeout(TIMEOUT);
   console.info('Test suites finished, beginning teardown...');
   // teardown by removing custom type(s) and any resources created by
   // tests that didn't cleanup properly
