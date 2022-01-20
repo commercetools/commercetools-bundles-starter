@@ -1,15 +1,12 @@
-import { createCTClient, ensureResourcesExist } from '../../test-utils.mjs';
-import { ProductTypes } from '../../shared-fixtures/index.mjs';
-import staticBundleParentProductType from '../../../../resourceDefinitions/productTypes/static-bundle-parent.json';
-import staticBundleChildVariantProductType
-  from '../../../../resourceDefinitions/productTypes/static-bundle-child-variant.json';
+import assert from 'assert';
+import { createCTClient, fetchResourceByKey } from '../../test-utils.mjs';
+import { bundle1Pants1Shirts2Belts } from '../../shared-fixtures/bundles/bundle1Pants1Shirts2Belts.mjs';
 
 describe('Test the cart checkout flow', () => {
-  it('ensure product types exist in the CT project', (done) => {
+  it('ensure bundle exist in the CT project', async function () {
+    this.timeout(50000);
     const ctClient = createCTClient();
-    ensureResourcesExist(ctClient, Object.values(ProductTypes), 'productTypes');
-    ensureResourcesExist(ctClient, staticBundleParentProductType, 'productTypes');
-    ensureResourcesExist(ctClient, staticBundleChildVariantProductType, 'productTypes');
-    done();
+    const bundles = await fetchResourceByKey(ctClient, bundle1Pants1Shirts2Belts.key, 'products');
+    assert.notDeepStrictEqual(bundles, null);
   });
 });

@@ -8,7 +8,7 @@ import { createHttpMiddleware } from '@commercetools/sdk-middleware-http';
 import { createQueueMiddleware } from '@commercetools/sdk-middleware-queue';
 import lodashPkg from 'lodash';
 
-const { cloneDeep, intersection, uniq } = lodashPkg;
+const { cloneDeep } = lodashPkg;
 
 export const TEST_TIMEOUT = 10000;
 export const DEFAULT_CONCURRENCY = 10;
@@ -66,161 +66,62 @@ export const createCTClient = () => {
   return ct;
 };
 
-export const fetchResource = async (id, resourceTypeId) => {
-  const { ct } = global;
+export const fetchResource = async (ctClient, id, resourceTypeId) => {
   const request = {
-    uri: ct.requestBuilder()[resourceTypeId].parse({ id }).build(),
+    uri: ctClient.requestBuilder()[resourceTypeId].parse({ id }).build(),
     method: 'GET',
   };
-  const { body } = await ct.client.execute(request);
+  const { body } = await ctClient.client.execute(request);
   return body;
 };
 
-export const fetchAllResources = async (id, resourceTypeId) => {
-  const { ct } = global;
+export const fetchResourceByKey = async (ctClient, key, resourceTypeId) => {
   const request = {
-    uri: ct.requestBuilder()[resourceTypeId].build(),
+    uri: ctClient.requestBuilder()[resourceTypeId].parse({ key }).build(),
     method: 'GET',
   };
-  const { body } = await ct.client.execute(request);
-  return body;
-};
-
-export const taxIsSetOnCart = (cart) => cart.taxedPrice;
-
-export const RESET_ACTIONS = [
-  'setCustomerEmail',
-  'setShippingAddress',
-  'setBillingAddress',
-  'setCountry',
-  'recalculate',
-  'setShippingMethod',
-  'setCustomShippingMethod',
-  'addDiscountCode',
-  'removeDiscountCode',
-  'setCustomerId',
-  'setCustomerGroup',
-  'setCustomType',
-  'setCustomField',
-  'setLocale',
-  'setShippingRateInput',
-  'addShoppingList',
-  'setDeleteDaysAfterLastModification',
-  'addItemShippingAddress',
-  'removeItemShippingAddress',
-  'updateItemShippingAddress',
-  'setShippingAddressAndShippingMethod',
-  'setShippingAddressAndCustomShippingMethod',
-  'setDeleteDaysAfterLastModification',
-  'addItemShippingAddress',
-  'removeItemShippingAddress',
-  'updateItemShippingAddress',
-  'setShippingAddressAndShippingMethod',
-  'setShippingAddressAndCustomShippingMethod',
-  'setLineItemTotalPrice',
-  'setLineItemPrice',
-  'applyDeltaToCustomLineItemShippingDetailsTargets',
-  'setCustomLineItemShippingDetails',
-  'addCustomLineItem',
-  'removeCustomLineItem',
-  'setCustomLineItemCustomType',
-  'setCustomLineItemCustomField',
-  'changeCustomLineItemQuantity',
-  'changeCustomLineItemMoney',
-  'setLineItemShippingDetails',
-  'addLineItem',
-  'removeLineItem',
-  'changeLineItemQuantity',
-  'setLineItemCustomType',
-  'setLineItemCustomField',
-  'setLineItemTotalPrice',
-  'setLineItemPrice',
-];
-
-export const hasAnyResetActions = (actions) =>
-  intersection(actions, RESET_ACTIONS).length;
-
-/**
- * Given a cart resource and an array of update actions to apply,
- * returns the update actions to also reset line items to platform mode.
- * @param {*} cart
- * @param {*} existingActions
- */
-export const resetToPlatformPricingActions = (cart, existingActions = []) => {
-  const taxIsSet = taxIsSetOnCart(cart);
-  const hasResetActions = hasAnyResetActions(
-    existingActions.map((actions) => actions.action),
-  );
-
-  // if tax is set and there's no update actions that need to
-  // trigger a reset, dont reset the line items price modes
-  if (taxIsSet && !hasResetActions) {
-    // dont reset the line items price mode
-    return existingActions;
-  }
-
-  // get a set of actions to reset all line items to platform mode
-  const resetActions = cart.lineItems
-    ? cart.lineItems
-      .filter((li) => li.priceMode !== 'Platform')
-      .map((li) => ({ action: 'setLineItemTotalPrice', lineItemId: li.id }))
-    : undefined;
-
-  // remove any setLineItemTotalPrices
-  const filteredExistingActions = existingActions.filter(
-    (action) => action.action !== 'setLineItemTotalPrice',
-  );
-  const allActions = [...resetActions, ...filteredExistingActions];
-
-  return allActions;
+  const response = await ctClient.client.execute(request);
+  return (response) ? response.body : response;
 };
 
 /**
  * Attempts to update a resource with a set of update actions.
  * @param {Object} params - An object of named params.
- * @param {string} params.resourceTypeId -  The resource type id of the resources to update.
- * @param {Object[]} params.actions - The array of update actions to apply to the resource.
+ * @param {Object} params.ctClient - commercetools client.
  * @param {Object} params.resource - The current version of the resource to apply updates to.
+ * @param {Object[]} params.actions - The array of update actions to apply to the resource.
+ * @param {string} params.resourceTypeId -  The resource type id of the resources to update.
  * @param {boolean} [params.retried=false] - If this update request has been retried already.
  * @returns {Promise} The update request to ct.
  */
 export const updateResource = async ({
+  ctClient,
   resource,
   actions,
   resourceTypeId,
-  retried = false,
-  expand = [],
-  maintainCartActions = false,
+  retried = false
 }) => {
   let updatedResource = {};
-  const wrappedActions = resourceTypeId === 'carts' && !maintainCartActions
-    ? resetToPlatformPricingActions(resource, actions)
-    : actions;
-  const { ct, ctresources } = global;
   const request = {
-    uri: ct
-      .requestBuilder()[resourceTypeId].parse({ id: resource.id, expand })
+    uri: ctClient
+      .requestBuilder()[resourceTypeId].parse({ id: resource.id })
       .build(),
     method: 'POST',
     body: {
       version: resource.version,
-      actions: wrappedActions,
+      actions,
     },
   };
   try {
-    const response = await ct.client.execute(request);
+    const response = await ctClient.client.execute(request);
     updatedResource = response.body;
-    if (!ctresources[resourceTypeId]) {
-      ctresources[resourceTypeId] = {};
-    }
-    ctresources[resourceTypeId][updatedResource.id] = updatedResource;
   } catch (err) {
     if (!retried) {
       const newResource = cloneDeep(resource);
       newResource.version = err.expectedVersion;
       return updateResource({
         resource: newResource,
-        actions: wrappedActions,
+        actions,
         resourceTypeId,
         retried: true,
       });
@@ -228,7 +129,7 @@ export const updateResource = async ({
     if (!retried) {
       return updateResource({
         resource,
-        actions: wrappedActions,
+        actions,
         resourceTypeId,
         retried: true,
       });
@@ -239,7 +140,7 @@ export const updateResource = async ({
         {
           error: err,
           retried,
-          actions: wrappedActions,
+          actions,
           resourceTypeId,
           resource,
         },
@@ -254,7 +155,7 @@ export const updateResource = async ({
 
 /**
  * Ensures resources exist on ct, creating them if they do not.
- * @param {Client} commercetools client.
+ * @param {Object} ctClient - commercetools client.
  * @param {Object|Object[]} draftOrDrafts -
  * A resource draft or set of resource drafts to create or ensure exist.
  * @param {string} resourceTypeId - The resource type id of the resource(s) to delete.
@@ -279,6 +180,7 @@ export const ensureResourcesExist = async (
       if (resourceTypeId === 'discountCodes') {
         ({ code: key } = draft);
       }
+
       const request = {
         uri: ctClient.requestBuilder()[resourceTypeId].build(),
         method: 'POST',
@@ -286,7 +188,7 @@ export const ensureResourcesExist = async (
       };
       try {
         const response = await ctClient.client.execute(request);
-        resource = response.body;
+        resource = (response) ? response.body : response;
       } catch (creationError) {
         if (!retried) {
           return ensureResourcesExist(ctClient, draft, resourceTypeId, true);
@@ -305,7 +207,7 @@ export const ensureResourcesExist = async (
 
 /**
  * Attempts to delete resource(s), retrying one time.
- * @param {Client} commercetools client.
+ * @param {ctClient} commercetools client.
  * @param {{ id: string, version: number} |{ id: string, version: number }[]}
  * resourceOrResourcesToDelete - A resource or set of resources to delete.
  * @param {string} resourceTypeId - The resource type id of the resource(s) to delete.
@@ -451,36 +353,4 @@ export const deleteResourcesWhere = async ({ ctClient, resourceTypeId, where }) 
     }
   } while (resourcesToDelete.length);
   return allRequests;
-};
-
-/**
- * Given a cart and sku, find the first line item that matches the sku
- * @param {*} cart
- * @param {*} sku
- */
-export const getLineItemBySku = (cart, sku) =>
-  cart.lineItems && cart.lineItems.find((li) => li.variant.sku === sku);
-
-/**
- * Given a lineItem, returns the cart discounts affecting it.
- * Searches custom.fields.cartDiscountsAffecting adn discountedPrice.includedDiscounts.
- * @param {Object} lineItem lineItem to gather discounts on.
- * @returns {string[]} unique set of cart discount ids affecting the line item.
- */
-export const getLineItemAffectedDiscounts = (lineItem) => {
-  let discounts = [];
-  if (
-    lineItem
-      && lineItem.custom
-      && lineItem.custom.fields.cartDiscountsAffecting
-  ) {
-    discounts = lineItem.custom.fields.cartDiscountsAffecting;
-  }
-  if (lineItem && lineItem.discountedPrice) {
-    const discountIds = lineItem.discountedPrice.includedDiscounts.map(
-      ({ discount: { id } }) => id,
-    );
-    discounts = [...discounts, ...discountIds];
-  }
-  return uniq(discounts);
 };

@@ -1,6 +1,6 @@
 import {
-  createCTClient, ensureResourcesExist, deleteKnownResources, deleteResourcesWhere,
-  deleteResources
+  createCTClient, ensureResourcesExist, deleteKnownResources,
+  deleteResourcesWhere, updateResource, fetchResourceByKey
 } from '../test-utils.mjs';
 import {
   Types as IntegrationTestTypes,
@@ -10,65 +10,65 @@ import {
   CustomerGroups,
   Customers,
   ProductTypes,
-  ProductDiscounts,
   Products
 } from '../shared-fixtures/index.mjs';
-import * as Types from '../shared-fixtures/types/index.mjs';
-import simpleProductType from '../../../sampleData/productTypes/simpleProduct.json';
+import { bundle1Pants1Shirts2Belts } from '../shared-fixtures/bundles/bundle1Pants1Shirts2Belts.mjs';
+import { getBundle1VariantAttributes } from '../shared-fixtures/bundles/bundle1VariantAttributes.mjs';
+import { pantsTax } from '../shared-fixtures/products/pants-tax.mjs';
+import { shirt } from '../shared-fixtures/products/shirt.mjs';
+import { beltTax } from '../shared-fixtures/products/belt-tax.mjs';
+import { staticBundleChildVariant } from '../shared-fixtures/product-types/static-bundle-child-variant.mjs';
+import { getStaticBundleParent } from '../shared-fixtures/product-types/static-bundle-parent.mjs';
 
 const TIMEOUT = 50000;
-
-global.assert = import('assert');
 
 /**
  * Global before() hook to setup project for integration tests
  */
 before('Integration test setup suite', async function () {
   this.timeout(TIMEOUT);
+
   console.info('Beginning setup prior to test suites running...');
-  // setup project by creating ctp client and adding to global scope
   const ctClient = createCTClient();
 
-  // adding custom types to project
-  await ensureResourcesExist(ctClient, Object.values(Types), 'types');
-  // ensureResourcesExist(ctClient, Object.values(IntegrationTestTypes), 'types');
-  console.debug(
-    `Types created, ensuring tax categories exist on project ${ctClient.projectKey}`,
-  );
+  await ensureResourcesExist(ctClient, Object.values(IntegrationTestTypes), 'types');
 
-  // await ensureResourcesExist(ctClient, Object.values(simpleProductType), 'productTypes');
+  let staticBundleChildVariantProductType = await ensureResourcesExist(ctClient, staticBundleChildVariant, 'productTypes');
+
+  if (!staticBundleChildVariantProductType) {
+    staticBundleChildVariantProductType = await fetchResourceByKey(ctClient, staticBundleChildVariant.key, 'productTypes');
+  }
+
+  await ensureResourcesExist(ctClient, getStaticBundleParent(staticBundleChildVariantProductType), 'productTypes');
 
   await ensureResourcesExist(ctClient, Object.values(ProductTypes), 'productTypes');
-  console.debug('Product types exist on the project, adding product discounts.',);
 
   await ensureResourcesExist(ctClient, Object.values(ShippingZones), 'zones');
-  console.debug(
-      `Shipping zones created, ensuring shipping methods exist on project ${ctClient.projectKey}`,
-  );
 
-  // adding TaxCategories
   await ensureResourcesExist(ctClient, Object.values(TaxCategories), 'taxCategories');
-  console.debug(
-    `Tax categories created, ensuring shipping zones exist on project ${ctClient.projectKey}`,
-  );
-
-  await ensureResourcesExist(ctClient, Object.values(ShippingMethods), 'shippingMethods');
-  console.debug(
-    `Shipping methods created, ensuring customer groups exist on project ${ctClient.projectKey}`,
-  );
-
-  await ensureResourcesExist(ctClient, Object.values(CustomerGroups), 'customerGroups');
-  console.debug(
-    `Customer groups created, ensuring customers exist on project ${ctClient.projectKey}`,
-  );
-
-  await ensureResourcesExist(ctClient, Object.values(Customers), 'customers');
-  console.debug('Customers exist on the project, adding product types.');
-
-  await ensureResourcesExist(ctClient, Object.values(ProductDiscounts), 'productDiscounts');
-  console.debug('Product discounts exist on the project, adding products.');
 
   await ensureResourcesExist(ctClient, Object.values(Products), 'products');
+
+  await ensureResourcesExist(ctClient, Object.values(ShippingMethods), 'shippingMethods');
+
+  await ensureResourcesExist(ctClient, Object.values(CustomerGroups), 'customerGroups');
+
+  await ensureResourcesExist(ctClient, Object.values(Customers), 'customers');
+
+  const bundle1Pants1Shirts2BeltsProduct = await ensureResourcesExist(ctClient, bundle1Pants1Shirts2Belts, 'products');
+
+  const fetchedPantsProduct = await fetchResourceByKey(ctClient, pantsTax.key, 'products');
+  const fetchedShirtsProduct = await fetchResourceByKey(ctClient, shirt.key, 'products');
+  const fetchedBeltsProduct = await fetchResourceByKey(ctClient, beltTax.key, 'products');
+
+  await updateResource({
+    ctClient,
+    resource: bundle1Pants1Shirts2BeltsProduct,
+    actions: getBundle1VariantAttributes({
+      fetchedPantsProduct, fetchedShirtsProduct, fetchedBeltsProduct
+    }),
+    resourceTypeId: 'products'
+  });
 
   console.info('Setup complete!  Test suites will now run.');
 });
@@ -79,8 +79,6 @@ before('Integration test setup suite', async function () {
 after(async function () {
   this.timeout(TIMEOUT);
   console.info('Test suites finished, beginning teardown...');
-  // teardown by removing custom type(s) and any resources created by
-  // tests that didn't cleanup properly
 
   const ctClient = createCTClient();
   // remove all of our payments
@@ -102,39 +100,6 @@ after(async function () {
     where: 'custom(fields(applyCartDiscount is defined) or fields(applyCartDiscount is not defined))',
   });
 
-  // remove all of our discount codes that didnt get cleaned during test suite teardown
-  console.info('Removing test discount codes');
-  await deleteKnownResources(ctClient, 'discountCodes');
-  await deleteResourcesWhere({
-    ctClient,
-    resourceTypeId: 'discountCodes',
-    where: 'groups contains any ("autogenerated") or (code > "discount-code-for-0" and code < "discount-code-for-z")',
-  });
-  await deleteResourcesWhere({
-    ctClient,
-    resourceTypeId: 'discountCodes',
-    where: 'groups contains any ("integration") or (code > "integration-" and code < "integration-z")',
-  });
-
-  // remove all of our cart discounts that didnt get cleaned during test suite teardown
-  console.info('Removing test cart discounts');
-  await deleteKnownResources(ctClient, 'cartDiscounts');
-  await deleteResourcesWhere({
-    ctClient,
-    resourceTypeId: 'cartDiscounts',
-    where: 'custom(fields(assignedToCart is defined)) or (key > "integration-" and key < "integration-z")',
-  });
-
-  console.info('Removing test product discounts');
-  await deleteKnownResources(ctClient, 'productDiscounts');
-  // this second call is just to be sure we've cleaned up.
-  await deleteResourcesWhere({
-    ctClient,
-    resourceTypeId: 'productDiscounts',
-    where: 'key > "integration-" and key < "integration-z"',
-  });
-
-  // remove products
   console.info('Removing test products and other test resources');
   await deleteKnownResources(ctClient, 'products');
   await deleteKnownResources(ctClient, 'customers');
@@ -142,20 +107,21 @@ after(async function () {
   await deleteKnownResources(ctClient, 'shippingMethods');
   await deleteKnownResources(ctClient, 'taxCategories');
 
-  console.log('Removing product types, but retain types in use by the project');
+  // delete all product types but the referenced product type.
   await deleteResourcesWhere({
     ctClient,
     resourceTypeId: 'productTypes',
     where: 'key != "static-bundle-child-variant"',
   });
 
-  console.log('Removing custom types, but retain types in use by the project');
+  // The reference is removed now delete the child variant productType.
   await deleteResourcesWhere({
     ctClient,
-    resourceTypeId: 'types',
-    where: 'key != "static-bundle-parent-child-link"',
+    resourceTypeId: 'productTypes',
+    where: 'key = "static-bundle-child-variant"',
   });
 
+  await deleteKnownResources(ctClient, 'types');
   await deleteKnownResources(ctClient, 'zones');
 
   console.info('Teardown complete!');
