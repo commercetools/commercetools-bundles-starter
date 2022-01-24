@@ -5,11 +5,15 @@ const name = 'belt';
 export const belt = {
   key: name,
   name: {
-    en: name
+    en: name,
   },
   productType: { typeId: 'product-type', key: integrationTestProduct.key },
   slug: {
-    en: name
+    en: name,
+  },
+  taxCategory: {
+    typeId: 'tax-category',
+    key: 'integration-no-tax-usa',
   },
   masterVariant: {
     sku: name,
@@ -17,15 +21,15 @@ export const belt = {
       {
         value: {
           centAmount: 1000,
-          currencyCode: 'USD'
-        }
-      }
+          currencyCode: 'USD',
+        },
+      },
     ],
     attributes: [
       { name: 'class', value: 'Belts' },
-      { name: 'department', value: 'mens' }
-    ]
+      { name: 'department', value: 'mens' },
+    ],
   },
-  publish: true
+  publish: true,
 };
 export default belt;

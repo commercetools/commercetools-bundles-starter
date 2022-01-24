@@ -11,6 +11,10 @@ export const pants = {
   slug: {
     en: name,
   },
+  taxCategory: {
+    typeId: 'tax-category',
+    key: 'integration-no-tax-usa',
+  },
   masterVariant: {
     sku: name,
     prices: [

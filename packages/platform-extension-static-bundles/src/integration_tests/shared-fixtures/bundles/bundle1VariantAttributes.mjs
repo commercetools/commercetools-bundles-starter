@@ -1,6 +1,6 @@
-import { pantsTax } from '../products/pants-tax.mjs';
+import { pants } from '../products/pants.mjs';
 import { shirt } from '../products/shirt.mjs';
-import { beltTax } from '../products/belt-tax.mjs';
+import { belt } from '../products/belt.mjs';
 
 export const getBundle1VariantAttributes = function ({
   fetchedPantsProduct,
@@ -36,7 +36,7 @@ export const getBundle1VariantAttributes = function ({
           {
             name: 'product-name',
             value: {
-              en: pantsTax.name.en
+              en: pants.name.en
             }
           }
         ],
@@ -90,7 +90,7 @@ export const getBundle1VariantAttributes = function ({
           {
             name: 'product-name',
             value: {
-              en: beltTax.name.en
+              en: belt.name.en
             }
           }
         ]

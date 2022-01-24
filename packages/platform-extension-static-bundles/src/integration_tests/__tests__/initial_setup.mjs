@@ -14,11 +14,13 @@ import {
 } from '../shared-fixtures/index.mjs';
 import { bundle1Pants1Shirts2Belts } from '../shared-fixtures/bundles/bundle1Pants1Shirts2Belts.mjs';
 import { getBundle1VariantAttributes } from '../shared-fixtures/bundles/bundle1VariantAttributes.mjs';
-import { pantsTax } from '../shared-fixtures/products/pants-tax.mjs';
+import { pants } from '../shared-fixtures/products/pants.mjs';
 import { shirt } from '../shared-fixtures/products/shirt.mjs';
-import { beltTax } from '../shared-fixtures/products/belt-tax.mjs';
+import { belt } from '../shared-fixtures/products/belt.mjs';
 import { staticBundleChildVariant } from '../shared-fixtures/product-types/static-bundle-child-variant.mjs';
 import { getStaticBundleParent } from '../shared-fixtures/product-types/static-bundle-parent.mjs';
+import { StaticBundleParentChildLinkType } from '../shared-fixtures/types/static-bundle-parent-child-link.mjs';
+import { awsLambdaExtension } from '../shared-fixtures/extension/extensionForAwsLambdaFunction.mjs';
 
 const TIMEOUT = 50000;
 
@@ -32,6 +34,8 @@ before('Integration test setup suite', async function () {
   const ctClient = createCTClient();
 
   await ensureResourcesExist(ctClient, Object.values(IntegrationTestTypes), 'types');
+
+  await ensureResourcesExist(ctClient, StaticBundleParentChildLinkType, 'types');
 
   let staticBundleChildVariantProductType = await ensureResourcesExist(ctClient, staticBundleChildVariant, 'productTypes');
 
@@ -55,11 +59,15 @@ before('Integration test setup suite', async function () {
 
   await ensureResourcesExist(ctClient, Object.values(Customers), 'customers');
 
-  const bundle1Pants1Shirts2BeltsProduct = await ensureResourcesExist(ctClient, bundle1Pants1Shirts2Belts, 'products');
+  let bundle1Pants1Shirts2BeltsProduct = await ensureResourcesExist(ctClient, bundle1Pants1Shirts2Belts, 'products');
 
-  const fetchedPantsProduct = await fetchResourceByKey(ctClient, pantsTax.key, 'products');
+  if (!bundle1Pants1Shirts2BeltsProduct) {
+    bundle1Pants1Shirts2BeltsProduct = await fetchResourceByKey(ctClient, bundle1Pants1Shirts2Belts.key, 'products');
+  }
+
+  const fetchedPantsProduct = await fetchResourceByKey(ctClient, pants.key, 'products');
   const fetchedShirtsProduct = await fetchResourceByKey(ctClient, shirt.key, 'products');
-  const fetchedBeltsProduct = await fetchResourceByKey(ctClient, beltTax.key, 'products');
+  const fetchedBeltsProduct = await fetchResourceByKey(ctClient, belt.key, 'products');
 
   await updateResource({
     ctClient,
@@ -69,6 +77,8 @@ before('Integration test setup suite', async function () {
     }),
     resourceTypeId: 'products'
   });
+
+  await ensureResourcesExist(ctClient, awsLambdaExtension, 'extensions');
 
   console.info('Setup complete!  Test suites will now run.');
 });
@@ -123,6 +133,8 @@ after(async function () {
 
   await deleteKnownResources(ctClient, 'types');
   await deleteKnownResources(ctClient, 'zones');
+
+  await deleteKnownResources(ctClient, 'extensions');
 
   console.info('Teardown complete!');
 });

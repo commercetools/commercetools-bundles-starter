@@ -9,53 +9,25 @@ export const bundle1Pants1Shirts2Belts = {
   slug: {
     en: name
   },
-  masterData: {
-    current: {
-      name: {
-        en: name
-      },
-      description: {
-        en: 'bundle for 1 pant 1 shirt and 2 belts'
-      },
-      slug: {
-        en: name
-      },
-      masterVariant: {
-        id: 1,
-        sku: name,
-        prices: [],
-        images: [],
-        attributes: [],
-        assets: [],
-      },
-      variants: [],
-      searchKeywords: {}
-    },
-    staged: {
-      name: {
-        en: name
-      },
-      description: {
-        en: 'bundle for 1 pant 1 shirt and 2 belts'
-      },
-      slug: {
-        en: name
-      },
-      masterVariant: {
-        id: 1,
-        sku: name,
-        prices: [],
-        images: [],
-        attributes: [],
-        assets: [],
-      },
-      variants: [],
-      searchKeywords: {}
-    },
-    published: false,
-    hasStagedChanges: false
+  taxCategory: {
+    typeId: 'tax-category',
+    key: 'integration-no-tax-usa',
   },
-  lastVariantId: 1
+  masterVariant: {
+    id: 1,
+    sku: name,
+    prices: [{
+      value: {
+        currencyCode: 'USD',
+        centAmount: 900000
+      }
+    }],
+    images: [],
+    attributes: [],
+    assets: [],
+  },
+  lastVariantId: 1,
+  publish: true
 };
 
 export default bundle1Pants1Shirts2Belts;

@@ -109,8 +109,8 @@ export const updateResource = async ({
     method: 'POST',
     body: {
       version: resource.version,
-      actions,
-    },
+      actions
+    }
   };
   try {
     const response = await ctClient.client.execute(request);
@@ -120,6 +120,7 @@ export const updateResource = async ({
       const newResource = cloneDeep(resource);
       newResource.version = err.expectedVersion;
       return updateResource({
+        ctClient,
         resource: newResource,
         actions,
         resourceTypeId,
@@ -128,6 +129,7 @@ export const updateResource = async ({
     }
     if (!retried) {
       return updateResource({
+        ctClient,
         resource,
         actions,
         resourceTypeId,
