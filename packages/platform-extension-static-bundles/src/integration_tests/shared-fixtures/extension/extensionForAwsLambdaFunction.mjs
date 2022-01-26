@@ -6,7 +6,7 @@ export const awsLambdaExtension = {
     accessSecret: '+DdaXuyQbbl5MVfnhJauojuYADsHiryxbk2nqsXK'
   },
   triggers: [{
-    resourceTypeId: 'cart',
+    resourceTypeId: 'carts',
     actions: ['Create', 'Update']
   }],
   key: 'ctp-bundles-static-extension',

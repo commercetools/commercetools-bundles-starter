@@ -25,14 +25,9 @@ describe('Test the cart checkout flow', () => {
 
     const actions = [
       {
-        version: createdCart.version,
-        actions: [
-          {
-            action: 'addLineItem',
-            productId: bundle1Pants1Shirts2BeltsProduct.id,
-            quantity: 1
-          }
-        ]
+        action: 'addLineItem',
+        productId: bundle1Pants1Shirts2BeltsProduct.id,
+        quantity: 1
       }
     ];
 
@@ -43,6 +38,6 @@ describe('Test the cart checkout flow', () => {
       resourceTypeId: 'carts'
     });
 
-    assert.strictEqual(createdCart.lineItems.size, 4);
+    assert.strictEqual(createdCart.lineItems.length, 1);
   });
 });
