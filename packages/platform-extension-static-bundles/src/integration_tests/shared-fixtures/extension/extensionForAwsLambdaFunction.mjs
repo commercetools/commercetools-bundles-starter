@@ -1,9 +1,7 @@
 export const awsLambdaExtension = {
   destination: {
-    type: 'AWSLambda',
-    arn: 'arn:aws:lambda:us-west-2:185277772334:function:bundles-static-extension',
-    accessKey: 'AKIASWI3KOIXBLPJGKMT',
-    accessSecret: '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'
+    type: 'HTTP',
+    url: 'https://ctp-bundles-starter-integration-tests.loca.lt'
   },
   triggers: [{
     resourceTypeId: 'cart',

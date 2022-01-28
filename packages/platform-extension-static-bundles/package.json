@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "API Extension for simple bundle products",
   "main": "dist/index.js",
+  "type": "module",
   "scripts": {
     "lint": "eslint --fix src",
     "clean": "rm -rf dist",
@@ -68,7 +69,6 @@
     "eslint-plugin-prettier": "4.0.0",
     "jest": "27.1.0",
     "lint-staged": "11.1.2",
-    "localtunnel": "^2.0.2",
     "mocha": "9.1.3",
     "mocha-junit-reporter": "1.23.3",
     "nock": "13.1.3",
@@ -88,6 +88,7 @@
     "body-parser": "^1.19.0",
     "chai": "^4.3.4",
     "express": "^4.17.1",
+    "localtunnel": "^2.0.2",
     "lodash": "4.17.21",
     "node-cache": "5.1.2",
     "node-fetch": "2.6.1",

@@ -1,4 +1,6 @@
 import assert from 'assert';
+import localtunnel from 'localtunnel';
+import { app } from '../../../server.mjs';
 import {
   createCTClient, ensureResourcesExist, fetchResourceByKey, updateResource
 } from '../../test-utils.mjs';
@@ -6,6 +8,26 @@ import { bundle1Pants1Shirts2Belts } from '../../shared-fixtures/bundles/bundle1
 import * as Carts from '../../shared-fixtures/carts/index.mjs';
 
 describe('Test the cart checkout flow', () => {
+  let server;
+  let tunnel;
+
+  // eslint-disable-next-line no-undef
+  before(async () => {
+    server = app.listen(3000, () => {
+      console.log('Local development server listening on port 3000!\n');
+    });
+
+    tunnel = await localtunnel({
+      port: 3000, subdomain: 'ctp-bundles-starter-integration-tests'
+    });
+  });
+
+  // eslint-disable-next-line no-undef
+  after(async () => {
+    server.close();
+    await tunnel.close();
+  });
+
   it('ensure bundle exist in the CT project', async function () {
     this.timeout(50000);
     const ctClient = createCTClient();

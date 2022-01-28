@@ -3,7 +3,9 @@
  */
 import express from 'express';
 import bodyParser from 'body-parser';
-import { handler } from './index';
+import pkg from './index.js';
+
+const { handler } = pkg;
 
 // eslint-disable-next-line import/prefer-default-export
 export const app = express();
