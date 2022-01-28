@@ -24,9 +24,9 @@ jobs:
       - run: lerna run test:unit
       - run: lerna run test:integration
         env:
-          CT_PROJECT_KEY: bundles-starter-integration
-          CT_CLIENT_ID: ${{ secrets.COMMERCETOOLS_CLIENT_ID }}
-          CT_CLIENT_SECRET: ${{ secrets.COMMERCETOOLS_CLIENT_SECRET }}
-          CT_CLIENT_SCOPES: ${{ secrets.COMMERCETOOLS_SCOPES }}
+          COMMERCETOOLS_PROJECT_KEY: bundles-starter-integration
+          COMMERCETOOLS_CLIENT_ID: ${{ secrets.COMMERCETOOLS_CLIENT_ID }}
+          COMMERCETOOLS_CLIENT_SECRET: ${{ secrets.COMMERCETOOLS_CLIENT_SECRET }}
+          COMMERCETOOLS_SCOPES: ${{ secrets.COMMERCETOOLS_SCOPES }}
 
 
