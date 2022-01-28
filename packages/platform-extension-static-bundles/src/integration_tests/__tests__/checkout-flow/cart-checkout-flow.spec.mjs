@@ -1,25 +1,53 @@
 import assert from 'assert';
 import localtunnel from 'localtunnel';
-import { app } from '../../../server.mjs';
+import http from 'http';
 import {
   createCTClient, ensureResourcesExist, fetchResourceByKey, updateResource
 } from '../../test-utils.mjs';
 import { bundle1Pants1Shirts2Belts } from '../../shared-fixtures/bundles/bundle1Pants1Shirts2Belts.mjs';
 import * as Carts from '../../shared-fixtures/carts/index.mjs';
 
-describe('Test the cart checkout flow', () => {
-  let server;
-  let tunnel;
+let server;
+let tunnel;
+const port = 3006;
+const tunnelDomain = 'ctp-bundles-starter-integration-tests';
 
+async function initTunnel() {
+  let repeaterCounter = 0;
+  // eslint-disable-next-line no-constant-condition
+  while (true) {
+    try {
+      // eslint-disable-next-line no-await-in-loop
+      tunnel = await localtunnel({
+        port,
+        subdomain: tunnelDomain,
+      });
+      break;
+    } catch (e) {
+      if (repeaterCounter === 10) throw e;
+      repeaterCounter += 1;
+    }
+  }
+}
+
+async function startFakeExtensionServer() {
+  server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.end();
+  });
+
+  return new Promise((resolve) => {
+    server.listen(port, async () => {
+      resolve();
+    });
+  });
+}
+
+describe('Test the cart checkout flow', () => {
   // eslint-disable-next-line no-undef
   before(async () => {
-    server = app.listen(3006, () => {
-      console.log('Local development server listening on port 3000!\n');
-    });
-
-    tunnel = await localtunnel({
-      port: 3006, subdomain: 'ctp-bundles-starter-integration-tests'
-    });
+    await startFakeExtensionServer();
+    await initTunnel();
   });
 
   // eslint-disable-next-line no-undef
@@ -36,7 +64,7 @@ describe('Test the cart checkout flow', () => {
   });
 
   it('Add and validate bundle bundle1Pants1Shirts2Belts as lineItem in the cart', async function () {
-    this.timeout(500000);
+    this.timeout(50000);
     const ctClient = createCTClient();
 
     const cartToCreate = Carts.defaultCart;
