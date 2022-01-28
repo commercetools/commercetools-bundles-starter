@@ -19,14 +19,14 @@ export const DEFAULT_CONCURRENCY = 10;
  * @returns {Object} - Object containing {client, projectKey, requestBuilder()}.
  */
 export const createCTClient = () => {
-  const projectKey = process.env.PROJECT_KEY || process.env.CT_PROJECT_KEY;
-  const scopeStr = process.env.CT_SCOPES || process.env.CT_CLIENT_SCOPES;
+  const projectKey = process.env.PROJECT_KEY || process.env.commercetools_project_key;
+  const scopeStr = process.env.CT_SCOPES || process.env.commercetools_scopes;
   const authMiddleware = createAuthMiddlewareForClientCredentialsFlow({
-    host: 'https://auth.us-central1.gcp.commercetools.com',
+    host: process.env.commercetools_token_url || 'https://auth.us-central1.gcp.commercetools.com',
     projectKey,
     credentials: {
-      clientId: process.env.CLIENT_ID || process.env.CT_CLIENT_ID,
-      clientSecret: process.env.CT_SECRET || process.env.CT_CLIENT_SECRET,
+      clientId: process.env.CLIENT_ID || process.env.commercetools_client_id,
+      clientSecret: process.env.CT_SECRET || process.env.commercetools_client_secret,
     },
     scopes: [scopeStr],
     enableRetry: true,
