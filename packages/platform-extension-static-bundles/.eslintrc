@@ -20,7 +20,7 @@
     "comma-dangle": "off",
     "function-paren-newline": "off",
     "implicit-arrow-linebreak": "off",
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["src/server.js","webpack.dev.config.js"], "optionalDependencies": false, "peerDependencies": false}]
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["src/server.mjs","webpack.dev.config.cjs"], "optionalDependencies": false, "peerDependencies": false}]
   },
   "env": {
     "jest/globals": true,

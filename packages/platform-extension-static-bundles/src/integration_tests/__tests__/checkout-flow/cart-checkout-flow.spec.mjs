@@ -13,12 +13,12 @@ describe('Test the cart checkout flow', () => {
 
   // eslint-disable-next-line no-undef
   before(async () => {
-    server = app.listen(3000, () => {
+    server = app.listen(3006, () => {
       console.log('Local development server listening on port 3000!\n');
     });
 
     tunnel = await localtunnel({
-      port: 3000, subdomain: 'ctp-bundles-starter-integration-tests'
+      port: 3006, subdomain: 'ctp-bundles-starter-integration-tests'
     });
   });
 
@@ -36,7 +36,7 @@ describe('Test the cart checkout flow', () => {
   });
 
   it('Add and validate bundle bundle1Pants1Shirts2Belts as lineItem in the cart', async function () {
-    this.timeout(50000);
+    this.timeout(500000);
     const ctClient = createCTClient();
 
     const cartToCreate = Carts.defaultCart;
