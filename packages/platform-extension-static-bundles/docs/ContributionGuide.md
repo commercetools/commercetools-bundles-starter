@@ -59,13 +59,13 @@ yarn test:coverage
 #### Integration tests
 Following additional environment variables must be provided in order to run the Integration tests.
 
-| Name                | Content                                                      | Required | Default                                        |
-| ------------------- | ------------------------------------------------------------ | -------- | ---------------------------------------------  |
-| `CT_PROJECT_KEY`    | The unique `key` of the commercetools project.               | YES      |                                                |
-| `CT_CLIENT_ID`      | OAuth 2.0 `client_id` and can be used to obtain a token.     | YES      |                                                |
-| `CT_SECRET`         | OAuth 2.0 `client_secret` and can be used to obtain a token. | YES      |                                                |
-| `CT_SCOPES`         | The scopes used by the commercetools client.                 | YES      |                                                |
-| `CT_API_URL`        | The commercetools HTTP API is hosted at that URL.            | NO       | https://api.us-central1.gcp.commercetools.com  |
-| `CT_TOKEN_URL`      | The commercetools’ OAuth 2.0 service is hosted at that URL.  | NO       | https://auth.us-central1.gcp.commercetools.com |
+| Name                           | Content                                                      | Required | Default                                        |
+| ------------------------------ | ------------------------------------------------------------ | -------- | ---------------------------------------------  |
+| `CT_PROJECT_KEY`               | The unique `key` of the commercetools project.               | YES      |                                                |
+| `COMMERCETOOLS_CLIENT_ID`      | OAuth 2.0 `client_id` and can be used to obtain a token.     | YES      |                                                |
+| `COMMERCETOOLS_CLIENT_SECRET`  | OAuth 2.0 `client_secret` and can be used to obtain a token. | YES      |                                                |
+| `COMMERCETOOLS_SCOPES`         | The scopes used by the commercetools client.                 | YES      |                                                |
+| `COMMERCETOOLS_API_URL`        | The commercetools HTTP API is hosted at that URL.            | NO       | https://api.us-central1.gcp.commercetools.com  |
+| `COMMERCETOOLS_TOKEN_URL`      | The commercetools’ OAuth 2.0 service is hosted at that URL.  | NO       | https://auth.us-central1.gcp.commercetools.com |
 
 - Execute `yarn test:integration` to run Integration tests.
