@@ -6,10 +6,10 @@ import {
 } from '../../test-utils.mjs';
 import { bundle1Pants1Shirts2Belts } from '../../shared-fixtures/bundles/bundle1Pants1Shirts2Belts.mjs';
 import * as Carts from '../../shared-fixtures/carts/index.mjs';
-import { pants } from '../../shared-fixtures/products/pants.mjs';
-import { shirt } from '../../shared-fixtures/products/shirt.mjs';
-import { belt } from '../../shared-fixtures/products/belt.mjs';
+import * as products from '../../shared-fixtures/products/index.mjs';
+import { bundle1Pants1Jackets } from '../../shared-fixtures/bundles/bundle1Pants1Jackets.mjs';
 
+const TIMEOUT = 50000;
 let tunnel;
 const port = process.env.PORT || 3000;
 const tunnelDomain = 'ctp-bundles-starter-integration-tests';
@@ -34,7 +34,7 @@ async function initTunnel() {
 
 describe('Test the cart checkout flow', () => {
   before(async function () {
-    this.timeout(5000);
+    this.timeout(TIMEOUT);
     await initTunnel();
   });
 
@@ -44,7 +44,7 @@ describe('Test the cart checkout flow', () => {
   });
 
   it('Ensure bundle exist in the CT project', async function () {
-    this.timeout(50000);
+    this.timeout(TIMEOUT);
     const ctClient = createCTClient();
     const bundleWith1Pant1Shirt2Belts = await fetchResourceByKey(ctClient, bundle1Pants1Shirts2Belts, 'products');
     const bundlesAttributes = bundleWith1Pant1Shirt2Belts
@@ -57,11 +57,11 @@ describe('Test the cart checkout flow', () => {
   });
 
   it('Add and validate bundle bundle1Pants1Shirts2Belts as lineItem in the cart', async function () {
-    this.timeout(50000);
+    this.timeout(TIMEOUT);
     const ctClient = createCTClient();
 
     let createdCart;
-    createdCart = await fetchResourceByKey(ctClient, Carts.defaultCart.key, 'carts');
+    createdCart = await fetchResourceByKey(ctClient, Carts.cart1pants1shirt2belts.key, 'carts');
     const bundle1Pants1Shirts2BeltsProduct = await fetchResourceByKey(ctClient, bundle1Pants1Shirts2Belts, 'products');
 
     const actions = [
@@ -79,9 +79,9 @@ describe('Test the cart checkout flow', () => {
       resourceTypeId: 'carts'
     });
 
-    const fetchedPantsProduct = await fetchResourceByKey(ctClient, pants.key, 'products');
-    const fetchedShirtsProduct = await fetchResourceByKey(ctClient, shirt.key, 'products');
-    const fetchedBeltsProduct = await fetchResourceByKey(ctClient, belt.key, 'products');
+    const fetchedPantsProduct = await fetchResourceByKey(ctClient, products.pants.key, 'products');
+    const fetchedShirtsProduct = await fetchResourceByKey(ctClient, products.shirt.key, 'products');
+    const fetchedBeltsProduct = await fetchResourceByKey(ctClient, products.belt.key, 'products');
 
     // assertions
     expect(createdCart.lineItems.length).to.equal(4);
@@ -104,5 +104,53 @@ describe('Test the cart checkout flow', () => {
     expect(
       createdCart.lineItems.map((lineItem) => lineItem.quantity)
     ).to.include.ordered.members([1, 1, 1, 2]);
+  });
+
+  it('Add and validate bundle bundle1Pants1Jackets as lineItem in the cart', async function () {
+    this.timeout(TIMEOUT);
+    const ctClient = createCTClient();
+
+    let createdCart;
+    createdCart = await fetchResourceByKey(ctClient, Carts.cart1pants1jacket.key, 'carts');
+    const bundle1Pants1JacketsProduct = await fetchResourceByKey(ctClient, bundle1Pants1Jackets, 'products');
+
+    const actions = [
+      {
+        action: 'addLineItem',
+        productId: bundle1Pants1JacketsProduct.id,
+        quantity: 1
+      }
+    ];
+
+    createdCart = await updateResource({
+      ctClient,
+      resource: createdCart,
+      actions,
+      resourceTypeId: 'carts'
+    });
+
+    const fetchedPantsProduct = await fetchResourceByKey(ctClient, products.pants.key, 'products');
+    const fetchedJacketsProduct = await fetchResourceByKey(ctClient, products.jacket.key, 'products');
+
+    // assertions
+    expect(createdCart.lineItems.length).to.equal(3);
+
+    const bundlesPrice = bundle1Pants1JacketsProduct
+      .masterData.current.masterVariant.prices[0].value.centAmount;
+    expect(
+      createdCart.lineItems.map((lineItem) => lineItem.price.value.centAmount)
+    ).to.include.ordered.members([bundlesPrice, 0, 0]);
+
+    expect(
+      createdCart.lineItems.map((lineItem) => lineItem.productKey)
+    ).to.include.members([
+      bundle1Pants1Jackets,
+      fetchedPantsProduct.key,
+      fetchedJacketsProduct.key
+    ]);
+
+    expect(
+      createdCart.lineItems.map((lineItem) => lineItem.quantity)
+    ).to.include.ordered.members([1, 1, 1]);
   });
 });

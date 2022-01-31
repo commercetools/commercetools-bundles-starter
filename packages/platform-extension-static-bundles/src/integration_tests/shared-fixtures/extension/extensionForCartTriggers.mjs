@@ -1,4 +1,4 @@
-export const awsLambdaExtension = {
+export const extensionForCartTriggers = {
   destination: {
     type: 'HTTP',
     url: 'https://ctp-bundles-starter-integration-tests.loca.lt'
@@ -11,4 +11,4 @@ export const awsLambdaExtension = {
   timeoutInMs: 2000
 };
 
-export default awsLambdaExtension;
+export default extensionForCartTriggers;

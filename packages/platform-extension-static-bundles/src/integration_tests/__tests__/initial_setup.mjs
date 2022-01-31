@@ -13,14 +13,13 @@ import {
   Products
 } from '../shared-fixtures/index.mjs';
 import { getBundle1Pants1Shirts2Belts } from '../shared-fixtures/bundles/bundle1Pants1Shirts2Belts.mjs';
-import { pants } from '../shared-fixtures/products/pants.mjs';
-import { shirt } from '../shared-fixtures/products/shirt.mjs';
-import { belt } from '../shared-fixtures/products/belt.mjs';
+import * as products from '../shared-fixtures/products/index.mjs';
 import { staticBundleChildVariant } from '../shared-fixtures/product-types/static-bundle-child-variant.mjs';
 import { getStaticBundleParent } from '../shared-fixtures/product-types/static-bundle-parent.mjs';
 import { StaticBundleParentChildLinkType } from '../shared-fixtures/types/static-bundle-parent-child-link.mjs';
-import { awsLambdaExtension } from '../shared-fixtures/extension/extensionForAwsLambdaFunction.mjs';
+import { extensionForCartTriggers } from '../shared-fixtures/extension/extensionForCartTriggers.mjs';
 import * as Carts from '../shared-fixtures/carts/index.mjs';
+import { getBundle1Pants1Jackets } from "../shared-fixtures/bundles/bundle1Pants1Jackets.mjs";
 
 const TIMEOUT = 50000;
 
@@ -59,19 +58,25 @@ before('Integration test setup suite', async function () {
 
   await ensureResourcesExist(ctClient, Object.values(Customers), 'customers');
 
-  const fetchedPantsProduct = await fetchResourceByKey(ctClient, pants.key, 'products');
-  const fetchedShirtsProduct = await fetchResourceByKey(ctClient, shirt.key, 'products');
-  const fetchedBeltsProduct = await fetchResourceByKey(ctClient, belt.key, 'products');
+  const fetchedPantsProduct = await fetchResourceByKey(ctClient, products.pants.key, 'products');
+  const fetchedShirtsProduct = await fetchResourceByKey(ctClient, products.shirt.key, 'products');
+  const fetchedBeltsProduct = await fetchResourceByKey(ctClient, products.belt.key, 'products');
 
   const bundle1Pants1Shirts2Belts = getBundle1Pants1Shirts2Belts({
     fetchedPantsProduct, fetchedShirtsProduct, fetchedBeltsProduct
   });
 
-  await ensureResourcesExist(ctClient, bundle1Pants1Shirts2Belts, 'products');
+  const fetchedJacketsProduct = await fetchResourceByKey(ctClient, products.jacket.key, 'products');
 
-  await ensureResourcesExist(ctClient, Carts.defaultCart, 'carts');
+  const bundle1Pants1Jacket = getBundle1Pants1Jackets({
+    fetchedPantsProduct, fetchedJacketsProduct
+  });
 
-  await ensureResourcesExist(ctClient, awsLambdaExtension, 'extensions');
+  await ensureResourcesExist(ctClient, [bundle1Pants1Shirts2Belts, bundle1Pants1Jacket], 'products');
+
+  await ensureResourcesExist(ctClient, Object.values(Carts), 'carts');
+
+  await ensureResourcesExist(ctClient, extensionForCartTriggers, 'extensions');
 
   console.info('Setup complete!  Test suites will now run.');
 });
