@@ -12,14 +12,13 @@ import {
   ProductTypes,
   Products
 } from '../shared-fixtures/index.mjs';
-import { getBundle1Pants1Shirts2Belts } from '../shared-fixtures/bundles/bundle1Pants1Shirts2Belts.mjs';
 import * as products from '../shared-fixtures/products/index.mjs';
 import { staticBundleChildVariant } from '../shared-fixtures/product-types/static-bundle-child-variant.mjs';
 import { getStaticBundleParent } from '../shared-fixtures/product-types/static-bundle-parent.mjs';
 import { StaticBundleParentChildLinkType } from '../shared-fixtures/types/static-bundle-parent-child-link.mjs';
 import { extensionForCartTriggers } from '../shared-fixtures/extension/extensionForCartTriggers.mjs';
 import * as Carts from '../shared-fixtures/carts/index.mjs';
-import { getBundle1Pants1Jackets } from "../shared-fixtures/bundles/bundle1Pants1Jackets.mjs";
+import * as bundles from '../shared-fixtures/bundles/index.mjs';
 
 const TIMEOUT = 50000;
 
@@ -61,18 +60,21 @@ before('Integration test setup suite', async function () {
   const fetchedPantsProduct = await fetchResourceByKey(ctClient, products.pants.key, 'products');
   const fetchedShirtsProduct = await fetchResourceByKey(ctClient, products.shirt.key, 'products');
   const fetchedBeltsProduct = await fetchResourceByKey(ctClient, products.belt.key, 'products');
+  const fetchedJacketsProduct = await fetchResourceByKey(ctClient, products.jacket.key, 'products');
 
-  const bundle1Pants1Shirts2Belts = getBundle1Pants1Shirts2Belts({
+  const bundle1Pants1Shirts2Belts = bundles.getBundle1Pants1Shirts2Belts({
     fetchedPantsProduct, fetchedShirtsProduct, fetchedBeltsProduct
   });
 
-  const fetchedJacketsProduct = await fetchResourceByKey(ctClient, products.jacket.key, 'products');
-
-  const bundle1Pants1Jacket = getBundle1Pants1Jackets({
+  const bundle1Pants1Jacket = bundles.getBundle1Pants1Jackets({
     fetchedPantsProduct, fetchedJacketsProduct
   });
 
-  await ensureResourcesExist(ctClient, [bundle1Pants1Shirts2Belts, bundle1Pants1Jacket], 'products');
+  const bundle2Pants3Jackets2Belts = bundles.getBundle2Pants3Jackets2Belts({
+    fetchedPantsProduct, fetchedJacketsProduct, fetchedBeltsProduct
+  });
+
+  await ensureResourcesExist(ctClient, [bundle1Pants1Shirts2Belts, bundle1Pants1Jacket, bundle2Pants3Jackets2Belts], 'products');
 
   await ensureResourcesExist(ctClient, Object.values(Carts), 'carts');
 

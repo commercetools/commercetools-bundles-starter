@@ -1,20 +1,20 @@
 import * as products from '../products/index.mjs';
 
-export const bundle1Pants1Shirts2Belts = 'bundle1Pants1Shirts2Belts';
+export const bundle2Pants3Jackets2Belts = 'bundle2Pants3Jackets2Belts';
 
-export const getBundle1Pants1Shirts2Belts = function ({
+export const getBundle2Pants3Jackets2Belts = function ({
   fetchedPantsProduct,
-  fetchedShirtsProduct,
+  fetchedJacketsProduct,
   fetchedBeltsProduct
 }) {
   return {
-    key: bundle1Pants1Shirts2Belts,
+    key: bundle2Pants3Jackets2Belts,
     name: {
-      en: bundle1Pants1Shirts2Belts
+      en: bundle2Pants3Jackets2Belts
     },
     productType: { typeId: 'product-type', key: 'static-bundle-parent' },
     slug: {
-      en: bundle1Pants1Shirts2Belts
+      en: bundle2Pants3Jackets2Belts
     },
     taxCategory: {
       typeId: 'tax-category',
@@ -22,11 +22,11 @@ export const getBundle1Pants1Shirts2Belts = function ({
     },
     masterVariant: {
       id: 1,
-      sku: bundle1Pants1Shirts2Belts,
+      sku: bundle2Pants3Jackets2Belts,
       prices: [{
         value: {
           currencyCode: 'USD',
-          centAmount: 900000
+          centAmount: 28000
         }
       }],
       images: [],
@@ -46,7 +46,7 @@ export const getBundle1Pants1Shirts2Belts = function ({
               },
               {
                 name: 'quantity',
-                value: 1
+                value: 2
               },
               {
                 name: 'product-ref',
@@ -69,23 +69,23 @@ export const getBundle1Pants1Shirts2Belts = function ({
               },
               {
                 name: 'sku',
-                value: 'shirt'
+                value: 'jacket'
               },
               {
                 name: 'quantity',
-                value: 1
+                value: 3
               },
               {
                 name: 'product-ref',
                 value: {
                   typeId: 'product',
-                  id: fetchedShirtsProduct.id
+                  id: fetchedJacketsProduct.id
                 }
               },
               {
                 name: 'product-name',
                 value: {
-                  en: products.shirt.name.en
+                  en: products.jacket.name.en
                 }
               }
             ],
@@ -123,7 +123,7 @@ export const getBundle1Pants1Shirts2Belts = function ({
           name: 'productSearch',
           value: [
             `${fetchedPantsProduct.id}/1`,
-            `${fetchedShirtsProduct.id}/1`,
+            `${fetchedJacketsProduct.id}/1`,
             `${fetchedBeltsProduct.id}/1`
           ]
         }
@@ -135,4 +135,4 @@ export const getBundle1Pants1Shirts2Belts = function ({
   };
 };
 
-export default getBundle1Pants1Shirts2Belts;
+export default getBundle2Pants3Jackets2Belts;
