@@ -4,7 +4,7 @@ export const defaultCart = {
   currency: 'USD',
   country: 'US',
   taxMode: 'Disabled',
-  // key: 'default-cart',
+  key: 'default-cart',
   deleteDaysAfterLastModification: 1,
   custom: {
     type: { typeId: 'type', key: customCartType.key },

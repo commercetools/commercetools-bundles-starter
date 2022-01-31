@@ -1,6 +1,6 @@
 import {
   createCTClient, ensureResourcesExist, deleteKnownResources,
-  deleteResourcesWhere, updateResource, fetchResourceByKey
+  deleteResourcesWhere, fetchResourceByKey
 } from '../test-utils.mjs';
 import {
   Types as IntegrationTestTypes,
@@ -12,8 +12,7 @@ import {
   ProductTypes,
   Products
 } from '../shared-fixtures/index.mjs';
-import { bundle1Pants1Shirts2Belts } from '../shared-fixtures/bundles/bundle1Pants1Shirts2Belts.mjs';
-import { getBundle1VariantAttributes } from '../shared-fixtures/bundles/bundle1VariantAttributes.mjs';
+import { getBundle1Pants1Shirts2Belts } from '../shared-fixtures/bundles/bundle1Pants1Shirts2Belts.mjs';
 import { pants } from '../shared-fixtures/products/pants.mjs';
 import { shirt } from '../shared-fixtures/products/shirt.mjs';
 import { belt } from '../shared-fixtures/products/belt.mjs';
@@ -21,6 +20,7 @@ import { staticBundleChildVariant } from '../shared-fixtures/product-types/stati
 import { getStaticBundleParent } from '../shared-fixtures/product-types/static-bundle-parent.mjs';
 import { StaticBundleParentChildLinkType } from '../shared-fixtures/types/static-bundle-parent-child-link.mjs';
 import { awsLambdaExtension } from '../shared-fixtures/extension/extensionForAwsLambdaFunction.mjs';
+import * as Carts from '../shared-fixtures/carts/index.mjs';
 
 const TIMEOUT = 50000;
 
@@ -59,24 +59,17 @@ before('Integration test setup suite', async function () {
 
   await ensureResourcesExist(ctClient, Object.values(Customers), 'customers');
 
-  let bundle1Pants1Shirts2BeltsProduct = await ensureResourcesExist(ctClient, bundle1Pants1Shirts2Belts, 'products');
-
-  if (!bundle1Pants1Shirts2BeltsProduct) {
-    bundle1Pants1Shirts2BeltsProduct = await fetchResourceByKey(ctClient, bundle1Pants1Shirts2Belts.key, 'products');
-  }
-
   const fetchedPantsProduct = await fetchResourceByKey(ctClient, pants.key, 'products');
   const fetchedShirtsProduct = await fetchResourceByKey(ctClient, shirt.key, 'products');
   const fetchedBeltsProduct = await fetchResourceByKey(ctClient, belt.key, 'products');
 
-  await updateResource({
-    ctClient,
-    resource: bundle1Pants1Shirts2BeltsProduct,
-    actions: getBundle1VariantAttributes({
-      fetchedPantsProduct, fetchedShirtsProduct, fetchedBeltsProduct
-    }),
-    resourceTypeId: 'products'
+  const bundle1Pants1Shirts2Belts = getBundle1Pants1Shirts2Belts({
+    fetchedPantsProduct, fetchedShirtsProduct, fetchedBeltsProduct
   });
+
+  await ensureResourcesExist(ctClient, bundle1Pants1Shirts2Belts, 'products');
+
+  await ensureResourcesExist(ctClient, Carts.defaultCart, 'carts');
 
   await ensureResourcesExist(ctClient, awsLambdaExtension, 'extensions');
 

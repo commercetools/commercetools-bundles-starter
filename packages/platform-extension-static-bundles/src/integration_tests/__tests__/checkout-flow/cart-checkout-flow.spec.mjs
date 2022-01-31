@@ -31,7 +31,8 @@ async function initTunnel() {
 
 describe('Test the cart checkout flow', () => {
   // eslint-disable-next-line no-undef
-  before(async () => {
+  before(async function () {
+    this.timeout(5000);
     await initTunnel();
   });
 
@@ -44,19 +45,17 @@ describe('Test the cart checkout flow', () => {
   it('ensure bundle exist in the CT project', async function () {
     this.timeout(50000);
     const ctClient = createCTClient();
-    const bundles = await fetchResourceByKey(ctClient, bundle1Pants1Shirts2Belts.key, 'products');
+    const bundles = await fetchResourceByKey(ctClient, bundle1Pants1Shirts2Belts, 'products');
     assert.notDeepStrictEqual(bundles, null);
   });
 
   it('Add and validate bundle bundle1Pants1Shirts2Belts as lineItem in the cart', async function () {
-    this.timeout(50000);
+    this.timeout(500000);
     const ctClient = createCTClient();
 
-    const cartToCreate = Carts.defaultCart;
-
     let createdCart;
-    createdCart = await ensureResourcesExist(ctClient, cartToCreate, 'carts');
-    const bundle1Pants1Shirts2BeltsProduct = await fetchResourceByKey(ctClient, bundle1Pants1Shirts2Belts.key, 'products');
+    createdCart = await fetchResourceByKey(ctClient, Carts.defaultCart.key, 'carts');
+    const bundle1Pants1Shirts2BeltsProduct = await fetchResourceByKey(ctClient, bundle1Pants1Shirts2Belts, 'products');
 
     const actions = [
       {
