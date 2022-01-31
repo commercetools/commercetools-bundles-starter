@@ -14,8 +14,8 @@ if (process.env.NODE_ENV !== 'development') {
 
 const commercetools = Commercetools({
   // we need to *explicitly* reference the process.env variable for dotenv-webpack to replace them.
-  oauthHost: process.env[CONFIG_KEYS.CT_TOKEN_URL] || process.env.commercetools_token_url,
-  host: process.env[CONFIG_KEYS.CT_API_URL] || process.env.commercetools_api_url,
+  oauthHost: process.env.commercetools_token_url || 'https://auth.us-central1.gcp.commercetools.com',
+  host: process.env.commercetools_api_url || 'https://api.us-central1.gcp.commercetools.com',
   concurrency: process.env[CONFIG_KEYS.CT_CONCURRENCY] || process.env.commercetools_api_concurrency,
   clientId: process.env[CONFIG_KEYS.CT_CLIENT_ID] || process.env.commercetools_client_id,
   clientSecret: process.env[CONFIG_KEYS.CT_SECRET] || process.env.commercetools_client_secret,
