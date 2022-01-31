@@ -1,15 +1,14 @@
 import assert from 'assert';
 import localtunnel from 'localtunnel';
-import http from 'http';
+import { server } from '../../../server.mjs';
 import {
   createCTClient, ensureResourcesExist, fetchResourceByKey, updateResource
 } from '../../test-utils.mjs';
 import { bundle1Pants1Shirts2Belts } from '../../shared-fixtures/bundles/bundle1Pants1Shirts2Belts.mjs';
 import * as Carts from '../../shared-fixtures/carts/index.mjs';
 
-let server;
 let tunnel;
-const port = 3006;
+const port = process.env.PORT || 3000;
 const tunnelDomain = 'ctp-bundles-starter-integration-tests';
 
 async function initTunnel() {
@@ -30,23 +29,9 @@ async function initTunnel() {
   }
 }
 
-async function startFakeExtensionServer() {
-  server = http.createServer((req, res) => {
-    res.statusCode = 200;
-    res.end();
-  });
-
-  return new Promise((resolve) => {
-    server.listen(port, async () => {
-      resolve();
-    });
-  });
-}
-
 describe('Test the cart checkout flow', () => {
   // eslint-disable-next-line no-undef
   before(async () => {
-    await startFakeExtensionServer();
     await initTunnel();
   });
 

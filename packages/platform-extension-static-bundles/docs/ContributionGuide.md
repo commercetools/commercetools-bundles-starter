@@ -28,7 +28,7 @@ yarn (or) yarn install
 
 ### Running locally
 1. Create a config file similar to `example.env` and name it `default.env` or `development.env`. This can be [done also with terraform](./terraform).
-1. Create dynamic bundles [product types](./resourceDefinitions/productTypes) and [types](./resourceDefinitions/types) in the CTP project. This can be [done also with terraform](./terraform).
+1. Create static bundles [product types](./resourceDefinitions/productTypes) and [types](./resourceDefinitions/types) in the CTP project. This can be [done also with terraform](./terraform).
 1. Build platform-extension-static-bundles using `yarn` and then `yarn build`.
 1. Run platform-extension-static-bundles with `yarn start`.
 
@@ -67,5 +67,6 @@ Following additional environment variables must be provided in order to run the 
 | `COMMERCETOOLS_SCOPES`         | The scopes used by the commercetools client.                 | YES      |                                                |
 | `COMMERCETOOLS_API_URL`        | The commercetools HTTP API is hosted at that URL.            | NO       | https://api.us-central1.gcp.commercetools.com  |
 | `COMMERCETOOLS_TOKEN_URL`      | The commercetools’ OAuth 2.0 service is hosted at that URL.  | NO       | https://auth.us-central1.gcp.commercetools.com |
+| `PORT`                         | The port number for server.                                  | NO       | 3000                                           |
 
 - Execute `yarn test:integration` to run Integration tests.
