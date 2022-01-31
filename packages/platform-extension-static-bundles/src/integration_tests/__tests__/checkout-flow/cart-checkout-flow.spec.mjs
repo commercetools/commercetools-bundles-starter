@@ -50,7 +50,7 @@ describe('Test the cart checkout flow', () => {
   });
 
   it('Add and validate bundle bundle1Pants1Shirts2Belts as lineItem in the cart', async function () {
-    this.timeout(500000);
+    this.timeout(50000);
     const ctClient = createCTClient();
 
     let createdCart;
@@ -72,6 +72,6 @@ describe('Test the cart checkout flow', () => {
       resourceTypeId: 'carts'
     });
 
-    assert.strictEqual(createdCart.lineItems.length, 1);
+    assert.strictEqual(createdCart.lineItems.length, 4);
   });
 });
