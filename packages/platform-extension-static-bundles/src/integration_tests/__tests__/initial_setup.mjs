@@ -134,7 +134,5 @@ after(async function () {
   await deleteKnownResources(ctClient, 'types');
   await deleteKnownResources(ctClient, 'zones');
 
-  await deleteKnownResources(ctClient, 'extensions');
-
   console.info('Teardown complete!');
 });
