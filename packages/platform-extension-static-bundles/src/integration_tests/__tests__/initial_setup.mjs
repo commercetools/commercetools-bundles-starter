@@ -79,55 +79,55 @@ before('Integration test setup suite', async function () {
 /**
  * Global after() hook to teardown project after integration tests
  */
-// after(async function () {
-//   this.timeout(TIMEOUT);
-//   console.info('Test suites finished, beginning teardown...');
-//
-//   const ctClient = createCTClient();
-//   // remove all of our payments
-//   await deleteKnownResources(ctClient, 'payments');
-//   // remove all of our orders
-//   await deleteKnownResources(ctClient, 'orders');
-//   await deleteResourcesWhere({
-//     ctClient,
-//     resourceTypeId: 'orders',
-//     where: 'custom(fields(applyCartDiscount is defined) or fields(applyCartDiscount is not defined))',
-//   });
-//
-//   // remove all of our carts
-//   console.info('Removing test carts');
-//   await deleteKnownResources(ctClient, 'carts');
-//   await deleteResourcesWhere({
-//     ctClient,
-//     resourceTypeId: 'carts',
-//     where: 'custom(fields(applyCartDiscount is defined) or fields(applyCartDiscount is not defined))',
-//   });
-//
-//   console.info('Removing test products and other test resources');
-//   await deleteKnownResources(ctClient, 'products');
-//   await deleteKnownResources(ctClient, 'customers');
-//   await deleteKnownResources(ctClient, 'customerGroups');
-//   await deleteKnownResources(ctClient, 'shippingMethods');
-//   await deleteKnownResources(ctClient, 'taxCategories');
-//
-//   // delete all product types but the referenced product type.
-//   await deleteResourcesWhere({
-//     ctClient,
-//     resourceTypeId: 'productTypes',
-//     where: 'key != "static-bundle-child-variant"',
-//   });
-//
-//   // The reference is removed now delete the child variant productType.
-//   await deleteResourcesWhere({
-//     ctClient,
-//     resourceTypeId: 'productTypes',
-//     where: 'key = "static-bundle-child-variant"',
-//   });
-//
-//   await deleteKnownResources(ctClient, 'types');
-//   await deleteKnownResources(ctClient, 'zones');
-//
-//   await deleteKnownResources(ctClient, 'extensions');
-//
-//   console.info('Teardown complete!');
-// });
+after(async function () {
+  this.timeout(TIMEOUT);
+  console.info('Test suites finished, beginning teardown...');
+
+  const ctClient = createCTClient();
+  // remove all of our payments
+  await deleteKnownResources(ctClient, 'payments');
+  // remove all of our orders
+  await deleteKnownResources(ctClient, 'orders');
+  await deleteResourcesWhere({
+    ctClient,
+    resourceTypeId: 'orders',
+    where: 'custom(fields(applyCartDiscount is defined) or fields(applyCartDiscount is not defined))',
+  });
+
+  // remove all of our carts
+  console.info('Removing test carts');
+  await deleteKnownResources(ctClient, 'carts');
+  await deleteResourcesWhere({
+    ctClient,
+    resourceTypeId: 'carts',
+    where: 'custom(fields(applyCartDiscount is defined) or fields(applyCartDiscount is not defined))',
+  });
+
+  console.info('Removing test products and other test resources');
+  await deleteKnownResources(ctClient, 'products');
+  await deleteKnownResources(ctClient, 'customers');
+  await deleteKnownResources(ctClient, 'customerGroups');
+  await deleteKnownResources(ctClient, 'shippingMethods');
+  await deleteKnownResources(ctClient, 'taxCategories');
+
+  // delete all product types but the referenced product type.
+  await deleteResourcesWhere({
+    ctClient,
+    resourceTypeId: 'productTypes',
+    where: 'key != "static-bundle-child-variant"',
+  });
+
+  // The reference is removed now delete the child variant productType.
+  await deleteResourcesWhere({
+    ctClient,
+    resourceTypeId: 'productTypes',
+    where: 'key = "static-bundle-child-variant"',
+  });
+
+  await deleteKnownResources(ctClient, 'types');
+  await deleteKnownResources(ctClient, 'zones');
+
+  await deleteKnownResources(ctClient, 'extensions');
+
+  console.info('Teardown complete!');
+});
