@@ -22,5 +22,11 @@ jobs:
           node-version: '14.x'
       - run: yarn
       - run: lerna run test:unit
+      - run: lerna run test:integration
+        env:
+          commercetools_project_key: bundles-starter-integration
+          commercetools_client_id: ${{ secrets.COMMERCETOOLS_CLIENT_ID }}
+          commercetools_client_secret: ${{ secrets.COMMERCETOOLS_CLIENT_SECRET }}
+          commercetools_scopes: ${{ secrets.COMMERCETOOLS_SCOPES }}
 
 

@@ -1,13 +1,12 @@
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
 
-
-const mode = process.env.NODE_ENV || 'development';
+const mode = 'development';
 const safe = process.env.CI ? false : './config/example.env';
 
 module.exports = {
   mode,
-  entry: ['./src/index.js'],
+  entry: ['./src/server.mjs'],
   target: 'node',
   plugins: [
     new Dotenv({
@@ -28,6 +27,6 @@ module.exports = {
   output: {
     libraryTarget: 'commonjs2',
     path: path.join(__dirname, 'dist/'),
-    filename: 'index.js',
-  }
+    filename: 'server.mjs',
+  },
 };
