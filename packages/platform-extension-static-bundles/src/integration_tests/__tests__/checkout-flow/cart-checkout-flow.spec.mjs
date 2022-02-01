@@ -1,6 +1,4 @@
 import { expect } from 'chai';
-import localtunnel from 'localtunnel';
-import { server } from '../../../server.mjs';
 import {
   createCTClient, fetchResourceByKey, updateResource
 } from '../../test-utils.mjs';
@@ -9,38 +7,8 @@ import * as products from '../../shared-fixtures/products/index.mjs';
 import * as bundles from '../../shared-fixtures/bundles/index.mjs';
 
 const TIMEOUT = 50000;
-let tunnel;
-const port = process.env.PORT || 3000;
-const tunnelDomain = 'ctp-bundles-starter-integration-tests';
-
-async function initTunnel() {
-  let repeaterCounter = 0;
-  // eslint-disable-next-line no-constant-condition
-  while (true) {
-    try {
-      // eslint-disable-next-line no-await-in-loop
-      tunnel = await localtunnel({
-        port,
-        subdomain: tunnelDomain,
-      });
-      break;
-    } catch (e) {
-      if (repeaterCounter === 10) throw e;
-      repeaterCounter += 1;
-    }
-  }
-}
 
 describe('Test the cart checkout flow', () => {
-  before(async function () {
-    this.timeout(TIMEOUT);
-    await initTunnel();
-  });
-
-  after(async () => {
-    server.close();
-    await tunnel.close();
-  });
 
   it('Ensure bundle exist in the CT project', async function () {
     this.timeout(TIMEOUT);
