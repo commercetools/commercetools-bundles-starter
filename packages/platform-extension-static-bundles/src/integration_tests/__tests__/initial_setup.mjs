@@ -1,3 +1,4 @@
+import localtunnel from 'localtunnel';
 import {
   createCTClient, ensureResourcesExist, deleteKnownResources,
   deleteResourcesWhere, fetchResourceByKey
@@ -19,14 +20,38 @@ import { StaticBundleParentChildLinkType } from '../shared-fixtures/types/static
 import { extensionForCartTriggers } from '../shared-fixtures/extension/extensionForCartTriggers.mjs';
 import * as Carts from '../shared-fixtures/carts/index.mjs';
 import * as bundles from '../shared-fixtures/bundles/index.mjs';
+import { server } from '../../server.mjs';
 
 const TIMEOUT = 50000;
+
+let tunnel;
+const port = process.env.PORT || 3000;
+const tunnelDomain = 'ctp-bundles-starter-integration-tests';
+
+async function initTunnel() {
+  let repeaterCounter = 0;
+  // eslint-disable-next-line no-constant-condition
+  while (true) {
+    try {
+      // eslint-disable-next-line no-await-in-loop
+      tunnel = await localtunnel({
+        port,
+        subdomain: tunnelDomain,
+      });
+      break;
+    } catch (e) {
+      if (repeaterCounter === 10) throw e;
+      repeaterCounter += 1;
+    }
+  }
+}
 
 /**
  * Global before() hook to setup project for integration tests
  */
 before('Integration test setup suite', async function () {
   this.timeout(TIMEOUT);
+  await initTunnel();
 
   console.info('Beginning setup prior to test suites running...');
   const ctClient = createCTClient();
@@ -134,7 +159,7 @@ after(async function () {
   await deleteKnownResources(ctClient, 'types');
   await deleteKnownResources(ctClient, 'zones');
 
-  await deleteKnownResources(ctClient, 'extensions');
-
+  server.close();
+  await tunnel.close();
   console.info('Teardown complete!');
 });
