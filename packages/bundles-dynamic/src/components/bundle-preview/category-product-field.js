@@ -183,7 +183,7 @@ CategoryProductField.propTypes = {
     }),
   }).isRequired,
   touched: PropTypes.shape({
-    product: PropTypes.bool,
+    product: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
     quantity: PropTypes.bool,
   }),
   errors: PropTypes.shape({
