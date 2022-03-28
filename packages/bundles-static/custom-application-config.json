@@ -1,14 +1,17 @@
 {
   "name": "bundles-static",
-  "entryPointUriPath": "bundles-static",
+  "entryPointUriPath": "bundles-test",
   "cloudIdentifier": "gcp-us",
   "env": {
+    "development": {
+      "initialProjectKey": "bundles-test"
+    },
     "production": {
       "url": "http://localhost:3001",
       "cdnUrl": "http://localhost:3001"
     }
   },
   "additionalEnv": {
-      "mcURL":"mc.us-central1.gcp.commercetools.com"
+    "mcURL":"mc.us-central1.gcp.commercetools.com"
   }
 }

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://on.cypress.io/cypress.schema.json",
+  "baseUrl": "http://localhost:3001",
+  "cypressDefaultCommandTimeout": 8000,
+  "browser": "chrome",
+  "experimentalFetchPolyfill": true,
+  "retries": {
+    "runMode": 1,
+    "openMode": 0
+  },
+  "env": {
+    "skipRunStateCleanUp": false
+  }
+}
