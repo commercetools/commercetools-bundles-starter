@@ -7,12 +7,12 @@ concurrency: CI
 on: [push]
 
 jobs:
-  extension_static_bundles:
-    name: Extension static bundles
+  commercetools-bundles:
+    name: Commercetools bundles starter
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: packages/platform-extension-static-bundles
+        working-directory: packages
 
     steps:
       - uses: actions/checkout@v2
