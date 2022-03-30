@@ -4,6 +4,7 @@
     ":pinOnlyDevDependencies",
     "schedule:weekly"
   ],
+  "automerge": true,
   "separateMajorMinor": true,
   "packageRules": [
     {
