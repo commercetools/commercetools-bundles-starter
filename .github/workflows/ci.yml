@@ -7,12 +7,12 @@ concurrency: CI
 on: [push]
 
 jobs:
-  extension_static_bundles:
-    name: Extension static bundles
+  commercetools-bundles:
+    name: Commercetools bundles starter
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: packages/platform-extension-static-bundles
+        working-directory: packages
 
     steps:
       - uses: actions/checkout@v2
@@ -20,6 +20,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14.x'
+      - run: echo -e '[url "https://github.com/"]\n  insteadOf = "git://github.com/"' >> ~/.gitconfig
       - run: yarn
       - run: lerna run test:unit
       - run: lerna run test:integration
