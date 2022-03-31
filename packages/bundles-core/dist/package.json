@@ -22,7 +22,7 @@
     "publish": "cd dist && yarn publish --registry=https://registry.npmjs.org/ && cd .."
   },
   "dependencies": {
-    "@apollo/react-hooks": "3.1.5",
+    "@apollo/react-hooks": "4.0.0",
     "@babel/runtime-corejs3": "7.11.0",
     "@commercetools-frontend/actions-global": "16.15.8",
     "@commercetools-frontend/application-shell-connectors": "16.15.8",
