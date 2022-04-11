@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@apollo/react-hooks": "4.0.0",
-    "@babel/runtime-corejs3": "7.17.8",
+    "@babel/runtime-corejs3": "7.17.9",
     "@commercetools-frontend/actions-global": "16.16.0",
     "@commercetools-frontend/application-shell-connectors": "16.18.0",
     "@commercetools-frontend/constants": "16.16.0",
@@ -42,7 +42,7 @@
     "qs": "6.10.3"
   },
   "devDependencies": {
-    "@babel/core": "7.17.8",
+    "@babel/core": "7.17.9",
     "@commercetools-frontend/babel-preset-mc-app": "16.17.0",
     "@commercetools-frontend/eslint-config-mc-app": "16.16.4",
     "@commercetools-frontend/jest-preset-mc-app": "20.12.3",
@@ -60,13 +60,13 @@
     "builtin-modules": "3.2.0",
     "cross-env": "7.0.3",
     "enzyme": "3.11.0",
-    "eslint": "8.12.0",
+    "eslint": "8.13.0",
     "eslint-config-airbnb-base": "14.2.1",
     "eslint-config-prettier": "8.5.0",
     "eslint-formatter-pretty": "4.1.0",
     "eslint-plugin-babel": "5.3.1",
     "eslint-plugin-graphql": "4.0.0",
-    "eslint-plugin-import": "2.25.4",
+    "eslint-plugin-import": "2.26.0",
     "eslint-plugin-jest": "23.20.0",
     "eslint-plugin-jest-dom": "3.9.4",
     "eslint-plugin-jsx-a11y": "6.5.1",
