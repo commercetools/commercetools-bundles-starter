@@ -25,7 +25,7 @@
     "deploy:firebase": "yarn compile-html:firebase && firebase deploy"
   },
   "dependencies": {
-    "@apollo/client": "3.5.10",
+    "@apollo/client": "3.6.1",
     "@babel/runtime": "7.17.9",
     "@babel/runtime-corejs3": "7.17.9",
     "@commercetools-frontend/actions-global": "20.12.3",
@@ -42,7 +42,7 @@
     "@testing-library/react-hooks": "7.0.2",
     "@types/prop-types": "15.7.5",
     "@types/react": "16.14.25",
-    "@types/react-dom": "17.0.15",
+    "@types/react-dom": "17.0.16",
     "@types/react-redux": "7.1.24",
     "@types/react-router": "5.1.18",
     "@types/react-router-dom": "5.3.3",
@@ -63,17 +63,17 @@
     "qs": "6.10.3",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-intl": "5.25.0",
+    "react-intl": "5.25.1",
     "react-json-view": "1.21.3",
     "react-redux": "7.2.8",
     "react-router": "5.3.1",
     "react-router-dom": "5.3.1",
-    "redux": "4.1.2",
+    "redux": "4.2.0",
     "yup": "0.32.11"
   },
   "devDependencies": {
-    "@babel/core": "7.17.9",
-    "@babel/plugin-transform-runtime": "7.17.0",
+    "@babel/core": "7.17.10",
+    "@babel/plugin-transform-runtime": "7.17.10",
     "@commercetools-frontend/eslint-config-mc-app": "20.12.3",
     "@commercetools-frontend/jest-preset-mc-app": "20.12.3",
     "@commercetools-frontend/mc-scripts": "20.13.0",
@@ -87,7 +87,7 @@
     "enzyme": "3.11.0",
     "enzyme-matchers": "7.1.2",
     "enzyme-to-json": "3.6.2",
-    "eslint": "8.13.0",
+    "eslint": "8.14.0",
     "eslint-config-airbnb-base": "14.2.1",
     "eslint-config-prettier": "8.5.0",
     "eslint-formatter-pretty": "4.1.0",
@@ -100,7 +100,7 @@
     "eslint-plugin-prefer-object-spread": "1.2.1",
     "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-react": "7.29.4",
-    "eslint-plugin-react-hooks": "4.4.0",
+    "eslint-plugin-react-hooks": "4.5.0",
     "faker": "5.5.3",
     "graphql-tag": "2.12.6",
     "husky": "7.0.4",
@@ -116,6 +116,6 @@
     "stylelint": "13.13.1",
     "stylelint-config-standard": "22.0.0",
     "stylelint-order": "4.1.0",
-    "typescript": "4.6.3"
+    "typescript": "4.6.4"
   }
 }
