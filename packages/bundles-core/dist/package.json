@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@apollo/react-hooks": "4.0.0",
-    "@babel/runtime-corejs3": "7.18.0",
+    "@babel/runtime-corejs3": "7.18.3",
     "@commercetools-frontend/actions-global": "16.16.0",
     "@commercetools-frontend/application-shell-connectors": "16.18.0",
     "@commercetools-frontend/constants": "16.16.0",
@@ -42,7 +42,7 @@
     "qs": "6.10.3"
   },
   "devDependencies": {
-    "@babel/core": "7.18.0",
+    "@babel/core": "7.18.2",
     "@commercetools-frontend/babel-preset-mc-app": "16.17.0",
     "@commercetools-frontend/eslint-config-mc-app": "16.16.4",
     "@commercetools-frontend/jest-preset-mc-app": "20.12.3",
@@ -96,7 +96,7 @@
     "react-router-dom": "5.3.3",
     "redux": "4.2.0",
     "rimraf": "3.0.2",
-    "rollup": "2.74.1",
+    "rollup": "2.75.3",
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-copy": "3.4.0",
     "rollup-plugin-node-builtins": "2.1.2",
@@ -107,7 +107,7 @@
     "stylelint": "13.13.1",
     "stylelint-config-standard": "20.0.0",
     "stylelint-order": "4.1.0",
-    "typescript": "4.6.4"
+    "typescript": "4.7.2"
   },
   "peerDependencies": {
     "@commercetools-frontend/actions-global": "16.x",

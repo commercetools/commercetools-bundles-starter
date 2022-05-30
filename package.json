@@ -20,11 +20,11 @@
     }
   },
   "devDependencies": {
-    "@babel/core": "7.18.0",
-    "@babel/plugin-transform-runtime": "7.18.0",
-    "@babel/runtime": "7.18.0",
-    "@babel/runtime-corejs3": "7.18.0",
-    "@commitlint/cli": "17.0.0",
+    "@babel/core": "7.18.2",
+    "@babel/plugin-transform-runtime": "7.18.2",
+    "@babel/runtime": "7.18.3",
+    "@babel/runtime-corejs3": "7.18.3",
+    "@commitlint/cli": "17.0.1",
     "@commitlint/config-conventional": "17.0.0",
     "husky": "7.0.4",
     "install-peers": "1.0.4",
