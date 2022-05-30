@@ -24,7 +24,7 @@
   "dependencies": {
     "@apollo/react-hooks": "4.0.0",
     "@babel/runtime-corejs3": "7.18.3",
-    "@commercetools-frontend/actions-global": "16.16.0",
+    "@commercetools-frontend/actions-global": "21.6.0",
     "@commercetools-frontend/application-shell-connectors": "16.18.0",
     "@commercetools-frontend/constants": "16.16.0",
     "@commercetools-frontend/ui-kit": "10.47.4",
@@ -110,7 +110,7 @@
     "typescript": "4.7.2"
   },
   "peerDependencies": {
-    "@commercetools-frontend/actions-global": "16.x",
+    "@commercetools-frontend/actions-global": "16.x || 21.x",
     "@commercetools-frontend/application-shell-connectors": "16.x",
     "@commercetools-frontend/constants": "16.x",
     "@commercetools-frontend/ui-kit": "10.x",
