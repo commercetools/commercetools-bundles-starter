@@ -39,7 +39,7 @@
     "lodash-es": "4.17.21",
     "moment": "2.29.3",
     "prop-types": "15.8.1",
-    "qs": "6.10.3"
+    "qs": "6.10.5"
   },
   "devDependencies": {
     "@babel/core": "7.18.2",
@@ -96,7 +96,7 @@
     "react-router-dom": "5.3.3",
     "redux": "4.2.0",
     "rimraf": "3.0.2",
-    "rollup": "2.75.5",
+    "rollup": "2.75.6",
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-copy": "3.4.0",
     "rollup-plugin-node-builtins": "2.1.2",
