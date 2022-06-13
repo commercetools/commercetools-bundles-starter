@@ -31,7 +31,7 @@
     "@babel/runtime-corejs3": "7.18.3",
     "@commercetools-frontend/actions-global": "21.6.0",
     "@commercetools-frontend/application-components": "21.7.0",
-    "@commercetools-frontend/application-shell": "20.13.0",
+    "@commercetools-frontend/application-shell": "21.7.0",
     "@commercetools-frontend/application-shell-connectors": "20.12.3",
     "@commercetools-frontend/assets": "20.12.3",
     "@commercetools-frontend/constants": "20.12.3",
