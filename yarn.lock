@@ -4031,6 +4031,11 @@
   resolved "https://registry.yarnpkg.com/@commercetools-frontend/assets/-/assets-21.8.0.tgz#3199fca3dd5d386483992c7eba2ed73cd0a42652"
   integrity sha512-3aLEMmWSonPDfGJjjgbl+F2Kbt1iLhqQrrCu3VPwOeKCWum9JHW8UQPzQaJyFNKOBMt7IBvkw8Fj2M7/vq9qIw==
 
+"@commercetools-frontend/assets@21.8.1":
+  version "21.8.1"
+  resolved "https://registry.yarnpkg.com/@commercetools-frontend/assets/-/assets-21.8.1.tgz#bb2b18112c32ab7742e072ef8e7be7206080fe23"
+  integrity sha512-4gWZQWl0e+Ijmbq9jKTntEt0KDvT8quVRxlsclUOrTPt03QWu+jqje6UZsGNjVPdnHQoTXuTm+RHaMirzaNBeg==
+
 "@commercetools-frontend/babel-preset-mc-app@20.12.3":
   version "20.12.3"
   resolved "https://registry.yarnpkg.com/@commercetools-frontend/babel-preset-mc-app/-/babel-preset-mc-app-20.12.3.tgz#233799eb12f3cb409c04f502b664bbc5b5eb08e1"
