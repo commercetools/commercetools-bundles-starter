@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.18.6",
-    "@commercetools-frontend/babel-preset-mc-app": "16.17.0",
+    "@commercetools-frontend/babel-preset-mc-app": "21.8.1",
     "@commercetools-frontend/eslint-config-mc-app": "16.16.4",
     "@commercetools-frontend/jest-preset-mc-app": "20.12.3",
     "@kocal/rollup-plugin-graphql": "1.0.0",
