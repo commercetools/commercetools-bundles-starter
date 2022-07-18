@@ -30,7 +30,7 @@ PageUnauthorized.displayName = 'PageUnauthorized';
 
 const ApplicationRoutes = ({ match }) => {
   const canViewProducts = useIsAuthorized({
-    demandedPermissions: [PERMISSIONS.ViewProducts, PERMISSIONS.ManageProducts],
+    demandedPermissions: [PERMISSIONS.View, PERMISSIONS.Manage],
     shouldMatchSomePermissions: true,
   });
 

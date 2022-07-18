@@ -69,7 +69,7 @@ The skeleton includes configuration for both AWS (S3 & CloudFront) and Firebase 
 - [Firebase](https://docs.commercetools.com/custom-applications/deployment/example-deployment-firebase)
 - [AWS - S3 & CloudFront](https://appkit.commercetools.com/deployment/example-aws-s3-cloudfront)
 
-NOTE: Be sure to set the env vars in custom-application-config.json. Update the value for your Merchant Center URL in that config: "mcURL":"..."
+NOTE: Be sure to set the env vars in [custom-application-config.mjs](https://github.com/commercetools/commercetools-bundles-starter/tree/master/packages/bundles-dynamic/custom-application-config.mjs) file. Update the value for your Merchant Center URL in that config: "mcURL":"..."
 
 ## Linting, formatting, and so on
 
