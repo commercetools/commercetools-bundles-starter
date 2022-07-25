@@ -3567,6 +3567,14 @@
     core-js-pure "^3.20.2"
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime-corejs3@^7.18.6":
+  version "7.18.9"
+  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.18.9.tgz#7bacecd1cb2dd694eacd32a91fcf7021c20770ae"
+  integrity sha512-qZEWeccZCrHA2Au4/X05QW5CMdm4VjUDCrGq5gf1ZDcM4hRqreKrtwAn7yci9zfgAS9apvnsFXiGBHBAxZdK9A==
+  dependencies:
+    core-js-pure "^3.20.2"
+    regenerator-runtime "^0.13.4"
+
 "@babel/runtime@7.14.6":
   version "7.14.6"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.14.6.tgz#535203bc0892efc7dec60bdc27b2ecf6e409062d"
@@ -3606,6 +3614,13 @@
   version "7.17.8"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.17.8.tgz#3e56e4aff81befa55ac3ac6a0967349fd1c5bca2"
   integrity sha512-dQpEpK0O9o6lj6oPu0gRDbbnk+4LeHlNcBpspf6Olzt3GIX4P1lWF1gS+pHLDFlaJvbR6q7jCfQ08zA4QJBnmA==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
+"@babel/runtime@^7.18.6":
+  version "7.18.9"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.18.9.tgz#b4fcfce55db3d2e5e080d2490f608a3b9f407f4a"
+  integrity sha512-lkqXDcvlFT5rvEjiu6+QYO+1GXrEHRo2LOtS7E4GtX5ESIZOgepqsZBVIj6Pv+a6zqsya9VCgiK1KAK4BvJDAw==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -4121,6 +4136,14 @@
     "@babel/runtime" "^7.17.9"
     "@babel/runtime-corejs3" "^7.17.9"
 
+"@commercetools-frontend/constants@21.9.0":
+  version "21.9.0"
+  resolved "https://registry.yarnpkg.com/@commercetools-frontend/constants/-/constants-21.9.0.tgz#bcb8ae902599ccb1d3292a84e1442114ead64769"
+  integrity sha512-VTP8R0hQOcL6Tw8AvcKNMbjJxum51D7H0vNjL5t5kLm+Vkw7hchy5jmvYtjycNvzNnEsfSF/phR6dpUPOPpMyw==
+  dependencies:
+    "@babel/runtime" "^7.18.6"
+    "@babel/runtime-corejs3" "^7.18.6"
+
 "@commercetools-frontend/eslint-config-mc-app@20.12.3":
   version "20.12.3"
   resolved "https://registry.yarnpkg.com/@commercetools-frontend/eslint-config-mc-app/-/eslint-config-mc-app-20.12.3.tgz#1e0abe0e8e4c18993766a9d17d8a59c692ff9f91"
@@ -4201,21 +4224,6 @@
     setimmediate "1.0.5"
     unfetch "4.2.0"
 
-"@commercetools-frontend/l10n@20.12.3":
-  version "20.12.3"
-  resolved "https://registry.yarnpkg.com/@commercetools-frontend/l10n/-/l10n-20.12.3.tgz#89b7b1f330935e0522358d70552fb7dc052722cd"
-  integrity sha512-qX5bwEc0+9R7Np68CzJwh5CYZTTOE2T+iRF3641aWBR+nND/VWCwIdjYsZ/L4WPTrS548yXpm5BcittvjGE31Q==
-  dependencies:
-    "@babel/runtime" "7.16.5"
-    "@babel/runtime-corejs3" "7.16.5"
-    "@commercetools-frontend/sentry" "20.12.3"
-    "@emotion/react" "11.7.1"
-    "@types/prop-types" "^15.7.4"
-    "@types/react" "^17.0.37"
-    lodash "4.17.21"
-    moment "^2.29.1"
-    prop-types "15.7.2"
-
 "@commercetools-frontend/l10n@21.8.1":
   version "21.8.1"
   resolved "https://registry.yarnpkg.com/@commercetools-frontend/l10n/-/l10n-21.8.1.tgz#02b2292e3d0c9de374a24b70aa3ec0b79be047f8"
@@ -4229,6 +4237,22 @@
     "@types/react" "^17.0.44"
     lodash "4.17.21"
     moment "^2.29.2"
+    moment-timezone "^0.5.34"
+    prop-types "15.8.1"
+
+"@commercetools-frontend/l10n@21.9.0":
+  version "21.9.0"
+  resolved "https://registry.yarnpkg.com/@commercetools-frontend/l10n/-/l10n-21.9.0.tgz#15eda5784abc70589c2aff104ea939ac745022e2"
+  integrity sha512-bMV1gy2J5y0sBxJMfzcDiXUy8eTe5QieZdhn+IxtdZNXnS9mdKMvNebbuRAFIZGHz4RLSdrw1Vzq6KXEyRKyYw==
+  dependencies:
+    "@babel/runtime" "^7.18.6"
+    "@babel/runtime-corejs3" "^7.18.6"
+    "@commercetools-frontend/sentry" "21.9.0"
+    "@emotion/react" "11.9.3"
+    "@types/prop-types" "^15.7.5"
+    "@types/react" "^17.0.47"
+    lodash "4.17.21"
+    moment "^2.29.4"
     moment-timezone "^0.5.34"
     prop-types "15.8.1"
 
@@ -4449,6 +4473,19 @@
     "@sentry/browser" "6.19.7"
     "@types/prop-types" "^15.7.5"
     "@types/react" "^17.0.44"
+    prop-types "15.8.1"
+
+"@commercetools-frontend/sentry@21.9.0":
+  version "21.9.0"
+  resolved "https://registry.yarnpkg.com/@commercetools-frontend/sentry/-/sentry-21.9.0.tgz#17eafb8a0f5e9163405d842bcac9944b3f59224b"
+  integrity sha512-6ZE7ktsEvPp4IdtxJsaaoGZrOBnR6vRAG0uEVnbGaCkyMRJWydeN98Gd40OmF8aY+OBlKqBsKZUKsrqLIZ6WsA==
+  dependencies:
+    "@babel/runtime" "^7.18.6"
+    "@babel/runtime-corejs3" "^7.18.6"
+    "@commercetools-frontend/constants" "21.9.0"
+    "@sentry/browser" "7.6.0"
+    "@types/prop-types" "^15.7.5"
+    "@types/react" "^17.0.47"
     prop-types "15.8.1"
 
 "@commercetools-frontend/ui-kit@12.2.9":
@@ -8820,6 +8857,16 @@
     "@sentry/utils" "6.19.7"
     tslib "^1.9.3"
 
+"@sentry/browser@7.6.0":
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-7.6.0.tgz#54bcd52747c40b2656d62d53541037a5724f3296"
+  integrity sha512-1gdvV8RtTnNFyc790t49MAgFuHAP43NEZvdQOMw5KFnDwSGYFqfBtvJ8tUm125UPbi2fghBryO9M1gfIWboKUg==
+  dependencies:
+    "@sentry/core" "7.6.0"
+    "@sentry/types" "7.6.0"
+    "@sentry/utils" "7.6.0"
+    tslib "^1.9.3"
+
 "@sentry/core@6.16.1":
   version "6.16.1"
   resolved "https://registry.yarnpkg.com/@sentry/core/-/core-6.16.1.tgz#d9f7a75f641acaddf21b6aafa7a32e142f68f17c"
@@ -8842,6 +8889,16 @@
     "@sentry/utils" "6.19.7"
     tslib "^1.9.3"
 
+"@sentry/core@7.6.0":
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/@sentry/core/-/core-7.6.0.tgz#5e5efd54af7b63957ac4d446fb5a69af33da3e51"
+  integrity sha512-vXIuUZbHVSAXh2xZ3NyXYXqVvVQSbGEpgtQxLutwocvD88JFK6aZqO+WQG69GY1b1fKSeE9faEDDS6WGAi46mQ==
+  dependencies:
+    "@sentry/hub" "7.6.0"
+    "@sentry/types" "7.6.0"
+    "@sentry/utils" "7.6.0"
+    tslib "^1.9.3"
+
 "@sentry/hub@6.16.1":
   version "6.16.1"
   resolved "https://registry.yarnpkg.com/@sentry/hub/-/hub-6.16.1.tgz#526e19db51f4412da8634734044c605b936a7b80"
@@ -8858,6 +8915,15 @@
   dependencies:
     "@sentry/types" "6.19.7"
     "@sentry/utils" "6.19.7"
+    tslib "^1.9.3"
+
+"@sentry/hub@7.6.0":
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/@sentry/hub/-/hub-7.6.0.tgz#69a0d11e50ee61f3f93665948c4acbe56a9ce676"
+  integrity sha512-TbieNZInpnR5STXykT1zXoKVAsm8ju1RZyzMqYR8nzURbjlMVVEzFRglNY1Ap5MRkbEuYpAc6zUvgLQe8b6Q3w==
+  dependencies:
+    "@sentry/types" "7.6.0"
+    "@sentry/utils" "7.6.0"
     tslib "^1.9.3"
 
 "@sentry/minimal@6.16.1":
@@ -8888,6 +8954,11 @@
   resolved "https://registry.yarnpkg.com/@sentry/types/-/types-6.19.7.tgz#c6b337912e588083fc2896eb012526cf7cfec7c7"
   integrity sha512-jH84pDYE+hHIbVnab3Hr+ZXr1v8QABfhx39KknxqKWr2l0oEItzepV0URvbEhB446lk/S/59230dlUUIBGsXbg==
 
+"@sentry/types@7.6.0":
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-7.6.0.tgz#7352bcc5621177ceefb18733d0a6b0cdb0307822"
+  integrity sha512-POimbDwr9tmHSKksJTXe5VQpvjkFO4/UWUptigwqf8684rkS7Ie2BT2uyp5GD2EgYFf0BwUOWi98FTYTvUGT+Q==
+
 "@sentry/utils@6.16.1":
   version "6.16.1"
   resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-6.16.1.tgz#1b9e14c2831b6e8b816f7021b9876133bf2be008"
@@ -8902,6 +8973,14 @@
   integrity sha512-z95ECmE3i9pbWoXQrD/7PgkBAzJYR+iXtPuTkpBjDKs86O3mT+PXOT3BAn79w2wkn7/i3vOGD2xVr1uiMl26dA==
   dependencies:
     "@sentry/types" "6.19.7"
+    tslib "^1.9.3"
+
+"@sentry/utils@7.6.0":
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-7.6.0.tgz#50b44fd9b06686a358ef2c7c0fd3b80970e1f9ee"
+  integrity sha512-p0Byi6hgawp/sBMY88RY8OmkiAR2jxbjnl8gSo+y3YEu+KeXBUxXMBsI7YeW+1lSb6z8DGhUAOBszTeI4wAr2w==
+  dependencies:
+    "@sentry/types" "7.6.0"
     tslib "^1.9.3"
 
 "@sheerun/mutationobserver-shim@0.3.3":
@@ -9635,6 +9714,15 @@
   version "17.0.45"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.45.tgz#9b3d5b661fd26365fefef0e766a1c6c30ccf7b3f"
   integrity sha512-YfhQ22Lah2e3CHPsb93tRwIGNiSwkuz1/blk4e6QrWS0jQzCSNbGLtOEYhPg02W0yGTTmpajp7dCTbBAMN3qsg==
+  dependencies:
+    "@types/prop-types" "*"
+    "@types/scheduler" "*"
+    csstype "^3.0.2"
+
+"@types/react@^17.0.47":
+  version "17.0.47"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.47.tgz#4ee71aaf4c5a9e290e03aa4d0d313c5d666b3b78"
+  integrity sha512-mk0BL8zBinf2ozNr3qPnlu1oyVTYq+4V7WA76RgxUAtf0Em/Wbid38KN6n4abEkvO4xMTBWmnP1FtQzgkEiJoA==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -19412,7 +19500,7 @@ moment-timezone@0.5.34, moment-timezone@^0.5.34:
   dependencies:
     moment ">= 2.9.0"
 
-moment@2.29.4:
+moment@2.29.4, moment@^2.29.4:
   version "2.29.4"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
   integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==
