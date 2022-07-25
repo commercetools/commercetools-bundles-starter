@@ -34,7 +34,7 @@
     "@commercetools-frontend/application-shell-connectors": "21.8.1",
     "@commercetools-frontend/assets": "21.8.1",
     "@commercetools-frontend/constants": "20.12.3",
-    "@commercetools-frontend/i18n": "20.13.0",
+    "@commercetools-frontend/i18n": "21.9.0",
     "@commercetools-frontend/l10n": "20.12.3",
     "@commercetools-frontend/permissions": "20.12.3",
     "@commercetools-frontend/sdk": "20.12.3",
