@@ -23,6 +23,7 @@ const AsyncApplicationRoutes = React.lazy(() =>
 // in order to catch possible errors on rendering/mounting.
 setupGlobalErrorListener();
 
+// TODO: Refactor this code in a better way to fetch mcApiUrl and projectKey.
 const { mcApiUrl } = window.app
 const projectKey = selectProjectKeyFromUrl()
 

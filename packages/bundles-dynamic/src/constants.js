@@ -1,6 +1,6 @@
 import { entryPointUriPathToPermissionKeys } from '@commercetools-frontend/application-shell/ssr';
 
-const ROOT_PATH = 'dynamic-bundle-manager';
+const ROOT_PATH = 'bundles-dynamic';
 const BUNDLE_PRODUCT_TYPE = 'dynamic-bundle-parent';
 const BUNDLE_CART_CUSTOM_TYPE = 'dynamic-bundle-parent-child-link';
 const MASTER_VARIANT_ID = 1;

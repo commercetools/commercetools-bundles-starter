@@ -1,4 +1,4 @@
-import {entryPointUriPath, PERMISSIONS} from "./src/constants";
+import { entryPointUriPath, PERMISSIONS } from "./src/constants";
 
 const config = {
     name: "Dynamic bundles",
@@ -13,31 +13,15 @@ const config = {
             initialProjectKey: ""
         }
     },
-    additionalEnv: {
-        mcURL:"mc.us-central1.gcp.commercetools.com"
+    oAuthScopes: {
+        view: ["view_products"],
+        manage: ["manage_products"]
     },
+    icon: '${path:@commercetools-frontend/assets/application-icons/rocket.svg}',
     mainMenuLink: {
-        key: "bundles-dynamic",
-        uriPath: "dynamic-bundle-manager",
-        icon: "RocketIcon",
-        permissions: [PERMISSIONS.View, PERMISSIONS.Manage],
-        featureToggle: null,
-        submenu: [],
-        defaultLabel: "Custom Configurations",
-        labelAllLocales: [
-            {
-                locale: "en",
-                value: "Dynamic Bundles"
-            },
-            {
-                locale: "de",
-                value: "Dynamic Bundles"
-            },
-            {
-                locale: "es",
-                value: "Dynamic Bundles"
-            }
-        ]
+        defaultLabel: "Dynamic Bundles",
+        permissions: [PERMISSIONS.View],
+        labelAllLocales: []
     }
 }
 

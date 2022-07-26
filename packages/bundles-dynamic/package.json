@@ -1,12 +1,13 @@
 {
   "name": "@commercetools-us-ps/mc-app-bundles-dynamic",
   "version": "0.0.1",
-  "description": "",
+  "description": "Dynamic bundles custom application",
   "private": true,
   "scripts": {
     "build": "mc-scripts build",
     "start": "mc-scripts start",
-    "start:prod:local": "NODE_ENV=production MC_APP_ENV=development dotenv -- mc-http-server --use-local-assets",
+    "compile-html:local": "mc-scripts compile-html --transformer @commercetools-frontend/mc-dev-authentication/transformer-local.js",
+    "start:prod:local": "yarn compile-html:local && mc-scripts serve",
     "compile-html:aws": "mc-scripts compile-html --headers=$(pwd)/production-aws.headers.json --config=$(pwd)/production-aws.env.json --use-local-assets --transformer $(pwd)/config/transformer-aws.js",
     "compile-html:firebase": "cross-env FIREBASE_TARGET=dynamic-bundle-manager mc-scripts compile-html --headers=$(pwd)/production-firebase.headers.json --config=$(pwd)/production-firebase.env.json --use-local-assets --transformer $(pwd)/config/transformer-firebase.js",
     "precommit": "lint-staged",

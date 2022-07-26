@@ -3,8 +3,6 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
-import LockedDiamondSVG from '@commercetools-frontend/assets/images/locked-diamond.svg';
-import { MaintenancePageLayout } from '@commercetools-frontend/application-components';
 import {
   BundleProvider,
   PathProvider,
@@ -16,15 +14,6 @@ import CreateBundleForm from './components/create-bundle-form';
 import StaticBundleDetails from './components/bundle-details';
 import { BUNDLE_PRODUCT_TYPE, ROOT_PATH } from './constants';
 import { messages } from './messages';
-
-const PageUnauthorized = () => (
-  <MaintenancePageLayout
-    imageSrc={LockedDiamondSVG}
-    title={<FormattedMessage {...messages.accessDeniedTitle} />}
-    paragraph1={<FormattedMessage {...messages.accessDeniedMessage} />}
-  />
-);
-PageUnauthorized.displayName = 'PageUnauthorized';
 
 const ApplicationRoutes = () => {
   const match = useRouteMatch()
