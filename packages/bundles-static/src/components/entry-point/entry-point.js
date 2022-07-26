@@ -23,33 +23,33 @@ const AsyncApplicationRoutes = React.lazy(() =>
 // in order to catch possible errors on rendering/mounting.
 setupGlobalErrorListener();
 
-  const { mcApiUrl } = window.app
-  const projectKey = selectProjectKeyFromUrl()
+const { mcApiUrl } = window.app
+const projectKey = selectProjectKeyFromUrl()
 
-  let headers = {
-      Accept: 'application/json',
-  }
+let headers = {
+  Accept: 'application/json',
+}
 
-  if ( window.app.env === 'development' )
+if ( window.app.env === 'development' )
   headers.Authorization = `Bearer ${window.sessionStorage.getItem('sessionToken')}`
 
-  const restLink = new RestLink({
-    uri: `${mcApiUrl}/proxy/ctp/${projectKey}`,
-    headers: headers,
-    credentials: 'include',
-  });
+const restLink = new RestLink({
+  uri: `${mcApiUrl}/proxy/ctp/${projectKey}`,
+  headers: headers,
+  credentials: 'include',
+});
 
-  const apolloClient = createApolloClient({
-    cache: {
-      // Your custom configuration, according to the Apollo cache documentation.
-      // https://www.apollographql.com/docs/react/caching/cache-configuration/
-    },
-  });
+const apolloClient = createApolloClient({
+  cache: {
+    // Your custom configuration, according to the Apollo cache documentation.
+    // https://www.apollographql.com/docs/react/caching/cache-configuration/
+  },
+});
 
-  const client = new ApolloClient({
-    link: ApolloLink.from([restLink, apolloClient.link]),
-    cache: new InMemoryCache(),
-  });
+const client = new ApolloClient({
+  link: ApolloLink.from([restLink, apolloClient.link]),
+  cache: new InMemoryCache(),
+});
 
 
 const EntryPoint = () => (
