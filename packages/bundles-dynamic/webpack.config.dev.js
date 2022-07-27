@@ -1,5 +1,5 @@
 const path = require('path');
-const createWebpackConfigForDevelopment = require('@commercetools-frontend/mc-scripts/config/create-webpack-config-for-development');
+const webpack = require('@commercetools-frontend/mc-scripts/webpack');
 
 const distPath = path.resolve(__dirname, 'dist');
 const entryPoint = path.resolve(__dirname, 'src/index.js');
@@ -9,7 +9,7 @@ const sourceFolders = [
   path.resolve(__dirname, '../bundles-core'),
 ];
 
-module.exports = createWebpackConfigForDevelopment({
+module.exports = webpack.createWebpackConfigForDevelopment({
   distPath,
   entryPoint,
   sourceFolders,
