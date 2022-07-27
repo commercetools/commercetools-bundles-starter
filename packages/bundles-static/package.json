@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-us-ps/bundles-static",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Static bundles custom application",
   "private": true,
   "scripts": {
