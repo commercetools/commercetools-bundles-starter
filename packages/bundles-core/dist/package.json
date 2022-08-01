@@ -42,7 +42,7 @@
     "qs": "6.11.0"
   },
   "devDependencies": {
-    "@babel/core": "7.18.9",
+    "@babel/core": "7.18.10",
     "@commercetools-frontend/babel-preset-mc-app": "21.9.0",
     "@commercetools-frontend/eslint-config-mc-app": "16.16.4",
     "@commercetools-frontend/jest-preset-mc-app": "20.12.3",
@@ -60,7 +60,7 @@
     "builtin-modules": "3.3.0",
     "cross-env": "7.0.3",
     "enzyme": "3.11.0",
-    "eslint": "8.20.0",
+    "eslint": "8.21.0",
     "eslint-config-airbnb-base": "14.2.1",
     "eslint-config-prettier": "8.5.0",
     "eslint-formatter-pretty": "4.1.0",
