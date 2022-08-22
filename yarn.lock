@@ -5179,6 +5179,11 @@
   resolved "https://registry.yarnpkg.com/@commercetools/api-request-builder/-/api-request-builder-5.6.3.tgz#d87c4961fec95a9186dd59fcd0256ea56cd89772"
   integrity sha512-Oazb2Exuc4RR+p86m1xFkruQscX/hakejCSiUrxOmeqMKY5CBeFXXVAlfpDTjxgZ0nXgkPWGWye1FHCXlSRLOw==
 
+"@commercetools/api-request-builder@6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@commercetools/api-request-builder/-/api-request-builder-6.0.0.tgz#7c0b8104f4d3655ac8bdb79dee3087d747018c0b"
+  integrity sha512-4QhfpWnW161XaRs/2o9h4ZVr21R31vYNHmpKbDh2Dp+lFR9IqdwiafP0fqfLzI+Xg6vTrA2s5coyxkh0qj7Gng==
+
 "@commercetools/enzyme-extensions@5.0.0":
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/@commercetools/enzyme-extensions/-/enzyme-extensions-5.0.0.tgz#0ba0841b02384069ae60e76165d65ee170874fe9"
