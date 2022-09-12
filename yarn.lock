@@ -5287,6 +5287,11 @@
   resolved "https://registry.yarnpkg.com/@commercetools/sdk-middleware-http/-/sdk-middleware-http-6.2.0.tgz#8e51107bea9d3a7003ee653e1ed9e97d4d1171b8"
   integrity sha512-3E1nV+awhP0eeFuyChxgbaPF5CWWH0PvGZO9FtNl/mirlYjGbXAHO4Ql5tG4/G+CywlXI9XVA9wKSwxG0kgwgA==
 
+"@commercetools/sdk-middleware-http@7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@commercetools/sdk-middleware-http/-/sdk-middleware-http-7.0.0.tgz#e36f680566a7eca3f2bfc872536344956f88a440"
+  integrity sha512-5M9V5xC6XbG/XQyg5gcyTu+p7vOMkK3fekZ+iW/htIfCIpQe1xxWYYyDqcq0eEooAMbkpkJ5tMzH4UXHrMDT/g==
+
 "@commercetools/sdk-middleware-queue@2.1.4":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@commercetools/sdk-middleware-queue/-/sdk-middleware-queue-2.1.4.tgz#d8b162ff83fc553cc5abef8599571389874983d6"
