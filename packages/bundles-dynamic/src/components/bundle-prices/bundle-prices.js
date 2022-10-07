@@ -16,8 +16,7 @@ import messages from './messages';
 
 const BundlePrices = ({ match, id, categories, dynamicPrice }) => {
   const intl = useIntl();
-  const { environment, project } = useApplicationContext();
-  const { mcURL } = environment;
+  const { project } = useApplicationContext();
   const { currencies } = project;
   const [currency, setCurrency] = useState(currencies[0]);
   const [country, setCountry] = useState(null);
@@ -25,7 +24,7 @@ const BundlePrices = ({ match, id, categories, dynamicPrice }) => {
   const [channel, setChannel] = useState(null);
   const [date, setDate] = useState('');
 
-  const MC_URL = `https://${mcURL}/${match.params.projectKey}`;
+  const MC_URL = `https://${window.location.origin}/${match.params.projectKey}`;
   const MC_PRICE_URL = `${MC_URL}/products/${id}/variants/${MASTER_VARIANT_ID}/prices`;
 
   function viewPrices() {
@@ -83,7 +82,7 @@ const BundlePrices = ({ match, id, categories, dynamicPrice }) => {
         setDate={setDate}
       />
       <PricesTable
-        mcUrl={MC_URL}
+        mcUrl={window.location.origin}
         categories={categories}
         currency={currency}
         country={country}

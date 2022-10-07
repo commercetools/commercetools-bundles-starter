@@ -69,7 +69,7 @@ The skeleton includes configuration for both AWS (S3 & CloudFront) and Firebase 
 - [Firebase](https://docs.commercetools.com/custom-applications/deployment/example-deployment-firebase)
 - [AWS - S3 & CloudFront](https://appkit.commercetools.com/deployment/example-aws-s3-cloudfront)
  
- NOTE: Be sure to set the env vars for the placeholders in [custom-application-config.mjs](https://github.com/commercetools/commercetools-bundles-starter/tree/master/packages/bundles-static/custom-application-config.mjs) in the below files respectively,
+ NOTE: Be sure to set the env vars for the placeholders in [custom-application-config.mjs](https://github.com/commercetools/commercetools-bundles-starter/tree/master/packages/bundles-static/custom-application-config.mjs) and set values in the below files respectively,
 - For firebase env variables [env.firebase](.env.firebase)
 - For AWS env variables [env.aws](.env.aws)
 
