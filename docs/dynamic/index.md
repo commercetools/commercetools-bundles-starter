@@ -253,6 +253,9 @@ re-selected and saved on the bundle with the updated values.
 
 #### Sample Bundle
 
+<details>
+  <summary>Click to expand</summary>
+   
 ```json
 {
   "id": "fba0d3d7-40f8-494e-8159-7efad907299e",
@@ -476,6 +479,7 @@ re-selected and saved on the bundle with the updated values.
   "lastModifiedAt": "2020-07-31T14:19:21.668Z"
 }
 ```
+</details>
 
 ## Configuration
 
