@@ -11,7 +11,7 @@ import messages from './messages';
 const project = {
   currencies: Array.from({ length: 3 }, () => faker.finance.currencyCode()),
 };
-const mcURL = 'mc.us-central1.gcp.commercetools.com'
+const mcURL = 'mc.europe-west1.gcp.commercetools.com'
 const mocks = {
   match: {
     params: {
@@ -23,8 +23,6 @@ const mocks = {
 };
 const mcPriceUrl = `https://${mcURL}/${mocks.match.params.projectKey}/products/${mocks.id}/variants/${MASTER_VARIANT_ID}/prices`;
 
-global.open = jest.fn();
-
 const TITLE = '[data-testid="price-title"]';
 const SUBTITLE = '[data-testid="price-subtitle"]';
 const ACTIONS = '[data-testid="price-actions"]';
@@ -34,9 +32,10 @@ const loadBundlePrices = (dynamicPrice = faker.datatype.boolean()) =>
 
 describe('bundle prices', () => {
   beforeEach(() => {
+    global.open = jest.fn();
     jest
       .spyOn(AppContext, 'useApplicationContext')
-      .mockImplementation(() => ({ project, environment }));
+      .mockImplementation(() => ({ project }));
   });
 
   it('should render price table with bundle categories', () => {

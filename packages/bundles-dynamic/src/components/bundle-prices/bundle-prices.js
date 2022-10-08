@@ -24,7 +24,7 @@ const BundlePrices = ({ match, id, categories, dynamicPrice }) => {
   const [channel, setChannel] = useState(null);
   const [date, setDate] = useState('');
 
-  const MC_URL = `https://${window.location.origin}/${match.params.projectKey}`;
+  const MC_URL = `${window.location.origin}/${match.params.projectKey}`;
   const MC_PRICE_URL = `${MC_URL}/products/${id}/variants/${MASTER_VARIANT_ID}/prices`;
 
   function viewPrices() {

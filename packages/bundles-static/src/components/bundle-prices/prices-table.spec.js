@@ -5,7 +5,7 @@ import faker from 'faker';
 import { omit } from 'lodash';
 import { FormattedDate } from 'react-intl';
 import * as AppContext from '@commercetools-frontend/application-shell-connectors';
-import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
+import {GRAPHQL_TARGETS, NO_VALUE_FALLBACK} from '@commercetools-frontend/constants';
 import { DataTable } from '@commercetools-frontend/ui-kit';
 import { SORT_OPTIONS } from '../../../../bundles-core/components/constants';
 import { generateProduct } from '../../test-util';
@@ -103,6 +103,9 @@ describe('prices table', () => {
     expect(useQuery).toHaveBeenCalledWith(GetProductPrices, {
       variables,
       fetchPolicy: 'no-cache',
+      context: {
+        target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
+      },
     });
   });
 
@@ -134,6 +137,9 @@ describe('prices table', () => {
     expect(useQuery).toHaveBeenCalledWith(GetProductPrices, {
       variables: omit(variables, 'country'),
       fetchPolicy: 'no-cache',
+      context: {
+        target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
+      },
     });
   });
 
@@ -143,6 +149,9 @@ describe('prices table', () => {
     expect(useQuery).toHaveBeenCalledWith(GetProductPrices, {
       variables: omit(variables, 'customerGroup'),
       fetchPolicy: 'no-cache',
+      context: {
+        target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
+      },
     });
   });
 
@@ -152,6 +161,9 @@ describe('prices table', () => {
     expect(useQuery).toHaveBeenCalledWith(GetProductPrices, {
       variables: omit(variables, 'channel'),
       fetchPolicy: 'no-cache',
+      context: {
+        target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
+      },
     });
   });
 
@@ -161,6 +173,9 @@ describe('prices table', () => {
     expect(useQuery).toHaveBeenCalledWith(GetProductPrices, {
       variables: omit(variables, 'date'),
       fetchPolicy: 'no-cache',
+      context: {
+        target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
+      },
     });
   });
 

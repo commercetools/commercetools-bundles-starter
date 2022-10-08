@@ -19,8 +19,10 @@ const ApplicationRoutes = () => {
   const match = useRouteMatch()
   const { data, loading, error } = useQuery(GetBundleProductType, {
     variables: {
-      target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
       key: BUNDLE_PRODUCT_TYPE,
+    },
+    context: {
+      target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
     },
   });
 

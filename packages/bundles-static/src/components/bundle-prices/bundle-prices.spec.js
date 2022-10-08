@@ -10,7 +10,7 @@ import BundlePrices from './bundle-prices';
 const project = {
   currencies: Array.from({ length: 3 }, () => faker.finance.currencyCode()),
 };
-const mcURL = 'mc.us-central1.gcp.commercetools.com';
+const mcURL = 'mc.europe-west1.gcp.commercetools.com';
 const mocks = {
   match: {
     params: {
@@ -21,17 +21,16 @@ const mocks = {
 };
 const mcPriceUrl = `https://${mcURL}/${mocks.match.params.projectKey}/products/${mocks.bundle.id}/variants/${MASTER_VARIANT_ID}/prices`;
 
-global.open = jest.fn();
-
 const loadBundlePrices = () => shallow(<BundlePrices {...mocks} />);
 
 describe('bundle prices', () => {
   let wrapper;
 
   beforeEach(() => {
+    global.open = jest.fn();
     jest
       .spyOn(AppContext, 'useApplicationContext')
-      .mockImplementation(() => ({ project, environment }));
+      .mockImplementation(() => ({ project }));
     wrapper = loadBundlePrices();
   });
 

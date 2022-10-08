@@ -49,12 +49,14 @@ describe('bundle details', () => {
     loadBundleDetails();
     expect(useQuery).toHaveBeenCalledWith(GetBundle, {
       variables: {
-        target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
         id: mocks.match.params.bundleId,
         locale: dataLocale,
         currency: project.currencies[0],
       },
       fetchPolicy: 'no-cache',
+      context: {
+        target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
+      },
     });
   });
 

@@ -25,10 +25,12 @@ const BundleDetails = ({ match, transformResults, headers, container }) => {
 
   const { data, error, loading, refetch } = useQuery(GetBundle, {
     variables: {
-      target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
       id: match.params.bundleId,
       locale: dataLocale,
       currency: project.currencies[0],
+    },
+    context: {
+      target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
     },
     fetchPolicy: 'no-cache',
   });
