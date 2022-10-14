@@ -1,6 +1,0 @@
-node_modules
-coverage
-.terraform
-*.tfstate*
-*.tfvars
-.DS_Store

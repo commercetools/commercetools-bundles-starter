@@ -3,7 +3,11 @@ coverage
 .terraform
 *.tfstate*
 *.tfvars
+.idea
 
 .DS_Store
 
 dist/
+
+packages/bundles-dynamic/public
+packages/bundles-static/public
