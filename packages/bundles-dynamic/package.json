@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-us-ps/mc-app-bundles-dynamic",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Dynamic bundles custom application",
   "private": true,
   "scripts": {
