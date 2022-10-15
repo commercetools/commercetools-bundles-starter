@@ -1,9 +1,3 @@
----
-layout: default
-title: Static Bundles
-nav_order: 2
----
-
 # Static Bundles
 
 ## Table of contents
@@ -60,7 +54,7 @@ This process is achieved by creating a new product with a specific
 [type](https://docs.commercetools.com/http-api-projects-productTypes) that
 references all the items within the bundle. On adding this new item to the cart,
 an
-[API extension](https://github.com/commercetools/platform-extension-static-bundles)
+[API extension](https://github.com/commercetools/commercetools-bundles-starter/tree/master/packages/platform-extension-static-bundles)
 is executed for cart requests to manage the child items during checkout. The
 final order includes the bundle items with pricing and a list of child line
 items for fulfillment.
@@ -105,7 +99,7 @@ the static bundles within the commercetools project.
   [product projections search](https://docs.commercetools.com/http-api-projects-products-search)
 - Filter
   - By bundle category (must be set on bundle from Merchant Center Products
-    application: `https://mc.us-central1.gcp.commercetools.com/{projectKey}/products/{bundleId}`)
+    application. Ex: `https://mc.us-central1.gcp.commercetools.com/{projectKey}/products/{bundleId}`)
   - By product variant within bundle
 
 ### Bundle Creation
@@ -205,6 +199,9 @@ values.
 
 #### Sample Bundle
 
+<details>
+  <summary>Click to expand</summary>
+   
 ```json
 {
   "id": "c7e3e38e-870d-4359-8fbf-1cc4b4c53eae",
@@ -497,10 +494,11 @@ values.
 }
 ```
 
+</details>
+
 ## Configuration
 
-A
-[terraform script](https://github.com/commercetools/platform-extension-static-bundles#terraform)
+A [terraform script](https://github.com/commercetools/platform-extension-static-bundles#terraform)
 initializes the commercetools project for using static bundles. Prior to using
 static bundles, this terraform script must be executed against the commercetools
 project and will deploy:
@@ -529,11 +527,9 @@ application:
 yarn start
 ```
 
-If this is the first time running the application locally, create an `env.json`
-file at the static bundles root directory using `env.local.json` as an example.
+If this is the first time running the application locally, open an [.env.local](packages/bundles-static/.env.local) file.
 Based on your [region](https://docs.commercetools.com/http-api.html#regions),
-you may find it necessary to modify the values of `frontendHost`, `mcApiUrl`,
-and `location`.
+you may find it necessary to modify the values in the env file.
 
 ### Troubleshooting
 
@@ -644,17 +640,12 @@ with webpack:
 yarn build
 ```
 
-The application includes configuration for both AWS (S3 & CloudFront) and
-Firebase serverless deployments built with `mc-script compile-html`.
+Please check for deployment examples documentation [here](https://docs.commercetools.com/custom-applications/deployment-examples).
+ 
+ NOTE: Be sure to set the env vars for the placeholders in [custom-application-config.mjs](https://github.com/commercetools/commercetools-bundles-starter/tree/master/packages/bundles-static/custom-application-config.mjs).
+- Example: For AWS deployment, env variables can be set using the file [env.aws](./../../packages/bundles-static/.env.aws). For other deployments, duplicate the file and set values accordingly.
 
-- [Firebase](https://appkit.commercetools.com/deployment/example-firebase):
-  `yarn compile-html:firebase`
-- [AWS - S3 & CloudFront](https://appkit.commercetools.com/deployment/example-aws-s3-cloudfront):
-  `yarn compile-html:aws`
-
-For either deployment option, the corresponding `production-{cloud}.env.json`
-and `production-{cloud}.headers.json` files must be modified with values that
-match your deployment environment.
+For more information on how to use .env files, check [official documentation](https://docs.commercetools.com/custom-applications/api-reference/cli#using-dotenv-files).
 
 ### Registration with Merchant Center
 

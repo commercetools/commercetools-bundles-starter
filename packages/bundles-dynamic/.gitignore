@@ -1,8 +1,0 @@
-node_modules/
-dist/
-coverage/
-public/
-csp.json
-.firebase/
-firebase.json
-lambda.js

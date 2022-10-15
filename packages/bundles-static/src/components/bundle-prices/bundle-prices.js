@@ -16,8 +16,7 @@ import PricesTable from './prices-table';
 
 const BundlePrices = ({ match, bundle }) => {
   const intl = useIntl();
-  const { environment, project } = useApplicationContext();
-  const { mcURL } = environment;
+  const { project } = useApplicationContext();
   const { currencies } = project;
   const [currency, setCurrency] = useState(currencies[0]);
   const [country, setCountry] = useState(null);
@@ -26,7 +25,7 @@ const BundlePrices = ({ match, bundle }) => {
   const [date, setDate] = useState('');
 
   const getMcPriceUrl = (productId, variantId) =>
-    `https://${mcURL}/${match.params.projectKey}/products/${productId}/variants/${variantId}/prices`;
+    `${window.location.origin}/${match.params.projectKey}/products/${productId}/variants/${variantId}/prices`;
 
   function viewPrices() {
     window.open(`${getMcPriceUrl(bundle.id, MASTER_VARIANT_ID)}`, '_blank');

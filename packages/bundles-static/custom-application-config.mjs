@@ -3,14 +3,14 @@ import { entryPointUriPath, PERMISSIONS } from "./src/constants";
 const config = {
     name: "Static bundles",
     entryPointUriPath: entryPointUriPath,
-    cloudIdentifier: "gcp-us",
+    cloudIdentifier: "${env:CLOUD_IDENTIFIER}",
     env: {
         production: {
-            applicationId: "",
-            url: "",
+            applicationId: "${env:APPLICATION_ID}",
+            url: "${env:APPLICATION_URL}",
         },
         development: {
-            initialProjectKey: ""
+            initialProjectKey: "${env:INITIAL_PROJECT_KEY}"
         }
     },
     oAuthScopes: {

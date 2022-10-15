@@ -53,9 +53,12 @@ describe('price filters', () => {
     loadPriceFilters();
     expect(useQuery).toHaveBeenCalledWith(GetPriceFilters, {
       variables: {
-        target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
         locale: dataLocale,
       },
+      context: {
+        target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
+      },
+
     });
   });
 

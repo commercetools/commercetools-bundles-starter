@@ -60,6 +60,9 @@ const SelectVariantImagesModal = ({
       skus,
     },
     fetchPolicy: 'no-cache',
+    context: {
+      target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
+    },
   });
   const [addImages] = useMutation(EditBundle, {
     variables: { target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM, id, version },

@@ -20,7 +20,13 @@
   },
   "productType": {
     "typeId": "product-type",
-    "id": "2d220c24-b61b-4d71-a14c-0483e0d6f7f6"
+    "id": "cfd5401b-5242-4ef7-9f95-892de99a3110"
+  },
+  "name": {
+    "en-US": "SD Card"
+  },
+  "slug": {
+    "en-US": "sd-card"
   },
   "catalogs": [],
   "masterData": {

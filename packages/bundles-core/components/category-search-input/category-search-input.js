@@ -31,9 +31,11 @@ const CategorySearchInput = ({
   const { refetch } = useQuery(CategorySearch, {
     skip: true,
     variables: {
-      target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
       limit: 20,
       offset: 0,
+    },
+    context: {
+      target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
     },
   });
   const { languages } = project;

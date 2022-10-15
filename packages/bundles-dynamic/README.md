@@ -63,13 +63,14 @@ $ yarn build
 
 ### Deployment
 
-The skeleton includes configuration for both AWS (S3 & CloudFront) and Firebase serverless deployments built with 
-`mc-script compile-html`. 
+The production deployments can be built with `mc-script compile-html`. 
 
-- [Firebase](https://docs.commercetools.com/custom-applications/deployment/example-deployment-firebase)
-- [AWS - S3 & CloudFront](https://appkit.commercetools.com/deployment/example-aws-s3-cloudfront)
+Please check for deployment examples documentation [here](https://docs.commercetools.com/custom-applications/deployment-examples).
+ 
+ NOTE: Be sure to set the env vars for the placeholders in [custom-application-config.mjs](https://github.com/commercetools/commercetools-bundles-starter/tree/master/packages/bundles-dynamic/custom-application-config.mjs).
+- Example: For AWS deployment, env variables can be set using the file [env.aws](.env.aws). For other deployments, duplicate the file and set values accordingly.
 
-NOTE: Be sure to set the env vars in [custom-application-config.mjs](https://github.com/commercetools/commercetools-bundles-starter/tree/master/packages/bundles-dynamic/custom-application-config.mjs) file. Update the value for your Merchant Center URL in that config: "mcURL":"..."
+For more information on how to use .env files, check [official documentation](https://docs.commercetools.com/custom-applications/api-reference/cli#using-dotenv-files).
 
 ## Linting, formatting, and so on
 

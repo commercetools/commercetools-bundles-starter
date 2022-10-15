@@ -11,9 +11,7 @@ import messages from './messages';
 const project = {
   currencies: Array.from({ length: 3 }, () => faker.finance.currencyCode()),
 };
-const environment = {
-  mcURL: 'mc.us-central1.gcp.commercetools.com',
-};
+const mcURL = 'mc.europe-west1.gcp.commercetools.com'
 const mocks = {
   match: {
     params: {
@@ -23,9 +21,7 @@ const mocks = {
   id: faker.datatype.uuid(),
   categories: Array.from({ length: 3 }).map(generateCategoryAttributes),
 };
-const mcPriceUrl = `https://${environment.mcURL}/${mocks.match.params.projectKey}/products/${mocks.id}/variants/${MASTER_VARIANT_ID}/prices`;
-
-global.open = jest.fn();
+const mcPriceUrl = `https://${mcURL}/${mocks.match.params.projectKey}/products/${mocks.id}/variants/${MASTER_VARIANT_ID}/prices`;
 
 const TITLE = '[data-testid="price-title"]';
 const SUBTITLE = '[data-testid="price-subtitle"]';
@@ -36,9 +32,10 @@ const loadBundlePrices = (dynamicPrice = faker.datatype.boolean()) =>
 
 describe('bundle prices', () => {
   beforeEach(() => {
+    global.open = jest.fn();
     jest
       .spyOn(AppContext, 'useApplicationContext')
-      .mockImplementation(() => ({ project, environment }));
+      .mockImplementation(() => ({ project }));
   });
 
   it('should render price table with bundle categories', () => {

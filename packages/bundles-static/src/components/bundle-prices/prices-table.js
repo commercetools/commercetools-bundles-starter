@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { identity, pickBy } from 'lodash';
 import { FormattedDate, FormattedMessage, FormattedNumber } from 'react-intl';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
-import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
+import {GRAPHQL_TARGETS, NO_VALUE_FALLBACK} from '@commercetools-frontend/constants';
 import { Spacings, DataTable, Text } from '@commercetools-frontend/ui-kit';
 import { SORT_OPTIONS } from '../../../../bundles-core/components/constants';
 import { getSkus } from '../../util';
@@ -66,6 +66,9 @@ const PricesTable = ({
   const { data, loading, error } = useQuery(GetProductPrices, {
     variables,
     fetchPolicy: 'no-cache',
+    context: {
+      target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
+    },
   });
 
   function renderItem(row, columnKey) {
