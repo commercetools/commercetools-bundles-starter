@@ -5153,10 +5153,10 @@
   resolved "https://registry.yarnpkg.com/@commercetools/sdk-middleware-queue/-/sdk-middleware-queue-2.1.4.tgz#d8b162ff83fc553cc5abef8599571389874983d6"
   integrity sha512-8TxeUb+jdSemUt/wd9hEcPl2uK2sTRPd5BEwXzOYAlyQJBXMMju2GMo5ASDWz7xjKLoijEuY86Jo7D9JSP8DPQ==
 
-"@commercetools/sync-actions@4.13.0":
-  version "4.13.0"
-  resolved "https://registry.yarnpkg.com/@commercetools/sync-actions/-/sync-actions-4.13.0.tgz#49e3abd90238e2507247cb39e0513e8164d98e23"
-  integrity sha512-fsANfWEMu3G7pP8YMeI8gBvVvKW3auZQn/F3BY05EyXFNl5iUuQWcOIyVMhwW4xl+ktjF/wPGhz816akIXOL7w==
+"@commercetools/sync-actions@5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@commercetools/sync-actions/-/sync-actions-5.1.0.tgz#513cd93156a3225e247b8aecf818b3ed9026a881"
+  integrity sha512-mLaEH9UoQrP8Vu8CdOUWAH/tctaUdIb0fwSBwDmX9/u/byjVcHwoRPM3qVdFmawjqt2lc3RX1fVkL0llbxEF2A==
   dependencies:
     fast-equals "^2.0.0"
     jsondiffpatch "^0.4.0"
