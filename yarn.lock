@@ -5148,10 +5148,10 @@
   resolved "https://registry.yarnpkg.com/@commercetools/sdk-middleware-http/-/sdk-middleware-http-7.0.1.tgz#d040f1b56397589ddd98fbc705ee3a707227569e"
   integrity sha512-8S+VPe2xkG7dx50yyy0BVE/KY8nN/7lxB9+UUCf/gIrEUizGXDZmhKbTxwYFoIhTtiUAZXnmfyyjCfbQkLgR5g==
 
-"@commercetools/sdk-middleware-queue@2.1.4":
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/@commercetools/sdk-middleware-queue/-/sdk-middleware-queue-2.1.4.tgz#d8b162ff83fc553cc5abef8599571389874983d6"
-  integrity sha512-8TxeUb+jdSemUt/wd9hEcPl2uK2sTRPd5BEwXzOYAlyQJBXMMju2GMo5ASDWz7xjKLoijEuY86Jo7D9JSP8DPQ==
+"@commercetools/sdk-middleware-queue@3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@commercetools/sdk-middleware-queue/-/sdk-middleware-queue-3.0.0.tgz#08e53e376b05bec0beff1ec9853f0177b1474dac"
+  integrity sha512-IKsE0fl2/sBqgZIDG+WrZeOOkZIf1kzF6+tCF7ykVfU9NYJyvarOha1e8Bz1wG+u6SOfBuSnK1OeSx2wj3ppRg==
 
 "@commercetools/sync-actions@5.1.0":
   version "5.1.0"
