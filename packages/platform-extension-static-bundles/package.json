@@ -83,7 +83,7 @@
     "@commercetools/sdk-middleware-auth": "7.0.1",
     "@commercetools/sdk-middleware-http": "7.0.1",
     "@commercetools/sdk-middleware-queue": "2.1.4",
-    "@commercetools/sync-actions": "4.13.0",
+    "@commercetools/sync-actions": "5.1.0",
     "body-parser": "^1.19.0",
     "chai": "^4.3.4",
     "dotenv-webpack": "7.1.1",
