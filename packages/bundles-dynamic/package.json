@@ -50,7 +50,7 @@
     "formik": "2.2.9",
     "global": "4.4.0",
     "graphql": "15.8.0",
-    "graphql-anywhere": "4.2.7",
+    "graphql-anywhere": "4.2.8",
     "lodash": "4.17.21",
     "moment": "2.29.4",
     "moment-timezone": "0.5.38",
@@ -68,7 +68,7 @@
     "yup": "0.32.11"
   },
   "devDependencies": {
-    "@babel/plugin-transform-runtime": "7.19.1",
+    "@babel/plugin-transform-runtime": "7.19.6",
     "@commercetools-frontend/eslint-config-mc-app": "21.17.0",
     "@commercetools-frontend/jest-preset-mc-app": "21.17.0",
     "@commercetools-frontend/mc-scripts": "21.17.0",
@@ -81,7 +81,7 @@
     "enzyme": "3.11.0",
     "enzyme-matchers": "7.1.2",
     "enzyme-to-json": "3.6.2",
-    "eslint": "8.25.0",
+    "eslint": "8.26.0",
     "eslint-formatter-pretty": "4.1.0",
     "faker": "5.5.3",
     "graphql-tag": "2.12.6",
