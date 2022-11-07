@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import EntryPoint from "./entry-point";
+import EntryPoint from './entry-point';
 
-jest.unmock('@apollo/client')
+jest.unmock('@apollo/client');
 
 describe('rendering', () => {
   let wrapper;

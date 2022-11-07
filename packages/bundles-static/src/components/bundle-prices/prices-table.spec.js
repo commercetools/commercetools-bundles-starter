@@ -1,11 +1,14 @@
-import { setQuery, useQuery } from "@apollo/client";
+import { setQuery, useQuery } from '@apollo/client';
 import React from 'react';
 import { shallow } from 'enzyme';
 import faker from 'faker';
 import { omit } from 'lodash';
 import { FormattedDate } from 'react-intl';
 import * as AppContext from '@commercetools-frontend/application-shell-connectors';
-import {GRAPHQL_TARGETS, NO_VALUE_FALLBACK} from '@commercetools-frontend/constants';
+import {
+  GRAPHQL_TARGETS,
+  NO_VALUE_FALLBACK,
+} from '@commercetools-frontend/constants';
 import { DataTable } from '@commercetools-frontend/ui-kit';
 import { SORT_OPTIONS } from '../../../../bundles-core/components/constants';
 import { generateProduct } from '../../test-util';
@@ -83,12 +86,15 @@ describe('prices table', () => {
   let wrapper;
 
   const getValueForColumn = (item, columnKey) => {
-    const results = generateResults(item)
+    const results = generateResults(item);
     setQuery({
       data: { products: { results, total: 1 } },
     });
     wrapper = loadPricesTable();
-    return wrapper.find(DataTable).props().itemRenderer(results[0], { key: columnKey });
+    return wrapper
+      .find(DataTable)
+      .props()
+      .itemRenderer(results[0], { key: columnKey });
   };
 
   beforeEach(() => {
@@ -192,13 +198,15 @@ describe('prices table', () => {
   });
 
   it('should render fallback for default column', () => {
-    const results = generateResults()
+    const results = generateResults();
     setQuery({
       data: { products: { results, total: 1 } },
     });
     wrapper = loadPricesTable();
-    const actual = wrapper.find(DataTable).props()
-        .itemRenderer(results[0], {key: 'not-exists'});
+    const actual = wrapper
+      .find(DataTable)
+      .props()
+      .itemRenderer(results[0], { key: 'not-exists' });
     expect(actual).toEqual(NO_VALUE_FALLBACK);
   });
 
@@ -217,7 +225,7 @@ describe('prices table', () => {
 
   describe('when price empty', () => {
     const item = omit(variant, 'price');
-    const results = generateResults(item)
+    const results = generateResults(item);
     beforeEach(() => {
       setQuery({
         data: { products: { results, total: 1 } },
@@ -275,7 +283,7 @@ describe('prices table', () => {
   });
 
   describe('when price provided', () => {
-    const results = generateResults()
+    const results = generateResults();
     beforeEach(() => {
       setQuery({
         data: { products: { results, total: 1 } },

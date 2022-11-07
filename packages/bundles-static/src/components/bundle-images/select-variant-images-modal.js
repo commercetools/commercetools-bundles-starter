@@ -1,4 +1,4 @@
-import { useQuery, useMutation } from "@apollo/client";
+import { useQuery, useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { find, reduce, remove } from 'lodash';

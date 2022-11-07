@@ -1,4 +1,4 @@
-import { mockMutation, setMutation, setQuery, useQuery } from "@apollo/client";
+import { mockMutation, setMutation, setQuery, useQuery } from '@apollo/client';
 import React from 'react';
 import { shallow } from 'enzyme';
 import faker from 'faker';
@@ -19,7 +19,7 @@ import GetProductImages from './get-product-images.graphql';
 import DEFAULT_VARIABLES from './constants';
 import messages from './messages';
 import { MASTER_VARIANT_ID } from '../../constants';
-import {GRAPHQL_TARGETS} from "@commercetools-frontend/constants";
+import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
 
 const dataLocale = faker.random.locale();
 const product = generateProduct();

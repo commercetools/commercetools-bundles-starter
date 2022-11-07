@@ -1,5 +1,7 @@
 const path = require('path');
-const { createWebpackConfigForProduction } = require('@commercetools-frontend/mc-scripts/webpack');
+const {
+  createWebpackConfigForProduction,
+} = require('@commercetools-frontend/mc-scripts/webpack');
 
 const sourceFolders = [
   path.resolve(__dirname, 'src'),

@@ -72,8 +72,8 @@ const StaticBundlesTable = ({ match, history }) => {
             currency={price.value.currencyCode}
           />
         ) : (
-            NO_VALUE_FALLBACK
-          );
+          NO_VALUE_FALLBACK
+        );
       }
       case COLUMN_KEYS.MODIFIED:
         return (
