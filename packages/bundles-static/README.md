@@ -1,10 +1,12 @@
 # Bundles Custom Application
 
-This extension allows users to manage product bundles.  
+This extension allows users to manage product bundles.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  
+
+**Table of Contents**
+
 - [Bundles Custom Application](#bundles-custom-application)
   - [Prerequisites](#prerequisites)
   - [Start the development server](#start-the-development-server)
@@ -21,9 +23,10 @@ This extension allows users to manage product bundles.
 
 ## Prerequisites
 
-Make sure your CTP project contains bundles [product types](../platform-extension-static-bundles/resourceDefinitions/productTypes) and [types](../platform-extension-static-bundles/resourceDefinitions/types). 
+Make sure your CTP project contains bundles [product types](../platform-extension-static-bundles/resourceDefinitions/productTypes) and [types](../platform-extension-static-bundles/resourceDefinitions/types).
 
 Make sure your CTP project has [product search indexing enabled](https://docs.commercetools.com/api/projects/project#change-product-search-indexing-enabled). If not, use the following update action to do it:
+
 ```json
 {
   "version": 1,
@@ -63,11 +66,12 @@ $ yarn build
 
 ## Deployment
 
-The production deployments can be built with `mc-script compile-html`. 
+The production deployments can be built with `mc-script compile-html`.
 
 Please check for deployment examples documentation [here](https://docs.commercetools.com/custom-applications/deployment-examples).
- 
- NOTE: Be sure to set the env vars for the placeholders in [custom-application-config.mjs](https://github.com/commercetools/commercetools-bundles-starter/tree/master/packages/bundles-dynamic/custom-application-config.mjs).
+
+NOTE: Be sure to set the env vars for the placeholders in [custom-application-config.mjs](https://github.com/commercetools/commercetools-bundles-starter/tree/master/packages/bundles-dynamic/custom-application-config.mjs).
+
 - Example: For AWS deployment, env variables can be set using the file [env.aws](.env.aws). For other deployments, duplicate the file and set values accordingly.
 
 For more information on how to use .env files, check [official documentation](https://docs.commercetools.com/custom-applications/api-reference/cli#using-dotenv-files).
@@ -88,14 +92,14 @@ Git hooks are configured using [Husky](https://github.com/typicode/husky/blob/ma
 runs all workspace hooks using Lerna ([example repository](https://github.com/sudo-suhas/lint-staged-multi-pkg)). The
 hooks are configured as follows:
 
-* **Pre-commit**: JS, CSS, and GraphQL files are linted (ESLint/Stylelint) and formatted (Prettier). Fixes are 
-automatically added to Git.
-* **Commit Message**: Commit messages are linted against the [conventional commit format](https://www.conventionalcommits.org) 
-using commitlint
+- **Pre-commit**: JS, CSS, and GraphQL files are linted (ESLint/Stylelint) and formatted (Prettier). Fixes are
+  automatically added to Git.
+- **Commit Message**: Commit messages are linted against the [conventional commit format](https://www.conventionalcommits.org)
+  using commitlint
 
 ### Linting GraphQL Queries
 
-A pre-requisite for linting GraphQL queries is generating a `schema.graphql` file, which contains the Types exposed by CTP API. 
+A pre-requisite for linting GraphQL queries is generating a `schema.graphql` file, which contains the Types exposed by CTP API.
 Every time that the API introduces new Types, Queries or Mutations, the local `schema.graphql` must be updated.
 
 ### Generating GraphQL schema
@@ -110,5 +114,3 @@ $ export PROJECT_KEY={project_key}
 $ export AUTH_TOKEN={access_token}
 $ npx graphql-cli get-schema
 ```
-
-

@@ -203,7 +203,7 @@ describe('edit bundle form', () => {
       try {
         await submitForm({ name });
       } catch (err) {
-        // eslint-disable-next-line jest/no-try-expect
+        // eslint-disable-next-line jest/no-conditional-expect
         expect(mocks.onComplete).not.toHaveBeenCalled();
       }
     });
@@ -212,7 +212,7 @@ describe('edit bundle form', () => {
       try {
         await submitForm({ name });
       } catch (err) {
-        // eslint-disable-next-line jest/no-try-expect
+        // eslint-disable-next-line jest/no-conditional-expect
         expect(mockShowNotification).toHaveBeenCalledWith(
           {
             text: <FormattedMessage {...messages.editError} />,
