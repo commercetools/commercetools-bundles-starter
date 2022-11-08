@@ -85,7 +85,6 @@
     "eslint-formatter-pretty": "4.1.0",
     "faker": "5.5.3",
     "graphql-tag": "2.12.6",
-    "husky": "7.0.4",
     "install-peers": "1.0.4",
     "jest": "27.5.1",
     "jest-enzyme": "7.1.2",
