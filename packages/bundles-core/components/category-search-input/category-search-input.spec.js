@@ -104,7 +104,9 @@ describe('category search input', () => {
     it('when show product count true, should map category product count to label', async () => {
       await whenInputEntered(true);
       actual.forEach((category, index) => {
-        expect(category.label).toContain(String(expected[index].stagedProductCount));
+        expect(category.label).toContain(
+          String(expected[index].stagedProductCount)
+        );
       });
     });
   });

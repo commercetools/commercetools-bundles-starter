@@ -76,7 +76,7 @@ const BundlesTable = ({
     getProducts(
       'sort',
       `${column}${
-      column === COLUMN_KEYS.NAME ? `.${dataLocale}` : ''
+        column === COLUMN_KEYS.NAME ? `.${dataLocale}` : ''
       } ${sortDirection}`
     );
   }
@@ -173,7 +173,7 @@ const BundlesTable = ({
           <PaginatedTable
             columns={columnDefinitions}
             rows={results}
-            itemRenderer={(row, column) => renderItem(row, column["key"])}
+            itemRenderer={(row, column) => renderItem(row, column['key'])}
             rowCount={count}
             total={total}
             offset={offset}
@@ -188,27 +188,27 @@ const BundlesTable = ({
             onSortChange={handleSortChange}
           />
         ) : (
-            <Spacings.Inline scale="xs">
-              <Text.Body
-                intlMessage={
-                  query || hasFilters()
-                    ? messages.errorNoSearchResultsTitle
-                    : messages.errorNoResultsTitle
-                }
-                data-testid="no-results-error"
+          <Spacings.Inline scale="xs">
+            <Text.Body
+              intlMessage={
+                query || hasFilters()
+                  ? messages.errorNoSearchResultsTitle
+                  : messages.errorNoResultsTitle
+              }
+              data-testid="no-results-error"
+            />
+            {!query && !hasFilters() && (
+              <FlatButton
+                as="a"
+                href={`${match.url}/new`}
+                label={`${intl.formatMessage(
+                  messages.linkToCreateBundleTitle
+                )}.`}
+                isDisabled={false}
               />
-              {!query && !hasFilters() && (
-                <FlatButton
-                  as="a"
-                  href={`${match.url}/new`}
-                  label={`${intl.formatMessage(
-                    messages.linkToCreateBundleTitle
-                  )}.`}
-                  isDisabled={false}
-                />
-              )}
-            </Spacings.Inline>
-          )}
+            )}
+          </Spacings.Inline>
+        )}
       </Spacings.Stack>
     </Spacings.Inset>
   );

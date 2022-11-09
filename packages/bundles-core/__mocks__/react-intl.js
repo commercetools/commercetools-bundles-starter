@@ -1,3 +1,4 @@
+/* eslint-disable import/export */
 import { intlMock } from '../components/test-util';
 
 const useIntl = jest.fn(() => intlMock);

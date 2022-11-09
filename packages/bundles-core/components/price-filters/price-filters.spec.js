@@ -58,7 +58,6 @@ describe('price filters', () => {
       context: {
         target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
       },
-
     });
   });
 

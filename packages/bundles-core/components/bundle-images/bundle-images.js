@@ -88,24 +88,24 @@ const BundleImages = ({
                 data-testid="add-image-link"
                 label={`${intl.formatMessage(messages.addImageLink)}${
                   !noImagesMessage ? '.' : ''
-                  }`}
+                }`}
                 onClick={addImage}
               />
               {noImagesMessage}
             </Spacings.Inline>
           </div>
         ) : (
-            <div className={styles.images}>
-              {images.map((image) => (
-                <BundleImage
-                  key={image.url}
-                  image={image}
-                  editImage={editImage}
-                  removeImage={handleRemoveImage}
-                />
-              ))}
-            </div>
-          )}
+          <div className={styles.images}>
+            {images.map((image) => (
+              <BundleImage
+                key={image.url}
+                image={image}
+                editImage={editImage}
+                removeImage={handleRemoveImage}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </Spacings.Stack>
   );
