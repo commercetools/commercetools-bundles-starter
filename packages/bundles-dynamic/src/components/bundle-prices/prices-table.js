@@ -45,9 +45,10 @@ const PricesTable = ({
         map(ranges, (result, index) => {
           const { data } = result;
           if (data) {
-            const { min, max } = data.products.facets[
-              'variants.scopedPrice.currentValue.centAmount'
-            ].ranges[0];
+            const { min, max } =
+              data.products.facets[
+                'variants.scopedPrice.currentValue.centAmount'
+              ].ranges[0];
             const category = categories[index];
             const { id, path } = getCategoryAttributes(category);
             return {
@@ -86,8 +87,8 @@ const PricesTable = ({
             currency={currency}
           />
         ) : (
-            NO_VALUE_FALLBACK
-          );
+          NO_VALUE_FALLBACK
+        );
       case COLUMN_KEYS.MAX_PRICE:
         return max ? (
           <FormattedNumber
@@ -96,8 +97,8 @@ const PricesTable = ({
             currency={currency}
           />
         ) : (
-            NO_VALUE_FALLBACK
-          );
+          NO_VALUE_FALLBACK
+        );
       default:
         return NO_VALUE_FALLBACK;
     }
@@ -113,7 +114,7 @@ const PricesTable = ({
     <DataTable
       columns={columnDefinitions}
       rows={results}
-      itemRenderer={(row, column) => renderItem(row, column["key"])}
+      itemRenderer={(row, column) => renderItem(row, column['key'])}
       rowCount={categories.length}
       onRowClick={(event, rowIndex) => handleRowClick(results[rowIndex])}
     />

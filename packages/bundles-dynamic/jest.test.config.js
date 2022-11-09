@@ -12,14 +12,13 @@ module.exports = {
   ],
   collectCoverage: true,
   collectCoverageFrom: [
-    "src/components/**/*.{js,jsx}",
-    "!src/components/**/{index,constants,messages}.js",
+    'src/components/**/*.{js,jsx}',
+    '!src/components/**/{index,constants,messages}.js',
   ],
   coverageThreshold: {
     global: {
       branches: 81,
-      statements: 91
-    }
-  }
+      statements: 91,
+    },
+  },
 };
-

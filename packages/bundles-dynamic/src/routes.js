@@ -16,7 +16,7 @@ import { BUNDLE_PRODUCT_TYPE, ROOT_PATH } from './constants';
 import { messages } from './messages';
 
 const ApplicationRoutes = () => {
-  const match = useRouteMatch()
+  const match = useRouteMatch();
   const { data, loading, error } = useQuery(GetBundleProductType, {
     variables: {
       key: BUNDLE_PRODUCT_TYPE,

@@ -1,3 +1,4 @@
+/* eslint-disable import/export */
 const notification = {
   dismiss: jest.fn(),
 };

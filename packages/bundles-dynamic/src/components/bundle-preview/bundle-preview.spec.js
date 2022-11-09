@@ -3,12 +3,7 @@ import { shallow } from 'enzyme';
 import faker from 'faker';
 import { cloneDeep, defaultsDeep, set } from 'lodash';
 import { Formik } from 'formik';
-import {
-  mockMutation,
-  setMutation,
-  getQuery,
-  setQuery,
-} from '@apollo/client';
+import { mockMutation, setMutation, getQuery, setQuery } from '@apollo/client';
 import { mockShowNotification } from '@commercetools-frontend/actions-global';
 import * as AppContext from '@commercetools-frontend/application-shell-connectors';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
@@ -733,6 +728,7 @@ describe('bundle preview', () => {
       try {
         await wrapper.find(Formik).props().onSubmit(formValues);
       } catch (err) {
+        // eslint-disable-next-line jest/no-conditional-expect
         expect(mockShowNotification).toHaveBeenCalledWith({
           text: messages.addToCartError.id,
         });

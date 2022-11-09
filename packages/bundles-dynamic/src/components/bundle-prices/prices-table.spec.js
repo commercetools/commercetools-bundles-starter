@@ -87,10 +87,13 @@ describe('prices table', () => {
   });
 
   it('should render fallback for default column', async () => {
-    const results = generatePriceRangeResults()
+    const results = generatePriceRangeResults();
     setQuery({ data: results });
     const wrapper = await loadPricesTable();
-    const actual = wrapper.find(DataTable).props().itemRenderer(results.products, {key: 'not-exists'});
+    const actual = wrapper
+      .find(DataTable)
+      .props()
+      .itemRenderer(results.products, { key: 'not-exists' });
     expect(actual).toEqual(NO_VALUE_FALLBACK);
   });
 
