@@ -185,8 +185,8 @@ describe('dynamic bundles table', () => {
     it('should contain filter options', () => {
       const wrapper = loadBundlesTable();
 
-      const filters = wrapper.find(BundlesTable).props().filterInputs().props
-        .children;
+      const filters = wrapper.find(BundlesTable).props().filterInputs()
+        .props.children;
 
       const priceTypeFilterOptions = find(filters, {
         props: { name: PRICE_TYPE_FILTER },
@@ -258,8 +258,8 @@ describe('dynamic bundles table', () => {
       it('filter input should have no value', () => {
         priceTypeFilter.props.onChange({ target: { value: null } });
 
-        const filters = wrapper.find(BundlesTable).props().filterInputs().props
-          .children;
+        const filters = wrapper.find(BundlesTable).props().filterInputs()
+          .props.children;
 
         const priceTypeFilterValue = find(filters, {
           props: { name: PRICE_TYPE_FILTER },

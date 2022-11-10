@@ -1,4 +1,4 @@
-import { mockMutation, setMutation } from "@apollo/client";
+import { mockMutation, setMutation } from '@apollo/client';
 import React from 'react';
 import { shallow } from 'enzyme';
 import { FormattedMessage } from 'react-intl';
@@ -64,7 +64,7 @@ describe('create bundle form', () => {
     try {
       await submitForm();
     } catch (err) {
-      // eslint-disable-next-line jest/no-try-expect
+      // eslint-disable-next-line jest/no-conditional-expect
       expect(mockShowNotification).toHaveBeenCalledWith(
         {
           text: <FormattedMessage {...messages.createError} />,

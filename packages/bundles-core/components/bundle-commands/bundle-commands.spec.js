@@ -110,6 +110,7 @@ describe('bundle commands', () => {
         try {
           await wrapper.find(StatusSelect).props().onChange(false);
         } catch (error) {
+          // eslint-disable-next-line jest/no-conditional-expect
           expect(mockShowNotification).toHaveBeenCalledWith({
             text: messages.editError.id,
           });
@@ -120,6 +121,7 @@ describe('bundle commands', () => {
         try {
           await wrapper.find(StatusSelect).props().onChange(false);
         } catch (error) {
+          // eslint-disable-next-line jest/no-conditional-expect
           expect(mocks.onComplete).not.toHaveBeenCalled();
         }
       });
@@ -200,6 +202,7 @@ describe('bundle commands', () => {
         try {
           await wrapper.find(ConfirmationDialog).props().onConfirm();
         } catch (error) {
+          // eslint-disable-next-line jest/no-conditional-expect
           expect(mockShowNotification).toHaveBeenCalledWith({
             text: messages.deleteError.id,
           });

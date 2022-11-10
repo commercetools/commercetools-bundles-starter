@@ -15,7 +15,9 @@ enum ActionType {
   Create
 }
 
-"""A field to access the active cart."""
+"""
+A field to access the active cart.
+"""
 interface ActiveCartInterface {
   activeCart: Cart
 }
@@ -206,7 +208,9 @@ input AddProductVariant {
   staged: Boolean = true
 }
 
-"""An address represents a postal address."""
+"""
+An address represents a postal address.
+"""
 type Address {
   id: String
   streetName: String
@@ -225,7 +229,10 @@ type Address {
   additionalAddressInfo: String
   externalId: String
   key: String
-  contactInfo: AddressContactInfo @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Field 'contactInfo' is deprecated. Instead of using e.g. 'contactInfo.email' use 'email' directly.")
+  contactInfo: AddressContactInfo
+    @deprecated(
+      reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Field 'contactInfo' is deprecated. Instead of using e.g. 'contactInfo.email' use 'email' directly."
+    )
   phone: String
   mobile: String
   email: String
@@ -263,7 +270,10 @@ type AddressDraft {
   externalId: String
   key: String
   custom: CustomFieldsCommand
-  contactInfo: AddressContactInfo @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Field 'contactInfo' is deprecated. Instead of using e.g. 'contactInfo.email' use 'email' directly.")
+  contactInfo: AddressContactInfo
+    @deprecated(
+      reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Field 'contactInfo' is deprecated. Instead of using e.g. 'contactInfo.email' use 'email' directly."
+    )
   phone: String
   mobile: String
   email: String
@@ -486,12 +496,12 @@ enum AnonymousCartSignInMode {
 
   """
   `LineItem`s of the anonymous cart will be copied to the customer’s active cart that has been modified most recently.
-  
+
   The `CartState` of the anonymous cart gets changed to `Merged` while the
   `CartState` of the customer’s cart remains `Active`.
-  
+
   `CustomLineItems` and `CustomFields` of the anonymous cart will not be copied to the customers cart.
-  
+
   If a `LineItem` in the anonymous cart matches an existing line item in the
   customer’s cart (same product ID and variant ID), the maximum quantity of both
   LineItems is used as the new quantity. In that case `CustomFields` on the
@@ -500,7 +510,9 @@ enum AnonymousCartSignInMode {
   MergeWithExistingCustomerCart
 }
 
-"""API Clients can be used to obtain OAuth 2 access tokens"""
+"""
+API Clients can be used to obtain OAuth 2 access tokens
+"""
 type APIClientWithoutSecret {
   id: String!
   name: String!
@@ -576,8 +588,13 @@ type Asset {
   descriptionAllLocales: [LocalizedString!]
   tags: [String!]!
 
-  """This field would contain type data"""
-  customFields: Type @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
+  """
+  This field would contain type data
+  """
+  customFields: Type
+    @deprecated(
+      reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'"
+    )
   custom: CustomFieldsType
 }
 
@@ -620,10 +637,14 @@ interface Attribute {
 }
 
 enum AttributeConstraint {
-  """No constraints are applied to the attribute"""
+  """
+  No constraints are applied to the attribute
+  """
   None
 
-  """Attribute value should be different in each variant"""
+  """
+  Attribute value should be different in each variant
+  """
   Unique
 
   """
@@ -631,7 +652,9 @@ enum AttributeConstraint {
   """
   CombinationUnique
 
-  """Attribute value should be the same in all variants"""
+  """
+  Attribute value should be the same in all variants
+  """
   SameForAll
 }
 
@@ -858,21 +881,29 @@ type Cart implements Versioned {
   customFieldsRaw(
     """
     The names of the custom fields to include.
-    
+
     If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
     """
     includeNames: [String!]
 
     """
     The names of the custom fields to exclude.
-    
+
     If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
     """
     excludeNames: [String!]
-  ): [RawCustomField!] @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
+  ): [RawCustomField!]
+    @deprecated(
+      reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'"
+    )
 
-  """This field would contain type data"""
-  customFields: Type @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
+  """
+  This field would contain type data
+  """
+  customFields: Type
+    @deprecated(
+      reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'"
+    )
   custom: CustomFieldsType
   deleteDaysAfterLastModification: Int
   id: String!
@@ -900,13 +931,11 @@ type CartCreated implements MessagePayload {
 }
 
 """
-
 Cart discounts are recalculated every time LineItems or CustomLineItems are
 added or removed from the Cart or an order is created from the cart.
 
 The number of active cart discounts that do not require a discount code
 (isActive=true and requiresDiscountCode=false) is limited to 100.
-      
 """
 type CartDiscount implements Versioned {
   cartPredicate: String!
@@ -943,8 +972,13 @@ type CartDiscount implements Versioned {
   descriptionAllLocales: [LocalizedString!]
   referenceRefs: [Reference!]!
 
-  """This field would contain type data"""
-  customFields: Type @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
+  """
+  This field would contain type data
+  """
+  customFields: Type
+    @deprecated(
+      reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'"
+    )
   custom: CustomFieldsType
   value: CartDiscountValue!
   target: CartDiscountTarget
@@ -1067,10 +1101,14 @@ type CartLimitWithCurrent implements LimitWithCurrent {
 }
 
 enum CartOrigin {
-  """The cart was created by the merchant on behalf of the customer"""
+  """
+  The cart was created by the merchant on behalf of the customer
+  """
   Merchant
 
-  """The cart was created by the customer. This is the default value"""
+  """
+  The cart was created by the customer. This is the default value
+  """
   Customer
 }
 
@@ -1079,7 +1117,12 @@ Fields to access carts. Includes direct access to a single cart and searching fo
 """
 interface CartQueryInterface {
   cart(id: String!): Cart
-  carts(where: String, sort: [String!], limit: Int, offset: Int): CartQueryResult!
+  carts(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): CartQueryResult!
 }
 
 type CartQueryResult {
@@ -1108,7 +1151,9 @@ type CartScoreType implements ShippingRateInputType {
 }
 
 enum CartState {
-  """The cart was ordered. No further operations on the cart are allowed."""
+  """
+  The cart was ordered. No further operations on the cart are allowed.
+  """
   Ordered
 
   """
@@ -1116,7 +1161,9 @@ enum CartState {
   """
   Merged
 
-  """The cart can be updated and ordered. It is the default state."""
+  """
+  The cart can be updated and ordered. It is the default state.
+  """
   Active
 }
 
@@ -1272,16 +1319,27 @@ type Category implements Versioned {
   ): String
   metaDescriptionAllLocales: [LocalizedString!]
 
-  """Number of a products in the category subtree."""
-  productCount: Int! @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. The returned number is representing only staged products. Use 'stagedProductCount' instead")
+  """
+  Number of a products in the category subtree.
+  """
+  productCount: Int!
+    @deprecated(
+      reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. The returned number is representing only staged products. Use 'stagedProductCount' instead"
+    )
 
-  """Number of staged products in the category subtree."""
+  """
+  Number of staged products in the category subtree.
+  """
   stagedProductCount: Int!
 
-  """Number of direct child categories."""
+  """
+  Number of direct child categories.
+  """
   childCount: Int!
 
-  """Direct child categories."""
+  """
+  Direct child categories.
+  """
   children: [Category!]
   createdAt: DateTime!
   lastModifiedAt: DateTime!
@@ -1293,21 +1351,29 @@ type Category implements Versioned {
   customFieldsRaw(
     """
     The names of the custom fields to include.
-    
+
     If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
     """
     includeNames: [String!]
 
     """
     The names of the custom fields to exclude.
-    
+
     If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
     """
     excludeNames: [String!]
-  ): [RawCustomField!] @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
+  ): [RawCustomField!]
+    @deprecated(
+      reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'"
+    )
 
-  """This field would contain type data"""
-  customFields: Type @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
+  """
+  This field would contain type data
+  """
+  customFields: Type
+    @deprecated(
+      reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'"
+    )
   custom: CustomFieldsType
   createdBy: Initiator
   lastModifiedBy: Initiator
@@ -1399,12 +1465,17 @@ type CategorySearch {
   parentRef: Reference
   parent: CategorySearch
   externalId: String
-  productCount: Int! @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. The returned number is representing only staged products. Use 'stagedProductCount' instead")
+  productCount: Int!
+    @deprecated(
+      reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. The returned number is representing only staged products. Use 'stagedProductCount' instead"
+    )
   stagedProductCount: Int!
   childCount: Int!
   productTypeNames: [String!]!
 
-  """Direct child categories."""
+  """
+  Direct child categories.
+  """
   children: [CategorySearch!]!
   createdAt: DateTime!
   lastModifiedAt: DateTime!
@@ -2017,7 +2088,10 @@ input ChangeZoneName {
 
 type Channel implements Versioned & ReviewTarget {
   id: String!
-  typeId: String! @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Use 'channelRef' to fetch the reference.")
+  typeId: String!
+    @deprecated(
+      reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Use 'channelRef' to fetch the reference."
+    )
   version: Long!
   key: String!
   roles: [ChannelRole!]!
@@ -2180,7 +2254,9 @@ type CommercetoolsSubscriptionQueryResult {
   results: [CommercetoolsSubscription!]!
 }
 
-"""[ISO 3166-1](http://en.wikipedia.org/wiki/ISO_3166-1) country code."""
+"""
+[ISO 3166-1](http://en.wikipedia.org/wiki/ISO_3166-1) country code.
+"""
 scalar Country
 
 input CreateApiClient {
@@ -2259,21 +2335,29 @@ type Customer implements Versioned {
   customFieldsRaw(
     """
     The names of the custom fields to include.
-    
+
     If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
     """
     includeNames: [String!]
 
     """
     The names of the custom fields to exclude.
-    
+
     If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
     """
     excludeNames: [String!]
-  ): [RawCustomField!] @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
+  ): [RawCustomField!]
+    @deprecated(
+      reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'"
+    )
 
-  """This field would contain type data"""
-  customFields: Type @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
+  """
+  This field would contain type data
+  """
+  customFields: Type
+    @deprecated(
+      reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'"
+    )
   custom: CustomFieldsType
   id: String!
   version: Long!
@@ -2283,7 +2367,9 @@ type Customer implements Versioned {
   lastModifiedBy: Initiator
 }
 
-"""A field to access a customer's active cart."""
+"""
+A field to access a customer's active cart.
+"""
 interface CustomerActiveCartInterface {
   customerActiveCart(customerId: String!): Cart
 }
@@ -2346,7 +2432,10 @@ assigned to certain customer groups.
 """
 type CustomerGroup implements Versioned {
   id: String!
-  typeId: String! @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Use 'customerGroupRef' to fetch the reference.")
+  typeId: String!
+    @deprecated(
+      reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Use 'customerGroupRef' to fetch the reference."
+    )
   version: Long!
   name: String!
   key: String
@@ -2429,19 +2518,32 @@ Fields to access customer accounts. Includes direct access to a single customer 
 """
 interface CustomerQueryInterface {
   customer(
-    """Queries a customer with specified email token"""
+    """
+    Queries a customer with specified email token
+    """
     emailToken: String
 
-    """Queries a customer with specified password token"""
+    """
+    Queries a customer with specified password token
+    """
     passwordToken: String
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Customer
-  customers(where: String, sort: [String!], limit: Int, offset: Int): CustomerQueryResult!
+  customers(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): CustomerQueryResult!
 }
 
 type CustomerQueryResult {
@@ -2455,7 +2557,9 @@ input CustomerSignInDraft {
   email: String!
   password: String!
 
-  """This field will be deprecated in favour of anonymousCart.id."""
+  """
+  This field will be deprecated in favour of anonymousCart.id.
+  """
   anonymousCartId: String
   anonymousCart: ResourceIdentifierInput
   anonymousCartSignInMode: AnonymousCartSignInMode = MergeWithExistingCustomerCart
@@ -2559,7 +2663,9 @@ input CustomerSignUpDraft {
   stores: [ResourceIdentifierInput!]
   customerNumber: String
 
-  """This field will be deprecated in favour of anonymousCart.id."""
+  """
+  This field will be deprecated in favour of anonymousCart.id.
+  """
   anonymousCartId: String
   anonymousCart: ResourceIdentifierInput
   externalId: String
@@ -2623,9 +2729,9 @@ input CustomFieldInput {
 
   """
   The value of this custom field consists of escaped JSON based on the FieldDefinition of the Type.
-  
+
   Examples for `value`:
-  
+
   * FieldType `String`: `"\"This is a string\""`
   * FieldType `DateTimeType`: `"\"2001-09-11T14:00:00.000Z\""`
   * FieldType `Number`: `"4"`
@@ -2653,25 +2759,32 @@ type CustomFieldsType {
   typeRef: Reference!
   type: TypeDefinition
 
-  """This field contains non-typed data."""
+  """
+  This field contains non-typed data.
+  """
   customFieldsRaw(
     """
     The names of the custom fields to include.
-    
+
     If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
     """
     includeNames: [String!]
 
     """
     The names of the custom fields to exclude.
-    
+
     If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
     """
     excludeNames: [String!]
   ): [RawCustomField!]
 
-  """This field would contain type data"""
-  customFields: Type! @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Typed custom fields are no longer supported, please use customFieldsRaw instead.")
+  """
+  This field would contain type data
+  """
+  customFields: Type!
+    @deprecated(
+      reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Typed custom fields are no longer supported, please use customFieldsRaw instead."
+    )
 }
 
 """
@@ -2710,21 +2823,29 @@ type CustomLineItem {
   customFieldsRaw(
     """
     The names of the custom fields to include.
-    
+
     If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
     """
     includeNames: [String!]
 
     """
     The names of the custom fields to exclude.
-    
+
     If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
     """
     excludeNames: [String!]
-  ): [RawCustomField!] @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
+  ): [RawCustomField!]
+    @deprecated(
+      reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'"
+    )
 
-  """This field would contain type data"""
-  customFields: Type @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
+  """
+  This field would contain type data
+  """
+  customFields: Type
+    @deprecated(
+      reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'"
+    )
   custom: CustomFieldsType
   shippingDetails: ItemShippingDetails
 }
@@ -2810,7 +2931,9 @@ input CustomObjectDraft {
   key: String!
   container: String!
 
-  """The value should be passed in a form of escaped JSON"""
+  """
+  The value should be passed in a form of escaped JSON
+  """
   value: String!
   version: Long
 }
@@ -2840,7 +2963,9 @@ input CustomSuggestTokenizerInput {
   inputs: [String!]!
 }
 
-"""DateTime is a scalar value that represents an ISO8601 formatted date."""
+"""
+DateTime is a scalar value that represents an ISO8601 formatted date.
+"""
 scalar Date
 
 type DateAttribute implements Attribute {
@@ -2996,21 +3121,29 @@ type DiscountCode implements Versioned {
   customFieldsRaw(
     """
     The names of the custom fields to include.
-    
+
     If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
     """
     includeNames: [String!]
 
     """
     The names of the custom fields to exclude.
-    
+
     If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
     """
     excludeNames: [String!]
-  ): [RawCustomField!] @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
+  ): [RawCustomField!]
+    @deprecated(
+      reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'"
+    )
 
-  """This field would contain type data"""
-  customFields: Type @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
+  """
+  This field would contain type data
+  """
+  customFields: Type
+    @deprecated(
+      reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'"
+    )
   custom: CustomFieldsType
 
   """
@@ -3146,14 +3279,14 @@ type EnumAttributeDefinitionType implements AttributeDefinitionType {
   values(
     """
     The keys of the enum values to include.
-    
+
     If neither `includeKeys` nor `excludeKeys` are provided, then all enum values are returned.
     """
     includeKeys: [String!]
 
     """
     The keys of the enum values to exclude.
-    
+
     If neither `includeKeys` nor `excludeKeys` are provided, then all enum values are returned.
     """
     excludeKeys: [String!]
@@ -3510,14 +3643,17 @@ type Initiator {
   anonymousId: String
   clientId: String
   customerRef: Reference
-  user: Reference @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Use 'userRef' to fetch the reference.")
+  user: Reference
+    @deprecated(
+      reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Use 'userRef' to fetch the reference."
+    )
   userRef: Reference
 }
 
 type InStore implements CartQueryInterface & CustomerActiveCartInterface & OrderQueryInterface & CustomerQueryInterface & ShippingMethodsByCartInterface & MeFieldInterface {
   """
   This field can only be used with an access token created with the password flow or with an anonymous session.
-  
+
   It gives access to the data that is specific to the customer or the anonymous session linked to the access token.
   """
   me: InStoreMe!
@@ -3533,16 +3669,24 @@ type InStore implements CartQueryInterface & CustomerActiveCartInterface & Order
   production. https://docs.commercetools.com/api/contract#beta-features
   """
   customer(
-    """Queries a customer with specified email token"""
+    """
+    Queries a customer with specified email token
+    """
     emailToken: String
 
-    """Queries a customer with specified password token"""
+    """
+    Queries a customer with specified password token
+    """
     passwordToken: String
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Customer
 
@@ -3550,7 +3694,12 @@ type InStore implements CartQueryInterface & CustomerActiveCartInterface & Order
   BETA: This feature can be subject to change and should be used carefully in
   production. https://docs.commercetools.com/api/contract#beta-features
   """
-  customers(where: String, sort: [String!], limit: Int, offset: Int): CustomerQueryResult!
+  customers(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): CustomerQueryResult!
 
   """
   BETA: This feature can be subject to change and should be used carefully in
@@ -3562,7 +3711,12 @@ type InStore implements CartQueryInterface & CustomerActiveCartInterface & Order
   BETA: This feature can be subject to change and should be used carefully in
   production. https://docs.commercetools.com/api/contract#beta-features
   """
-  carts(where: String, sort: [String!], limit: Int, offset: Int): CartQueryResult!
+  carts(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): CartQueryResult!
   customerActiveCart(customerId: String!): Cart
 
   """
@@ -3570,7 +3724,9 @@ type InStore implements CartQueryInterface & CustomerActiveCartInterface & Order
   production. https://docs.commercetools.com/api/contract#beta-features
   """
   order(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
     orderNumber: String
   ): Order
@@ -3579,17 +3735,26 @@ type InStore implements CartQueryInterface & CustomerActiveCartInterface & Order
   BETA: This feature can be subject to change and should be used carefully in
   production. https://docs.commercetools.com/api/contract#beta-features
   """
-  orders(where: String, sort: [String!], limit: Int, offset: Int): OrderQueryResult!
+  orders(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): OrderQueryResult!
 
   """
   BETA: This feature can be subject to change and should be used carefully in
   production. https://docs.commercetools.com/api/contract#beta-features
   """
   shoppingList(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): ShoppingList
 
@@ -3597,7 +3762,12 @@ type InStore implements CartQueryInterface & CustomerActiveCartInterface & Order
   BETA: This feature can be subject to change and should be used carefully in
   production. https://docs.commercetools.com/api/contract#beta-features
   """
-  shoppingLists(where: String, sort: [String!], limit: Int, offset: Int): ShoppingListQueryResult!
+  shoppingLists(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): ShoppingListQueryResult!
 }
 
 type InStoreMe implements MeQueryInterface & CartQueryInterface & ActiveCartInterface & OrderQueryInterface & ShoppingListQueryInterface {
@@ -3617,7 +3787,12 @@ type InStoreMe implements MeQueryInterface & CartQueryInterface & ActiveCartInte
   BETA: This feature can be subject to change and should be used carefully in
   production. https://docs.commercetools.com/api/contract#beta-features
   """
-  carts(where: String, sort: [String!], limit: Int, offset: Int): CartQueryResult!
+  carts(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): CartQueryResult!
   activeCart: Cart
 
   """
@@ -3625,7 +3800,9 @@ type InStoreMe implements MeQueryInterface & CartQueryInterface & ActiveCartInte
   production. https://docs.commercetools.com/api/contract#beta-features
   """
   order(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
     orderNumber: String
   ): Order
@@ -3634,17 +3811,26 @@ type InStoreMe implements MeQueryInterface & CartQueryInterface & ActiveCartInte
   BETA: This feature can be subject to change and should be used carefully in
   production. https://docs.commercetools.com/api/contract#beta-features
   """
-  orders(where: String, sort: [String!], limit: Int, offset: Int): OrderQueryResult!
+  orders(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): OrderQueryResult!
 
   """
   BETA: This feature can be subject to change and should be used carefully in
   production. https://docs.commercetools.com/api/contract#beta-features
   """
   shoppingList(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): ShoppingList
 
@@ -3652,7 +3838,12 @@ type InStoreMe implements MeQueryInterface & CartQueryInterface & ActiveCartInte
   BETA: This feature can be subject to change and should be used carefully in
   production. https://docs.commercetools.com/api/contract#beta-features
   """
-  shoppingLists(where: String, sort: [String!], limit: Int, offset: Int): ShoppingListQueryResult!
+  shoppingLists(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): ShoppingListQueryResult!
 }
 
 type InterfaceInteractionsRaw {
@@ -3661,14 +3852,14 @@ type InterfaceInteractionsRaw {
   fields(
     """
     The names of the custom fields to include.
-    
+
     If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
     """
     includeNames: [String!]
 
     """
     The names of the custom fields to exclude.
-    
+
     If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
     """
     excludeNames: [String!]
@@ -3819,7 +4010,9 @@ input ItemStateDraftType {
   state: ReferenceInput!
 }
 
-"""Raw JSON value"""
+"""
+Raw JSON value
+"""
 scalar Json
 
 type KeyReference {
@@ -3827,7 +4020,9 @@ type KeyReference {
   key: String!
 }
 
-"""A key that references a resource."""
+"""
+A key that references a resource.
+"""
 scalar KeyReferenceInput
 
 type Limit {
@@ -3903,21 +4098,29 @@ type LineItem {
   customFieldsRaw(
     """
     The names of the custom fields to include.
-    
+
     If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
     """
     includeNames: [String!]
 
     """
     The names of the custom fields to exclude.
-    
+
     If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
     """
     excludeNames: [String!]
-  ): [RawCustomField!] @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
+  ): [RawCustomField!]
+    @deprecated(
+      reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'"
+    )
 
-  """This field would contain type data"""
-  customFields: Type @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
+  """
+  This field would contain type data
+  """
+  customFields: Type
+    @deprecated(
+      reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'"
+    )
   custom: CustomFieldsType
   shippingDetails: ItemShippingDetails
   inventoryMode: ItemShippingDetails
@@ -3983,7 +4186,9 @@ enum LineItemPriceMode {
   """
   ExternalPrice
 
-  """The line item price with the total was set externally."""
+  """
+  The line item price with the total was set externally.
+  """
   ExternalTotal
 }
 
@@ -4019,21 +4224,23 @@ type LineItemStateTransition implements MessagePayload {
   type: String!
 }
 
-"""Locale is a scalar value represented as a string language tag."""
+"""
+Locale is a scalar value represented as a string language tag.
+"""
 scalar Locale
 
 type LocalizableEnumAttributeDefinitionType implements AttributeDefinitionType {
   values(
     """
     The keys of the enum values to include.
-    
+
     If neither `includeKeys` nor `excludeKeys` are provided, then all enum values are returned.
     """
     includeKeys: [String!]
 
     """
     The keys of the enum values to exclude.
-    
+
     If neither `includeKeys` nor `excludeKeys` are provided, then all enum values are returned.
     """
     excludeKeys: [String!]
@@ -4195,7 +4402,12 @@ type Me implements MeQueryInterface & CartQueryInterface & ActiveCartInterface &
   BETA: This feature can be subject to change and should be used carefully in
   production. https://docs.commercetools.com/api/contract#beta-features
   """
-  carts(where: String, sort: [String!], limit: Int, offset: Int): CartQueryResult!
+  carts(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): CartQueryResult!
   activeCart: Cart
 
   """
@@ -4203,7 +4415,9 @@ type Me implements MeQueryInterface & CartQueryInterface & ActiveCartInterface &
   production. https://docs.commercetools.com/api/contract#beta-features
   """
   order(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
     orderNumber: String
   ): Order
@@ -4212,17 +4426,26 @@ type Me implements MeQueryInterface & CartQueryInterface & ActiveCartInterface &
   BETA: This feature can be subject to change and should be used carefully in
   production. https://docs.commercetools.com/api/contract#beta-features
   """
-  orders(where: String, sort: [String!], limit: Int, offset: Int): OrderQueryResult!
+  orders(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): OrderQueryResult!
 
   """
   BETA: This feature can be subject to change and should be used carefully in
   production. https://docs.commercetools.com/api/contract#beta-features
   """
   shoppingList(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): ShoppingList
 
@@ -4230,7 +4453,12 @@ type Me implements MeQueryInterface & CartQueryInterface & ActiveCartInterface &
   BETA: This feature can be subject to change and should be used carefully in
   production. https://docs.commercetools.com/api/contract#beta-features
   """
-  shoppingLists(where: String, sort: [String!], limit: Int, offset: Int): ShoppingListQueryResult!
+  shoppingLists(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): ShoppingListQueryResult!
 
   """
   BETA: This feature can be subject to change and should be used carefully in
@@ -4242,7 +4470,12 @@ type Me implements MeQueryInterface & CartQueryInterface & ActiveCartInterface &
   BETA: This feature can be subject to change and should be used carefully in
   production. https://docs.commercetools.com/api/contract#beta-features
   """
-  payments(where: String, sort: [String!], limit: Int, offset: Int): MyPaymentQueryResult!
+  payments(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): MyPaymentQueryResult!
 }
 
 """
@@ -4254,22 +4487,43 @@ interface MeFieldInterface {
 
 interface MeQueryInterface {
   cart(id: String!): Cart
-  carts(where: String, sort: [String!], limit: Int, offset: Int): CartQueryResult!
+  carts(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): CartQueryResult!
   activeCart: Cart
   order(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
     orderNumber: String
   ): Order
-  orders(where: String, sort: [String!], limit: Int, offset: Int): OrderQueryResult!
+  orders(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): OrderQueryResult!
   shoppingList(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): ShoppingList
-  shoppingLists(where: String, sort: [String!], limit: Int, offset: Int): ShoppingListQueryResult!
+  shoppingLists(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): ShoppingListQueryResult!
 }
 
 type Message implements Versioned {
@@ -4412,19 +4666,27 @@ type Mutation {
     version: Long!
     actions: [CustomerGroupUpdateAction!]!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): CustomerGroup
   deleteCustomerGroup(
     version: Long!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): CustomerGroup
   createCategory(draft: CategoryDraft!): Category
@@ -4432,32 +4694,48 @@ type Mutation {
     version: Long!
     actions: [CategoryUpdateAction!]!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Category
   deleteCategory(
     version: Long!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Category
   createChannel(draft: ChannelDraft!): Channel
-  updateChannel(id: String!, version: Long!, actions: [ChannelUpdateAction!]!): Channel
+  updateChannel(
+    id: String!
+    version: Long!
+    actions: [ChannelUpdateAction!]!
+  ): Channel
   deleteChannel(id: String!, version: Long!): Channel
   createOrUpdateCustomObject(draft: CustomObjectDraft!): CustomObject
   deleteCustomObject(
     version: Long
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
     container: String
     personalDataErasure: Boolean = false
@@ -4467,19 +4745,27 @@ type Mutation {
     version: Long!
     actions: [ProductTypeUpdateAction!]!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): ProductTypeDefinition
   deleteProductType(
     version: Long!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): ProductTypeDefinition
   createTypeDefinition(draft: TypeDefinitionDraft!): TypeDefinition
@@ -4487,19 +4773,27 @@ type Mutation {
     version: Long!
     actions: [TypeUpdateAction!]!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): TypeDefinition
   deleteTypeDefinition(
     version: Long!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): TypeDefinition
   createShippingMethod(draft: ShippingMethodDraft!): ShippingMethod
@@ -4507,19 +4801,27 @@ type Mutation {
     version: Long!
     actions: [ShippingMethodUpdateAction!]!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): ShippingMethod
   deleteShippingMethod(
     version: Long!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): ShippingMethod
   createZone(draft: CreateZone!): Zone
@@ -4527,19 +4829,27 @@ type Mutation {
     version: Long!
     actions: [ZoneUpdateAction!]!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Zone
   deleteZone(
     version: Long!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Zone
   createTaxCategory(draft: TaxCategoryDraft!): TaxCategory
@@ -4547,42 +4857,62 @@ type Mutation {
     version: Long!
     actions: [TaxCategoryUpdateAction!]!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): TaxCategory
   deleteTaxCategory(
     version: Long!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): TaxCategory
   createDiscountCode(draft: DiscountCodeDraft!): DiscountCode
-  updateDiscountCode(id: String!, version: Long!, actions: [DiscountCodeUpdateAction!]!): DiscountCode
+  updateDiscountCode(
+    id: String!
+    version: Long!
+    actions: [DiscountCodeUpdateAction!]!
+  ): DiscountCode
   deleteDiscountCode(id: String!, version: Long!): DiscountCode
   createCartDiscount(draft: CartDiscountDraft!): CartDiscount
   updateCartDiscount(
     version: Long!
     actions: [CartDiscountUpdateAction!]!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): CartDiscount
   deleteCartDiscount(
     version: Long!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): CartDiscount
   createProductDiscount(draft: ProductDiscountDraft!): ProductDiscount
@@ -4590,19 +4920,27 @@ type Mutation {
     version: Long!
     actions: [ProductDiscountUpdateAction!]!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): ProductDiscount
   deleteProductDiscount(
     version: Long!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): ProductDiscount
   createProduct(draft: ProductDraft!): Product
@@ -4610,19 +4948,27 @@ type Mutation {
     version: Long!
     actions: [ProductUpdateAction!]!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Product
   deleteProduct(
     version: Long!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Product
   createState(draft: StateDraft!): State
@@ -4630,19 +4976,27 @@ type Mutation {
     version: Long!
     actions: [StateUpdateAction!]!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): State
   deleteState(
     version: Long!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): State
 
@@ -4666,35 +5020,35 @@ type Mutation {
 
   """
   Retrieves the authenticated customer (a customer that matches the given email/password pair).
-  
+
   There may be carts and orders created before the sign in that should be
   assigned to the customer account. With the `anonymousCartId`, a single
   anonymous cart can be assigned. With the `anonymousId`, all orders and carts
   that have this `anonymousId` set will be assigned to the customer.
   If both `anonymousCartId` and `anonymousId` are given, the anonymous cart must have the `anonymousId`.
-  
+
   Additionally, there might also exist one or more active customer carts from an
   earlier session. On customer sign in there are several ways how to proceed
   with this cart and the cart referenced by the `anonymousCartId`.
-  
+
   * If the customer does not have a cart yet, the anonymous cart becomes the customer's cart.
   * If the customer already has one or more carts, the content of the anonymous
   cart will be copied to the customer's active cart that has been modified most recently.
-  
+
     In this case the `CartState` of the anonymous cart gets changed to `Merged`
   while the customer's cart remains the `Active` cart.
-  
+
     If a `LineItem` in the anonymous cart matches an existing line item, or a
   `CustomLineItem` matches an existing custom line item in the customer's cart,
   the maximum quantity of both line items is used as the new quantity.
-  
+
     `ItemShippingDetails` are copied from the item with the highest quantity.
-  
+
     If `itemShippingAddresses` are different in the two carts, the resulting cart
   contains the addresses of both the customer cart and the anonymous cart.
-  
+
     Note, that it is not possible to merge carts that differ in their currency (set during creation of the cart).
-  
+
   If a cart is is returned as part of the `CustomerSignInResult`, it has been
   recalculated (it will have up-to-date prices, taxes and discounts, and invalid
   line items have been removed).
@@ -4722,10 +5076,14 @@ type Mutation {
     """
     storeKey: KeyReferenceInput
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Customer
   deleteCustomer(
@@ -4740,10 +5098,14 @@ type Mutation {
     """
     storeKey: KeyReferenceInput
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Customer
   customerChangePassword(
@@ -4763,7 +5125,7 @@ type Mutation {
 
   """
   The following workflow can be used to reset the customer’s password:
-  
+
   1. Create a password reset token and send it embedded in a link to the customer.
   2. When the customer clicks on the link, you may optionally retrieve customer by password token.
   3. When the customer entered new password, use reset customer’s password to reset the password.
@@ -4782,7 +5144,9 @@ type Mutation {
     storeKey: KeyReferenceInput
   ): Customer
 
-  """Verifies customer's email using a token."""
+  """
+  Verifies customer's email using a token.
+  """
   customerConfirmEmail(
     version: Long
     tokenValue: String!
@@ -4803,7 +5167,9 @@ type Mutation {
   customerCreatePasswordResetToken(
     email: String!
 
-    """The validity of the created token in minutes."""
+    """
+    The validity of the created token in minutes.
+    """
     ttlMinutes: Int
 
     """
@@ -4818,7 +5184,9 @@ type Mutation {
     id: String!
     version: Long
 
-    """The validity of the created token in minutes."""
+    """
+    The validity of the created token in minutes.
+    """
     ttlMinutes: Int!
 
     """
@@ -4851,17 +5219,17 @@ type Mutation {
   """
   BETA: This feature can be subject to change and should be used carefully in
   production. https://docs.commercetools.com/api/contract#beta-features
-  
+
   Retrieves the authenticated customer (a customer that matches the given email/password pair).
-  
+
   If used with an access token for Anonymous Sessions, all orders and carts
   belonging to the `anonymousId` will be assigned to the newly created customer.
-  
+
   * If the customer does not have a cart yet, the anonymous cart that was
   modified most recently becomes the customer's cart.
   * If the customer already has a cart, the most recently modified anonymous
   cart will be handled according to the `AnonymousCartSignInMode`.
-  
+
   If a cart is is returned as part of the `CustomerSignInResult`, it has been
   recalculated (it will have up-to-date prices, taxes and discounts, and invalid
   line items have been removed).
@@ -4963,7 +5331,11 @@ type Mutation {
     storeKey: KeyReferenceInput
   ): Customer
   createInventoryEntry(draft: InventoryEntryDraft!): InventoryEntry
-  updateInventoryEntry(id: String!, version: Long!, actions: [InventoryEntryUpdateAction!]!): InventoryEntry
+  updateInventoryEntry(
+    id: String!
+    version: Long!
+    actions: [InventoryEntryUpdateAction!]!
+  ): InventoryEntry
   deleteInventoryEntry(id: String!, version: Long!): InventoryEntry
   createCart(
     draft: CartDraft!
@@ -4988,10 +5360,14 @@ type Mutation {
     """
     storeKey: KeyReferenceInput
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Cart
   deleteCart(
@@ -5006,10 +5382,14 @@ type Mutation {
     """
     storeKey: KeyReferenceInput
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Cart
   replicateCart(
@@ -5098,7 +5478,9 @@ type Mutation {
     """
     storeKey: KeyReferenceInput
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
     orderNumber: String
   ): Order
@@ -5114,7 +5496,9 @@ type Mutation {
     """
     storeKey: KeyReferenceInput
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
     orderNumber: String
   ): Order
@@ -5140,19 +5524,27 @@ type Mutation {
     actions: [OrderEditUpdateAction!]!
     dryRun: Boolean = false
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): OrderEdit
   deleteOrderEdit(
     version: Long!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): OrderEdit
   createShoppingList(
@@ -5178,10 +5570,14 @@ type Mutation {
     """
     storeKey: KeyReferenceInput
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): ShoppingList
   deleteShoppingList(
@@ -5196,10 +5592,14 @@ type Mutation {
     """
     storeKey: KeyReferenceInput
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): ShoppingList
 
@@ -5235,10 +5635,14 @@ type Mutation {
     """
     storeKey: KeyReferenceInput
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): ShoppingList
 
@@ -5257,10 +5661,14 @@ type Mutation {
     """
     storeKey: KeyReferenceInput
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): ShoppingList
   createPayment(draft: PaymentDraft!): Payment
@@ -5268,20 +5676,28 @@ type Mutation {
     version: Long!
     actions: [PaymentUpdateAction!]!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Payment
   deletePayment(
     version: Long!
     personalDataErasure: Boolean = false
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Payment
 
@@ -5290,9 +5706,16 @@ type Mutation {
   production. https://docs.commercetools.com/api/contract#beta-features
   """
   createMyPayment(draft: MyPaymentDraft!): MyPayment
-  updateMyPayment(id: String!, version: Long!, actions: [MyPaymentUpdateAction!]!): MyPayment
+  updateMyPayment(
+    id: String!
+    version: Long!
+    actions: [MyPaymentUpdateAction!]!
+  ): MyPayment
   deleteMyPayment(id: String!, version: Long!): MyPayment
-  updateProject(version: Long!, actions: [ProjectSettingsUpdateAction!]!): ProjectProjection
+  updateProject(
+    version: Long!
+    actions: [ProjectSettingsUpdateAction!]!
+  ): ProjectProjection
 
   """
   BETA: This feature can be subject to change and should be used carefully in
@@ -5308,10 +5731,14 @@ type Mutation {
     version: Long!
     actions: [StoreUpdateAction!]!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Store
 
@@ -5322,10 +5749,14 @@ type Mutation {
   deleteStore(
     version: Long!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Store
   createReview(draft: ReviewDraft!): Review
@@ -5333,20 +5764,28 @@ type Mutation {
     version: Long!
     actions: [ReviewUpdateAction!]!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Review
   deleteReview(
     version: Long!
     personalDataErasure: Boolean = false
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Review
   createSubscription(draft: SubscriptionDraft!): CommercetoolsSubscription
@@ -5354,19 +5793,27 @@ type Mutation {
     version: Long!
     actions: [SubscriptionUpdateAction!]!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): CommercetoolsSubscription
   deleteSubscription(
     version: Long!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): CommercetoolsSubscription
   createExtension(draft: ExtensionDraft!): Extension
@@ -5374,19 +5821,27 @@ type Mutation {
     version: Long!
     actions: [ExtensionUpdateAction!]!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Extension
   deleteExtension(
     version: Long!
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Extension
   createApiClient(draft: CreateApiClient!): APIClientWithSecret
@@ -5564,7 +6019,10 @@ input MyTransactionDraft {
 }
 
 type NestedAttributeDefinitionType implements AttributeDefinitionType {
-  typeReference: Reference! @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Use 'typeRef' to fetch the reference.")
+  typeReference: Reference!
+    @deprecated(
+      reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Use 'typeRef' to fetch the reference."
+    )
   typeRef: Reference!
   name: String!
 }
@@ -5657,21 +6115,29 @@ type Order implements Versioned {
   customFieldsRaw(
     """
     The names of the custom fields to include.
-    
+
     If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
     """
     includeNames: [String!]
 
     """
     The names of the custom fields to exclude.
-    
+
     If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
     """
     excludeNames: [String!]
-  ): [RawCustomField!] @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
+  ): [RawCustomField!]
+    @deprecated(
+      reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'"
+    )
 
-  """This field would contain type data"""
-  customFields: Type @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
+  """
+  This field would contain type data
+  """
+  customFields: Type
+    @deprecated(
+      reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'"
+    )
   custom: CustomFieldsType
   id: String!
   version: Long!
@@ -5911,11 +6377,18 @@ Fields to access orders. Includes direct access to a single order and searching 
 """
 interface OrderQueryInterface {
   order(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
     orderNumber: String
   ): Order
-  orders(where: String, sort: [String!], limit: Int, offset: Int): OrderQueryResult!
+  orders(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): OrderQueryResult!
 }
 
 type OrderQueryResult {
@@ -6120,7 +6593,10 @@ type Payment implements Versioned {
   paymentMethodInfo: PaymentMethodInfo!
   paymentStatus: PaymentStatus!
   transactions: [Transaction!]!
-  interfaceInteractionsRaw(limit: Int, offset: Int): InterfaceInteractionsRawResult!
+  interfaceInteractionsRaw(
+    limit: Int
+    offset: Int
+  ): InterfaceInteractionsRawResult!
   custom: CustomFieldsType
   id: String!
   version: Long!
@@ -6436,37 +6912,43 @@ type ProductData {
   metaDescriptionAllLocales: [LocalizedString!]
   masterVariant: ProductVariant!
   variants(
-    """Queries for products with specified SKUs"""
+    """
+    Queries for products with specified SKUs
+    """
     skus: [String!]
     isOnStock: Boolean
 
     """
     The IDs of channels for which to check the stock of the `isOnStock`.
-    
+
     Variant is returned if at least one of the channels is matching the `isOnStock`
-    
+
     If the list is not provided then noChannel is checked for `isOnStock`
     """
     stockChannelIds: [String!]
     hasImages: Boolean
   ): [ProductVariant!]!
   allVariants(
-    """Queries for products with specified SKUs"""
+    """
+    Queries for products with specified SKUs
+    """
     skus: [String!]
     isOnStock: Boolean
 
     """
     The IDs of channels for which to check the stock of the `isOnStock`.
-    
+
     Variant is returned if at least one of the channels is matching the `isOnStock`
-    
+
     If the list is not provided then noChannel is checked for `isOnStock`
     """
     stockChannelIds: [String!]
     hasImages: Boolean
   ): [ProductVariant!]!
   variant(
-    """Queries for a variant with specified SKU"""
+    """
+    Queries for a variant with specified SKU
+    """
     sku: String
 
     """
@@ -6484,7 +6966,6 @@ type ProductDeleted implements MessagePayload {
 }
 
 """
-
 A product price can be discounted in two ways:
 
 * with a relative or an absolute product discount, which will be automatically
@@ -6502,7 +6983,6 @@ Note that when a discount is created, updated or removed it can take up to 15
 minutes to update all the prices with the discounts.
 
 The maximum number of ProductDiscounts that can be active at the same time is **200**.
-      
 """
 type ProductDiscount implements Versioned {
   predicate: String!
@@ -6647,21 +7127,29 @@ type ProductPrice {
   customFieldsRaw(
     """
     The names of the custom fields to include.
-    
+
     If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
     """
     includeNames: [String!]
 
     """
     The names of the custom fields to exclude.
-    
+
     If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
     """
     excludeNames: [String!]
-  ): [RawCustomField!] @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
+  ): [RawCustomField!]
+    @deprecated(
+      reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'"
+    )
 
-  """This field would contain type data"""
-  customFields: Type @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'")
+  """
+  This field would contain type data
+  """
+  customFields: Type
+    @deprecated(
+      reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Please use 'custom.customFieldsRaw'"
+    )
   custom: CustomFieldsType
 }
 
@@ -6877,14 +7365,14 @@ type ProductTypeDefinition implements Versioned {
   attributeDefinitions(
     """
     The names of the attribute definitions to include.
-    
+
     If neither `includeNames` nor `excludeNames` are provided, then all attribute definitions are returned.
     """
     includeNames: [String!]
 
     """
     The names of the attribute definitions to exclude.
-    
+
     If neither `includeNames` nor `excludeNames` are provided, then all attribute definitions are returned.
     """
     excludeNames: [String!]
@@ -6997,24 +7485,34 @@ type ProductVariant {
   sku: String
   prices: [ProductPrice!]
 
-  """Returns a single price based on the price selection rules."""
-  price(currency: Currency!, country: Country, customerGroupId: String, channelId: String, date: DateTime): ProductPrice
+  """
+  Returns a single price based on the price selection rules.
+  """
+  price(
+    currency: Currency!
+    country: Country
+    customerGroupId: String
+    channelId: String
+    date: DateTime
+  ): ProductPrice
   images: [Image!]!
   assets: [Asset!]!
   availability: ProductVariantAvailabilityWithChannels
 
-  """This field contains raw attributes data"""
+  """
+  This field contains raw attributes data
+  """
   attributesRaw(
     """
     The names of the attributes to include.
-    
+
     If neither `includeNames` nor `excludeNames` are provided, then all attributes are returned.
     """
     includeNames: [String!]
 
     """
     The names of the attributes to exclude.
-    
+
     If neither `includeNames` nor `excludeNames` are provided, then all attributes are returned.
     """
     excludeNames: [String!]
@@ -7027,7 +7525,9 @@ type ProductVariantAdded implements MessagePayload {
   type: String!
 }
 
-"""Product variant availabilities"""
+"""
+Product variant availabilities
+"""
 type ProductVariantAvailabilitiesResult {
   limit: Int
   offset: Int
@@ -7035,7 +7535,9 @@ type ProductVariantAvailabilitiesResult {
   results: [ProductVariantAvailabilityWithChannel!]!
 }
 
-"""Product variant availability"""
+"""
+Product variant availability
+"""
 type ProductVariantAvailability {
   isOnStock: Boolean!
   restockableInDays: Int
@@ -7053,14 +7555,14 @@ type ProductVariantAvailabilityWithChannels {
   channels(
     """
     The IDs of channels to include.
-    
+
     If neither `includeChannelIds` nor `excludeChannelIds` are provided, then all channels are returned.
     """
     includeChannelIds: [String!]
 
     """
     The IDs of channels to exclude.
-    
+
     If neither `includeChannelIds` nor `excludeChannelIds` are provided, then all channels are returned.
     """
     excludeChannelIds: [String!]
@@ -7084,7 +7586,9 @@ input ProductVariantInput {
   assets: [AssetDraftInput!] = []
 }
 
-"""Contains information about the limits of your project."""
+"""
+Contains information about the limits of your project.
+"""
 type ProjectCustomLimitsProjection {
   query: QueryLimitsProjection!
   products: ProductLimitsProjection!
@@ -7106,7 +7610,9 @@ type ProjectCustomLimitsProjection {
   category: CategoryLimitsProjection!
 }
 
-"""Project contains information about project."""
+"""
+Project contains information about project.
+"""
 type ProjectProjection {
   key: String!
   name: String!
@@ -7144,17 +7650,21 @@ input PublishProduct {
 }
 
 enum PublishScope {
-  """Publishes the complete staged projection"""
+  """
+  Publishes the complete staged projection
+  """
   All
 
-  """Publishes only prices on the staged projection"""
+  """
+  Publishes only prices on the staged projection
+  """
   Prices
 }
 
 type Query implements CartQueryInterface & CustomerActiveCartInterface & OrderQueryInterface & CustomerQueryInterface & ShoppingListQueryInterface & ShippingMethodsByCartInterface & MeFieldInterface {
   """
   This field can only be used with an access token created with the password flow or with an anonymous session.
-  
+
   It gives access to the data that is specific to the customer or the anonymous session linked to the access token.
   """
   me: Me!
@@ -7169,21 +7679,39 @@ type Query implements CartQueryInterface & CustomerActiveCartInterface & OrderQu
   """
   inStores(keys: [KeyReferenceInput!]!): InStore!
   customerGroup(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): CustomerGroup
-  customerGroups(where: String, sort: [String!], limit: Int, offset: Int): CustomerGroupQueryResult!
+  customerGroups(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): CustomerGroupQueryResult!
   category(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Category
-  categories(where: String, sort: [String!], limit: Int, offset: Int): CategoryQueryResult!
+  categories(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): CategoryQueryResult!
 
   """
   Autocomplete the categories based on category fields like name, description, etc.
@@ -7194,7 +7722,9 @@ type Query implements CartQueryInterface & CustomerActiveCartInterface & OrderQu
     """
     locale: Locale!
 
-    """Incomplete user input."""
+    """
+    Incomplete user input.
+    """
     text: String!
     limit: Int = 10
     offset: Int = 0
@@ -7220,14 +7750,20 @@ type Query implements CartQueryInterface & CustomerActiveCartInterface & OrderQu
     filters: [SearchFilter!]
   ): CategorySearchResult!
 
-  """Search the categories using full-text search, filtering and sorting"""
+  """
+  Search the categories using full-text search, filtering and sorting
+  """
   categorySearch(
-    """Full-text search input."""
+    """
+    Full-text search input.
+    """
     fulltext: LocalizedText
     limit: Int = 10
     offset: Int = 0
 
-    """Filters to apply before the results of facets"""
+    """
+    Filters to apply before the results of facets
+    """
     queryFilters: [SearchFilter!]
 
     """
@@ -7252,95 +7788,188 @@ type Query implements CartQueryInterface & CustomerActiveCartInterface & OrderQu
 
     """
     Sort result - supported fields are:
-    
+
     * `id`
     * `name`
     * `createdAt`
     * `modifiedAt`
-    
+
     by default sorted by relevance (a score of matches against the search term in descending order)
     """
     sorts: [SearchSort!]
   ): CategorySearchResult!
   channel(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Channel
-  channels(where: String, sort: [String!], limit: Int, offset: Int): ChannelQueryResult!
+  channels(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): ChannelQueryResult!
   customObject(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
     container: String
   ): CustomObject
-  customObjects(where: String, sort: [String!], limit: Int, offset: Int, container: String!): CustomObjectQueryResult!
+  customObjects(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+    container: String!
+  ): CustomObjectQueryResult!
   productType(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): ProductTypeDefinition
-  productTypes(where: String, sort: [String!], limit: Int, offset: Int): ProductTypeDefinitionQueryResult!
+  productTypes(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): ProductTypeDefinitionQueryResult!
   typeDefinition(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): TypeDefinition
-  typeDefinitions(where: String, sort: [String!], limit: Int, offset: Int): TypeDefinitionQueryResult!
+  typeDefinitions(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): TypeDefinitionQueryResult!
   shippingMethod(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): ShippingMethod
-  shippingMethods(where: String, sort: [String!], limit: Int, offset: Int): ShippingMethodQueryResult!
+  shippingMethods(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): ShippingMethodQueryResult!
   shippingMethodsByCart(id: String!): [ShippingMethod!]!
-  shippingMethodsByLocation(country: Country!, state: String, currency: Currency): [ShippingMethod!]!
+  shippingMethodsByLocation(
+    country: Country!
+    state: String
+    currency: Currency
+  ): [ShippingMethod!]!
   zone(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Zone
-  zones(where: String, sort: [String!], limit: Int, offset: Int): ZoneQueryResult!
+  zones(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): ZoneQueryResult!
   taxCategory(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): TaxCategory
-  taxCategories(where: String, sort: [String!], limit: Int, offset: Int): TaxCategoryQueryResult!
+  taxCategories(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): TaxCategoryQueryResult!
   discountCode(id: String!): DiscountCode
-  discountCodes(where: String, sort: [String!], limit: Int, offset: Int): DiscountCodeQueryResult!
+  discountCodes(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): DiscountCodeQueryResult!
   cartDiscount(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): CartDiscount
-  cartDiscounts(where: String, sort: [String!], limit: Int, offset: Int): CartDiscountQueryResult!
+  cartDiscounts(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): CartDiscountQueryResult!
   productDiscount(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): ProductDiscount
-  productDiscounts(where: String, sort: [String!], limit: Int, offset: Int): ProductDiscountQueryResult!
+  productDiscounts(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): ProductDiscountQueryResult!
   product(
-    """Queries for a product with specified SKU"""
+    """
+    Queries for a product with specified SKU
+    """
     sku: String
 
     """
@@ -7349,10 +7978,14 @@ type Query implements CartQueryInterface & CustomerActiveCartInterface & OrderQu
     """
     variantKey: String
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Product
   products(
@@ -7361,75 +7994,157 @@ type Query implements CartQueryInterface & CustomerActiveCartInterface & OrderQu
     limit: Int
     offset: Int
 
-    """Queries for products with specified SKUs"""
+    """
+    Queries for products with specified SKUs
+    """
     skus: [String!]
   ): ProductQueryResult!
   state(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): State
-  states(where: String, sort: [String!], limit: Int, offset: Int): StateQueryResult!
+  states(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): StateQueryResult!
   customer(
-    """Queries a customer with specified email token"""
+    """
+    Queries a customer with specified email token
+    """
     emailToken: String
 
-    """Queries a customer with specified password token"""
+    """
+    Queries a customer with specified password token
+    """
     passwordToken: String
 
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Customer
-  customers(where: String, sort: [String!], limit: Int, offset: Int): CustomerQueryResult!
+  customers(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): CustomerQueryResult!
   inventoryEntry(id: String!): InventoryEntry
-  inventoryEntries(where: String, sort: [String!], limit: Int, offset: Int): InventoryEntryQueryResult!
+  inventoryEntries(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): InventoryEntryQueryResult!
   cart(id: String!): Cart
-  carts(where: String, sort: [String!], limit: Int, offset: Int): CartQueryResult!
+  carts(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): CartQueryResult!
   customerActiveCart(customerId: String!): Cart
   message(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Message
-  messages(where: String, sort: [String!], limit: Int, offset: Int): MessageQueryResult!
+  messages(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): MessageQueryResult!
   order(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
     orderNumber: String
   ): Order
-  orders(where: String, sort: [String!], limit: Int, offset: Int): OrderQueryResult!
+  orders(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): OrderQueryResult!
   orderEdit(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): OrderEdit
-  orderEdits(where: String, sort: [String!], limit: Int, offset: Int): OrderEditQueryResult!
+  orderEdits(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): OrderEditQueryResult!
   shoppingList(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): ShoppingList
-  shoppingLists(where: String, sort: [String!], limit: Int, offset: Int): ShoppingListQueryResult!
+  shoppingLists(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): ShoppingListQueryResult!
   payment(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Payment
-  payments(where: String, sort: [String!], limit: Int, offset: Int): PaymentQueryResult!
-  productProjectionsSuggest(searchKeywords: [SearchKeywordArgument!]!, fuzzy: Boolean, limit: Int = 10, staged: Boolean = false): SuggestResult!
+  payments(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): PaymentQueryResult!
+  productProjectionsSuggest(
+    searchKeywords: [SearchKeywordArgument!]!
+    fuzzy: Boolean
+    limit: Int = 10
+    staged: Boolean = false
+  ): SuggestResult!
   project: ProjectProjection!
 
   """
@@ -7437,10 +8152,14 @@ type Query implements CartQueryInterface & CustomerActiveCartInterface & OrderQu
   production. https://docs.commercetools.com/api/contract#beta-features
   """
   store(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Store
 
@@ -7448,33 +8167,70 @@ type Query implements CartQueryInterface & CustomerActiveCartInterface & OrderQu
   BETA: This feature can be subject to change and should be used carefully in
   production. https://docs.commercetools.com/api/contract#beta-features
   """
-  stores(where: String, sort: [String!], limit: Int, offset: Int): StoreQueryResult!
+  stores(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): StoreQueryResult!
   review(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Review
-  reviews(where: String, sort: [String!], limit: Int, offset: Int): ReviewQueryResult!
+  reviews(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): ReviewQueryResult!
   subscription(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): CommercetoolsSubscription
-  subscriptions(where: String, sort: [String!], limit: Int, offset: Int): CommercetoolsSubscriptionQueryResult!
+  subscriptions(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): CommercetoolsSubscriptionQueryResult!
   extension(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): Extension
-  extensions(where: String, sort: [String!], limit: Int, offset: Int): ExtensionQueryResult!
+  extensions(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): ExtensionQueryResult!
   apiClient(id: String!): APIClientWithoutSecret
-  apiClients(where: String, sort: [String!], limit: Int, offset: Int): APIClientWithoutSecretQueryResult!
+  apiClients(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): APIClientWithoutSecretQueryResult!
   limits: ProjectCustomLimitsProjection!
 }
 
@@ -7803,7 +8559,9 @@ input ResourceIdentifierInput {
   key: String
 }
 
-"""Stores information about returns connected to this order."""
+"""
+Stores information about returns connected to this order.
+"""
 type ReturnInfo {
   items: [ReturnItem!]!
   returnTrackingId: String
@@ -7969,7 +8727,9 @@ enum RoundingMode {
   """
   HalfDown
 
-  """[Round half up](https://en.wikipedia.org/wiki/Rounding#Round_half_up)"""
+  """
+  [Round half up](https://en.wikipedia.org/wiki/Rounding#Round_half_up)
+  """
   HalfUp
 
   """
@@ -8043,7 +8803,9 @@ type SearchLimitsProjection {
   maxTextSize: Limit!
 }
 
-"""Search sort"""
+"""
+Search sort
+"""
 scalar SearchSort
 
 """
@@ -8054,7 +8816,9 @@ enum SelectionMode {
   Cheapest
 }
 
-"""A set."""
+"""
+A set.
+"""
 scalar Set
 
 type SetAttributeDefinitionType implements AttributeDefinitionType {
@@ -9828,7 +10592,10 @@ type ShippingMethod implements Versioned {
   key: String
   taxCategoryRef: Reference
   localizedDescriptionAllLocales: [LocalizedString!]
-  description: String @deprecated(reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Use localizedDescription")
+  description: String
+    @deprecated(
+      reason: "This field has been removed and will return a HTTP code 400 with X-DEPRECATION-NOTICE when used. Use localizedDescription"
+    )
   localizedDescription(
     """
     String is defined for different locales. This argument specifies the desired locale.
@@ -9878,7 +10645,9 @@ type ShippingMethodQueryResult {
   results: [ShippingMethod!]!
 }
 
-"""A field to retrieve available shipping methods for a cart."""
+"""
+A field to retrieve available shipping methods for a cart.
+"""
 interface ShippingMethodsByCartInterface {
   shippingMethodsByCart(id: String!): [ShippingMethod!]!
 }
@@ -9912,7 +10681,9 @@ input ShippingMethodUpdateAction {
   setPredicate: SetShippingMethodPredicate
 }
 
-"""Shipping Rate"""
+"""
+Shipping Rate
+"""
 type ShippingRate {
   price: Money!
   freeAbove: Money
@@ -10161,13 +10932,22 @@ Fields to access shopping lists. Includes direct access to a single list and sea
 """
 interface ShoppingListQueryInterface {
   shoppingList(
-    """Queries with specified ID"""
+    """
+    Queries with specified ID
+    """
     id: String
 
-    """Queries with specified key"""
+    """
+    Queries with specified key
+    """
     key: String
   ): ShoppingList
-  shoppingLists(where: String, sort: [String!], limit: Int, offset: Int): ShoppingListQueryResult!
+  shoppingLists(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): ShoppingListQueryResult!
 }
 
 type ShoppingListQueryResult {
@@ -10248,9 +11028,13 @@ input SQSDestinationInput {
   region: String!
 }
 
-"""Describes how this discount interacts with other discounts"""
+"""
+Describes how this discount interacts with other discounts
+"""
 enum StackingMode {
-  """Don’t apply any more matching discounts after this one."""
+  """
+  Don’t apply any more matching discounts after this one.
+  """
   StopAfterThisDiscount
 
   """
@@ -10346,7 +11130,9 @@ interface StagedOrderUpdateActionOutput {
   type: String!
 }
 
-"""[State](https://docs.commercetools.com/api/projects/states)"""
+"""
+[State](https://docs.commercetools.com/api/projects/states)
+"""
 type State implements Versioned {
   id: String!
   version: Long!
@@ -10429,7 +11215,9 @@ input StateUpdateAction {
   setTransitions: SetStateTransitions
 }
 
-"""[BETA] Stores allow defining different contexts for a project."""
+"""
+[BETA] Stores allow defining different contexts for a project.
+"""
 type Store implements Versioned {
   id: String!
   version: Long!
@@ -10666,7 +11454,9 @@ type TaxedPrice {
 }
 
 enum TaxMode {
-  """No taxes are added to the cart."""
+  """
+  No taxes are added to the cart.
+  """
   Disabled
 
   """
@@ -10778,7 +11568,9 @@ input TextLineItemDraft {
   addedAt: DateTime
 }
 
-"""Time is a scalar value that represents an ISO8601 formatted time."""
+"""
+Time is a scalar value that represents an ISO8601 formatted time.
+"""
 scalar Time
 
 type TimeAttribute implements Attribute {
@@ -10976,14 +11768,14 @@ type TypeDefinition implements Versioned {
   fieldDefinitions(
     """
     The names of the custom field definitions to include.
-    
+
     If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
     """
     includeNames: [String!]
 
     """
     The names of the custom field definitions to exclude.
-    
+
     If neither `includeNames` nor `excludeNames` are provided, then all custom fields are returned.
     """
     excludeNames: [String!]
@@ -11113,7 +11905,9 @@ YearMonth is a scalar value that represents an ISO8601 formatted year and month.
 """
 scalar YearMonth
 
-"""Zones allow defining ShippingRates for specific Locations."""
+"""
+Zones allow defining ShippingRates for specific Locations.
+"""
 type Zone implements Versioned {
   name: String!
   key: String

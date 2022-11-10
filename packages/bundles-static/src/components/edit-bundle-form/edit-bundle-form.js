@@ -1,4 +1,4 @@
-import { useMutation } from "@apollo/client";
+import { useMutation } from '@apollo/client';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';

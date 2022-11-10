@@ -7,10 +7,10 @@ import {
   SecondaryIconButton,
   TextInput,
 } from '@commercetools-frontend/ui-kit';
-//import debounce from 'lodash/debounce';
-const debounce = require('lodash.debounce');
 import messages from './messages';
 import styles from './throttled-search-input.mod.css';
+
+const debounce = require('lodash.debounce');
 
 const ThrottledSearchInput = ({
   handleSearch,
@@ -55,8 +55,8 @@ const ThrottledSearchInput = ({
             onClick={clear}
           />
         ) : (
-            <SearchIcon />
-          )}
+          <SearchIcon />
+        )}
       </div>
     </div>
   );

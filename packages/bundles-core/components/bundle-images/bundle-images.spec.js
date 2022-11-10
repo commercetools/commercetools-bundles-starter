@@ -117,6 +117,7 @@ describe('bundle images', () => {
         try {
           await firstImage.props().removeImage(url);
         } catch (error) {
+          // eslint-disable-next-line jest/no-conditional-expect
           expect(mockShowNotification).toHaveBeenCalledWith({
             text: messages.removeError.id,
           });

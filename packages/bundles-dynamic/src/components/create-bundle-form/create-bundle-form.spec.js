@@ -134,6 +134,7 @@ describe('create bundle form', () => {
     try {
       await submitForm();
     } catch (err) {
+      // eslint-disable-next-line jest/no-conditional-expect
       expect(mockShowNotification).toHaveBeenCalledWith(
         {
           text: <FormattedMessage {...messages.createError} />,

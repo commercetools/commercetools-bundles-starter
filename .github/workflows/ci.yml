@@ -22,6 +22,7 @@ jobs:
           node-version: '14.x'
       - run: echo -e '[url "https://github.com/"]\n  insteadOf = "git://github.com/"' >> ~/.gitconfig
       - run: yarn
+      - run: lerna run check
       - run: lerna run test:unit
       - run: lerna run test:integration
         env:

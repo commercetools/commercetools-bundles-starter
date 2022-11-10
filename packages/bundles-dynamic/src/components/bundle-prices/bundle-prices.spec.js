@@ -11,7 +11,7 @@ import messages from './messages';
 const project = {
   currencies: Array.from({ length: 3 }, () => faker.finance.currencyCode()),
 };
-const mcURL = 'mc.europe-west1.gcp.commercetools.com'
+const mcURL = 'mc.europe-west1.gcp.commercetools.com';
 const mocks = {
   match: {
     params: {

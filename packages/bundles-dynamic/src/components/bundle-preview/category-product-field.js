@@ -74,13 +74,8 @@ const CategoryProductField = ({
       }
     },
   });
-  const {
-    id,
-    path,
-    additionalCharge,
-    minQuantity,
-    maxQuantity,
-  } = getCategoryAttributes(category);
+  const { id, path, additionalCharge, minQuantity, maxQuantity } =
+    getCategoryAttributes(category);
   const showPrices = additionalCharge || dynamicPrice;
   const scopedPrice = showPrices ? getScopedPriceParameters(priceFilters) : '';
   const filter = `filter=categories.id: subtree("${id}")${scopedPrice}`;

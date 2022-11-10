@@ -6,7 +6,9 @@ import { Pagination } from '../pagination';
 
 const mockItems = [];
 const mockRows = [{ id: faker.datatype.uuid() }];
-const mockColumns = [{ key: faker.datatype.uuid(), label: faker.random.word() }];
+const mockColumns = [
+  { key: faker.datatype.uuid(), label: faker.random.word() },
+];
 const mockSort = {
   column: 'test.column.key',
   direction: 'asc',
