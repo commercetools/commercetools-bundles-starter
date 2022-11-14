@@ -655,5 +655,5 @@ that additional charge is and updating the bundle's price accordingly.
 
 ## Support
 
-Contact the US Professional Services team for all support requests related to
+Please create an [issue](https://github.com/commercetools/commercetools-bundles-starter/issues) in this repository or contact for all support requests related to
 the dynamic bundles solution.

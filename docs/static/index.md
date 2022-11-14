@@ -672,5 +672,5 @@ PDP implementation to display all of your commercetools products.
 
 ## Support
 
-Contact the US Professional Services team for all support requests related to
+Please create an [issue](https://github.com/commercetools/commercetools-bundles-starter/issues) in this repository or contact for all support requests related to
 the static bundles solution.
