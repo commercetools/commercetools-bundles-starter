@@ -34,7 +34,7 @@ To run an application locally, navigate to the specific application directory an
 - [Backend-starter-dynamic-bundles](packages/backend-starter-dynamic-bundles/README.md)
 
 Be sure to deploy the cloud function 'platform-extension-static-bundles' for the static bundles solution.
-Run terraform against the terraform folder in 'platform-extension-static-bundles' to setup static bundles type definitions and see the sub folder 'dynamic-bundles-definitions' for 
+Run terraform against the terraform folder in `platform-extension-static-bundles` to set up static bundles type definitions and see the sub folder 'dynamic-bundles-definitions' for 
 dynamic bundle's terraform folder and type definitions.
 
 ### Troubleshooting
