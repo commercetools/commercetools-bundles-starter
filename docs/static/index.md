@@ -4,41 +4,40 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Static Bundles](#static-bundles)
-  - [Overview](#overview)
-  - [Technology](#technology)
-  - [Features](#features)
-    - [Bundles List](#bundles-list)
-    - [Bundle Creation](#bundle-creation)
-    - [Bundle Details](#bundle-details)
-      - [General](#general)
-      - [Images](#images)
-      - [Prices](#prices)
-  - [Architecture](#architecture)
-    - [Product](#product)
-    - [Product Types](#product-types)
-      - [StaticBundleParent](#staticbundleparent)
-      - [StaticBundleChildVariant](#staticbundlechildvariant)
-      - [Sample Bundle](#sample-bundle)
-  - [Configuration](#configuration)
-  - [Installation](#installation)
-  - [Development](#development)
-    - [Start the development server](#start-the-development-server)
-    - [Troubleshooting](#troubleshooting)
-      - [`graphql_error.invalid_token` error](#graphql_errorinvalid_token-error)
-      - [Do's and Don'ts](#dos-and-donts)
-    - [Linting & Formatting](#linting--formatting)
-      - [Formatting code](#formatting-code)
-      - [Linting code](#linting-code)
-        - [Linting GraphQL Queries](#linting-graphql-queries)
-        - [Generating CTP GraphQL schema](#generating-ctp-graphql-schema)
-    - [Git Hooks](#git-hooks)
-  - [Tests](#tests)
-  - [Build & Deployment](#build--deployment)
-    - [Registration with Merchant Center](#registration-with-merchant-center)
-      - [Configuration Values](#configuration-values)
-  - [Complete the Solution: Your Implementation Responsibilities](#complete-the-solution-your-implementation-responsibilities)
-  - [Support](#support)
+- [Overview](#overview)
+- [Technology](#technology)
+- [Features](#features)
+  - [Bundles List](#bundles-list)
+  - [Bundle Creation](#bundle-creation)
+  - [Bundle Details](#bundle-details)
+    - [General](#general)
+    - [Images](#images)
+    - [Prices](#prices)
+- [Architecture](#architecture)
+  - [Product](#product)
+  - [Product Types](#product-types)
+    - [StaticBundleParent](#staticbundleparent)
+    - [StaticBundleChildVariant](#staticbundlechildvariant)
+    - [Sample Bundle](#sample-bundle)
+- [Configuration](#configuration)
+- [Installation](#installation)
+- [Development](#development)
+  - [Start the development server](#start-the-development-server)
+  - [Troubleshooting](#troubleshooting)
+    - [`graphql_error.invalid_token` error](#graphql_errorinvalid_token-error)
+    - [Do's and Don'ts](#dos-and-donts)
+  - [Linting & Formatting](#linting--formatting)
+    - [Formatting code](#formatting-code)
+    - [Linting code](#linting-code)
+      - [Linting GraphQL Queries](#linting-graphql-queries)
+      - [Generating CTP GraphQL schema](#generating-ctp-graphql-schema)
+  - [Git Hooks](#git-hooks)
+- [Tests](#tests)
+- [Build & Deployment](#build--deployment)
+  - [Registration with Merchant Center](#registration-with-merchant-center)
+    - [Configuration Values](#configuration-values)
+- [Complete the Solution: Your Implementation Responsibilities](#complete-the-solution-your-implementation-responsibilities)
+- [Support](#support)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -50,11 +49,10 @@ camera, bag, and SD card for a single bundled price. The customer purchases a
 single bundle and then receives two or more distinct inventory items as selected
 by merchandising.
 
-This process is achieved by creating a new product with a specific
+This process has been achieved by creating a new [product](https://docs.commercetools.com/api/projects/products) with a specific
 [type](https://docs.commercetools.com/http-api-projects-productTypes) that
 references all the items within the bundle. On adding this new item to the cart,
-an
-[API extension](https://github.com/commercetools/commercetools-bundles-starter/tree/master/packages/platform-extension-static-bundles)
+an API extension [platform-extension-static-bundles](https://github.com/commercetools/commercetools-bundles-starter/tree/master/packages/platform-extension-static-bundles)
 is executed for cart requests to manage the child items during checkout. The
 final order includes the bundle items with pricing and a list of child line
 items for fulfillment.
@@ -674,5 +672,5 @@ PDP implementation to display all of your commercetools products.
 
 ## Support
 
-Contact the US Professional Services team for all support requests related to
+Please create an [issue](https://github.com/commercetools/commercetools-bundles-starter/issues) in the repository for all support requests related to
 the static bundles solution.

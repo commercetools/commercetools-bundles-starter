@@ -1,8 +1,3 @@
----
-layout: default
-title: Platform Extension - Static Bundles
----
-
 # Platform Extension - Static Bundles
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -81,7 +76,7 @@ This application's dependencies may be installed using yarn.  Simply run `yarn` 
 
 ## Terraform
 
-While it is not required to use Terraform to manage the Product Types and Types in your commercetools project, it can certainly help.  You may initialize Terraform using `yarn terraform:init`. This will require manually installing the [commercetools Terraform provider](https://github.com/labd/terraform-provider-commercetools) as well as terraform itself.  Once initialized, you may run `yarn terraform:plan` and `yarn terraform:apply` to plan and apply any configuration changes.  Terraform will make use of the same variables in `../config/default.env`, but will also load the env vars from `config/${NODE_ENV}.env`.  If you wish to not use Terraform, you ***must*** ensure that the Product Types and Types defined in the `../terraform/main.tf` are added to your project and are up to date.  The product types are also defiend as JSON in the [resourceDefinitions](../resourceDefinitions) directory.
+While it is not required to use Terraform to manage the Product Types and Types in your commercetools project, it can certainly help.  You may initialize Terraform using `yarn terraform:init`. This will require manually installing the [commercetools Terraform provider](https://github.com/labd/terraform-provider-commercetools) as well as terraform itself.  Once initialized, you may run `yarn terraform:plan` and `yarn terraform:apply` to plan and apply any configuration changes.  Terraform will make use of the same variables in `../config/default.env`, but will also load the env vars from `config/${NODE_ENV}.env`.  If you wish to not use Terraform, you ***must*** ensure that the Product Types and Types defined in the [main.tf](terraform/main.tf) are added to your project and are up to date. The product types are also defined as JSON in the [resourceDefinitions](../resourceDefinitions) directory.
 
 ## Configuration
 
@@ -94,14 +89,16 @@ A deployed serverless function should rely on secrets/environment variables set 
 
 ### Environment Variables
 
-*  `commercetools_token_url` The commercetools Auth URL (e.g. https://auth.us-central1.gcp.commercetools.com/)
-*  `commercetools_api_url` commercetools API URL (e.g. https://api.us-central1.gcp.commercetools.com/)
-*  `commercetools_api_concurrency` commercetools API concurrency limit
-*  `commercetools_client_id` A commercetools client ID
-*  `commercetools_client_secret` The secret key for the commercetools client
-*  `commercetools_project_key` The commercetools project key
-*  `commercetools_scopes` The scopes used by the commercetools client
-*  `cache_ttl` The in-memory cache's Time-To-Live
+| Name                          | Content                                                                                     | Required | Default                                         |
+| ----------------------------- | ------------------------------------------------------------------------------------------- | -------- | ----------------------------------------------- |
+| commercetools_project_key     | The commercetools project key                                                               | YES      |
+| commercetools_client_id       | OAuth 2.0 client_id and can be used to obtain a token.                                      | YES      |
+| commercetools_client_secret   | OAuth 2.0 client_secret and can be used to obtain a token.                                  | YES      |
+| commercetools_scopes          | The scopes used by the commercetools client.                                                | YES      |
+| commercetools_api_url         | The commercetools HTTP API is hosted at that URL.                                           | NO       | https://api.us-central1.gcp.commercetools.com   |
+| commercetools_token_url       | The commercetools OAuth 2.0 service is hosted at that URL.                                  | NO       | https://auth.us-central1.gcp.commercetools.com  |
+| commercetools_api_concurrency | The concurrency limit value for the client executions.                                      | NO       | 10                                              |
+| cache_ttl                     | The in-memory cache's Time-To-Live.                                                         | NO       | 0                                               |
 
 ### Application Assumptions
 

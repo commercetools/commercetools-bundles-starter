@@ -1,53 +1,46 @@
----
-layout: default
-title: Dynamic Bundles
-nav_order: 3
----
-
-<!--prettier-ignore-start-->
 # Dynamic Bundles
 
 ## Table of contents
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-- [Dynamic Bundles](#dynamic-bundles)
-  - [Overview](#overview)
-  - [Technology](#technology)
-  - [Features](#features)
-    - [Bundles List](#bundles-list)
-    - [Bundle Creation](#bundle-creation)
-    - [Bundle Details](#bundle-details)
-      - [General](#general)
-      - [Images](#images)
-      - [Prices](#prices)
-      - [Preview](#preview)
-        - [Fixed Price Bundle with Additional Charge Component](#fixed-price-bundle-with-additional-charge-component)
-        - [Dynamic Price Bundle](#dynamic-price-bundle)
-  - [Architecture](#architecture)
-    - [Product](#product)
-    - [Product Types](#product-types)
-      - [DynamicBundleParent](#dynamicbundleparent)
-      - [DynamicBundleChildCategory](#dynamicbundlechildcategory)
-      - [Sample Bundle](#sample-bundle)
-  - [Configuration](#configuration)
-  - [Installation](#installation)
-  - [Development](#development)
-    - [Start the development server](#start-the-development-server)
-    - [Troubleshooting](#troubleshooting)
-      - [`graphql_error.invalid_token` error](#graphql_errorinvalid_token-error)
-      - [Do's and Don'ts](#dos-and-donts)
-    - [Linting & Formatting](#linting--formatting)
-      - [Formatting code](#formatting-code)
-      - [Linting code](#linting-code)
-        - [Linting GraphQL Queries](#linting-graphql-queries)
-        - [Generating CTP GraphQL schema](#generating-ctp-graphql-schema)
-    - [Git Hooks](#git-hooks)
-  - [Tests](#tests)
-  - [Build & Deployment](#build--deployment)
-    - [Registration with Merchant Center](#registration-with-merchant-center)
-      - [Configuration Values](#configuration-values)
-  - [Complete the Solution: Your Implementation Responsibilities](#complete-the-solution-your-implementation-responsibilities)
-  - [Support](#support)
+
+- [Overview](#overview)
+- [Technology](#technology)
+- [Features](#features)
+  - [Bundles List](#bundles-list)
+  - [Bundle Creation](#bundle-creation)
+  - [Bundle Details](#bundle-details)
+    - [General](#general)
+    - [Images](#images)
+    - [Prices](#prices)
+    - [Preview](#preview)
+      - [Fixed Price Bundle with Additional Charge Component](#fixed-price-bundle-with-additional-charge-component)
+      - [Dynamic Price Bundle](#dynamic-price-bundle)
+- [Architecture](#architecture)
+  - [Product](#product)
+  - [Product Types](#product-types)
+    - [DynamicBundleParent](#dynamicbundleparent)
+    - [DynamicBundleChildCategory](#dynamicbundlechildcategory)
+    - [Sample Bundle](#sample-bundle)
+- [Configuration](#configuration)
+- [Installation](#installation)
+- [Development](#development)
+  - [Start the development server](#start-the-development-server)
+  - [Troubleshooting](#troubleshooting)
+    - [`graphql_error.invalid_token` error](#graphql_errorinvalid_token-error)
+    - [Do's and Don'ts](#dos-and-donts)
+  - [Linting & Formatting](#linting--formatting)
+    - [Formatting code](#formatting-code)
+    - [Linting code](#linting-code)
+      - [Linting GraphQL Queries](#linting-graphql-queries)
+      - [Generating CTP GraphQL schema](#generating-ctp-graphql-schema)
+  - [Git Hooks](#git-hooks)
+- [Tests](#tests)
+- [Build & Deployment](#build--deployment)
+  - [Registration with Merchant Center](#registration-with-merchant-center)
+    - [Configuration Values](#configuration-values)
+- [Complete the Solution: Your Implementation Responsibilities](#complete-the-solution-your-implementation-responsibilities)
+- [Support](#support)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -662,5 +655,5 @@ that additional charge is and updating the bundle's price accordingly.
 
 ## Support
 
-Contact the US Professional Services team for all support requests related to
+Please create an [issue](https://github.com/commercetools/commercetools-bundles-starter/issues) in the repository for all support requests related to
 the dynamic bundles solution.
