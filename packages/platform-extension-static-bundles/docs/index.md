@@ -1,8 +1,3 @@
----
-layout: default
-title: Platform Extension - Static Bundles
----
-
 # Platform Extension - Static Bundles
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -81,7 +76,7 @@ This application's dependencies may be installed using yarn.  Simply run `yarn` 
 
 ## Terraform
 
-While it is not required to use Terraform to manage the Product Types and Types in your commercetools project, it can certainly help.  You may initialize Terraform using `yarn terraform:init`. This will require manually installing the [commercetools Terraform provider](https://github.com/labd/terraform-provider-commercetools) as well as terraform itself.  Once initialized, you may run `yarn terraform:plan` and `yarn terraform:apply` to plan and apply any configuration changes.  Terraform will make use of the same variables in `../config/default.env`, but will also load the env vars from `config/${NODE_ENV}.env`.  If you wish to not use Terraform, you ***must*** ensure that the Product Types and Types defined in the `../terraform/main.tf` are added to your project and are up to date.  The product types are also defiend as JSON in the [resourceDefinitions](../resourceDefinitions) directory.
+While it is not required to use Terraform to manage the Product Types and Types in your commercetools project, it can certainly help.  You may initialize Terraform using `yarn terraform:init`. This will require manually installing the [commercetools Terraform provider](https://github.com/labd/terraform-provider-commercetools) as well as terraform itself.  Once initialized, you may run `yarn terraform:plan` and `yarn terraform:apply` to plan and apply any configuration changes.  Terraform will make use of the same variables in `../config/default.env`, but will also load the env vars from `config/${NODE_ENV}.env`.  If you wish to not use Terraform, you ***must*** ensure that the Product Types and Types defined in the [main.tf](terraform/main.tf) are added to your project and are up to date. The product types are also defined as JSON in the [resourceDefinitions](../resourceDefinitions) directory.
 
 ## Configuration
 
