@@ -89,14 +89,16 @@ A deployed serverless function should rely on secrets/environment variables set 
 
 ### Environment Variables
 
-*  `commercetools_token_url` The commercetools Auth URL (e.g. https://auth.us-central1.gcp.commercetools.com/)
-*  `commercetools_api_url` commercetools API URL (e.g. https://api.us-central1.gcp.commercetools.com/)
-*  `commercetools_api_concurrency` commercetools API concurrency limit
-*  `commercetools_client_id` A commercetools client ID
-*  `commercetools_client_secret` The secret key for the commercetools client
-*  `commercetools_project_key` The commercetools project key
-*  `commercetools_scopes` The scopes used by the commercetools client
-*  `cache_ttl` The in-memory cache's Time-To-Live
+| Name                          | Content                                                                                     | Required | Default                                         |
+| ----------------------------- | ------------------------------------------------------------------------------------------- | -------- | ----------------------------------------------- |
+| commercetools_project_key     | The commercetools project key                                                               | YES      |
+| commercetools_client_id       | OAuth 2.0 client_id and can be used to obtain a token.                                      | YES      |
+| commercetools_client_secret   | OAuth 2.0 client_secret and can be used to obtain a token.                                  | YES      |
+| commercetools_scopes          | The scopes used by the commercetools client.                                                | YES      |
+| commercetools_api_url         | The commercetools HTTP API is hosted at that URL.                                           | NO       | https://api.us-central1.gcp.commercetools.com   |
+| commercetools_token_url       | The commercetools OAuth 2.0 service is hosted at that URL.                                  | NO       | https://auth.us-central1.gcp.commercetools.com  |
+| commercetools_api_concurrency | The concurrency limit value for the client executions.                                      | NO       | 10                                              |
+| cache_ttl                     | The in-memory cache's Time-To-Live.                                                         | NO       | 0                                               |
 
 ### Application Assumptions
 
