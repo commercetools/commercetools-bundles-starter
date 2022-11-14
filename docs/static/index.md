@@ -50,11 +50,10 @@ camera, bag, and SD card for a single bundled price. The customer purchases a
 single bundle and then receives two or more distinct inventory items as selected
 by merchandising.
 
-This process is achieved by creating a new product with a specific
+This process has been achieved by creating a new [product](https://docs.commercetools.com/api/projects/products) with a specific
 [type](https://docs.commercetools.com/http-api-projects-productTypes) that
 references all the items within the bundle. On adding this new item to the cart,
-an
-[API extension](https://github.com/commercetools/commercetools-bundles-starter/tree/master/packages/platform-extension-static-bundles)
+an API extension [platform-extension-static-bundles](https://github.com/commercetools/commercetools-bundles-starter/tree/master/packages/platform-extension-static-bundles)
 is executed for cart requests to manage the child items during checkout. The
 final order includes the bundle items with pricing and a list of child line
 items for fulfillment.

@@ -1,10 +1,3 @@
----
-layout: default
-title: Dynamic Bundles
-nav_order: 3
----
-
-<!--prettier-ignore-start-->
 # Dynamic Bundles
 
 ## Table of contents
