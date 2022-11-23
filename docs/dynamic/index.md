@@ -98,12 +98,12 @@ the static bundles within the commercetools project.
 ![Bundles List](./features/bundles-list.gif)
 
 - Pagination
-  - [Default page size](https://github.com/commercetools/mc-custom-app-bundles/blob/8664055fa790e88c3f681a0a08057d46fe176707/packages/bundles-core/components/bundles-table/constants.js#L4)
+  - [Default page size](https://github.com/commercetools/commercetools-bundles-starter/blob/master/packages/bundles-core/components/bundles-table/constants.js#L4)
     of 30,
   - Displayed when the number of static bundles exceeds the page size
 - Sorting
   - Sortable columns are Name, Price, and Last Modified
-  - [Initial sort](https://github.com/commercetools/mc-custom-app-bundles/blob/8664055fa790e88c3f681a0a08057d46fe176707/packages/bundles-core/components/bundles-table/constants.js#L5)
+  - [Initial sort](https://github.com/commercetools/commercetools-bundles-starter/blob/master/packages/bundles-core/components/bundles-table/constants.js#L5)
     is Last Modified in descending order (most recent to least recent bundles)
 - Search for a bundle using
   [product projections search](https://docs.commercetools.com/http-api-projects-products-search)
@@ -477,14 +477,14 @@ re-selected and saved on the bundle with the updated values.
 ## Configuration
 
 A
-[terraform script](https://github.com/commercetools/platform-extension-gallery/tree/master/packages/platform-extension-dynamic-bundles#terraform)
+[terraform script](https://github.com/commercetools/commercetools-bundles-starter/tree/master/packages/backend-starter-dynamic-bundles/dynamic-bundles-definitions/terraform)
 initializes the commercetools project for using dynamic bundles. Prior to using
 dynamic bundles, this terraform script must be executed against the
 commercetools project and will deploy:
 
-- [Dynamic Bundle Product Type](https://github.com/commercetools/platform-extension-gallery/blob/master/packages/platform-extension-dynamic-bundles/resourceDefinitions/productTypes/dynamic-bundle-parent.json)
+- [Dynamic Bundle Product Type](https://github.com/commercetools/commercetools-bundles-starter/tree/master/packages/backend-starter-dynamic-bundles/dynamic-bundles-definitions/resourceDefinitions/productTypes/dynamic-bundle-parent.json)
   – For creating new bundles.
-- [Nested Product Type](https://github.com/commercetools/platform-extension-gallery/blob/master/packages/platform-extension-dynamic-bundles/resourceDefinitions/productTypes/dynamic-bundle-child-category.json)
+- [Nested Product Type](https://github.com/commercetools/commercetools-bundles-starter/tree/master/packages/backend-starter-dynamic-bundles/dynamic-bundles-definitions/resourceDefinitions/productTypes/dynamic-bundle-child-category.json)
   – For managing 1...n category references from a dynamic bundle and
   configuration data.
 
