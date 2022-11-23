@@ -68,7 +68,7 @@
     "@commercetools/enzyme-extensions": "5.0.0",
     "@commercetools/jest-enzyme-matchers": "1.1.2",
     "@emotion/babel-preset-css-prop": "11.10.0",
-    "@rollup/plugin-multi-entry": "5.0.1",
+    "@rollup/plugin-multi-entry": "6.0.0",
     "@testing-library/react": "12.1.5",
     "@wojtekmaj/enzyme-adapter-react-17": "0.8.0",
     "babel-eslint": "10.1.0",
