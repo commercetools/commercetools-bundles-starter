@@ -25,7 +25,7 @@ const BundlePrices = ({ match, id, categories, dynamicPrice }) => {
   const [date, setDate] = useState('');
 
   const getMcPriceUrl = (productId, variantId) =>
-      `/${match.params.projectKey}/products/${productId}/variants/${variantId}/prices`;
+    `/${match.params.projectKey}/products/${productId}/variants/${variantId}/prices`;
 
   function getViewPricesPath() {
     return `${getMcPriceUrl(id, MASTER_VARIANT_ID)}`;
@@ -60,14 +60,14 @@ const BundlePrices = ({ match, id, categories, dynamicPrice }) => {
             iconLeft={<ListIcon />}
             label={intl.formatMessage(messages.viewPricesButton)}
             to={getViewPricesPath}
-            target={"_.blank"}
+            target={'_.blank'}
           />
           <SecondaryButton
             data-testid="add-price-btn"
             iconLeft={<ExternalLinkIcon />}
             label={intl.formatMessage(messages.addPriceButton)}
             to={getAddPricePath}
-            target={"_.blank"}
+            target={'_.blank'}
           />
         </Spacings.Inline>
       </Spacings.Inline>

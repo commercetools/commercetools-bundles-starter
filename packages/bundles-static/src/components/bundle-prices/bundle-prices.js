@@ -28,7 +28,7 @@ const BundlePrices = ({ match, bundle }) => {
     `/${match.params.projectKey}/products/${productId}/variants/${variantId}/prices`;
 
   function getViewPricesPath() {
-   return `${getMcPriceUrl(bundle.id, MASTER_VARIANT_ID)}`;
+    return `${getMcPriceUrl(bundle.id, MASTER_VARIANT_ID)}`;
   }
 
   function getAddPricePath() {
@@ -50,14 +50,14 @@ const BundlePrices = ({ match, bundle }) => {
             iconLeft={<ListIcon />}
             label={intl.formatMessage(messages.viewPricesButton)}
             to={getViewPricesPath}
-            target={"_.blank"}
+            target={'_.blank'}
           />
           <SecondaryButton
             data-testid="add-price-btn"
             iconLeft={<ExternalLinkIcon />}
             label={intl.formatMessage(messages.addPriceButton)}
             to={getAddPricePath}
-            target={"_.blank"}
+            target={'_.blank'}
           />
         </Spacings.Inline>
       </Spacings.Inline>
