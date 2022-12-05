@@ -25,14 +25,14 @@ const BundlePrices = ({ match, bundle }) => {
   const [date, setDate] = useState('');
 
   const getMcPriceUrl = (productId, variantId) =>
-    `${window.location.origin}/${match.params.projectKey}/products/${productId}/variants/${variantId}/prices`;
+    `/${match.params.projectKey}/products/${productId}/variants/${variantId}/prices`;
 
-  function viewPrices() {
-    window.open(`${getMcPriceUrl(bundle.id, MASTER_VARIANT_ID)}`, '_blank');
+  function getViewPricesPath() {
+    return `${getMcPriceUrl(bundle.id, MASTER_VARIANT_ID)}`;
   }
 
-  function addPrice() {
-    window.open(`${getMcPriceUrl(bundle.id, MASTER_VARIANT_ID)}/new`, '_blank');
+  function getAddPricePath() {
+    return `${getMcPriceUrl(bundle.id, MASTER_VARIANT_ID)}/new`;
   }
 
   return (
@@ -49,13 +49,15 @@ const BundlePrices = ({ match, bundle }) => {
             data-testid="view-prices-btn"
             iconLeft={<ListIcon />}
             label={intl.formatMessage(messages.viewPricesButton)}
-            onClick={viewPrices}
+            to={getViewPricesPath}
+            target={'_.blank'}
           />
           <SecondaryButton
             data-testid="add-price-btn"
             iconLeft={<ExternalLinkIcon />}
             label={intl.formatMessage(messages.addPriceButton)}
-            onClick={addPrice}
+            to={getAddPricePath}
+            target={'_.blank'}
           />
         </Spacings.Inline>
       </Spacings.Inline>

@@ -24,15 +24,15 @@ const BundlePrices = ({ match, id, categories, dynamicPrice }) => {
   const [channel, setChannel] = useState(null);
   const [date, setDate] = useState('');
 
-  const MC_URL = `${window.location.origin}/${match.params.projectKey}`;
-  const MC_PRICE_URL = `${MC_URL}/products/${id}/variants/${MASTER_VARIANT_ID}/prices`;
+  const getMcPriceUrl = (productId, variantId) =>
+    `/${match.params.projectKey}/products/${productId}/variants/${variantId}/prices`;
 
-  function viewPrices() {
-    window.open(MC_PRICE_URL, '_blank');
+  function getViewPricesPath() {
+    return `${getMcPriceUrl(id, MASTER_VARIANT_ID)}`;
   }
 
-  function addPrice() {
-    window.open(`${MC_PRICE_URL}/new`, '_blank');
+  function getAddPricePath() {
+    return `${getMcPriceUrl(id, MASTER_VARIANT_ID)}/new`;
   }
 
   return (
@@ -59,13 +59,15 @@ const BundlePrices = ({ match, id, categories, dynamicPrice }) => {
             data-testid="view-prices-btn"
             iconLeft={<ListIcon />}
             label={intl.formatMessage(messages.viewPricesButton)}
-            onClick={viewPrices}
+            to={getViewPricesPath}
+            target={'_.blank'}
           />
           <SecondaryButton
             data-testid="add-price-btn"
             iconLeft={<ExternalLinkIcon />}
             label={intl.formatMessage(messages.addPriceButton)}
-            onClick={addPrice}
+            to={getAddPricePath}
+            target={'_.blank'}
           />
         </Spacings.Inline>
       </Spacings.Inline>
