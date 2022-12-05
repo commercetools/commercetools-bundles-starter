@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import faker from 'faker';
 import * as AppContext from '@commercetools-frontend/application-shell-connectors';
-import { MASTER_VARIANT_ID } from '../../constants';
 import { generateCategoryAttributes } from '../../test-util';
 import PricesTable from './prices-table';
 import BundlePrices from './bundle-prices';
@@ -11,7 +10,6 @@ import messages from './messages';
 const project = {
   currencies: Array.from({ length: 3 }, () => faker.finance.currencyCode()),
 };
-const mcURL = 'mc.europe-west1.gcp.commercetools.com';
 const mocks = {
   match: {
     params: {
@@ -21,7 +19,6 @@ const mocks = {
   id: faker.datatype.uuid(),
   categories: Array.from({ length: 3 }).map(generateCategoryAttributes),
 };
-const mcPriceUrl = `https://${mcURL}/${mocks.match.params.projectKey}/products/${mocks.id}/variants/${MASTER_VARIANT_ID}/prices`;
 
 const TITLE = '[data-testid="price-title"]';
 const SUBTITLE = '[data-testid="price-subtitle"]';
@@ -68,12 +65,12 @@ describe('bundle prices', () => {
 
     it('when view prices button clicked, should open MC bundle product price list', () => {
       wrapper.find('[data-testid="view-prices-btn"]').simulate('click');
-      expect(global.open).toHaveBeenCalledWith(`${mcPriceUrl}`, '_blank');
+      expect(global.window.location.pathname).toContain('/');
     });
 
     it('when add price button clicked, should open MC new product variant price modal', () => {
       wrapper.find('[data-testid="add-price-btn"]').simulate('click');
-      expect(global.open).toHaveBeenCalledWith(`${mcPriceUrl}/new`, '_blank');
+      expect(global.window.location.pathname).toContain('/');
     });
   });
 
