@@ -4,5 +4,4 @@ module.exports = {
   modulePathIgnorePatterns: ['dist', 'packages-from-mc', 'coverage', 'public'],
   moduleFileExtensions: ['js'],
   testMatch: ['<rootDir>/**/*.js'],
-  watchPlugins: ['jest-plugin-filename'],
 };

@@ -4,5 +4,4 @@ module.exports = {
   moduleFileExtensions: ['css'],
   modulePathIgnorePatterns: ['dist', 'coverage'],
   testMatch: ['<rootDir>/**/*.css'],
-  watchPlugins: ['jest-plugin-filename'],
 };

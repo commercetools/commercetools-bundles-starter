@@ -4,5 +4,4 @@ module.exports = {
   modulePathIgnorePatterns: ['dist', 'coverage'],
   moduleFileExtensions: ['js'],
   testMatch: ['<rootDir>/**/*.js'],
-  watchPlugins: ['jest-plugin-filename'],
 };

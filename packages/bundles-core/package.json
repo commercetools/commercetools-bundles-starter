@@ -97,7 +97,6 @@
     "graphql-tag": "2.12.6",
     "jest": "27.5.1",
     "jest-enzyme": "7.1.2",
-    "jest-plugin-filename": "0.0.1",
     "jest-runner-eslint": "0.11.1",
     "jest-runner-stylelint": "2.3.7",
     "jest-validate": "27.5.1",
