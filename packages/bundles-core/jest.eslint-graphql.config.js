@@ -5,5 +5,5 @@ module.exports = {
   testPathIgnorePatterns: ['schema.graphql'],
   moduleFileExtensions: ['graphql'],
   testMatch: ['<rootDir>/**/*.graphql'],
-  watchPlugins: ['jest-plugin-filename'],
+  watchPlugins: ['jest-watch-typeahead/filename'],
 };
