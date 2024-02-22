@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import styles from './tab-container.module.css';
+import styles from './tab-container.mod.css';
 
 const TabContainer = ({ color, children, ...rest }) => (
   <div className={styles[`container-color-${color}`]} {...rest}>

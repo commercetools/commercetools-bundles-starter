@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import { Link, withRouter, matchPath } from 'react-router-dom';
-import styles from './tab-header.module.css';
+import styles from './tab-header.mod.css';
 
 const pathWithoutSearch = (path) => path.split('?')[0];
 

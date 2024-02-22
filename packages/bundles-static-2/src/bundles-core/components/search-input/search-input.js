@@ -7,7 +7,7 @@ import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
 import Spacings from '@commercetools-uikit/spacings';
 import { CloseIcon, SearchIcon } from '@commercetools-uikit/icons';
 import messages from './messages';
-import styles from './search-input.module.css';
+import styles from './search-input.mod.css';
 
 const SearchInput = ({ value, onChange, onSubmit, placeholder }) => {
   const intl = useIntl();

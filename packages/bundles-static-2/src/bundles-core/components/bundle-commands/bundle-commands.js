@@ -15,7 +15,7 @@ import { usePathContext } from '../../context';
 import EditBundle from './edit-bundle.rest.graphql';
 import DeleteBundle from './delete-bundle.rest.graphql';
 import messages from './messages';
-import styles from './bundle-commands.module.css';
+import styles from './bundle-commands.mod.css';
 
 const BundleCommands = ({
   match,

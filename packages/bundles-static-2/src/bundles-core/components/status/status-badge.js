@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import classNames from 'classnames';
 import Spacings from '@commercetools-uikit/spacings';
-import styles from './status-badge.module.css';
+import styles from './status-badge.mod.css';
 import messages from './messages';
 
 export const PRODUCT_STATUS = {
