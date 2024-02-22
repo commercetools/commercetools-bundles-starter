@@ -1,1 +1,1 @@
-export CategorySearchInput from './category-search-input';
+export { default as CategorySearchInput } from './category-search-input';

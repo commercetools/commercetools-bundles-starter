@@ -4,17 +4,15 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { FieldArray } from 'formik';
 import kebabCase from 'lodash/kebabCase';
 import mapValues from 'lodash/mapValues';
-import {
-  Card,
-  CollapsiblePanel,
-  Constraints,
-  LocalizedTextField,
-  LocalizedTextInput,
-  PrimaryButton,
-  Spacings,
-  Text,
-  TextField,
-} from '@commercetools-frontend/ui-kit';
+import Card from '@commercetools-uikit/card';
+import Spacings from '@commercetools-uikit/spacings';
+import Text from '@commercetools-uikit/text';
+import TextField from '@commercetools-uikit/text-field';
+import CollapsiblePanel from '@commercetools-uikit/collapsible-panel';
+import LocalizedTextInput from '@commercetools-uikit/localized-text-input';
+import LocalizedTextField from '@commercetools-uikit/localized-text-field';
+import PrimaryButton from '@commercetools-uikit/primary-button';
+import Constraints from '@commercetools-uikit/constraints';
 import messages from './messages';
 import styles from './form.mod.css';
 

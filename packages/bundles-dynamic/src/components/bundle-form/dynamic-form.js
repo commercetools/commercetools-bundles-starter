@@ -1,16 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import {
-  CheckboxInput,
-  ErrorMessage,
-  FieldLabel,
-  NumberInput,
-  Spacings,
-  Text,
-} from '@commercetools-frontend/ui-kit';
-import { BundleForm } from '../../../../bundles-core/components/bundle-form';
-import CategoryField from '../category-field';
+import CheckboxInput from '@commercetools-uikit/checkbox-input';
+import { ErrorMessage } from '@commercetools-uikit/messages';
+import NumberInput from '@commercetools-uikit/number-input';
+import Spacings from '@commercetools-uikit/spacings';
+import Text from '@commercetools-uikit/text';
+import FieldLabel from '@commercetools-uikit/field-label';
+import { BundleForm } from '@commercetools-us-ps/bundles-core/components/bundle-form';
+import { CategoryField } from '../category-field';
 import messages from './messages';
 
 const FIELDS = {

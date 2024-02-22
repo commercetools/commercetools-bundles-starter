@@ -8,8 +8,8 @@ import {
   BundlesTable,
   COLUMN_KEYS,
   PRODUCT_STATUS,
-} from '../../../../bundles-core/components/index';
-import { localize } from '../../../../bundles-core/components/util';
+} from '@commercetools-us-ps/bundles-core/components/index';
+import { localize } from '@commercetools-us-ps/bundles-core/components/util';
 import { generateProduct } from '../../test-util';
 import DynamicBundlesTable from './dynamic-bundles-table';
 import messages from './messages';

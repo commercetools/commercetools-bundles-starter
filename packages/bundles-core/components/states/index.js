@@ -1,2 +1,2 @@
-export Error from './error';
-export Loading from './loading';
+export { default as Error } from './error';
+export { default as Loading } from './loading';

@@ -1,5 +1,6 @@
 import React from 'react';
-import { LoadingSpinner, Spacings } from '@commercetools-frontend/ui-kit';
+import Spacings from '@commercetools-uikit/spacings';
+import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 
 const Loading = () => (
   <Spacings.Inline alignItems="center" justifyContent="center">

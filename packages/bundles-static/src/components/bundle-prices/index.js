@@ -1,1 +1,1 @@
-export { default } from './bundle-prices';
+export { default as BundlePrices } from './bundle-prices';

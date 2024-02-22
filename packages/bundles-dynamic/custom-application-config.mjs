@@ -1,28 +1,28 @@
-import { entryPointUriPath, PERMISSIONS } from "./src/constants";
+import { entryPointUriPath, PERMISSIONS } from './src/constants';
 
 const config = {
-    name: "Dynamic bundles",
-    entryPointUriPath: entryPointUriPath,
-    cloudIdentifier: "${env:CLOUD_IDENTIFIER}",
-    env: {
-        production: {
-            applicationId: "${env:APPLICATION_ID}",
-            url: "${env:APPLICATION_URL}",
-        },
-        development: {
-            initialProjectKey: "${env:INITIAL_PROJECT_KEY}"
-        }
+  name: 'Dynamic bundles',
+  entryPointUriPath: entryPointUriPath,
+  cloudIdentifier: '${env:CLOUD_IDENTIFIER}',
+  env: {
+    production: {
+      applicationId: '${env:APPLICATION_ID}',
+      url: '${env:APPLICATION_URL}',
     },
-    oAuthScopes: {
-        view: ["view_products"],
-        manage: ["manage_products"]
+    development: {
+      initialProjectKey: '${env:INITIAL_PROJECT_KEY}',
     },
-    icon: '${path:@commercetools-frontend/assets/application-icons/rocket.svg}',
-    mainMenuLink: {
-        defaultLabel: "Dynamic Bundles",
-        permissions: [PERMISSIONS.View],
-        labelAllLocales: []
-    }
-}
+  },
+  oAuthScopes: {
+    view: ['view_products'],
+    manage: ['manage_products'],
+  },
+  icon: '${path:@commercetools-frontend/assets/application-icons/rocket.svg}',
+  mainMenuLink: {
+    defaultLabel: 'Dynamic Bundles',
+    permissions: [PERMISSIONS.View],
+    labelAllLocales: [],
+  },
+};
 
-export default config
+export default config;

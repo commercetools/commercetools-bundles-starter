@@ -4,7 +4,7 @@ import faker from 'faker';
 import { getQuery, setQuery } from '@apollo/client';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
 import { DataTable } from '@commercetools-frontend/ui-kit';
-import { useEffectMock } from '../../../../bundles-core/components/test-util';
+import { useEffectMock } from '@commercetools-us-ps/bundles-core/components/test-util';
 import { generateCategoryAttributes } from '../../test-util';
 import { getCategoryAttributes } from '../bundle-preview/category-product-field';
 import PricesTable from './prices-table';

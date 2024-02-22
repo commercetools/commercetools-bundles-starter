@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { SelectInput } from '@commercetools-frontend/ui-kit';
+import SelectInput from '@commercetools-uikit/select-input';
 import StatusBadge, { PRODUCT_ACTIONS } from './status-badge';
 
 export const StatusLabel = (props) => {

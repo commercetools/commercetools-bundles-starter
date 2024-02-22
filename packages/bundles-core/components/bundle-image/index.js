@@ -1,1 +1,1 @@
-export BundleImage from './bundle-image';
+export { default as BundleImage } from './bundle-image';

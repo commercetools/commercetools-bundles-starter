@@ -1,5 +1,5 @@
 import faker from 'faker';
-import { transformLocalizedFieldToString } from '../../../bundles-core/components/util';
+import { transformLocalizedFieldToString } from '@commercetools-us-ps/bundles-core/components/util';
 import {
   PRODUCT,
   PRODUCT_NAME,

@@ -1,1 +1,1 @@
-export { default } from './dynamic-bundles-table';
+export { default as DynamicBundlesTable } from './dynamic-bundles-table';

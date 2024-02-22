@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useQuery } from '@apollo/client';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
-import { AsyncSelectInput } from '@commercetools-frontend/ui-kit';
+import AsyncSelectInput from '@commercetools-uikit/async-select-input';
 import { getPathName, transformLocalizedFieldsForCategory } from '../util';
 import CategorySearch from './category-search.graphql';
 

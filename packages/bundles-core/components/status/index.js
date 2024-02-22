@@ -3,4 +3,4 @@ export {
   PRODUCT_ACTIONS,
   PRODUCT_STATUS,
 } from './status-badge';
-export StatusSelect from './status-select';
+export { default as StatusSelect } from './status-select';

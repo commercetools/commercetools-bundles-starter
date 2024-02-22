@@ -1,1 +1,1 @@
-export { default } from './static-bundle-details';
+export { default as StaticBundleDetails } from './static-bundle-details';

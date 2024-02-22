@@ -1,1 +1,1 @@
-export { default } from './entry-point';
+export { default as EntryPoint } from './entry-point';

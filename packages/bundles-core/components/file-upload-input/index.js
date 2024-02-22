@@ -1,1 +1,1 @@
-export FileUploadInput from './file-upload-input';
+export {default as FileUploadInput} from './file-upload-input';

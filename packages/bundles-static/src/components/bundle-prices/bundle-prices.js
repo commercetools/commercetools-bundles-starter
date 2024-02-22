@@ -2,14 +2,11 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
-import {
-  ExternalLinkIcon,
-  ListIcon,
-  SecondaryButton,
-  Spacings,
-  Text,
-} from '@commercetools-frontend/ui-kit';
-import { PriceFilters } from '../../../../bundles-core/components';
+import Spacings from '@commercetools-uikit/spacings';
+import Text from '@commercetools-uikit/text';
+import SecondaryButton from '@commercetools-uikit/secondary-button';
+import { ListIcon, ExternalLinkIcon } from '@commercetools-uikit/icons';
+import { PriceFilters } from '@commercetools-us-ps/bundles-core/components';
 import { MASTER_VARIANT_ID } from '../../constants';
 import messages from './messages';
 import PricesTable from './prices-table';

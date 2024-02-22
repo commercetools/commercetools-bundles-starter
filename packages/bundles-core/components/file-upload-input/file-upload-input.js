@@ -2,13 +2,11 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import AWS from 'aws-sdk';
-import {
-  LoadingSpinner,
-  PrimaryButton,
-  SecondaryButton,
-  Spacings,
-  Text,
-} from '@commercetools-frontend/ui-kit';
+import LoadingSpinner from '@commercetools-uikit/loading-spinner';
+import PrimaryButton from '@commercetools-uikit/primary-button';
+import SecondaryButton from '@commercetools-uikit/secondary-button';
+import Spacings from '@commercetools-uikit/spacings';
+import Text from '@commercetools-uikit/text';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
 import { DOMAINS } from '@commercetools-frontend/constants';
 import { useShowNotification } from '@commercetools-frontend/actions-global';

@@ -1,1 +1,1 @@
-export BackToList from './back-to-list';
+export { default as BackToList } from './back-to-list';

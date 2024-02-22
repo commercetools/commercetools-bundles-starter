@@ -1,1 +1,1 @@
-export { default } from './edit-bundle-form';
+export { default as EditBundleForm } from './edit-bundle-form';

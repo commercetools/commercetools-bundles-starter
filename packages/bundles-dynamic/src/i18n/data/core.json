@@ -1,132 +1,522 @@
 {
-  "Bundle.form.button.submit": "Save",
-  "Bundle.form.description.title": "Description",
-  "Bundle.form.key.description": "Provide a unique key to help identify the bundle.",
-  "Bundle.form.key.title": "Key",
-  "Bundle.form.name.title": "Name",
-  "Bundle.form.panel.bundle.title": "Bundle Information",
-  "Bundle.form.panel.external.title": "External Search Engine Optimization",
-  "Bundle.form.panel.general.title": "General Information",
-  "Bundle.form.sku.title": "SKU",
-  "Bundle.form.slug.description": "The slug is a user-friendly key usually used to generate the product page URL.\nThe slug can contain alphanumeric characters (0-9 or A-Z), underscores or hyphens with no spaces, and can be anywhere between 2 to 256 characters long.",
-  "Bundle.form.slug.title": "Short URL (slug)",
-  "BundleDetails.button.back": "To Bundles list",
-  "BundleDetails.button.deleteBundle": "Delete Bundle",
-  "BundleDetails.Error.loading.title": "Something went wrong loading the bundle.",
-  "BundleDetails.message.delete.error": "Something went wrong. Your bundle was not deleted.",
-  "BundleDetails.message.delete.success": "Your bundle has been deleted.",
-  "BundleDetails.message.deleteBundleConfirm": "Are you sure you want to delete this bundle?",
-  "BundleDetails.message.edit.error": "Something went wrong. Your bundle status was not saved.",
-  "BundleDetails.message.edit.success": "Your bundle status has been saved.",
-  "BundleDetails.status.label": "Status:",
-  "BundleImages.button.delete": "Delete image",
-  "BundleImages.button.edit": "Edit image",
-  "BundleImages.button.expand": "View image source",
-  "BundleImages.button.removeConfirmation": "Are you sure you want to remove this image?",
-  "BundleImages.buttons.addImages": "Add Image",
-  "BundleImages.link.addImages": "Add an image",
-  "BundleImages.message.delete.error": "Something went wrong. The image was not removed.",
-  "BundleImages.message.imageLabel": "Image label",
-  "BundleImages.message.noImages": "No images found for this bundle.",
-  "BundleImages.title": "Manage or add images for this bundle.",
-  "BundlePreview.form.button.submit": "Preview Add to Cart",
-  "BundlePreview.form.error.submit": "Unable to add bundle to cart. {error}",
-  "BundlePreview.form.errors.integer": "Quantity must be an integer.",
-  "BundlePreview.form.errors.product.required": "Product selection required.",
-  "BundlePreview.form.errors.quantity.min": "Quantity must greater than or equal to {min}.",
-  "BundlePreview.form.errors.quantity.one": "Quantity must less than or equal to {max}.",
-  "BundlePreview.form.errors.quantity.required": "Quantity required.",
-  "BundlePreview.form.label.additionalCharge": "Additional Charge",
-  "BundlePreview.form.label.basePrice": "Base Price",
-  "BundlePreview.form.label.cartCreated": "Created Cart",
-  "BundlePreview.form.label.cartDraft": "Cart Draft",
-  "BundlePreview.form.label.totalPrice": "Total Price",
-  "BundlePreview.form.placeholder.category": "Search by name, description, slug, or sku.",
-  "BundlePreview.form.placeholder.quantity": "Quantity",
-  "BundlePreview.label.current": "Current",
-  "BundlePreview.label.staged": "Staged",
-  "BundlePreview.text.noDescription": "No description provided",
-  "BundlePreview.text.startingUp": "Starting at",
-  "BundlePreview.text.upTo": "Up to",
-  "BundlePreview.title.configureCustomer": "Configure Customer",
-  "BundlePreview.title.projection": "Projection:",
-  "BundlesTable.button.createBundle": "Create a bundle",
-  "BundlesTable.Error.loading.title": "Something went wrong loading the product bundles.",
-  "BundlesTable.Error.noResults.title": "No bundles found on this project.",
-  "BundlesTable.Error.noSearchResults.title": "No bundles found matching the search term and/or filters.",
-  "BundlesTable.Filter.title": "Filter:",
-  "BundlesTable.Search.input.placeholder": "Search by bundle name, description, slug, or sku.",
-  "CategoryField.additionalCharge.label": "Surcharge",
-  "CategoryField.button.add.label": "Add Category",
-  "CategoryField.category.placeholder": "Search",
-  "CategoryField.maxQuantity.placeholder": "Max",
-  "CategoryField.minQuantity.placeholder": "Min",
-  "CreateBundle.button.back": "To Bundles list",
-  "CreateBundle.form.message.error": "Something went wrong. Your bundle was not created.",
-  "CreateBundle.form.message.success": "Your bundle has been created.",
-  "CreateBundle.title": "Create a bundle",
-  "DynamicBundle.form.categories.description": "Select categories with quantity to include in bundle.",
-  "DynamicBundle.form.categories.title": "Product Categories",
-  "DynamicBundle.form.dynamicPrice.title": "Dynamic Price",
-  "DynamicBundle.form.errors.integer": "Quantity must be an integer.",
-  "DynamicBundle.form.errors.maxGreaterThanMin": "Maximum quantity must exceed minimum quantity.",
-  "DynamicBundle.form.errors.missingRequiredField": "This field is required. Provide a value.",
-  "DynamicBundle.form.errors.quantity.one": "Quantity must be 1 or greater.",
-  "DynamicBundle.form.errors.quantity.zero": "Quantity must be 0 or greater.",
-  "DynamicBundle.form.maxQuantity.placeholder": "Maximum",
-  "DynamicBundle.form.minQuantity.placeholder": "Minimum",
-  "DynamicBundle.form.pricing.title": "Pricing",
-  "DynamicBundle.form.quantity.title": "Quantity",
-  "DynamicBundleDetails.tabs.general": "General",
-  "DynamicBundleDetails.tabs.images": "Images",
-  "DynamicBundleDetails.tabs.preview": "Preview",
-  "DynamicBundleDetails.tabs.prices": "Prices",
-  "DynamicBundlePrices.buttons.addPrice": "Add Price",
-  "DynamicBundlePrices.buttons.viewPrices": "View Prices",
-  "DynamicBundlePrices.subtitle.dynamic": "Note: Dynamically priced bundles require a price defined for add to cart.",
-  "DynamicBundlePrices.table.categoryColumn": "Category",
-  "DynamicBundlePrices.table.maxPriceColumn": "Maximum Price",
-  "DynamicBundlePrices.table.minPriceColumn": "Minimum Price",
-  "DynamicBundlePrices.title.dynamic": "View category price ranges for this bundle.",
-  "DynamicBundlePrices.title.static": "Add prices for this bundle.",
-  "DynamicBundlesTable.Filter.category.placeholder": "Category in bundle",
-  "DynamicBundlesTable.labelPriceColumn": "Price (lowest)",
-  "DynamicBundlesTable.lastModifiedAtColumn": "Last Modified",
-  "DynamicBundlesTable.nameColumn": "Name",
-  "DynamicBundlesTable.price.dynamic.label": "Dynamic",
-  "DynamicBundlesTable.price.filter.placeholder": "Price type",
-  "DynamicBundlesTable.price.static.label": "Static",
-  "DynamicBundlesTable.statusColumn": "Status",
-  "DynamicBundlesTable.title": "Dynamic Bundle Manager",
-  "DynamicBundlesTable.title.results": "{total} results",
-  "EditBundle.button.back": "To Bundles list",
-  "EditBundle.form.message.edit.error": "Something went wrong. Your bundle was not saved.",
-  "EditBundle.form.message.edit.success": "Your bundle has been saved.",
-  "EditBundle.title": "Create a bundle",
-  "FileUpload.button.chooseFile": "Choose File",
-  "FileUpload.button.uploadFile": "Upload",
-  "FileUpload.error": "Something went wrong uploading the selected file:",
-  "Pagination.button.next": "Next",
-  "Pagination.button.previous": "Previous",
-  "PriceFilters.error.loading": "Something went wrong loading the price filters.",
-  "PriceFilters.filter.channel": "Channel",
-  "PriceFilters.filter.country": "Country",
-  "PriceFilters.filter.currency": "Currency",
-  "PriceFilters.filter.customerGroup": "Customer Group",
-  "PriceFilters.filter.date": "Date",
-  "PriceFilters.filter.price": "Price",
-  "ProductSearchInput.id": "ID",
-  "ProductSearchInput.sku": "SKU",
-  "Routes.Error.accessDenied.message": "We recommend contacting your project administrators for further questions.",
-  "Routes.Error.accessDenied.title": "Not enough permissions to access this resource",
-  "Routes.Error.missingBundle.message": "Create a Bundle Product Type using the provided Terraform configuration or JSON payload.",
-  "Routes.Error.missingBundle.title": "Unable to locate Bundle Product Type",
-  "Search.button.clear.label": "Clear search",
-  "Search.button.label": "Search",
-  "StatusBadge.label.modified": "Modified",
-  "StatusBadge.label.publish": "Publish",
-  "StatusBadge.label.published": "Published",
-  "StatusBadge.label.unpublish": "Unpublish",
-  "StatusBadge.label.unpublished": "Unpublished",
-  "ThrottledSearch.input.placeholder": "Search"
+  "Bundle.form.button.submit": {
+    "defaultMessage": "Save",
+    "description": "Label for submit button"
+  },
+  "Bundle.form.description.title": {
+    "defaultMessage": "Description",
+    "description": "Title for bundle description field"
+  },
+  "Bundle.form.key.description": {
+    "defaultMessage": "Provide a unique key to help identify the bundle.",
+    "description": "Description for key field"
+  },
+  "Bundle.form.key.title": {
+    "defaultMessage": "Key",
+    "description": "Title for bundle key field"
+  },
+  "Bundle.form.name.title": {
+    "defaultMessage": "Name",
+    "description": "Title for bundle name field"
+  },
+  "Bundle.form.panel.bundle.title": {
+    "defaultMessage": "Bundle Information",
+    "description": "Title for bundle information panel"
+  },
+  "Bundle.form.panel.external.title": {
+    "defaultMessage": "External Search Engine Optimization",
+    "description": "Title for external search information panel"
+  },
+  "Bundle.form.panel.general.title": {
+    "defaultMessage": "General Information",
+    "description": "Title for general information panel"
+  },
+  "Bundle.form.sku.title": {
+    "defaultMessage": "SKU",
+    "description": "Title for bundle sku field"
+  },
+  "Bundle.form.slug.description": {
+    "defaultMessage": "The slug is a user-friendly key usually used to generate the product page URL. The slug can contain alphanumeric characters (0-9 or A-Z), underscores or hyphens with no spaces, and can be anywhere between 2 to 256 characters long.",
+    "description": "Description for slug field"
+  },
+  "Bundle.form.slug.title": {
+    "defaultMessage": "Short URL (slug)",
+    "description": "Title for bundle slug field"
+  },
+  "BundleDetails.Error.loading.title": {
+    "defaultMessage": "Something went wrong loading the bundle.",
+    "description": "Error title when querying for bundle fails"
+  },
+  "BundleDetails.button.back": {
+    "defaultMessage": "To Bundles list",
+    "description": "Label for back button"
+  },
+  "BundleDetails.button.deleteBundle": {
+    "defaultMessage": "Delete Bundle",
+    "description": "Label for delete bundle button"
+  },
+  "BundleDetails.message.delete.error": {
+    "defaultMessage": "Something went wrong. Your bundle was not deleted.",
+    "description": "Error message for deleting bundle"
+  },
+  "BundleDetails.message.delete.success": {
+    "defaultMessage": "Your bundle has been deleted.",
+    "description": "Success message for deleting bundle"
+  },
+  "BundleDetails.message.deleteBundleConfirm": {
+    "defaultMessage": "Are you sure you want to delete this bundle?",
+    "description": "Delete bundle confirmation message"
+  },
+  "BundleDetails.message.edit.error": {
+    "defaultMessage": "Something went wrong. Your bundle status was not saved.",
+    "description": "Error message for editing bundle status"
+  },
+  "BundleDetails.message.edit.success": {
+    "defaultMessage": "Your bundle status has been saved.",
+    "description": "Success message for editing bundle status"
+  },
+  "BundleDetails.status.label": {
+    "defaultMessage": "Status:",
+    "description": "Label for status select"
+  },
+  "BundleImages.button.delete": {
+    "defaultMessage": "Delete image",
+    "description": "Label for delete button"
+  },
+  "BundleImages.button.edit": {
+    "defaultMessage": "Edit image",
+    "description": "Label for edit button"
+  },
+  "BundleImages.button.expand": {
+    "defaultMessage": "View image source",
+    "description": "Label for expand button"
+  },
+  "BundleImages.button.removeConfirmation": {
+    "defaultMessage": "Are you sure you want to remove this image?",
+    "description": "Label for remove confirmation button"
+  },
+  "BundleImages.buttons.addImages": {
+    "defaultMessage": "Add Image",
+    "description": "Label for add images button"
+  },
+  "BundleImages.link.addImages": {
+    "defaultMessage": "Add an image",
+    "description": "Label for add images link"
+  },
+  "BundleImages.message.delete.error": {
+    "defaultMessage": "Something went wrong. The image was not removed.",
+    "description": "Error message for editing bundle"
+  },
+  "BundleImages.message.imageLabel": {
+    "defaultMessage": "Image label",
+    "description": "Label for image"
+  },
+  "BundleImages.message.noImages": {
+    "defaultMessage": "No images found for this bundle.",
+    "description": "No images error message"
+  },
+  "BundleImages.title": {
+    "defaultMessage": "Manage or add images for this bundle.",
+    "description": "Bundle images title"
+  },
+  "BundlePreview.form.button.submit": {
+    "defaultMessage": "Preview Add to Cart",
+    "description": "Label for the add to cart button"
+  },
+  "BundlePreview.form.error.submit": {
+    "defaultMessage": "Unable to add bundle to cart. {error}",
+    "description": "Error message for add to cart"
+  },
+  "BundlePreview.form.errors.integer": {
+    "defaultMessage": "Quantity must be an integer.",
+    "description": "Error message for quantity as an integer"
+  },
+  "BundlePreview.form.errors.product.required": {
+    "defaultMessage": "Product selection required.",
+    "description": "Error message for required product"
+  },
+  "BundlePreview.form.errors.quantity.min": {
+    "defaultMessage": "Quantity must greater than or equal to {min}.",
+    "description": "Error message for quantity minimum"
+  },
+  "BundlePreview.form.errors.quantity.one": {
+    "defaultMessage": "Quantity must less than or equal to {max}.",
+    "description": "Error message for quantity maximum"
+  },
+  "BundlePreview.form.errors.quantity.required": {
+    "defaultMessage": "Quantity required.",
+    "description": "Error message for required product"
+  },
+  "BundlePreview.form.label.additionalCharge": {
+    "defaultMessage": "Additional Charge",
+    "description": "Label for additional charge"
+  },
+  "BundlePreview.form.label.basePrice": {
+    "defaultMessage": "Base Price",
+    "description": "Label for base price"
+  },
+  "BundlePreview.form.label.cartCreated": {
+    "defaultMessage": "Created Cart",
+    "description": "Label for cart created"
+  },
+  "BundlePreview.form.label.cartDraft": {
+    "defaultMessage": "Cart Draft",
+    "description": "Label for cart draft"
+  },
+  "BundlePreview.form.label.totalPrice": {
+    "defaultMessage": "Total Price",
+    "description": "Label for total price"
+  },
+  "BundlePreview.form.placeholder.category": {
+    "defaultMessage": "Search by name, description, slug, or sku.",
+    "description": "Placeholder for category field"
+  },
+  "BundlePreview.form.placeholder.quantity": {
+    "defaultMessage": "Quantity",
+    "description": "Placeholder for quantity field"
+  },
+  "BundlePreview.label.current": {
+    "defaultMessage": "Current",
+    "description": "Label for current projection"
+  },
+  "BundlePreview.label.staged": {
+    "defaultMessage": "Staged",
+    "description": "Label for staged projection"
+  },
+  "BundlePreview.text.noDescription": {
+    "defaultMessage": "No description provided",
+    "description": "Text for no description"
+  },
+  "BundlePreview.text.startingUp": {
+    "defaultMessage": "Starting at",
+    "description": "Text for starting at label"
+  },
+  "BundlePreview.text.upTo": {
+    "defaultMessage": "Up to",
+    "description": "Text for up to label"
+  },
+  "BundlePreview.title.configureCustomer": {
+    "defaultMessage": "Configure Customer",
+    "description": "Title for configure customer section"
+  },
+  "BundlePreview.title.projection": {
+    "defaultMessage": "Projection:",
+    "description": "Title for projection selection"
+  },
+  "BundlesTable.Error.loading.title": {
+    "defaultMessage": "Something went wrong loading the product bundles.",
+    "description": "Error title when querying for products of bundle productType fails"
+  },
+  "BundlesTable.Error.noResults.title": {
+    "defaultMessage": "No bundles found on this project.",
+    "description": "Error title when no results are returned"
+  },
+  "BundlesTable.Error.noSearchResults.title": {
+    "defaultMessage": "No bundles found matching the search term and/or filters.",
+    "description": "Error title when no search results are returned"
+  },
+  "BundlesTable.Filter.title": {
+    "defaultMessage": "Filter:",
+    "description": "Title for filter"
+  },
+  "BundlesTable.Search.input.placeholder": {
+    "defaultMessage": "Search by bundle name, description, slug, or sku.",
+    "description": "Placeholder for search input"
+  },
+  "BundlesTable.button.createBundle": {
+    "defaultMessage": "Create a bundle",
+    "description": "The label for the link to the bundle creation view"
+  },
+  "CategoryField.additionalCharge.label": {
+    "defaultMessage": "Surcharge",
+    "description": "Label for additional charge checkbox"
+  },
+  "CategoryField.button.add.label": {
+    "defaultMessage": "Add Category",
+    "description": "Label for add category button"
+  },
+  "CategoryField.category.placeholder": {
+    "defaultMessage": "Search",
+    "description": "Placeholder for category select"
+  },
+  "CategoryField.maxQuantity.placeholder": {
+    "defaultMessage": "Max",
+    "description": "Placeholder for max quantity input"
+  },
+  "CategoryField.minQuantity.placeholder": {
+    "defaultMessage": "Min",
+    "description": "Placeholder for min quantity input"
+  },
+  "CreateBundle.button.back": {
+    "defaultMessage": "To Bundles list",
+    "description": "Label for back button"
+  },
+  "CreateBundle.form.message.error": {
+    "defaultMessage": "Something went wrong. Your bundle was not created.",
+    "description": "Error message for create bundle"
+  },
+  "CreateBundle.form.message.success": {
+    "defaultMessage": "Your bundle has been created.",
+    "description": "Success message for create bundle"
+  },
+  "CreateBundle.title": {
+    "defaultMessage": "Create a bundle",
+    "description": "The page title of create bundle"
+  },
+  "DynamicBundle.form.categories.description": {
+    "defaultMessage": "Select categories with quantity to include in bundle.",
+    "description": "Description for bundle products field"
+  },
+  "DynamicBundle.form.categories.title": {
+    "defaultMessage": "Product Categories",
+    "description": "Title for bundle products field"
+  },
+  "DynamicBundle.form.dynamicPrice.title": {
+    "defaultMessage": "Dynamic Price",
+    "description": "Title for bundle dynamic price field"
+  },
+  "DynamicBundle.form.errors.integer": {
+    "defaultMessage": "Quantity must be an integer.",
+    "description": "Error message for quantity as an integer"
+  },
+  "DynamicBundle.form.errors.maxGreaterThanMin": {
+    "defaultMessage": "Maximum quantity must exceed minimum quantity.",
+    "description": "Error message for maximum quantity"
+  },
+  "DynamicBundle.form.errors.missingRequiredField": {
+    "defaultMessage": "This field is required. Provide a value.",
+    "description": "Error message for missing required value"
+  },
+  "DynamicBundle.form.errors.quantity.one": {
+    "defaultMessage": "Quantity must be 1 or greater.",
+    "description": "Error message for quantity"
+  },
+  "DynamicBundle.form.errors.quantity.zero": {
+    "defaultMessage": "Quantity must be 0 or greater.",
+    "description": "Error message for quantity"
+  },
+  "DynamicBundle.form.maxQuantity.placeholder": {
+    "defaultMessage": "Maximum",
+    "description": "Placeholder for bundle max quantity field"
+  },
+  "DynamicBundle.form.minQuantity.placeholder": {
+    "defaultMessage": "Minimum",
+    "description": "Placeholder for bundle min quantity field"
+  },
+  "DynamicBundle.form.pricing.title": {
+    "defaultMessage": "Pricing",
+    "description": "Title for bundle pricing field"
+  },
+  "DynamicBundle.form.quantity.title": {
+    "defaultMessage": "Quantity",
+    "description": "Title for bundle quantity fields"
+  },
+  "DynamicBundleDetails.tabs.general": {
+    "defaultMessage": "General",
+    "description": "Label for general tab"
+  },
+  "DynamicBundleDetails.tabs.images": {
+    "defaultMessage": "Images",
+    "description": "Label for images tab"
+  },
+  "DynamicBundleDetails.tabs.preview": {
+    "defaultMessage": "Preview",
+    "description": "Label for preview tab"
+  },
+  "DynamicBundleDetails.tabs.prices": {
+    "defaultMessage": "Prices",
+    "description": "Label for prices tab"
+  },
+  "DynamicBundlePrices.buttons.addPrice": {
+    "defaultMessage": "Add Price",
+    "description": "Label for add price button"
+  },
+  "DynamicBundlePrices.buttons.viewPrices": {
+    "defaultMessage": "View Prices",
+    "description": "Label for view prices button"
+  },
+  "DynamicBundlePrices.subtitle.dynamic": {
+    "defaultMessage": "Note: Dynamically priced bundles require a price defined for add to cart.",
+    "description": "Dynamic bundle prices title"
+  },
+  "DynamicBundlePrices.table.categoryColumn": {
+    "defaultMessage": "Category",
+    "description": "The label for the category column"
+  },
+  "DynamicBundlePrices.table.maxPriceColumn": {
+    "defaultMessage": "Maximum Price",
+    "description": "The label for the max price column"
+  },
+  "DynamicBundlePrices.table.minPriceColumn": {
+    "defaultMessage": "Minimum Price",
+    "description": "The label for the min price column"
+  },
+  "DynamicBundlePrices.title.dynamic": {
+    "defaultMessage": "View category price ranges for this bundle.",
+    "description": "Dynamic bundle prices title"
+  },
+  "DynamicBundlePrices.title.static": {
+    "defaultMessage": "Add prices for this bundle.",
+    "description": "Static bundle prices title"
+  },
+  "DynamicBundlesTable.Filter.category.placeholder": {
+    "defaultMessage": "Category in bundle",
+    "description": "Placeholder for category filter"
+  },
+  "DynamicBundlesTable.labelPriceColumn": {
+    "defaultMessage": "Price (lowest)",
+    "description": "The label for the price column"
+  },
+  "DynamicBundlesTable.lastModifiedAtColumn": {
+    "defaultMessage": "Last Modified",
+    "description": "The label for the last modified at column"
+  },
+  "DynamicBundlesTable.nameColumn": {
+    "defaultMessage": "Name",
+    "description": "The label for the name column"
+  },
+  "DynamicBundlesTable.price.dynamic.label": {
+    "defaultMessage": "Dynamic",
+    "description": "The label for the dynamic price value"
+  },
+  "DynamicBundlesTable.price.filter.placeholder": {
+    "defaultMessage": "Price type",
+    "description": "The placeholder for the price filter placeholder"
+  },
+  "DynamicBundlesTable.price.static.label": {
+    "defaultMessage": "Static",
+    "description": "The label for the static price value"
+  },
+  "DynamicBundlesTable.statusColumn": {
+    "defaultMessage": "Status",
+    "description": "The label for the status column"
+  },
+  "DynamicBundlesTable.title": {
+    "defaultMessage": "Dynamic Bundle Manager",
+    "description": "The page title of the bundles table view"
+  },
+  "DynamicBundlesTable.title.results": {
+    "defaultMessage": "{total} results",
+    "description": "Dynamic bundles title result total"
+  },
+  "EditBundle.button.back": {
+    "defaultMessage": "To Bundles list",
+    "description": "Label for back button"
+  },
+  "EditBundle.form.message.edit.error": {
+    "defaultMessage": "Something went wrong. Your bundle was not saved.",
+    "description": "Error message for editing bundle"
+  },
+  "EditBundle.form.message.edit.success": {
+    "defaultMessage": "Your bundle has been saved.",
+    "description": "Success message for editing bundle"
+  },
+  "EditBundle.title": {
+    "defaultMessage": "Create a bundle",
+    "description": "The page title of create bundle"
+  },
+  "FileUpload.button.chooseFile": {
+    "defaultMessage": "Choose File",
+    "description": "Choose file button for file upload field"
+  },
+  "FileUpload.button.uploadFile": {
+    "defaultMessage": "Upload",
+    "description": "Upload button for file upload field"
+  },
+  "FileUpload.error": {
+    "defaultMessage": "Something went wrong uploading the selected file:",
+    "description": "Error message when upload fails"
+  },
+  "Pagination.button.next": {
+    "defaultMessage": "Next",
+    "description": "Label of next button"
+  },
+  "Pagination.button.previous": {
+    "defaultMessage": "Previous",
+    "description": "Label of previous button"
+  },
+  "PriceFilters.error.loading": {
+    "defaultMessage": "Something went wrong loading the price filters.",
+    "description": "Message when querying for product prices fails"
+  },
+  "PriceFilters.filter.channel": {
+    "defaultMessage": "Channel",
+    "description": "The label for the channel filter"
+  },
+  "PriceFilters.filter.country": {
+    "defaultMessage": "Country",
+    "description": "The label for the country filter"
+  },
+  "PriceFilters.filter.currency": {
+    "defaultMessage": "Currency",
+    "description": "The label for the currency filter"
+  },
+  "PriceFilters.filter.customerGroup": {
+    "defaultMessage": "Customer Group",
+    "description": "The label for the customer group filter"
+  },
+  "PriceFilters.filter.date": {
+    "defaultMessage": "Date",
+    "description": "The label for the date filter"
+  },
+  "PriceFilters.filter.price": {
+    "defaultMessage": "Price",
+    "description": "The label for the price filter"
+  },
+  "ProductSearchInput.id": {
+    "defaultMessage": "ID",
+    "description": "The label for id"
+  },
+  "ProductSearchInput.sku": {
+    "defaultMessage": "SKU",
+    "description": "The label for sku"
+  },
+  "Routes.Error.accessDenied.message": {
+    "defaultMessage": "We recommend contacting your project administrators for further questions.",
+    "description": "Access denied error message"
+  },
+  "Routes.Error.accessDenied.title": {
+    "defaultMessage": "Not enough permissions to access this resource",
+    "description": "Access denied error title"
+  },
+  "Routes.Error.missingBundle.message": {
+    "defaultMessage": "Create a Bundle Product Type using the provided Terraform configuration or JSON payload.",
+    "description": "Missing bundle error message"
+  },
+  "Routes.Error.missingBundle.title": {
+    "defaultMessage": "Unable to locate Bundle Product Type",
+    "description": "Missing bundle error title"
+  },
+  "Search.button.clear.label": {
+    "defaultMessage": "Clear search",
+    "description": "Text for clear search button label"
+  },
+  "Search.button.label": {
+    "defaultMessage": "Search",
+    "description": "Text for search button label"
+  },
+  "StatusBadge.label.modified": {
+    "defaultMessage": "Modified",
+    "description": "Label for modified status"
+  },
+  "StatusBadge.label.publish": {
+    "defaultMessage": "Publish",
+    "description": "Label for the publish action"
+  },
+  "StatusBadge.label.published": {
+    "defaultMessage": "Published",
+    "description": "Label for published status"
+  },
+  "StatusBadge.label.unpublish": {
+    "defaultMessage": "Unpublish",
+    "description": "Label for the unpublish action"
+  },
+  "StatusBadge.label.unpublished": {
+    "defaultMessage": "Unpublished",
+    "description": "Label for unpublished status"
+  },
+  "ThrottledSearch.input.placeholder": {
+    "defaultMessage": "Search",
+    "description": "Placeholder for search input"
+  }
 }

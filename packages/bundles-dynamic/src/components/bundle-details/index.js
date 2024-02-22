@@ -1,1 +1,1 @@
-export { default } from './dynamic-bundle-details';
+export { default as DynamicBundleDetails } from './dynamic-bundle-details';

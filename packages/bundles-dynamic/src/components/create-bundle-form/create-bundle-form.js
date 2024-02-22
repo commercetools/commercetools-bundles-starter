@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useMutation } from '@apollo/client';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
-import { Spacings } from '@commercetools-frontend/ui-kit';
-import { useShowSideNotification } from '../../../../bundles-core/components/hooks';
+import Spacings from '@commercetools-uikit/spacings';
+import { useShowSideNotification } from '@commercetools-us-ps/bundles-core/components/hooks';
 import {
   BackToList,
   TabContainer,
   View,
   ViewHeader,
-} from '../../../../bundles-core/components/index';
+} from '@commercetools-us-ps/bundles-core/components/index';
 import { ATTRIBUTES, BUNDLE_PRODUCT_TYPE, ROOT_PATH } from '../../constants';
-import BundleForm from '../bundle-form';
+import { BundleForm } from '../bundle-form';
 import CreateBundle from './create-bundle.graphql';
 import messages from './messages';
 

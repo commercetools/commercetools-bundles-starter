@@ -9,8 +9,8 @@ import {
   GRAPHQL_TARGETS,
   NO_VALUE_FALLBACK,
 } from '@commercetools-frontend/constants';
-import { DataTable } from '@commercetools-frontend/ui-kit';
-import { SORT_OPTIONS } from '../../../../bundles-core/components/constants';
+import DataTable from '@commercetools-uikit/data-table';
+import { SORT_OPTIONS } from '@commercetools-us-ps/bundles-core/components/constants';
 import { generateProduct } from '../../test-util';
 import { getSkus } from '../../util';
 import PricesTable, { DateField } from './prices-table';
