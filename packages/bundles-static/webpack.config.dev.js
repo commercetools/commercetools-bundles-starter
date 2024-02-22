@@ -9,7 +9,7 @@ config.resolve = {
   ...config.resolve,
   alias: {
     ...config.resolve.alias,
-    '@bundles-core': path.resolve(__dirname, '../bundles-core-2/'),
+    '@bundles-core': path.resolve(__dirname, '../bundles-core/'),
   },
 };
 
@@ -17,13 +17,13 @@ config.resolve = {
 config.module.rules.push({
   test: /\.graphql$/,
   loader: 'graphql-tag/loader',
-  include: path.resolve(__dirname, '../bundles-core-2'),
+  include: path.resolve(__dirname, '../bundles-core'),
 });
 
 // TODO: add loader for jsx
 config.module.rules.push({
   test: /\.(js|jsx)$/,
-  include: path.resolve(__dirname, '../bundles-core-2'),
+  include: path.resolve(__dirname, '../bundles-core'),
   use: {
     loader: 'babel-loader',
     options: {
@@ -44,7 +44,7 @@ config.module.rules.push({
         modules: true,
       },
     },
-  ],  include: path.resolve(__dirname, '../bundles-core-2'),
+  ],  include: path.resolve(__dirname, '../bundles-core'),
 });
 
 module.exports = config;
