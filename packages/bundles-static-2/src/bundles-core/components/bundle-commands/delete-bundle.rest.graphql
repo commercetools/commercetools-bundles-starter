@@ -1,0 +1,5 @@
+mutation DeleteBundle($id: String!, $version: Long!) {
+  deleteProduct(id: $id, version: $version) {
+    id
+  }
+}

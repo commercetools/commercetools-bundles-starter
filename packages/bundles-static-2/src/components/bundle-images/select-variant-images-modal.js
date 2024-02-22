@@ -7,13 +7,10 @@ import { FormModalPage } from '@commercetools-frontend/application-components';
 import { useShowNotification } from '@commercetools-frontend/actions-global';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
 import { DOMAINS, GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
-import {
-  CheckActiveIcon,
-  CheckInactiveIcon,
-  Text,
-  Tooltip,
-} from '@commercetools-frontend/ui-kit';
-import { Loading } from '../../../../bundles-core/components/index';
+import Text from '@commercetools-uikit/text';
+import Tooltip from '@commercetools-uikit/tooltip';
+import { CheckActiveIcon, CheckInactiveIcon } from '@commercetools-uikit/icons';
+import { Loading } from '@bundles-core/components';
 import { getSkus } from '../../util';
 import { MASTER_VARIANT_ID } from '../../constants';
 import EditBundle from '../edit-bundle-form/edit-bundle.graphql';

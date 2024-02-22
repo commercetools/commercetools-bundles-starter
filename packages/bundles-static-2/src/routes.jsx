@@ -12,6 +12,7 @@ import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
 import { FormattedMessage } from 'react-intl';
 import { messages } from './messages';
 import { StaticBundlesTable } from './components/bundles-table';
+import { StaticBundleDetails } from './components/bundle-details';
 
 const ApplicationRoutes = () => {
   const match = useRouteMatch();
@@ -51,7 +52,7 @@ const ApplicationRoutes = () => {
             />
             <Route
               path={`${match.path}/:bundleId`}
-              render={(props) => <div>ID</div>}
+              render={(props) => <StaticBundleDetails {...props} />}
             />
             <Route render={(props) => <StaticBundlesTable {...props} />} />
           </Switch>

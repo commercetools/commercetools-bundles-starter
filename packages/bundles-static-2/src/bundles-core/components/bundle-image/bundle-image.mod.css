@@ -1,0 +1,123 @@
+:root {
+  --card-height: 120px;
+}
+
+.image {
+  width: 575px;
+  margin-right: var(--spacing-m);
+  margin-bottom: var(--spacing-m);
+}
+
+.details {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  min-height: var(--card-height);
+  width: 100%;
+}
+
+.handle {
+  display: inline-block;
+  position: relative;
+  left: -8px;
+  width: 24px;
+}
+
+.handle-middle-wrapper {
+  background: var(--color-neutral-95);
+  border-radius: 0 var(--border-radius-6) var(--border-radius-6) 0;
+  overflow: hidden;
+  width: 28px;
+  height: 69px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--spacing-s) * -1);
+  cursor: grab;
+}
+
+.handle-middle {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  height: 19px;
+  width: 13px;
+  position: absolute;
+  text-align: center;
+}
+
+.dot {
+  float: left;
+  width: 3px;
+  height: 3px;
+  border-radius: 3px;
+  margin: 0 3px 5px 0;
+  background: var(--color-neutral);
+}
+
+.bundle-image {
+  border: 1px solid var(--color-neutral);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 120px;
+  max-width: 120px;
+  height: var(--card-height);
+}
+
+.bundle-image img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.actions {
+  border-top: 1px solid var(--color-neutral-60);
+  padding-top: var(--spacing-s);
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.actions-left,
+.actions-right {
+  display: flex;
+}
+
+.actions-right .delete-image-icon {
+  display: inline-block;
+  margin-left: var(--spacing-s);
+}
+
+.position-controls {
+  display: flex;
+  align-items: center;
+  margin-left: var(--spacing-m);
+}
+
+.position-text {
+  padding-right: var(--spacing-xs);
+}
+
+.position-set {
+  bottom: 0;
+  margin-right: var(--spacing-xs);
+}
+
+.position-holder {
+  display: flex;
+}
+
+.position-set:last-child {
+  border-left: 1px var(--color-neutral-60) solid;
+  padding-left: var(--spacing-xs);
+}
+
+.position-set:only-child {
+  border-left: none;
+  padding: 0;
+  margin: 0;
+}

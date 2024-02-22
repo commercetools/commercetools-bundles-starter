@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render should output the correct tree 1`] = `
+<div
+  className="header-color-surface header-color-with-bottom-line"
+>
+  <div
+    className="details"
+  >
+    <div
+      className="info"
+    >
+      <div>
+        Back to list
+      </div>
+      <div
+        className="title-container"
+      >
+        <TextHeadline
+          as="h2"
+        >
+          Title
+        </TextHeadline>
+      </div>
+      <div
+        className="subtitle-container"
+      >
+        some subtitle
+      </div>
+      <div
+        className="tabs"
+      >
+        <ul
+          className="tabs-list"
+        >
+          <div>
+            Test
+          </div>
+        </ul>
+      </div>
+    </div>
+    <div
+      className="commands"
+    >
+      <div>
+        Commands
+      </div>
+    </div>
+  </div>
+</div>
+`;

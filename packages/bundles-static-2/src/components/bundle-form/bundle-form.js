@@ -7,10 +7,10 @@ import * as yup from 'yup';
 import { isEqual, pickBy } from 'lodash';
 import omitEmpty from 'omit-empty';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
-import { LocalizedTextInput } from '@commercetools-frontend/ui-kit';
-import { transformLocalizedStringToField } from '../../../../bundles-core/components/util';
+import LocalizedTextInput from '@commercetools-uikit/localized-text-input';
+import { transformLocalizedStringToField } from '@bundles-core/components/util';
 import StaticForm from './static-form';
-import ProductField from '../product-field';
+import { ProductField } from '../product-field';
 import messages from './messages';
 
 const BundleForm = ({ bundle, onSubmit, data, loading, redirect }) => {

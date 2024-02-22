@@ -8,9 +8,4 @@ export const PERMISSIONS = entryPointUriPathToPermissionKeys(entryPointUriPath);
 const ROOT_PATH = 'bundles-static';
 const BUNDLE_PRODUCT_TYPE = 'static-bundle-parent';
 const MASTER_VARIANT_ID = 1;
-export {
-    ROOT_PATH,
-    BUNDLE_PRODUCT_TYPE,
-    MASTER_VARIANT_ID,
-  };
-  
+export { ROOT_PATH, BUNDLE_PRODUCT_TYPE, MASTER_VARIANT_ID };

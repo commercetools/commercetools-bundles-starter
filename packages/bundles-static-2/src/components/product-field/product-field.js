@@ -2,19 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import { compact, get, isNil, some, uniq } from 'lodash';
-import {
-  CloseBoldIcon,
-  ErrorMessage,
-  FieldLabel,
-  IconButton,
-  NumberInput,
-  PlusBoldIcon,
-  SecondaryButton,
-  Spacings,
-} from '@commercetools-frontend/ui-kit';
-import { getAttribute } from '../../../../bundles-core/util';
-import { ProductSearchInput } from '../../../../bundles-core/components/index';
-import { localize } from '../../../../bundles-core/components/util';
+import { ErrorMessage } from '@commercetools-uikit/messages';
+import { CloseBoldIcon, PlusBoldIcon } from '@commercetools-uikit/icons';
+import FieldLabel from '@commercetools-uikit/field-label';
+import IconButton from '@commercetools-uikit/icon-button';
+import NumberInput from '@commercetools-uikit/number-input';
+import SecondaryButton from '@commercetools-uikit/secondary-button';
+import Spacings from '@commercetools-uikit/spacings';
+
+import { getAttribute } from '@bundles-core/util';
+import { ProductSearchInput } from '@bundles-core/components/index';
+import { localize } from '@bundles-core/components/util';
 import {
   PRODUCT,
   PRODUCT_NAME,

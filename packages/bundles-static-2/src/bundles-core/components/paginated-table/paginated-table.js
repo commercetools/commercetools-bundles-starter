@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DataTable  from '@commercetools-uikit/data-table';
+import DataTable from '@commercetools-uikit/data-table';
 import { Pagination } from '../pagination';
 
 const PaginatedTable = ({

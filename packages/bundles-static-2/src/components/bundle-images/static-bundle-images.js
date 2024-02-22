@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
-import {
-  FlatButton,
-  PlusBoldIcon,
-  SecondaryButton,
-  Text,
-} from '@commercetools-frontend/ui-kit';
-import { BundleImages } from '../../../../bundles-core/components';
+import FlatButton from '@commercetools-uikit/flat-button';
+import { PlusBoldIcon } from '@commercetools-uikit/icons';
+import Text from '@commercetools-uikit/text';
+import SecondaryButton from '@commercetools-uikit/secondary-button';
+import { BundleImages } from '@bundles-core/components';
 import SelectVariantImagesModal from './select-variant-images-modal';
 import messages from './messages';
 

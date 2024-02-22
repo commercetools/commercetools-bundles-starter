@@ -1,0 +1,8 @@
+.commands {
+  display: flex;
+  align-items: flex-end;
+}
+
+.status-select {
+  width: 139px;
+}

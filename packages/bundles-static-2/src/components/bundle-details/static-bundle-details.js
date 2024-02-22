@@ -3,15 +3,12 @@ import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router';
 import { useIntl } from 'react-intl';
 import { find } from 'lodash';
-import {
-  BundleDetails,
-  TabHeader,
-} from '../../../../bundles-core/components/index';
-import { transformLocalizedFieldToString } from '../../../../bundles-core/components/util';
+import { BundleDetails, TabHeader } from '@bundles-core/components';
+import { transformLocalizedFieldToString } from '@bundles-core/components/util';
 import { ROOT_PATH } from '../../constants';
 import EditBundleForm from '../edit-bundle-form';
 import StaticBundleImages from '../bundle-images';
-import BundlePrices from '../bundle-prices';
+import { BundlePrices } from '../bundle-prices';
 import messages from './messages';
 
 export const transformResults = (results) => ({

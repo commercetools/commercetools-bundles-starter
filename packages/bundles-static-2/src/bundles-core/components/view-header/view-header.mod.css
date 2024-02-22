@@ -1,0 +1,59 @@
+/* Header */
+.header {
+  word-break: break-all;
+  padding: var(--spacing-m) var(--spacing-m) 0;
+  z-index: 2;
+}
+
+.header-color-surface {
+  composes: header;
+  background-color: var(--color-surface);
+}
+
+.header-color-neutral {
+  composes: header;
+  background-color: var(--color-neutral-90);
+}
+
+.header-color-with-bottom-line {
+  border-bottom: 1px var(--color-neutral) solid;
+}
+
+.details {
+  display: flex;
+}
+
+.info {
+  flex: 1;
+}
+
+.title-container {
+  margin: var(--spacing-s) 0;
+}
+
+.subtitle-container {
+  margin: 0 0 var(--spacing-s);
+}
+
+/* Header */
+
+.tabs {
+  overflow: hidden;
+}
+
+.tabs-list {
+  float: left;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* Commands */
+
+.commands {
+  display: flex;
+  align-items: stretch;
+  padding: 0 0 var(--spacing-s) 0;
+  margin-left: var(--spacing-s);
+}
