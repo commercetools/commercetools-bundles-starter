@@ -13,6 +13,7 @@ import { FormattedMessage } from 'react-intl';
 import { messages } from './messages';
 import { StaticBundlesTable } from './components/bundles-table';
 import { StaticBundleDetails } from './components/bundle-details';
+import { CreateBundleForm } from './components/create-bundle-form';
 
 const ApplicationRoutes = () => {
   const match = useRouteMatch();
@@ -48,7 +49,7 @@ const ApplicationRoutes = () => {
           <Switch>
             <Route
               path={`${match.path}/new`}
-              render={(props) => <div>Create</div>}
+              render={(props) => <CreateBundleForm {...props} />}
             />
             <Route
               path={`${match.path}/:bundleId`}

@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
-import { Spacings } from '@commercetools-frontend/ui-kit';
+import Spacings from '@commercetools-uikit/spacings';
 import {
   BackToList,
   TabContainer,
@@ -12,7 +12,7 @@ import {
 } from '@bundles-core/components/index';
 import { useShowSideNotification } from '@bundles-core/components/hooks';
 import { BUNDLE_PRODUCT_TYPE, ROOT_PATH } from '../../constants';
-import BundleForm from '../bundle-form';
+import { BundleForm } from '../bundle-form';
 import CreateBundle from './create-bundle.graphql';
 import messages from './messages';
 
