@@ -1,0 +1,26 @@
+query GetProductImages(
+  $limit: Int!
+  $offset: Int
+  $sort: [String!]
+  $skus: [String!]
+  $locale: Locale
+) {
+  products(limit: $limit, offset: $offset, sort: $sort, skus: $skus) {
+    total
+    results {
+      id
+      masterData {
+        current {
+          name(locale: $locale)
+          allVariants(skus: $skus) {
+            id
+            images {
+              url
+              label
+            }
+          }
+        }
+      }
+    }
+  }
+}

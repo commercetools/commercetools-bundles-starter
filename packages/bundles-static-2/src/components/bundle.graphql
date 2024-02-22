@@ -1,0 +1,28 @@
+fragment Bundle on Product {
+  id
+  version
+  lastModifiedAt
+  masterData {
+    published
+    hasStagedChanges
+    current {
+      nameAllLocales {
+        locale
+        value
+      }
+      masterVariant {
+        attributesRaw(includeNames: ["products"]) {
+          name
+          value
+        }
+        prices {
+          value {
+            centAmount
+            fractionDigits
+            currencyCode
+          }
+        }
+      }
+    }
+  }
+}
