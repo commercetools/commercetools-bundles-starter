@@ -1,5 +1,0 @@
-query GetBundleProductType($key: String) {
-  productType(key: $key) {
-    id
-  }
-}

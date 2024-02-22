@@ -1,6 +1,0 @@
-dist/**
-node_modules/*
-coverage/*
-public/*
-schema.graphql
-*.rest.graphql
