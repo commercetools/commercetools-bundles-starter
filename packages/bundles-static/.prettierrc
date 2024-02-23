@@ -1,5 +1,7 @@
 {
+  "trailingComma": "es5",
   "singleQuote": true,
+  "parser": "babel",
   "overrides": [
     {
       "files": "*.js",

@@ -1,16 +1,13 @@
-import React, { useCallback } from 'react';
-import PropTypes from 'prop-types';
-import { useIntl } from 'react-intl';
-import {
-  CloseBoldIcon,
-  SearchIcon,
-  SecondaryIconButton,
-  TextInput,
-} from '@commercetools-frontend/ui-kit';
-import messages from './messages';
-import styles from './throttled-search-input.mod.css';
+import React, { useCallback } from "react";
+import PropTypes from "prop-types";
+import { useIntl } from "react-intl";
+import { CloseBoldIcon, SearchIcon } from "@commercetools-uikit/icons";
+import SecondaryIconButton from "@commercetools-uikit/secondary-icon-button";
+import TextInput from "@commercetools-uikit/text-input";
+import messages from "./messages";
+import styles from "./throttled-search-input.mod.css";
 
-const debounce = require('lodash.debounce');
+const debounce = require("lodash.debounce");
 
 const ThrottledSearchInput = ({
   handleSearch,
@@ -25,8 +22,8 @@ const ThrottledSearchInput = ({
   );
 
   function clear() {
-    setQuery('');
-    handleSearch('');
+    setQuery("");
+    handleSearch("");
   }
 
   function onQueryChanged(event) {
@@ -46,7 +43,7 @@ const ThrottledSearchInput = ({
         isAutofocussed={!!query}
         onChange={onQueryChanged}
       />
-      <div className={styles['icon-container']}>
+      <div className={styles["icon-container"]}>
         {query ? (
           <SecondaryIconButton
             data-testid="clear-button"
@@ -62,7 +59,7 @@ const ThrottledSearchInput = ({
   );
 };
 
-ThrottledSearchInput.displayName = 'ThrottledSearchInput';
+ThrottledSearchInput.displayName = "ThrottledSearchInput";
 ThrottledSearchInput.propTypes = {
   handleSearch: PropTypes.func.isRequired,
   debounceInterval: PropTypes.number.isRequired,

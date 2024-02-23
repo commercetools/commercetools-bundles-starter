@@ -1,112 +1,442 @@
 {
-  "Bundle.form.button.submit": "Save",
-  "Bundle.form.description.title": "Description",
-  "Bundle.form.key.description": "Provide a unique key to help identify the bundle.",
-  "Bundle.form.key.title": "Key",
-  "Bundle.form.name.title": "Name",
-  "Bundle.form.panel.bundle.title": "Bundle Information",
-  "Bundle.form.panel.external.title": "External Search Engine Optimization",
-  "Bundle.form.panel.general.title": "General Information",
-  "Bundle.form.sku.title": "SKU",
-  "Bundle.form.slug.description": "The slug is a user-friendly key usually used to generate the product page URL.\nThe slug can contain alphanumeric characters (0-9 or A-Z), underscores or hyphens with no spaces, and can be anywhere between 2 to 256 characters long.",
-  "Bundle.form.slug.title": "Short URL (slug)",
-  "BundleDetails.button.back": "To Bundles list",
-  "BundleDetails.button.deleteBundle": "Delete Bundle",
-  "BundleDetails.Error.loading.title": "Something went wrong loading the bundle.",
-  "BundleDetails.message.delete.error": "Something went wrong. Your bundle was not deleted.",
-  "BundleDetails.message.delete.success": "Your bundle has been deleted.",
-  "BundleDetails.message.deleteBundleConfirm": "Are you sure you want to delete this bundle?",
-  "BundleDetails.message.edit.error": "Something went wrong. Your bundle status was not saved.",
-  "BundleDetails.message.edit.success": "Your bundle status has been saved.",
-  "BundleDetails.status.label": "Status:",
-  "BundleImages.button.delete": "Delete image",
-  "BundleImages.button.edit": "Edit image",
-  "BundleImages.button.expand": "View image source",
-  "BundleImages.button.removeConfirmation": "Are you sure you want to remove this image?",
-  "BundleImages.buttons.addImages": "Add Image",
-  "BundleImages.link.addImages": "Add an image",
-  "BundleImages.message.delete.error": "Something went wrong. The image was not removed.",
-  "BundleImages.message.imageLabel": "Image label",
-  "BundleImages.message.noImages": "No images found for this bundle.",
-  "BundleImages.title": "Manage or add images for this bundle.",
-  "BundlePrices.buttons.addPrice": "Add Price",
-  "BundlePrices.buttons.viewPrices": "View Prices",
-  "BundlePrices.error.loading": "Something went wrong loading the variant prices.",
-  "BundlePrices.table.channelColumn": "Channel",
-  "BundlePrices.table.countryColumn": "Country",
-  "BundlePrices.table.currencyColumn": "Currency",
-  "BundlePrices.table.customerGroupColumn": "Customer Group",
-  "BundlePrices.table.label.any": "Any",
-  "BundlePrices.table.nameColumn": "Name",
-  "BundlePrices.table.priceColumn": "Price",
-  "BundlePrices.table.validDateColumn": "Valid Dates",
-  "BundlePrices.table.validDateColumn.from": "From:",
-  "BundlePrices.table.validDateColumn.to": "To:",
-  "BundlePrices.title": "Add prices for this bundle.",
-  "BundlesTable.button.createBundle": "Create a bundle",
-  "BundlesTable.Error.loading.title": "Something went wrong loading the product bundles.",
-  "BundlesTable.Error.noResults.title": "No bundles found on this project.",
-  "BundlesTable.Error.noSearchResults.title": "No bundles found matching the search term and/or filters.",
-  "BundlesTable.Filter.title": "Filter:",
-  "BundlesTable.Search.input.placeholder": "Search by bundle name, description, slug, or sku.",
-  "CreateBundle.button.back": "To Bundles list",
-  "CreateBundle.form.message.error": "Something went wrong. Your bundle was not created.",
-  "CreateBundle.form.message.success": "Your bundle has been created.",
-  "CreateBundle.title": "Create a bundle",
-  "EditBundle.button.back": "To Bundles list",
-  "EditBundle.form.message.edit.error": "Something went wrong. Your bundle was not saved.",
-  "EditBundle.form.message.edit.success": "Your bundle has been saved.",
-  "EditBundle.title": "Create a bundle",
-  "FileUpload.button.chooseFile": "Choose File",
-  "FileUpload.button.uploadFile": "Upload",
-  "FileUpload.error": "Something went wrong uploading the selected file:",
-  "Pagination.button.next": "Next",
-  "Pagination.button.previous": "Previous",
-  "PriceFilters.error.loading": "Something went wrong loading the price filters.",
-  "PriceFilters.filter.channel": "Channel",
-  "PriceFilters.filter.country": "Country",
-  "PriceFilters.filter.currency": "Currency",
-  "PriceFilters.filter.customerGroup": "Customer Group",
-  "PriceFilters.filter.date": "Date",
-  "PriceFilters.filter.price": "Price",
-  "ProductField.button.add.label": "Add Variant",
-  "ProductField.product.placeholder": "Search by name, description, slug, or sku.",
-  "ProductField.quantity.placeholder": "Quantity",
-  "ProductSearchInput.id": "ID",
-  "ProductSearchInput.sku": "SKU",
-  "Routes.Error.accessDenied.message": "We recommend contacting your project administrators for further questions.",
-  "Routes.Error.accessDenied.title": "Not enough permissions to access this resource",
-  "Routes.Error.missingBundle.message": "Create a Bundle Product Type using the provided Terraform configuration or JSON payload.",
-  "Routes.Error.missingBundle.title": "Unable to locate Bundle Product Type",
-  "Search.button.clear.label": "Clear search",
-  "Search.button.label": "Search",
-  "StaticBundle.form.errors.missingRequiredField": "This field is required. Provide a value.",
-  "StaticBundle.form.errors.quantity": "Quantity must be greater than 1.",
-  "StaticBundle.form.products.description": "Select variants with quantity to include in bundle.",
-  "StaticBundle.form.products.title": "Product Variants",
-  "StaticBundleDetails.tabs.general": "General",
-  "StaticBundleDetails.tabs.images": "Images",
-  "StaticBundleDetails.tabs.prices": "Prices",
-  "StaticBundleImages.buttons.selectImages": "Select Images from Variants",
-  "StaticBundleImages.label.or": "or",
-  "StaticBundleImages.link.selectImages": "select images from bundle variants.",
-  "StaticBundleImages.message.noVariantImages": "No variant images available for selection.",
-  "StaticBundleImages.message.variants.error": "Something went wrong. Unable to retrieve variant images.",
-  "StaticBundleImages.message.variants.save.error": "Something went wrong. Selected images were not added to bundle.",
-  "StaticBundleImages.title.selectImages": "Select and Add Images from Variants",
-  "StaticBundlesTable.Filter.category.placeholder": "Category",
-  "StaticBundlesTable.Filter.product.placeholder": "Product variants in bundle",
-  "StaticBundlesTable.labelPriceColumn": "Price (lowest)",
-  "StaticBundlesTable.lastModifiedAtColumn": "Last Modified",
-  "StaticBundlesTable.nameColumn": "Name",
-  "StaticBundlesTable.productCountColumn": "Number of Products",
-  "StaticBundlesTable.statusColumn": "Status",
-  "StaticBundlesTable.title": "Product Bundle Manager",
-  "StaticBundlesTable.title.results": "{total} results",
-  "StatusBadge.label.modified": "Modified",
-  "StatusBadge.label.publish": "Publish",
-  "StatusBadge.label.published": "Published",
-  "StatusBadge.label.unpublish": "Unpublish",
-  "StatusBadge.label.unpublished": "Unpublished",
-  "ThrottledSearch.input.placeholder": "Search"
+  "Bundle.form.button.submit": {
+    "defaultMessage": "Save",
+    "description": "Label for submit button"
+  },
+  "Bundle.form.description.title": {
+    "defaultMessage": "Description",
+    "description": "Title for bundle description field"
+  },
+  "Bundle.form.key.description": {
+    "defaultMessage": "Provide a unique key to help identify the bundle.",
+    "description": "Description for key field"
+  },
+  "Bundle.form.key.title": {
+    "defaultMessage": "Key",
+    "description": "Title for bundle key field"
+  },
+  "Bundle.form.name.title": {
+    "defaultMessage": "Name",
+    "description": "Title for bundle name field"
+  },
+  "Bundle.form.panel.bundle.title": {
+    "defaultMessage": "Bundle Information",
+    "description": "Title for bundle information panel"
+  },
+  "Bundle.form.panel.external.title": {
+    "defaultMessage": "External Search Engine Optimization",
+    "description": "Title for external search information panel"
+  },
+  "Bundle.form.panel.general.title": {
+    "defaultMessage": "General Information",
+    "description": "Title for general information panel"
+  },
+  "Bundle.form.sku.title": {
+    "defaultMessage": "SKU",
+    "description": "Title for bundle sku field"
+  },
+  "Bundle.form.slug.description": {
+    "defaultMessage": "The slug is a user-friendly key usually used to generate the product page URL. The slug can contain alphanumeric characters (0-9 or A-Z), underscores or hyphens with no spaces, and can be anywhere between 2 to 256 characters long.",
+    "description": "Description for slug field"
+  },
+  "Bundle.form.slug.title": {
+    "defaultMessage": "Short URL (slug)",
+    "description": "Title for bundle slug field"
+  },
+  "BundleDetails.Error.loading.title": {
+    "defaultMessage": "Something went wrong loading the bundle.",
+    "description": "Error title when querying for bundle fails"
+  },
+  "BundleDetails.button.back": {
+    "defaultMessage": "To Bundles list",
+    "description": "Label for back button"
+  },
+  "BundleDetails.button.deleteBundle": {
+    "defaultMessage": "Delete Bundle",
+    "description": "Label for delete bundle button"
+  },
+  "BundleDetails.message.delete.error": {
+    "defaultMessage": "Something went wrong. Your bundle was not deleted.",
+    "description": "Error message for deleting bundle"
+  },
+  "BundleDetails.message.delete.success": {
+    "defaultMessage": "Your bundle has been deleted.",
+    "description": "Success message for deleting bundle"
+  },
+  "BundleDetails.message.deleteBundleConfirm": {
+    "defaultMessage": "Are you sure you want to delete this bundle?",
+    "description": "Delete bundle confirmation message"
+  },
+  "BundleDetails.message.edit.error": {
+    "defaultMessage": "Something went wrong. Your bundle status was not saved.",
+    "description": "Error message for editing bundle status"
+  },
+  "BundleDetails.message.edit.success": {
+    "defaultMessage": "Your bundle status has been saved.",
+    "description": "Success message for editing bundle status"
+  },
+  "BundleDetails.status.label": {
+    "defaultMessage": "Status:",
+    "description": "Label for status select"
+  },
+  "BundleImages.button.delete": {
+    "defaultMessage": "Delete image",
+    "description": "Label for delete button"
+  },
+  "BundleImages.button.edit": {
+    "defaultMessage": "Edit image",
+    "description": "Label for edit button"
+  },
+  "BundleImages.button.expand": {
+    "defaultMessage": "View image source",
+    "description": "Label for expand button"
+  },
+  "BundleImages.button.removeConfirmation": {
+    "defaultMessage": "Are you sure you want to remove this image?",
+    "description": "Label for remove confirmation button"
+  },
+  "BundleImages.buttons.addImages": {
+    "defaultMessage": "Add Image",
+    "description": "Label for add images button"
+  },
+  "BundleImages.link.addImages": {
+    "defaultMessage": "Add an image",
+    "description": "Label for add images link"
+  },
+  "BundleImages.message.delete.error": {
+    "defaultMessage": "Something went wrong. The image was not removed.",
+    "description": "Error message for editing bundle"
+  },
+  "BundleImages.message.imageLabel": {
+    "defaultMessage": "Image label",
+    "description": "Label for image"
+  },
+  "BundleImages.message.noImages": {
+    "defaultMessage": "No images found for this bundle.",
+    "description": "No images error message"
+  },
+  "BundleImages.title": {
+    "defaultMessage": "Manage or add images for this bundle.",
+    "description": "Bundle images title"
+  },
+  "BundlePrices.buttons.addPrice": {
+    "defaultMessage": "Add Price",
+    "description": "Label for add price button"
+  },
+  "BundlePrices.buttons.viewPrices": {
+    "defaultMessage": "View Prices",
+    "description": "Label for view prices button"
+  },
+  "BundlePrices.error.loading": {
+    "defaultMessage": "Something went wrong loading the variant prices.",
+    "description": "Message when querying for product prices fails"
+  },
+  "BundlePrices.table.channelColumn": {
+    "defaultMessage": "Channel",
+    "description": "The label for the channel column"
+  },
+  "BundlePrices.table.countryColumn": {
+    "defaultMessage": "Country",
+    "description": "The label for the country column"
+  },
+  "BundlePrices.table.currencyColumn": {
+    "defaultMessage": "Currency",
+    "description": "The label for the currency column"
+  },
+  "BundlePrices.table.customerGroupColumn": {
+    "defaultMessage": "Customer Group",
+    "description": "The label for the customer group column"
+  },
+  "BundlePrices.table.label.any": {
+    "defaultMessage": "Any",
+    "description": "The label for the any value"
+  },
+  "BundlePrices.table.nameColumn": {
+    "defaultMessage": "Name",
+    "description": "The label for the name column"
+  },
+  "BundlePrices.table.priceColumn": {
+    "defaultMessage": "Price",
+    "description": "The label for the price column"
+  },
+  "BundlePrices.table.validDateColumn": {
+    "defaultMessage": "Valid Dates",
+    "description": "The label for the date column"
+  },
+  "BundlePrices.table.validDateColumn.from": {
+    "defaultMessage": "From:",
+    "description": "The label for the date column from field"
+  },
+  "BundlePrices.table.validDateColumn.to": {
+    "defaultMessage": "To:",
+    "description": "The label for the date column to field"
+  },
+  "BundlePrices.title": {
+    "defaultMessage": "Add prices for this bundle.",
+    "description": "Bundle prices title"
+  },
+  "BundlesTable.Error.loading.title": {
+    "defaultMessage": "Something went wrong loading the product bundles.",
+    "description": "Error title when querying for products of bundle productType fails"
+  },
+  "BundlesTable.Error.noResults.title": {
+    "defaultMessage": "No bundles found on this project.",
+    "description": "Error title when no results are returned"
+  },
+  "BundlesTable.Error.noSearchResults.title": {
+    "defaultMessage": "No bundles found matching the search term and/or filters.",
+    "description": "Error title when no search results are returned"
+  },
+  "BundlesTable.Filter.title": {
+    "defaultMessage": "Filter:",
+    "description": "Title for filter"
+  },
+  "BundlesTable.Search.input.placeholder": {
+    "defaultMessage": "Search by bundle name, description, slug, or sku.",
+    "description": "Placeholder for search input"
+  },
+  "BundlesTable.button.createBundle": {
+    "defaultMessage": "Create a bundle",
+    "description": "The label for the link to the bundle creation view"
+  },
+  "CreateBundle.button.back": {
+    "defaultMessage": "To Bundles list",
+    "description": "Label for back button"
+  },
+  "CreateBundle.form.message.error": {
+    "defaultMessage": "Something went wrong. Your bundle was not created.",
+    "description": "Error message for create bundle"
+  },
+  "CreateBundle.form.message.success": {
+    "defaultMessage": "Your bundle has been created.",
+    "description": "Success message for create bundle"
+  },
+  "CreateBundle.title": {
+    "defaultMessage": "Create a bundle",
+    "description": "The page title of create bundle"
+  },
+  "EditBundle.button.back": {
+    "defaultMessage": "To Bundles list",
+    "description": "Label for back button"
+  },
+  "EditBundle.form.message.edit.error": {
+    "defaultMessage": "Something went wrong. Your bundle was not saved.",
+    "description": "Error message for editing bundle"
+  },
+  "EditBundle.form.message.edit.success": {
+    "defaultMessage": "Your bundle has been saved.",
+    "description": "Success message for editing bundle"
+  },
+  "EditBundle.title": {
+    "defaultMessage": "Create a bundle",
+    "description": "The page title of create bundle"
+  },
+  "FileUpload.button.chooseFile": {
+    "defaultMessage": "Choose File",
+    "description": "Choose file button for file upload field"
+  },
+  "FileUpload.button.uploadFile": {
+    "defaultMessage": "Upload",
+    "description": "Upload button for file upload field"
+  },
+  "FileUpload.error": {
+    "defaultMessage": "Something went wrong uploading the selected file:",
+    "description": "Error message when upload fails"
+  },
+  "Pagination.button.next": {
+    "defaultMessage": "Next",
+    "description": "Label of next button"
+  },
+  "Pagination.button.previous": {
+    "defaultMessage": "Previous",
+    "description": "Label of previous button"
+  },
+  "PriceFilters.error.loading": {
+    "defaultMessage": "Something went wrong loading the price filters.",
+    "description": "Message when querying for product prices fails"
+  },
+  "PriceFilters.filter.channel": {
+    "defaultMessage": "Channel",
+    "description": "The label for the channel filter"
+  },
+  "PriceFilters.filter.country": {
+    "defaultMessage": "Country",
+    "description": "The label for the country filter"
+  },
+  "PriceFilters.filter.currency": {
+    "defaultMessage": "Currency",
+    "description": "The label for the currency filter"
+  },
+  "PriceFilters.filter.customerGroup": {
+    "defaultMessage": "Customer Group",
+    "description": "The label for the customer group filter"
+  },
+  "PriceFilters.filter.date": {
+    "defaultMessage": "Date",
+    "description": "The label for the date filter"
+  },
+  "PriceFilters.filter.price": {
+    "defaultMessage": "Price",
+    "description": "The label for the price filter"
+  },
+  "ProductField.button.add.label": {
+    "defaultMessage": "Add Variant",
+    "description": "Label for add variant button"
+  },
+  "ProductField.product.placeholder": {
+    "defaultMessage": "Search by name, description, slug, or sku.",
+    "description": "Placeholder for product select"
+  },
+  "ProductField.quantity.placeholder": {
+    "defaultMessage": "Quantity",
+    "description": "Placeholder for quantity input"
+  },
+  "ProductSearchInput.id": {
+    "defaultMessage": "ID",
+    "description": "The label for id"
+  },
+  "ProductSearchInput.sku": {
+    "defaultMessage": "SKU",
+    "description": "The label for sku"
+  },
+  "Routes.Error.accessDenied.message": {
+    "defaultMessage": "We recommend contacting your project administrators for further questions.",
+    "description": "Access denied error message"
+  },
+  "Routes.Error.accessDenied.title": {
+    "defaultMessage": "Not enough permissions to access this resource",
+    "description": "Access denied error title"
+  },
+  "Routes.Error.missingBundle.message": {
+    "defaultMessage": "Create a Bundle Product Type using the provided Terraform configuration or JSON payload.",
+    "description": "Missing bundle error message"
+  },
+  "Routes.Error.missingBundle.title": {
+    "defaultMessage": "Unable to locate Bundle Product Type",
+    "description": "Missing bundle error title"
+  },
+  "Search.button.clear.label": {
+    "defaultMessage": "Clear search",
+    "description": "Text for clear search button label"
+  },
+  "Search.button.label": {
+    "defaultMessage": "Search",
+    "description": "Text for search button label"
+  },
+  "StaticBundle.form.errors.missingRequiredField": {
+    "defaultMessage": "This field is required. Provide a value.",
+    "description": "Error message for missing required value"
+  },
+  "StaticBundle.form.errors.quantity": {
+    "defaultMessage": "Quantity must be greater than 1.",
+    "description": "Error message for quantity"
+  },
+  "StaticBundle.form.products.description": {
+    "defaultMessage": "Select variants with quantity to include in bundle.",
+    "description": "Description for bundle products field"
+  },
+  "StaticBundle.form.products.title": {
+    "defaultMessage": "Product Variants",
+    "description": "Title for bundle products field"
+  },
+  "StaticBundleDetails.tabs.general": {
+    "defaultMessage": "General",
+    "description": "Label for general tab"
+  },
+  "StaticBundleDetails.tabs.images": {
+    "defaultMessage": "Images",
+    "description": "Label for images tab"
+  },
+  "StaticBundleDetails.tabs.prices": {
+    "defaultMessage": "Prices",
+    "description": "Label for prices tab"
+  },
+  "StaticBundleImages.buttons.selectImages": {
+    "defaultMessage": "Select Images from Variants",
+    "description": "Label for select images button"
+  },
+  "StaticBundleImages.label.or": {
+    "defaultMessage": "or",
+    "description": "Label for or text"
+  },
+  "StaticBundleImages.link.selectImages": {
+    "defaultMessage": "select images from bundle variants.",
+    "description": "Label for select images link"
+  },
+  "StaticBundleImages.message.noVariantImages": {
+    "defaultMessage": "No variant images available for selection.",
+    "description": "No variant images error message"
+  },
+  "StaticBundleImages.message.variants.error": {
+    "defaultMessage": "Something went wrong. Unable to retrieve variant images.",
+    "description": "Error message for retrieving variant images"
+  },
+  "StaticBundleImages.message.variants.save.error": {
+    "defaultMessage": "Something went wrong. Selected images were not added to bundle.",
+    "description": "Error message for saving variant images to bundle"
+  },
+  "StaticBundleImages.title.selectImages": {
+    "defaultMessage": "Select and Add Images from Variants",
+    "description": "Title for select images modal"
+  },
+  "StaticBundlesTable.Filter.category.placeholder": {
+    "defaultMessage": "Category",
+    "description": "Placeholder for category filter"
+  },
+  "StaticBundlesTable.Filter.product.placeholder": {
+    "defaultMessage": "Product variants in bundle",
+    "description": "Placeholder for product filter"
+  },
+  "StaticBundlesTable.labelPriceColumn": {
+    "defaultMessage": "Price (lowest)",
+    "description": "The label for the price column"
+  },
+  "StaticBundlesTable.lastModifiedAtColumn": {
+    "defaultMessage": "Last Modified",
+    "description": "The label for the last modified at column"
+  },
+  "StaticBundlesTable.nameColumn": {
+    "defaultMessage": "Name",
+    "description": "The label for the name column"
+  },
+  "StaticBundlesTable.productCountColumn": {
+    "defaultMessage": "Number of Products",
+    "description": "The label for the products column"
+  },
+  "StaticBundlesTable.statusColumn": {
+    "defaultMessage": "Status",
+    "description": "The label for the status column"
+  },
+  "StaticBundlesTable.title": {
+    "defaultMessage": "Product Bundle Manager",
+    "description": "The page title of the bundles table view"
+  },
+  "StaticBundlesTable.title.results": {
+    "defaultMessage": "{total} results",
+    "description": "Static bundles title result total"
+  },
+  "StatusBadge.label.modified": {
+    "defaultMessage": "Modified",
+    "description": "Label for modified status"
+  },
+  "StatusBadge.label.publish": {
+    "defaultMessage": "Publish",
+    "description": "Label for the publish action"
+  },
+  "StatusBadge.label.published": {
+    "defaultMessage": "Published",
+    "description": "Label for published status"
+  },
+  "StatusBadge.label.unpublish": {
+    "defaultMessage": "Unpublish",
+    "description": "Label for the unpublish action"
+  },
+  "StatusBadge.label.unpublished": {
+    "defaultMessage": "Unpublished",
+    "description": "Label for unpublished status"
+  },
+  "ThrottledSearch.input.placeholder": {
+    "defaultMessage": "Search",
+    "description": "Placeholder for search input"
+  }
 }

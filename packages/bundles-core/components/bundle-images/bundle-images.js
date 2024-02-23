@@ -4,13 +4,11 @@ import { useIntl } from 'react-intl';
 import { useMutation } from '@apollo/client';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
-import {
-  ExternalLinkIcon,
-  FlatButton,
-  SecondaryButton,
-  Spacings,
-  Text,
-} from '@commercetools-frontend/ui-kit';
+import Text from '@commercetools-uikit/text';
+import FlatButton from '@commercetools-uikit/flat-button';
+import Spacings from '@commercetools-uikit/spacings';
+import SecondaryButton from '@commercetools-uikit/secondary-button';
+import { ExternalLinkIcon } from '@commercetools-uikit/icons';
 import { useShowSideNotification } from '../hooks';
 import MASTER_VARIANT_ID from './constants';
 import { BundleImage } from '../bundle-image';

@@ -3,4 +3,5 @@ node_modules/*
 coverage/*
 public/*
 schema.graphql
-*.rest.graphql
+*.spec.js
+src/test-util/index.js

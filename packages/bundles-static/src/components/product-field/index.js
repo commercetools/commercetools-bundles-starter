@@ -1,1 +1,1 @@
-export { default } from './product-field';
+export { default as ProductField } from './product-field';

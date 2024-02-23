@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
-import { Text } from '@commercetools-frontend/ui-kit';
+import Text from '@commercetools-uikit/text';
 import styles from './view-header.mod.css';
 
 const ViewHeader = (props) => (

@@ -3,15 +3,13 @@ import PropTypes from 'prop-types';
 import { useLazyQuery } from '@apollo/client';
 import { useIntl, FormattedNumber } from 'react-intl';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
-import {
-  Constraints,
-  ErrorMessage,
-  FieldLabel,
-  NumberInput,
-  Spacings,
-} from '@commercetools-frontend/ui-kit';
-import { getAttribute } from '../../../../bundles-core/util';
-import { ProductSearchInput } from '../../../../bundles-core/components/index';
+import Constraints from '@commercetools-uikit/constraints';
+import { ErrorMessage } from '@commercetools-uikit/messages';
+import FieldLabel from '@commercetools-uikit/field-label';
+import NumberInput from '@commercetools-uikit/number-input';
+import Spacings from '@commercetools-uikit/spacings';
+import { getAttribute } from '@commercetools-us-ps/bundles-core/util';
+import { ProductSearchInput } from '@commercetools-us-ps/bundles-core/components/index';
 import {
   ADDITIONAL_CHARGE,
   CATEGORY_PATH,

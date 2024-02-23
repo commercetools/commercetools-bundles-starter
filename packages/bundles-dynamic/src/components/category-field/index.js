@@ -1,1 +1,1 @@
-export { default } from './category-field';
+export { default as CategoryField } from './category-field';

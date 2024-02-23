@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { ListIcon, BackIcon, FlatButton } from '@commercetools-frontend/ui-kit';
+import FlatButton from '@commercetools-uikit/flat-button';
+import { ListIcon, BackIcon } from '@commercetools-uikit/icons';
 
 export const BackToList = ({ iconType, ...props }) => {
   const icon =

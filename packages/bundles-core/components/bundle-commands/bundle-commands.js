@@ -6,13 +6,10 @@ import { useMutation } from '@apollo/client';
 import { useShowNotification } from '@commercetools-frontend/actions-global';
 import { ConfirmationDialog } from '@commercetools-frontend/application-components';
 import { DOMAINS, GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
-
-import {
-  BinLinearIcon,
-  IconButton,
-  Spacings,
-  Text,
-} from '@commercetools-frontend/ui-kit';
+import Spacings from '@commercetools-uikit/spacings';
+import Text from '@commercetools-uikit/text';
+import { BinLinearIcon } from '@commercetools-uikit/icons';
+import IconButton from '@commercetools-uikit/icon-button';
 import { StatusSelect } from '../index';
 import { usePathContext } from '../../context';
 import EditBundle from './edit-bundle.graphql';

@@ -2,17 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { getAttribute } from '../../../../bundles-core/util';
+import { getAttribute } from '@commercetools-us-ps/bundles-core/util';
 import {
   BundleDetails,
   BundleImages,
   TabHeader,
-} from '../../../../bundles-core/components/index';
-import { transformLocalizedFieldToString } from '../../../../bundles-core/components/util';
+} from '@commercetools-us-ps/bundles-core/components/index';
+import { transformLocalizedFieldToString } from '@commercetools-us-ps/bundles-core/components/util';
 import { ATTRIBUTES, ROOT_PATH } from '../../constants';
-import EditBundleForm from '../edit-bundle-form';
-import BundlePreview from '../bundle-preview';
-import BundlePrices from '../bundle-prices';
+import { EditBundleForm } from '../edit-bundle-form';
+import { BundlePreview } from '../bundle-preview';
+import { BundlePrices } from '../bundle-prices';
 import messages from './messages';
 
 export const transformResults = (results) => {

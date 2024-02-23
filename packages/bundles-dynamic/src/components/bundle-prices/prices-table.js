@@ -6,7 +6,7 @@ import map from 'lodash/map';
 import reduce from 'lodash/reduce';
 import { useQuery } from '@apollo/client';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
-import { DataTable } from '@commercetools-frontend/ui-kit';
+import DataTable from '@commercetools-uikit/data-table';
 import { getPriceFilters, getScopedPriceParameters } from '../../util';
 import { getCategoryAttributes } from '../bundle-preview/category-product-field';
 import GetPriceRange from '../get-price-range.rest.graphql';

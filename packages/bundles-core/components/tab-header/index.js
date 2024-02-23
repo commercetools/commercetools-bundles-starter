@@ -1,1 +1,1 @@
-export TabHeader from './tab-header';
+export { default as TabHeader } from './tab-header';

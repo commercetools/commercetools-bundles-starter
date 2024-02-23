@@ -6,10 +6,7 @@ import { flatten } from 'lodash';
 import { mockShowNotification } from '@commercetools-frontend/actions-global';
 import { FormModalPage } from '@commercetools-frontend/application-components';
 import * as AppContext from '@commercetools-frontend/application-shell-connectors';
-import {
-  CheckActiveIcon,
-  CheckInactiveIcon,
-} from '@commercetools-frontend/ui-kit';
+import { CheckActiveIcon, CheckInactiveIcon } from '@commercetools-uikit/icons';
 import { Loading } from '../../../../bundles-core/components/index';
 import { generateProduct } from '../../test-util';
 import { getSkus } from '../../util';

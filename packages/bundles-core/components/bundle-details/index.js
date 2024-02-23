@@ -1,1 +1,1 @@
-export BundleDetails from './bundle-details';
+export { default as BundleDetails } from './bundle-details';
