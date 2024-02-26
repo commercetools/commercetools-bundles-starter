@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import {
   BinLinearIcon,
-  Card,
   EditIcon,
   ExpandIcon,
-  IconButton,
-  Spacings,
-  Text,
-  TextField,
-} from '@commercetools-frontend/ui-kit';
+} from '@commercetools-uikit/icons';
+import Card from '@commercetools-uikit/card';
+import Spacings from '@commercetools-uikit/spacings';
+import Text from '@commercetools-uikit/text';
+import TextField from '@commercetools-uikit/text-field';
+import IconButton from '@commercetools-uikit/icon-button';
 import { ConfirmationDialog } from '@commercetools-frontend/application-components';
 import messages from './messages';
 import styles from './bundle-image.mod.css';

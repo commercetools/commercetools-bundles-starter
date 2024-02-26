@@ -1,8 +1,11 @@
-import { entryPointUriPath, PERMISSIONS } from './src/constants';
+import { PERMISSIONS, entryPointUriPath } from './src/constants';
 
+/**
+ * @type {import('@commercetools-frontend/application-config').ConfigOptionsForCustomApplication}
+ */
 const config = {
   name: 'Static bundles',
-  entryPointUriPath: entryPointUriPath,
+  entryPointUriPath,
   cloudIdentifier: '${env:CLOUD_IDENTIFIER}',
   env: {
     production: {
@@ -20,9 +23,9 @@ const config = {
   icon: '${path:@commercetools-frontend/assets/application-icons/rocket.svg}',
   mainMenuLink: {
     defaultLabel: 'Bundles',
-    permissions: [PERMISSIONS.View],
     labelAllLocales: [],
-  },
+    permissions: [PERMISSIONS.View],
+  }
 };
 
 export default config;

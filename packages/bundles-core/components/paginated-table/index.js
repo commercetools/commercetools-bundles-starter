@@ -1,1 +1,1 @@
-export PaginatedTable from './paginated-table';
+export { default as PaginatedTable } from './paginated-table';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Text } from '@commercetools-frontend/ui-kit';
+import Text from '@commercetools-uikit/text';
 import Error from './error';
 
 const title = 'Test Title';

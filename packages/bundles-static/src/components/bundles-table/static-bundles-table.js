@@ -4,14 +4,14 @@ import { FormattedDate, FormattedNumber, useIntl } from 'react-intl';
 import { find, minBy } from 'lodash';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
 import { NO_VALUE_FALLBACK } from '@commercetools-frontend/constants';
-import { localize } from '../../../../bundles-core/components/util';
+import { localize } from '@commercetools-us-ps/bundles-core/components/util';
 import {
   BundlesTable,
   COLUMN_KEYS,
   CategorySearchInput,
   ProductSearchInput,
   StatusBadge,
-} from '../../../../bundles-core/components/index';
+} from '@commercetools-us-ps/bundles-core/components';
 import { DATE_FORMAT_OPTIONS, PRODUCTS_ATTRIBUTE } from './constants';
 import columnDefinitions from './column-definitions';
 import messages from './messages';

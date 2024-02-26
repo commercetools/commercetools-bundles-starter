@@ -4,12 +4,10 @@ import { useIntl } from 'react-intl';
 import { useQuery } from '@apollo/client';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
-import {
-  DateField,
-  SelectField,
-  Spacings,
-  Text,
-} from '@commercetools-frontend/ui-kit';
+import Spacings from '@commercetools-uikit/spacings';
+import Text from '@commercetools-uikit/text';
+import SelectField from '@commercetools-uikit/select-field';
+import DateField from '@commercetools-uikit/date-field';
 import GetPriceFilters from './get-price-filters.graphql';
 import messages from './messages';
 import styles from './price-filters.mod.css';

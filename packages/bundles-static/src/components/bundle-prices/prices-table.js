@@ -8,14 +8,16 @@ import {
   GRAPHQL_TARGETS,
   NO_VALUE_FALLBACK,
 } from '@commercetools-frontend/constants';
-import { Spacings, DataTable, Text } from '@commercetools-frontend/ui-kit';
-import { SORT_OPTIONS } from '../../../../bundles-core/components/constants';
+import Text from '@commercetools-uikit/text';
+import DataTable from '@commercetools-uikit/data-table';
+import { SORT_OPTIONS } from '@commercetools-us-ps/bundles-core/components/constants';
 import { getSkus } from '../../util';
 import GetProductPrices from './get-product-prices.graphql';
 import { COLUMN_KEYS, columnDefinitions } from './column-definitions';
 import { DATE_FORMAT_OPTIONS, DEFAULT_VARIABLES } from './constants';
 import messages from './messages';
 import styles from './prices-table.mod.css';
+import Spacings from '@commercetools-uikit/spacings';
 
 export const DateField = ({ date, message }) => (
   <Spacings.Inline>

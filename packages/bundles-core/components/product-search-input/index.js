@@ -1,1 +1,1 @@
-export ProductSearchInput from './product-search-input';
+export { default as ProductSearchInput } from './product-search-input';

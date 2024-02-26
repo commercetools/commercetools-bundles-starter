@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Spacings, Text } from '@commercetools-frontend/ui-kit';
+import Spacings from '@commercetools-uikit/spacings';
+import Text from '@commercetools-uikit/text';
 
 export default function Error({ title, message }) {
   return (

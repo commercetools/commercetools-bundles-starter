@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useMutation } from '@apollo/client';
 import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
-import { useShowSideNotification } from '../../../../bundles-core/components/hooks';
+import { useShowSideNotification } from '@commercetools-us-ps/bundles-core/components/hooks';
 import { ATTRIBUTES, MASTER_VARIANT_ID } from '../../constants';
-import BundleForm from '../bundle-form';
+import { BundleForm } from '../bundle-form';
 import EditBundle from './edit-bundle.graphql';
 import messages from './messages';
 

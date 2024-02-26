@@ -7,19 +7,16 @@ import get from 'lodash/get';
 import isNil from 'lodash/isNil';
 import some from 'lodash/some';
 import uniq from 'lodash/uniq';
-import {
-  CheckboxInput,
-  CloseBoldIcon,
-  ErrorMessage,
-  FieldLabel,
-  IconButton,
-  NumberInput,
-  PlusBoldIcon,
-  SecondaryButton,
-  Spacings,
-} from '@commercetools-frontend/ui-kit';
-import { getAttribute } from '../../../../bundles-core/util';
-import { CategorySearchInput } from '../../../../bundles-core/components/index';
+import CheckboxInput from '@commercetools-uikit/checkbox-input';
+import { ErrorMessage } from '@commercetools-uikit/messages';
+import FieldLabel from '@commercetools-uikit/field-label';
+import NumberInput from '@commercetools-uikit/number-input';
+import { PlusBoldIcon, CloseBoldIcon } from '@commercetools-uikit/icons';
+import IconButton from '@commercetools-uikit/icon-button';
+import SecondaryButton from '@commercetools-uikit/secondary-button';
+import Spacings from '@commercetools-uikit/spacings';
+import { getAttribute } from '@commercetools-us-ps/bundles-core/util';
+import { CategorySearchInput } from '@commercetools-us-ps/bundles-core/components/index';
 import {
   ADDITIONAL_CHARGE,
   CATEGORY,

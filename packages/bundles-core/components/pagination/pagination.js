@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
-import { FlatButton, Spacings } from '@commercetools-frontend/ui-kit';
+import Spacings from '@commercetools-uikit/spacings';
+import FlatButton from '@commercetools-uikit/flat-button';
 import messages from './messages';
 
 export const Pagination = ({ previous, next, offset, rowCount, total }) => {

@@ -1,4 +1,4 @@
-package.json
-**/dist/
-**/public/
-**/coverage/
+i18n/data/*.json
+public
+.cache
+.yarn

@@ -1,1 +1,1 @@
-export ThrottledSearchInput from './throttled-search-input';
+export {default as ThrottledSearchInput} from './throttled-search-input';

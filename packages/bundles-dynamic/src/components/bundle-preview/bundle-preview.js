@@ -16,16 +16,14 @@ import {
   GRAPHQL_TARGETS,
   NO_VALUE_FALLBACK,
 } from '@commercetools-frontend/constants';
-import {
-  CollapsiblePanel,
-  Constraints,
-  PrimaryButton,
-  SelectInput,
-  Spacings,
-  Text,
-} from '@commercetools-frontend/ui-kit';
-import { PriceFilters } from '../../../../bundles-core/components';
-import { localize } from '../../../../bundles-core/components/util';
+import CollapsiblePanel from '@commercetools-uikit/collapsible-panel';
+import Constraints from '@commercetools-uikit/constraints';
+import PrimaryButton from '@commercetools-uikit/primary-button';
+import Spacings from '@commercetools-uikit/spacings';
+import Text from '@commercetools-uikit/text';
+import SelectInput from '@commercetools-uikit/select-input';
+import { PriceFilters } from '@commercetools-us-ps/bundles-core/components';
+import { localize } from '@commercetools-us-ps/bundles-core/components/util';
 import { BUNDLE_CART_CUSTOM_TYPE } from '../../constants';
 import {
   getScopedPriceParameters,

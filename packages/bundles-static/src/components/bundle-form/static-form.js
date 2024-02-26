@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { BundleForm } from '../../../../bundles-core/components/bundle-form';
-import ProductField from '../product-field';
+import { BundleForm } from '@commercetools-us-ps/bundles-core/components/bundle-form';
+import { ProductField } from '../product-field';
 import messages from './messages';
 
 const PRODUCTS = 'products';

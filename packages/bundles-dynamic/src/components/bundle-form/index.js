@@ -1,1 +1,1 @@
-export { default } from './bundle-form';
+export { default as BundleForm } from './bundle-form';

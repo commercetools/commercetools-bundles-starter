@@ -1,1 +1,1 @@
-export { default } from './static-bundles-table';
+export { default as StaticBundlesTable } from './static-bundles-table';

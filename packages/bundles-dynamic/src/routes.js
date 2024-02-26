@@ -7,11 +7,11 @@ import {
   BundleProvider,
   GetBundleProductType,
   PathProvider,
-} from '../../bundles-core/context';
-import { Error } from '../../bundles-core/components/index';
-import CreateBundleForm from './components/create-bundle-form';
-import DynamicBundlesTable from './components/bundles-table';
-import DynamicBundleDetails from './components/bundle-details';
+} from '@commercetools-us-ps/bundles-core/context';
+import { Error } from '@commercetools-us-ps/bundles-core/components/index';
+import { CreateBundleForm } from './components/create-bundle-form';
+import { DynamicBundlesTable } from './components/bundles-table';
+import { DynamicBundleDetails } from './components/bundle-details';
 import { BUNDLE_PRODUCT_TYPE, ROOT_PATH } from './constants';
 import { messages } from './messages';
 

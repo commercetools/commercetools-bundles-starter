@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import omit from 'lodash.omit';
-import { ListIcon, BackIcon } from '@commercetools-frontend/ui-kit';
+import { ListIcon, BackIcon } from '@commercetools-uikit/icons';
 import BackToList from './back-to-list';
 
 const createTestProps = (props) => ({

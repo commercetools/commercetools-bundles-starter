@@ -1,1 +1,1 @@
-export ViewHeader from './view-header';
+export { default as ViewHeader } from './view-header';

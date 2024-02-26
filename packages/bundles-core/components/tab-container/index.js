@@ -1,1 +1,1 @@
-export TabContainer from './tab-container';
+export { default as TabContainer } from './tab-container';

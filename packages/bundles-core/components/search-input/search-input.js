@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
-import {
-  CloseIcon,
-  SearchIcon,
-  TextInput,
-  PrimaryButton,
-  SecondaryIconButton,
-  Spacings,
-} from '@commercetools-frontend/ui-kit';
+import TextInput from '@commercetools-uikit/text-input';
+import PrimaryButton from '@commercetools-uikit/primary-button';
+import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
+import Spacings from '@commercetools-uikit/spacings';
+import { CloseIcon, SearchIcon } from '@commercetools-uikit/icons';
 import messages from './messages';
 import styles from './search-input.mod.css';
 

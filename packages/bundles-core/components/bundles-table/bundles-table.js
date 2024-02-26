@@ -6,14 +6,12 @@ import omit from 'lodash/omit';
 import values from 'lodash/values';
 import { stringify } from 'qs';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
-import {
-  Card,
-  FlatButton,
-  PlusBoldIcon,
-  SecondaryButton,
-  Spacings,
-  Text,
-} from '@commercetools-frontend/ui-kit';
+import Card from '@commercetools-uikit/card';
+import FlatButton from '@commercetools-uikit/flat-button';
+import SecondaryButton from '@commercetools-uikit/secondary-button';
+import Spacings from '@commercetools-uikit/spacings';
+import Text from '@commercetools-uikit/text';
+import { PlusBoldIcon } from '@commercetools-uikit/icons';
 import { Error, Loading, PaginatedTable, SearchInput } from '../index';
 import { SORT_OPTIONS } from '../constants';
 import { useBundleContext } from '../../context/bundle-context';
